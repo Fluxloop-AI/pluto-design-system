@@ -2,8 +2,11 @@
  * PDS semantic color tokens — Montage 카테고리·계층 그대로, 이름만 --pds-*.
  * 1차 배포: light 값만. 다크 모드 값은 Phase 4에서 [data-theme="dark"] 블록에 추가.
  * 알파가 필요한 토큰은 color-mix() 로 primitive 참조 → 값 교체 시 자동 반영.
+ *
+ * semantic 은 `var(--pds-primary-normal)` 같은 직접 참조 패턴으로만 소비.
+ * Tailwind 유틸리티(`bg-primary-normal`)로는 열어두지 않음 → `:root` 블록 사용.
  */
-@theme {
+:root {
   /* primary */
   --pds-primary-normal: var(--pds-color-blue-50);
   --pds-primary-strong: var(--pds-color-blue-45);

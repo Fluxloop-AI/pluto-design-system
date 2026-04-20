@@ -2,7 +2,7 @@
 
 **문서 목적**: PDS의 구축 방향·기술 결정·구현 Phase를 하나로 정리한 레퍼런스. 이후 모든 구현 작업은 이 문서를 기준으로 진행한다.
 
-**최종 업데이트**: 2026-04-20 (Phase 0 Step 1 완료, 토큰 파일 구조 확정)
+**최종 업데이트**: 2026-04-20 (Phase 0.5 — Foundations 시각화 완료, 다음: Phase 1 Button부터)
 **소유**: The Pluto
 **담당**: yoojungkim (프로덕트·디자인 총괄)
 
@@ -471,6 +471,13 @@ Phase 0 — Bootstrap
   · apps/docs 껍데기 (Next.js 15 + MDX)
   → PDS 작업 시작 가능
 
+Phase 0.5 — Foundations 시각화 (docs 전용)
+  · apps/docs에 Foundations 섹션 신설 (color / typography / spacing / radius / shadow / z-index / motion)
+  · pds-core 토큰을 MDX 페이지에서 실물로 렌더링 (라이브 데모 포함)
+  · 라이브 데모 컴포넌트는 apps/docs/components/demos/* 로컬에만 둠 (pds-ui 미오염)
+  · 컴포넌트는 손대지 않음 (Phase 1 스코프 유지)
+  → 토큰 검증·레퍼런스 페이지 완성, 이후 Phase에서 컴포넌트 문서가 붙는 기반
+
 Phase 1 — Tier 1 기본 위젯 (PDS v0.1)
   · Button, Input, Icon, Dialog, DropdownMenu, Tooltip, Avatar, Toast, Separator, ScrollArea
   · 각 컴포넌트 MDX 문서 (live demo + variants)
@@ -605,7 +612,41 @@ GitHub 측 권한·설정 (유저 직접 수행):
 
 ---
 
-## 10. 레퍼런스 링크
+## 10. Phase 0.5 체크리스트 (완료)
+
+**원칙**: apps/docs에만 파일 추가. `packages/*` 코드/토큰 값은 이 Phase에서 변경하지 않음. 토큰 오류·누락 발견 시 pds-core 쪽 수정은 별도 커밋으로 분리.
+
+### 10.1 인프라
+- [x] `apps/docs/components/demos/` 디렉토리 신설 (라이브 데모 React 컴포넌트 전용)
+- [x] `content/docs/meta.json` + `foundations/meta.json` 으로 Foundations 섹션 등록
+- [x] 기존 `content/docs/tokens.mdx` placeholder 제거, `foundations/index.mdx` 로 교체
+
+### 10.2 페이지 (`content/docs/foundations/*.mdx`)
+- [x] `color.mdx` — 14 hue × 14단계 primitive 팔레트 그리드 + semantic 매핑 표 + chat 특수 토큰
+- [x] `typography.mdx` — 15 variant 실물 샘플 (size / line / letter-spacing) + 폰트 스택 + 한/영 혼용 샘플
+- [x] `spacing.mdx` — 20-step 스케일 가로 막대 시각화
+- [x] `radius.mdx` — 8단계 박스 샘플 + squircle on/off 비교
+- [x] `shadow.mdx` — box-shadow / drop-shadow / glow 3계열 × 5단계
+- [x] `z-index.mdx` — 레이어 순서 표
+- [x] `motion.mdx` — duration·easing 표 + 7개 keyframe 재생 데모 + `prefers-reduced-motion` 안내
+
+### 10.3 데모 컴포넌트 (`apps/docs/components/demos/*`)
+- [x] `color-swatch-grid.tsx` — primitive hue 14종 × 단계 그리드
+- [x] `semantic-token-row.tsx` — `SemanticTokenList` + `ChatTokenList` (체커보드 위 알파 확인)
+- [x] `type-scale.tsx` — 15 variant 실물 샘플
+- [x] `spacing-scale.tsx` — 20-step 가로 막대
+- [x] `radius-grid.tsx` — `RadiusGrid` + `SquircleCompare`
+- [x] `shadow-grid.tsx` — `BoxShadowRow` / `DropShadowRow` / `GlowRow`
+- [x] `motion-demo.tsx` — `MotionDemo` (7 keyframe 재생) + `MotionTokenTable`
+
+### 10.4 완료 조건
+- [x] `pnpm dev` (docs) 기동 → 8개 페이지(index + 7) 모두 200 응답 + 에러 없이 렌더링
+- [x] 브라우저에서 Pretendard/SF Pro 적용, 라이트 모드 고정
+- [x] 토큰 값 불일치·누락 없음 (CSS 변수명이 페이지 표시명과 1:1)
+
+---
+
+## 11. 레퍼런스 링크
 
 - [Wanted Montage GitHub](https://github.com/wanteddev/montage-web) — 토큰 구조 원천
 - [Montage 문서](https://montage.wanted.co.kr/docs/foundations) — 구조 참고

@@ -2,8 +2,11 @@
  * PDS shadow — Montage 3계열 (box / drop / glow) 그대로 이식.
  * 서로 다른 문제: box-shadow(사각 카드), drop-shadow(비사각 SVG·squircle), ambient glow(포커스/AI).
  * 색은 neutral.10 참조 → 브랜드 값 변경에 자동 반응.
+ *
+ * 소비는 `boxShadow: var(--pds-shadow-md)` / `filter: var(--pds-drop-md)` 패턴.
+ * Tailwind `shadow-*` 유틸리티 대신 CSS 변수 직접 참조 → `:root`.
  */
-@theme {
+:root {
   /* (a) box-shadow — 사각 카드·버튼·다이얼로그 */
   --pds-shadow-xs: 0px 1px 2px -1px color-mix(in srgb, var(--pds-color-neutral-10) 10%, transparent);
   --pds-shadow-sm:

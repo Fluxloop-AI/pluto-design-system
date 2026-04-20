@@ -2,8 +2,11 @@
  * PDS typography — 데스크탑 밀도 (14px base).
  * Font stack: SF Pro 라틴 + Pretendard 한글 번들. Montage variant 이름 호환.
  * --text-* 은 Tailwind v4 유틸리티(text-{name})로 font-size + line-height를 동시에 노출.
+ *
+ * `static` 키워드: 유틸리티로 쓰이지 않아도 모든 variant 를 `:root` 에 방출.
+ * docs/devtools 에서 `var(--text-display1)` 같이 동적으로 읽는 경우를 대비.
  */
-@theme {
+@theme static {
   /* font stacks */
   --font-sans:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Apple SD Gothic Neo",

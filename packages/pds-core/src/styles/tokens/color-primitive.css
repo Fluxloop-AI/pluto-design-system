@@ -2,8 +2,13 @@
  * PDS primitive color palette — 14 hue × 14단계.
  * Montage wds-theme atomic 값을 완전 이식. 변수명만 --wds-* → --pds-*.
  * 값은 브랜드 확정 시 교체 가능. 이름은 불변.
+ *
+ * NOTE: primitive 는 **직접 소비 금지** 원칙(§4.1.1). semantic 만 public API.
+ * 따라서 `@theme` 로 Tailwind 유틸리티를 생성하지 않고 순수 `:root` 로 둔다.
+ * 이렇게 해야 semantic 이 참조하지 않는 step 도 `var(...)` 로 안전히 읽힌다
+ * (Tailwind v4 `@theme` 는 사용 안 된 변수를 방출하지 않음).
  */
-@theme {
+:root {
   /* blue */
   --pds-color-blue-10: #001536;
   --pds-color-blue-20: #002966;
