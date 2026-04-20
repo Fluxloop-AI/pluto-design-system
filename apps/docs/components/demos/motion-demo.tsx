@@ -59,8 +59,7 @@ const KEYFRAMES: Keyframe[] = [
           padding: "8px 12px",
           border: "1px solid var(--pds-line-solid-normal)",
           borderRadius: "var(--pds-radius-md)",
-          animation:
-            "pds-fade-collapse var(--pds-duration-slow) var(--pds-ease-standard) forwards",
+          animation: "pds-fade-collapse var(--pds-duration-slow) var(--pds-ease-standard) forwards",
           ["--pds-collapse-from" as string]: "80px",
         }}
       >
@@ -75,11 +74,7 @@ const KEYFRAMES: Keyframe[] = [
     description: "3-dot 로딩 (0.16s stagger, 무한)",
     duration: "1.4s loop",
     render: (k) => (
-      <div
-        key={k}
-        className="pds-animate-dot-wave"
-        style={{ color: "var(--pds-primary-normal)" }}
-      >
+      <div key={k} className="pds-animate-dot-wave" style={{ color: "var(--pds-primary-normal)" }}>
         <span />
         <span />
         <span />

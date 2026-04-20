@@ -11,8 +11,16 @@ type Hue = {
 };
 
 const HUES: Hue[] = [
-  { name: "Blue ★ primary", slug: "blue", steps: [10, 20, 30, 40, 45, 50, 55, 60, 65, 70, 80, 90, 95, 99] },
-  { name: "Neutral", slug: "neutral", steps: [5, 10, 15, 20, 22, 30, 40, 50, 60, 70, 80, 90, 95, 99] },
+  {
+    name: "Blue ★ primary",
+    slug: "blue",
+    steps: [10, 20, 30, 40, 45, 50, 55, 60, 65, 70, 80, 90, 95, 99],
+  },
+  {
+    name: "Neutral",
+    slug: "neutral",
+    steps: [5, 10, 15, 20, 22, 30, 40, 50, 60, 70, 80, 90, 95, 99],
+  },
   {
     name: "Cool Neutral",
     slug: "cool-neutral",
@@ -26,7 +34,11 @@ const HUES: Hue[] = [
   { name: "Pink", slug: "pink", steps: [10, 20, 30, 40, 46, 50, 60, 70, 80, 90, 95, 99] },
   { name: "Cyan", slug: "cyan", steps: [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99] },
   { name: "Light Blue", slug: "light-blue", steps: [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99] },
-  { name: "Red Orange", slug: "red-orange", steps: [10, 20, 30, 40, 48, 50, 60, 70, 80, 90, 95, 99] },
+  {
+    name: "Red Orange",
+    slug: "red-orange",
+    steps: [10, 20, 30, 40, 48, 50, 60, 70, 80, 90, 95, 99],
+  },
   { name: "Lime", slug: "lime", steps: [10, 20, 30, 37, 40, 50, 60, 70, 80, 90, 95, 99] },
   { name: "Purple", slug: "purple", steps: [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99] },
 ];
@@ -43,9 +55,10 @@ export function ColorSwatchGrid() {
               return (
                 <div key={step} className="pds-swatch-cell">
                   <div
+                    role="img"
+                    aria-label={`${hue.name} ${step}`}
                     className="pds-swatch-chip"
                     style={{ background: `var(${varName})` }}
-                    aria-label={`${hue.name} ${step}`}
                   />
                   <span className="pds-swatch-step">{step}</span>
                 </div>

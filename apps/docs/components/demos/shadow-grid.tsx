@@ -13,10 +13,7 @@ export function BoxShadowRow() {
     <div className="pds-shadow-row">
       {STEPS.map((step) => (
         <div key={step} className="pds-shadow-cell">
-          <div
-            className="pds-shadow-box"
-            style={{ boxShadow: `var(--pds-shadow-${step})` }}
-          />
+          <div className="pds-shadow-box" style={{ boxShadow: `var(--pds-shadow-${step})` }} />
           <code>shadow-{step}</code>
         </div>
       ))}
@@ -56,10 +53,7 @@ export function GlowRow() {
     <div className="pds-shadow-row">
       {GLOW_STEPS.map((step) => (
         <div key={step} className="pds-shadow-cell">
-          <div
-            className="pds-shadow-box"
-            style={{ boxShadow: `var(--pds-glow-${step})` }}
-          />
+          <div className="pds-shadow-box" style={{ boxShadow: `var(--pds-glow-${step})` }} />
           <code>glow-{step}</code>
         </div>
       ))}
