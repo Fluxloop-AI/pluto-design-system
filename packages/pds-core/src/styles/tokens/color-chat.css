@@ -1,8 +1,10 @@
 /**
  * PDS chat 특수 토큰 — AI/Agent Chat 공용 (pluto-note 승계).
  * 별도 AI 카테고리를 만들지 않고 semantic alias 로만 구성.
+ *
+ * 소비는 `var(--pds-chat-*)` 직접 참조. Tailwind 유틸리티 불필요 → `:root`.
  */
-@theme {
+:root {
   /* 파란 글로우 (streaming reasoning text), blue.50 alpha 45% */
   --pds-chat-text-glow: color-mix(in srgb, var(--pds-color-blue-50) 45%, transparent);
 

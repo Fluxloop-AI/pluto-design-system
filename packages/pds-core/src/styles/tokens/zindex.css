@@ -1,7 +1,8 @@
 /**
  * PDS z-index — 레이어 순서 고정. overlay 이하는 앱 로컬 레이어, titlebar 는 OS 크롬 근처.
+ * 인라인 숫자 금지 원칙(§4.7)에 따라 반드시 `var(--pds-z-*)` 로 소비 → `:root`.
  */
-@theme {
+:root {
   --pds-z-base: 0;
   --pds-z-dropdown: 1000;
   --pds-z-sticky: 1100;

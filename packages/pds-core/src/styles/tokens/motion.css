@@ -1,8 +1,11 @@
 /**
  * PDS motion — duration / easing / transition 프리셋.
  * ease-standard 는 pluto-note chat-easing 과 동일 — 모든 step-in·fade·collapse 기본값.
+ *
+ * 소비는 `transition: var(--pds-transition-all)` / `animation-timing-function: var(--pds-ease-*)`
+ * 패턴. Tailwind `duration-*` / `ease-*` 유틸리티 대체용이 아님 → `:root`.
  */
-@theme {
+:root {
   /* duration */
   --pds-duration-instant: 80ms;
   --pds-duration-fast: 150ms;

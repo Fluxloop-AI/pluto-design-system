@@ -1,8 +1,9 @@
 /**
  * PDS spacing — 20-step 고정 스케일 (Montage 호환).
  * Tailwind v4 --spacing-* 매핑. p-4 / m-16 / gap-8 등 유틸리티로 직접 소비.
+ * `static`: 모든 step 을 `:root` 에도 방출 (동적 `var(--spacing-16)` 참조 대비).
  */
-@theme {
+@theme static {
   --spacing-0: 0;
   --spacing-0\.5: 0.5px;
   --spacing-1: 1px;

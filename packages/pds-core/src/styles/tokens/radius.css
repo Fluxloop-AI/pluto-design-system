@@ -1,8 +1,9 @@
 /**
  * PDS radius. 기본값 md(6px). Tailwind v4 rounded-* 유틸리티로 사용.
  * 전역 squircle(§4.5)과 조합해 macOS 감각의 모서리 스무딩을 획득.
+ * `static`: 모든 단계를 `:root` 에도 방출 (동적 `var(--pds-radius-lg)` 참조 대비).
  */
-@theme {
+@theme static {
   --radius-none: 0;
   --radius-xs: 2px;
   --radius-sm: 4px;
