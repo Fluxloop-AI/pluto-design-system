@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+/* PDS 토큰·keyframes·reset. Fumadocs preset 뒤에 와서 브랜드를 덮어쓴다. */
+@import "@pluto/pds-core/styles/theme.css";
+@import "@pluto/pds-core/styles/fonts.css";
+@import "@pluto/pds-core/styles/keyframes.css";

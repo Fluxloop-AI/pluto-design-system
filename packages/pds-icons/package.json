@@ -1,0 +1,51 @@
+{
+  "name": "@pluto/pds-icons",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Pluto Design System — lucide wrappers + PDS-native icons",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./lucide": {
+      "types": "./dist/lucide.d.ts",
+      "import": "./dist/lucide.js"
+    },
+    "./custom": {
+      "types": "./dist/custom/index.d.ts",
+      "import": "./dist/custom/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "lucide-react": "^0.469.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  }
+}

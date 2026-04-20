@@ -1,0 +1,17 @@
+/**
+ * PDS chat 특수 토큰 — AI/Agent Chat 공용 (pluto-note 승계).
+ * 별도 AI 카테고리를 만들지 않고 semantic alias 로만 구성.
+ */
+@theme {
+  /* 파란 글로우 (streaming reasoning text), blue.50 alpha 45% */
+  --pds-chat-text-glow: color-mix(in srgb, var(--pds-color-blue-50) 45%, transparent);
+
+  /* easing — standard PDS 이징과 동일 참조 (motion.css) */
+  --pds-chat-easing: cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* agent status dot colors — semantic alias */
+  --pds-chat-dot-idle: var(--pds-label-assistive);
+  --pds-chat-dot-done: var(--pds-status-positive);
+  --pds-chat-dot-error: var(--pds-status-negative);
+  --pds-chat-dot-action: var(--pds-status-cautionary);
+}

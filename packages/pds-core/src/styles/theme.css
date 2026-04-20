@@ -1,0 +1,13 @@
+/**
+ * PDS @theme 취합 파일. 카테고리별 tokens/*.css 를 import.
+ * 새 카테고리가 추가되면 이 파일에 한 줄만 추가한다.
+ */
+@import "./tokens/color-primitive.css";
+@import "./tokens/color-semantic.css";
+@import "./tokens/color-chat.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/radius.css";
+@import "./tokens/shadow.css";
+@import "./tokens/zindex.css";
+@import "./tokens/motion.css";

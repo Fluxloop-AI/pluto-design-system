@@ -1,0 +1,154 @@
+/**
+ * PDS motion keyframes — pluto-note chat-animations.css 를 PDS 네이밍으로 승계.
+ * 유틸 클래스는 .pds-animate-* 로 노출하고, 컴포넌트는 이를 직접 쓰거나
+ * Framer Motion variants(@pluto/pds-core/motion) 로 접근한다.
+ */
+
+/* ---- fade / step-in ---- */
+@keyframes pds-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pds-fade-in-card {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pds-fade-collapse {
+  0% {
+    max-height: var(--pds-collapse-from, 640px);
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+/* ---- loading / status dots ---- */
+@keyframes pds-dot-wave {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+@keyframes pds-dot-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.28;
+  }
+  70% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* ---- text glow (streaming reasoning) ---- */
+@keyframes pds-text-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 8px var(--pds-chat-text-glow);
+    opacity: 0.85;
+  }
+  50% {
+    text-shadow: 0 0 18px var(--pds-chat-text-glow);
+    opacity: 1;
+  }
+}
+
+/* ---- skeleton shimmer ---- */
+@keyframes pds-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ---- utility classes ---- */
+.pds-animate-step-in {
+  animation: pds-fade-in-up var(--pds-duration-slower) var(--pds-ease-standard) both;
+}
+
+.pds-animate-card-in {
+  animation: pds-fade-in-card 500ms var(--pds-ease-standard) both;
+}
+
+.pds-animate-glow {
+  animation: pds-text-glow var(--pds-duration-glow) ease-in-out infinite;
+}
+
+.pds-animate-dot-wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pds-animate-dot-wave > span {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--pds-radius-full);
+  background: currentColor;
+  animation: pds-dot-wave 1.4s ease-in-out infinite;
+}
+
+.pds-animate-dot-wave > span:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.pds-animate-dot-wave > span:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+.pds-animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--pds-fill-alternative) 0%,
+    var(--pds-fill-normal) 50%,
+    var(--pds-fill-alternative) 100%
+  );
+  background-size: 200% 100%;
+  animation: pds-shimmer 1.6s linear infinite;
+}
+
+/* ---- reduced motion ----
+ * !important 는 user preference(OS 접근성)가 모든 덮어쓰기를 이기도록 강제하기 위함.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .pds-animate-step-in,
+  .pds-animate-card-in,
+  .pds-animate-glow,
+  .pds-animate-dot-wave > span,
+  .pds-animate-shimmer {
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
+    transition-duration: 0.01ms !important;
+  }
+}

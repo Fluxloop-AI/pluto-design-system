@@ -1,0 +1,44 @@
+{
+  "name": "@pluto/pds-ui",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Pluto Design System — Radix + Tailwind components (source-only, shadcn registry)",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./registry.json": "./registry.json"
+  },
+  "files": [
+    "src",
+    "registry.json",
+    "README.md"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo"
+  },
+  "peerDependencies": {
+    "@pluto/pds-core": "workspace:*",
+    "@pluto/pds-icons": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@pluto/pds-core": "workspace:*",
+    "@pluto/pds-icons": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  }
+}
