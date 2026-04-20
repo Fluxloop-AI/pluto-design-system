@@ -2,10 +2,10 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.4/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "fixed": [["@pluto/pds-core", "@pluto/pds-icons", "@pluto/pds-ui"]],
+  "fixed": [["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons", "@fluxloop-ai/pds-ui"]],
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@pluto/pds-docs"]
+  "ignore": ["@fluxloop-ai/pds-docs"]
 }

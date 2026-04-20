@@ -23,13 +23,13 @@ importers:
 
   apps/docs:
     dependencies:
-      '@pluto/pds-core':
+      '@fluxloop-ai/pds-core':
         specifier: workspace:*
         version: link:../../packages/pds-core
-      '@pluto/pds-icons':
+      '@fluxloop-ai/pds-icons':
         specifier: workspace:*
         version: link:../../packages/pds-icons
-      '@pluto/pds-ui':
+      '@fluxloop-ai/pds-ui':
         specifier: workspace:*
         version: link:../../packages/pds-ui
       fumadocs-core:
@@ -122,10 +122,10 @@ importers:
 
   packages/pds-ui:
     dependencies:
-      '@pluto/pds-core':
+      '@fluxloop-ai/pds-core':
         specifier: workspace:*
         version: link:../pds-core
-      '@pluto/pds-icons':
+      '@fluxloop-ai/pds-icons':
         specifier: workspace:*
         version: link:../pds-icons
     devDependencies:

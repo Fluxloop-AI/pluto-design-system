@@ -6,7 +6,7 @@ const withMDX = createMDX();
 
 const config: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@pluto/pds-core", "@pluto/pds-icons", "@pluto/pds-ui"],
+  transpilePackages: ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons", "@fluxloop-ai/pds-ui"],
   outputFileTracingRoot: path.join(import.meta.dirname ?? "", "..", ".."),
 };
 

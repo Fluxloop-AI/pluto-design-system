@@ -1,5 +1,5 @@
 {
-  "name": "@pluto/pds-docs",
+  "name": "@fluxloop-ai/pds-docs",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,9 +12,9 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@pluto/pds-core": "workspace:*",
-    "@pluto/pds-icons": "workspace:*",
-    "@pluto/pds-ui": "workspace:*",
+    "@fluxloop-ai/pds-core": "workspace:*",
+    "@fluxloop-ai/pds-icons": "workspace:*",
+    "@fluxloop-ai/pds-ui": "workspace:*",
     "fumadocs-core": "^15.0.0",
     "fumadocs-mdx": "^11.0.0",
     "fumadocs-ui": "^15.0.0",

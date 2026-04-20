@@ -1,5 +1,5 @@
 {
-  "name": "@pluto/pds-icons",
+  "name": "@fluxloop-ai/pds-icons",
   "version": "0.0.0",
   "private": false,
   "description": "Pluto Design System — lucide wrappers + PDS-native icons",

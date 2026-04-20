@@ -1,7 +1,7 @@
 /**
  * PDS motion keyframes — pluto-note chat-animations.css 를 PDS 네이밍으로 승계.
  * 유틸 클래스는 .pds-animate-* 로 노출하고, 컴포넌트는 이를 직접 쓰거나
- * Framer Motion variants(@pluto/pds-core/motion) 로 접근한다.
+ * Framer Motion variants(@fluxloop-ai/pds-core/motion) 로 접근한다.
  */
 
 /* ---- fade / step-in ---- */

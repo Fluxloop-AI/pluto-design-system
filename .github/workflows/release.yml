@@ -31,7 +31,7 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
           registry-url: https://npm.pkg.github.com
-          scope: "@pluto"
+          scope: "@fluxloop-ai"
 
       - name: Install
         run: pnpm install --frozen-lockfile

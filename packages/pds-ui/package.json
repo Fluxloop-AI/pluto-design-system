@@ -1,5 +1,5 @@
 {
-  "name": "@pluto/pds-ui",
+  "name": "@fluxloop-ai/pds-ui",
   "version": "0.0.0",
   "private": false,
   "description": "Pluto Design System — Radix + Tailwind components (source-only, shadcn registry)",
@@ -21,14 +21,14 @@
     "clean": "rm -rf .turbo"
   },
   "peerDependencies": {
-    "@pluto/pds-core": "workspace:*",
-    "@pluto/pds-icons": "workspace:*",
+    "@fluxloop-ai/pds-core": "workspace:*",
+    "@fluxloop-ai/pds-icons": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "@pluto/pds-core": "workspace:*",
-    "@pluto/pds-icons": "workspace:*"
+    "@fluxloop-ai/pds-core": "workspace:*",
+    "@fluxloop-ai/pds-icons": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

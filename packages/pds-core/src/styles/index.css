@@ -1,7 +1,7 @@
 /**
  * PDS 스타일 진입점. 앱/문서 사이트는 이 파일 하나만 import 하면 전부 로드된다.
  *
- *   @import "@pluto/pds-core/styles";
+ *   @import "@fluxloop-ai/pds-core/styles";
  *
  * 순서
  *   1) tailwindcss       — preflight + 유틸리티 생성 베이스

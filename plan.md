@@ -13,7 +13,7 @@
 | 항목 | 결정 |
 |---|---|
 | 디자인 시스템 이름 | **Pluto Design System (PDS)** |
-| 네임스페이스 | `@pluto/pds-*` |
+| 네임스페이스 | `@fluxloop-ai/pds-*` |
 | 1차 타겟 프로덕트 | **macOS 데스크탑 앱** (Electron 37+ 유력, Windows 포팅 2차) |
 | CSS 프레임워크 | **Tailwind v4** (`@theme` 토큰) |
 | 컴포넌트 동작 | **Radix UI** (headless) |
@@ -40,7 +40,7 @@
 ### 1.2 현재 자산
 - Figma 디자인 시스템 파일: **없음**
 - 스타일 적용된 목업 일부만 존재
-- 과거 시도물: pluto-note 레포의 `@pluto/wds` (Montage 포크) → **버림**, 깨끗한 `@pluto/pds-*`로 재출발
+- 과거 시도물: pluto-note 레포의 `@pluto/wds` (Montage 포크) → **버림**, 깨끗한 `@fluxloop-ai/pds-*`로 재출발
 
 ### 1.3 레퍼런스 자산 (PDS 설계 시 참고)
 | 레포 경로 | 역할 |
@@ -101,9 +101,9 @@ pluto-design-system/                  (= PDS 독립 레포)
 ```
 
 ### 3.1 패키지 역할
-- **`@pluto/pds-core`** — CSS 토큰(`@theme`), Tailwind preset, Pretendard 번들, motion keyframe, utility 함수. npm 패키지로 publish. 내부 구조는 §4.0 참고.
-- **`@pluto/pds-ui`** — Radix + Tailwind 기반 컴포넌트 소스. shadcn registry로 publish (앱이 `npx shadcn add`로 복사).
-- **`@pluto/pds-icons`** — PDS 전용 아이콘 + lucide-react 래퍼. npm 패키지.
+- **`@fluxloop-ai/pds-core`** — CSS 토큰(`@theme`), Tailwind preset, Pretendard 번들, motion keyframe, utility 함수. npm 패키지로 publish. 내부 구조는 §4.0 참고.
+- **`@fluxloop-ai/pds-ui`** — Radix + Tailwind 기반 컴포넌트 소스. shadcn registry로 publish (앱이 `npx shadcn add`로 복사).
+- **`@fluxloop-ai/pds-icons`** — PDS 전용 아이콘 + lucide-react 래퍼. npm 패키지.
 - **`apps/docs`** — 문서 사이트. MDX + live component demo + token 시각화.
 
 ### 3.2 앱(별도 레포) 소비 경로
@@ -111,11 +111,11 @@ pluto-design-system/                  (= PDS 독립 레포)
 - **Phase 1 릴리스 이후**: GitHub Packages에서 설치
   ```
   # 앱 레포 .npmrc
-  @pluto:registry=https://npm.pkg.github.com
+  @fluxloop-ai:registry=https://npm.pkg.github.com
   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
   ```
   ```
-  pnpm add @pluto/pds-core@^0.1
+  pnpm add @fluxloop-ai/pds-core@^0.1
   npx shadcn add https://pds.pluto.com/r/button
   ```
 
@@ -164,7 +164,7 @@ packages/pds-core/
 **규칙**
 - 새 토큰 카테고리 = 새 파일. 한 파일이 200줄을 넘기 시작하면 다시 쪼갠다.
 - `@theme` 는 `theme.css` 한 곳에서만 사용. 다른 파일은 순수 변수 선언만.
-- 앱/문서 사이트는 `@pluto/pds-core/styles/index.css` 하나만 import 하면 전부 로드.
+- 앱/문서 사이트는 `@fluxloop-ai/pds-core/styles/index.css` 하나만 import 하면 전부 로드.
 - 다크 모드 값(Phase 4)은 각 `tokens/*.css` 파일 내부에서 `[data-theme="dark"]` 블록으로 병행 선언.
 
 ### 4.1 색 (Color)
@@ -249,7 +249,7 @@ Montage 카테고리·계층 그대로, 변수명만 `--semantic-*` → `--pds-*
   monospace;
 ```
 
-**Pretendard 번들 방식**: `@pluto/pds-core/fonts/pretendard-variable.woff2` 로 패키지에 포함. Electron/Tauri 오프라인에서 동작.
+**Pretendard 번들 방식**: `@fluxloop-ai/pds-core/fonts/pretendard-variable.woff2` 로 패키지에 포함. Electron/Tauri 오프라인에서 동작.
 
 #### 4.2.2 Variant 스케일 (데스크탑 밀도, Montage 이름 호환)
 
@@ -405,7 +405,7 @@ Montage 3계열 그대로 채용. 서로 다른 문제를 푸는 도구이므로
 ```
 
 #### 4.8.5 Framer Motion preset
-`@pluto/pds-core/motion` 에서 `pdsStepIn`, `pdsCardIn` 등 variants export.
+`@fluxloop-ai/pds-core/motion` 에서 `pdsStepIn`, `pdsCardIn` 등 variants export.
 
 #### 4.8.6 접근성
 `@media (prefers-reduced-motion: reduce)` 에서 모든 애니메이션 0.01ms로 단축 (pluto-note 패턴).
@@ -467,7 +467,7 @@ Montage 3계열 그대로 채용. 서로 다른 문제를 푸는 도구이므로
 ```
 Phase 0 — Bootstrap
   · 모노레포 + Turborepo + pnpm workspace + Biome
-  · @pluto/pds-core (토큰 @theme, Tailwind preset, Pretendard, motion keyframes)
+  · @fluxloop-ai/pds-core (토큰 @theme, Tailwind preset, Pretendard, motion keyframes)
   · apps/docs 껍데기 (Next.js 15 + MDX)
   → PDS 작업 시작 가능
 
@@ -516,11 +516,11 @@ Phase 5+ — 확장 컴포넌트
 ```
 레지스트리: https://npm.pkg.github.com
 .npmrc:
-  @pluto:registry=https://npm.pkg.github.com
+  @fluxloop-ai:registry=https://npm.pkg.github.com
   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 - private GitHub repo → Packages 자동 비공개
-- 추후 공개 npm 이사 필요 시 publish 타겟만 변경 (패키지 이름 `@pluto/*` 유지)
+- 추후 공개 npm 이사 필요 시 publish 타겟만 변경 (패키지 이름 `@fluxloop-ai/*` 유지)
 
 ### 6.4 CI/CD (GitHub Actions)
 - main 머지 시 자동 publish
@@ -529,8 +529,8 @@ Phase 5+ — 확장 컴포넌트
 - Changesets Bot이 PR에 changeset 누락 시 경고
 
 ### 6.5 컴포넌트 배포 방식 (shadcn 하이브리드)
-- `@pluto/pds-core` — npm 패키지로 설치 (`pnpm add`)
-- `@pluto/pds-ui` — **shadcn registry** (`registry.json`) 포맷으로 publish
+- `@fluxloop-ai/pds-core` — npm 패키지로 설치 (`pnpm add`)
+- `@fluxloop-ai/pds-ui` — **shadcn registry** (`registry.json`) 포맷으로 publish
   ```
   # 앱팀이 컴포넌트 추가
   npx shadcn add https://pds.pluto.com/r/button
@@ -570,26 +570,38 @@ Phase 5+ — 확장 컴포넌트
 
 ---
 
-## 9. 다음 단계 (Phase 0 시작 체크리스트)
+## 9. Phase 0 체크리스트 (완료)
 
-PDS 실제 구현을 시작할 때 Phase 0에서 처리할 항목:
+- [x] pnpm init + `pnpm-workspace.yaml` 작성
+- [x] Turborepo 설치 + `turbo.json` 기본 파이프라인
+- [x] Biome 설치 + `biome.json` 기본 규칙
+- [x] `tsconfig.base.json` + 패키지별 `tsconfig.json`
+- [x] `packages/pds-core` 스캐폴드
+  - [x] `@theme` CSS 파일 작성 (§4 토큰 완전 이식)
+  - [x] Pretendard variable font 번들
+  - [x] Tailwind v4 preset export (CSS-first, §4.0 파일 구조)
+  - [x] motion keyframes + Framer Motion variants
+  - [x] tsup 빌드 스크립트
+- [x] `packages/pds-icons` 스캐폴드 (lucide 래퍼 + custom 슬롯)
+- [x] `packages/pds-ui` 스캐폴드 (소스 노출형, Phase 1 대기)
+- [x] `apps/docs` 스캐폴드 (Next.js 15 + Fumadocs v15 + MDX)
+- [x] Changesets 초기화 (통합 버전 정책, docs 앱 ignore)
+- [x] GitHub Actions workflow (`ci.yml` + `release.yml`)
+- [x] 원격 연결 (`github.com/Fluxloop-AI/pluto-design-system`, `main` push)
 
-- [ ] pnpm init + `pnpm-workspace.yaml` 작성
-- [ ] Turborepo 설치 + `turbo.json` 기본 파이프라인
-- [ ] Biome 설치 + `biome.json` 기본 규칙
-- [ ] `tsconfig.base.json` + 패키지별 `tsconfig.json`
-- [ ] `packages/pds-core` 스캐폴드
-  - [ ] `@theme` CSS 파일 작성 (본 문서 §4 토큰 전부 반영)
-  - [ ] Pretendard variable font 번들
-  - [ ] Tailwind v4 preset export
-  - [ ] motion keyframes + Framer Motion variants
-  - [ ] tsup 빌드 스크립트
-- [ ] `packages/pds-icons` 스캐폴드 (lucide 래퍼)
-- [ ] `packages/pds-ui` 스캐폴드 (첫 컴포넌트는 Phase 1에서)
-- [ ] `apps/docs` 스캐폴드 (Next.js 15 App Router + MDX)
-- [ ] GitHub Actions workflow (빌드·테스트·Changesets release)
-- [ ] Changesets 초기화 (`pnpm changeset init`)
-- [ ] GitHub Packages 권한·토큰 발급
+### 9.1 Phase 완료 후 외부 후속 작업 (Deferred)
+
+> **운영 원칙**: 모든 Phase가 끝난 뒤 일괄 처리. Phase 진행 중에는 CI/릴리스가 blocking 되지 않도록 본 섹션 항목을 당겨쓰지 않는다.
+
+GitHub 측 권한·설정 (유저 직접 수행):
+
+- [ ] GitHub Packages 토큰 발급 (CI `GITHUB_TOKEN` 외 별도 NPM_TOKEN 필요 시점에)
+- [ ] Branch protection on `main`: PR 필수, `ci.yml` 통과 필수, force-push 차단
+- [ ] Settings → Actions → General → Workflow permissions: **Read and write** (Changesets Release PR 생성·머지 자동화에 필요)
+- [ ] Settings → Actions → General → Allow GitHub Actions to create and approve pull requests: **허용**
+- [ ] Settings → Secrets: 필요시 `NPM_TOKEN`(GitHub Packages 외 레지스트리 사용 시)
+- [ ] Changesets Bot 설치 (PR에 changeset 누락 경고)
+- [ ] PR template, CODEOWNERS, Issue template 정비
 
 ---
 
