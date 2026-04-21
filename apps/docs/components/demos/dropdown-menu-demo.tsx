@@ -18,6 +18,16 @@ import {
   DropdownMenuTrigger,
 } from "@fluxloop-ai/pds-ui/components/dropdown-menu";
 import { Button } from "@fluxloop-ai/pds-ui/components/button";
+import {
+  Copy,
+  Link2,
+  Mail,
+  MessageCircle,
+  Pencil,
+  Plus,
+  Share2,
+  Trash2,
+} from "@fluxloop-ai/pds-icons/lucide";
 
 export function DropdownBasicDemo() {
   return (
@@ -29,24 +39,45 @@ export function DropdownBasicDemo() {
         <DropdownMenuContent>
           <DropdownMenuLabel>프로젝트</DropdownMenuLabel>
           <DropdownMenuItem>
+            <Plus />
             새로 만들기
             <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
+            <Copy />
             복제
             <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>
           </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Pencil />
+            이름 편집
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>공유</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>
+              <Share2 />
+              공유
+            </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
-              <DropdownMenuItem>링크 복사</DropdownMenuItem>
-              <DropdownMenuItem>이메일</DropdownMenuItem>
-              <DropdownMenuItem>슬랙</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link2 />
+                링크 복사
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Mail />
+                이메일
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <MessageCircle />
+                슬랙
+              </DropdownMenuItem>
             </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
-          <DropdownMenuItem disabled>삭제</DropdownMenuItem>
+          <DropdownMenuItem disabled>
+            <Trash2 />
+            삭제
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       <Styles />
@@ -71,6 +102,125 @@ export function DropdownCheckDemo() {
           <DropdownMenuCheckboxItem checked={ruler} onCheckedChange={setRuler}>
             룰러 표시
           </DropdownMenuCheckboxItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <Styles />
+    </div>
+  );
+}
+
+export function DropdownPlacementDemo() {
+  const items = (
+    <>
+      <DropdownMenuLabel>프로젝트</DropdownMenuLabel>
+      <DropdownMenuItem>
+        <Plus />
+        새로 만들기
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <Copy />
+        복제
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem disabled>
+        <Trash2 />
+        삭제
+      </DropdownMenuItem>
+    </>
+  );
+
+  return (
+    <div className="pds-dd-card pds-dd-row">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary">align=&quot;start&quot;</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start">{items}</DropdownMenuContent>
+      </DropdownMenu>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary">align=&quot;center&quot;</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="center">{items}</DropdownMenuContent>
+      </DropdownMenu>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary">align=&quot;end&quot;</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">{items}</DropdownMenuContent>
+      </DropdownMenu>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary">side=&quot;right&quot;</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent side="right" align="start">
+          {items}
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <Styles />
+    </div>
+  );
+}
+
+export function DropdownSizeDemo() {
+  return (
+    <div className="pds-dd-card pds-dd-row">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary" size="sm">sm 메뉴</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent size="sm">
+          <DropdownMenuLabel>프로젝트</DropdownMenuLabel>
+          <DropdownMenuItem>
+            <Plus />
+            새로 만들기
+            <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Copy />
+            복제
+            <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Pencil />
+            이름 편집
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem disabled>
+            <Trash2 />
+            삭제
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary">md 메뉴</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent size="md">
+          <DropdownMenuLabel>프로젝트</DropdownMenuLabel>
+          <DropdownMenuItem>
+            <Plus />
+            새로 만들기
+            <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Copy />
+            복제
+            <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Pencil />
+            이름 편집
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem disabled>
+            <Trash2 />
+            삭제
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       <Styles />
@@ -109,6 +259,11 @@ function Styles() {
         border: 1px solid var(--pds-line-solid-normal);
         border-radius: var(--pds-radius-lg);
         background: var(--pds-background-normal-normal);
+      }
+      .pds-dd-row {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
       }
     `}</style>
   );

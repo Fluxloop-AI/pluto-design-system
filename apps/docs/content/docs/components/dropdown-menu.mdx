@@ -6,7 +6,9 @@ description: Radix DropdownMenu — normal/checkbox/radio + sub menu + shortcut 
 import {
   DropdownBasicDemo,
   DropdownCheckDemo,
+  DropdownPlacementDemo,
   DropdownRadioDemo,
+  DropdownSizeDemo,
 } from "@/components/demos/dropdown-menu-demo";
 
 ## 사용
@@ -33,6 +35,18 @@ import {
 Label + Item + Separator + Sub + Shortcut.
 
 <DropdownBasicDemo />
+
+## Size
+
+`DropdownMenuContent` 에 `size="sm" | "md"` (default `md`). Content가 Context로 하위 item/label/separator 모두에 전파.
+
+<DropdownSizeDemo />
+
+## Placement
+
+Radix의 `side` / `align` / `sideOffset` / `alignOffset` 을 그대로 받습니다. PDS default: `side="bottom"` · `align="start"` · `sideOffset={4}`.
+
+<DropdownPlacementDemo />
 
 ## Checkbox
 
