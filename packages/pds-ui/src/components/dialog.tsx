@@ -1,9 +1,9 @@
 "use client";
 
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
+import { CloseButton } from "./close-button";
 import { cn } from "../utils/cn";
 
 const dialog = tv({
@@ -24,7 +24,7 @@ const dialog = tv({
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
     ],
     navigation: [
-      "flex items-center justify-between gap-[8px] shrink-0",
+      "flex items-start justify-between gap-[8px] shrink-0",
       "px-[20px] pt-[20px] pb-[4px]",
     ],
     title: "text-[15px] font-semibold text-[color:var(--pds-label-normal)] m-0",
@@ -34,12 +34,6 @@ const dialog = tv({
       "flex items-center justify-end gap-[8px] shrink-0",
       "px-[20px] pt-[8px] pb-[20px]",
       "[&>button]:min-w-[64px]",
-    ],
-    close: [
-      "inline-flex w-[24px] h-[24px] items-center justify-center rounded-[6px]",
-      "text-[color:var(--pds-label-alternative)] hover:bg-[var(--pds-fill-normal)]",
-      "focus-visible:outline-none focus-visible:ring-2",
-      "focus-visible:ring-[color:var(--pds-focus-ring)]",
     ],
   },
   variants: {
@@ -198,19 +192,29 @@ const DialogDescription = React.forwardRef<
   );
 });
 
+type DialogCloseProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> & {
+  size?: "sm" | "md" | "lg";
+};
+
 const DialogClose = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Close>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> & { withIcon?: boolean }
->(function DialogClose({ className, withIcon = true, children, ...props }, ref) {
-  const styles = dialog();
+  DialogCloseProps
+>(function DialogClose(
+  { className, asChild, size = "md", children, ...props },
+  ref,
+) {
+  if (asChild) {
+    return (
+      <DialogPrimitive.Close ref={ref} asChild {...props}>
+        {children}
+      </DialogPrimitive.Close>
+    );
+  }
   return (
-    <DialogPrimitive.Close
-      ref={ref}
-      className={cn(styles.close(), className)}
-      aria-label={typeof children === "string" ? undefined : "닫기"}
-      {...props}
-    >
-      {children ?? (withIcon ? <X className="w-[14px] h-[14px]" /> : null)}
+    <DialogPrimitive.Close asChild {...props}>
+      <CloseButton ref={ref as React.Ref<HTMLButtonElement>} size={size} className={className}>
+        {children as React.ReactNode}
+      </CloseButton>
     </DialogPrimitive.Close>
   );
 });
