@@ -12,6 +12,8 @@ export type { AgentStatusIndicatorProps } from "./components/agent-status-indica
 export { AgentStatusIndicator } from "./components/agent-status-indicator";
 export type { AvatarProps } from "./components/avatar";
 export { Avatar, avatar } from "./components/avatar";
+export type { BadgeProps } from "./components/badge";
+export { Badge, badge } from "./components/badge";
 export type { ButtonProps } from "./components/button";
 export { Button, button } from "./components/button";
 export type { ChatBlockProps } from "./components/chat-block";
@@ -63,10 +65,32 @@ export type { IconProps } from "./components/icon";
 export { Icon, icon } from "./components/icon";
 export type { InputProps } from "./components/input";
 export { Input, input } from "./components/input";
+export type { PopoverContentProps } from "./components/popover";
+export {
+  Popover,
+  PopoverActionArea,
+  PopoverAnchor,
+  PopoverArrow,
+  PopoverBody,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTitleRow,
+  PopoverTrigger,
+  popover,
+} from "./components/popover";
+export type { ProgressIndicatorProps, ProgressProps } from "./components/progress";
+export { Progress, ProgressIndicator, progress } from "./components/progress";
 export type { ScrollAreaProps } from "./components/scroll-area";
 export { ScrollArea, ScrollBar } from "./components/scroll-area";
 export type { SeparatorProps } from "./components/separator";
 export { Separator, separator } from "./components/separator";
+export type { SpinnerProps } from "./components/spinner";
+export { Spinner, spinner } from "./components/spinner";
+export type { TagProps } from "./components/tag";
+export { Tag, tag } from "./components/tag";
 export type { ThinkingBlockProps } from "./components/thinking-block";
 export {
   REDACTED_THINKING_MESSAGE,
