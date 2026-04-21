@@ -42,8 +42,9 @@ import {
 | Prop | 타입 | 기본 | 설명 |
 |---|---|---|---|
 | `variant` | `popup \| full` | `popup` | `popup` 중앙 정렬, `full` 화면 거의 전체 |
-| `size` | `sm \| md \| lg \| xl` | `md` | width — popup 모드에만 적용 |
+| `size` | `sm \| md \| lg \| xl` | `sm` | width — popup 모드에만 적용. `sm=320 / md=400 / lg=520 / xl=680` |
 | `resize` | `fixed \| free` | `fixed` | `fixed` 는 680px cap, `free` 는 viewport cap |
+| `autoFocusOnOpen` | `boolean` | `true` | `false` 면 열릴 때 Radix의 기본 focus 이동을 막음 |
 
 ## Slots
 
@@ -53,7 +54,26 @@ import {
 | Container | `DialogContent` |
 | Navigation | `DialogNavigation` — 상단 바, 제목/Close 배치 |
 | Content | `DialogBody` — 스크롤 영역 |
-| ActionArea | `DialogActionArea` — 하단 액션 바 |
+| ActionArea | `DialogActionArea` — 하단 액션 바. 내부 버튼은 `min-width: 64px` 강제 |
+
+## 액션 버튼 컨벤션
+
+`DialogActionArea` 안에서는 Button variant를 다음과 같이 쓰세요.
+
+| 역할 | Button variant | 예 |
+|---|---|---|
+| 주 동작 (확정/저장/생성) | `solid` | 저장, 만들기, 확인 |
+| 보조 동작 (취소/닫기) | `primary` | 취소, 닫기 |
+| 파괴적 동작 | `danger` | 삭제 |
+
+```tsx
+<DialogActionArea>
+  <DialogClose asChild>
+    <Button variant="primary">취소</Button>
+  </DialogClose>
+  <Button variant="solid">저장</Button>
+</DialogActionArea>
+```
 
 ## 범위 밖 (Phase 1)
 

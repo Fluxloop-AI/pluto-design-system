@@ -25,17 +25,18 @@ const dialog = tv({
     ],
     navigation: [
       "flex items-center justify-between gap-[8px] shrink-0",
-      "px-[20px] py-[12px]",
+      "px-[20px] pt-[20px] pb-[4px]",
     ],
     title: "text-[15px] font-semibold text-[color:var(--pds-label-normal)] m-0",
     description: "text-[13px] text-[color:var(--pds-label-alternative)] m-0",
-    body: "flex-1 min-h-0 overflow-auto px-[20px] py-[16px]",
+    body: "flex-1 min-h-0 overflow-auto px-[20px] py-[8px]",
     actionArea: [
       "flex items-center justify-end gap-[8px] shrink-0",
-      "px-[20px] py-[12px]",
+      "px-[20px] pt-[8px] pb-[20px]",
+      "[&>button]:min-w-[64px]",
     ],
     close: [
-      "inline-flex w-[32px] h-[32px] items-center justify-center rounded-[8px]",
+      "inline-flex w-[24px] h-[24px] items-center justify-center rounded-[6px]",
       "text-[color:var(--pds-label-alternative)] hover:bg-[var(--pds-fill-normal)]",
       "focus-visible:outline-none focus-visible:ring-2",
       "focus-visible:ring-[color:var(--pds-focus-ring)]",
@@ -58,10 +59,10 @@ const dialog = tv({
       },
     },
     size: {
-      sm: { content: "w-[360px] max-w-[calc(100vw-32px)]" },
-      md: { content: "w-[480px] max-w-[calc(100vw-32px)]" },
-      lg: { content: "w-[640px] max-w-[calc(100vw-32px)]" },
-      xl: { content: "w-[800px] max-w-[calc(100vw-32px)]" },
+      sm: { content: "w-[320px] max-w-[calc(100vw-32px)]" },
+      md: { content: "w-[400px] max-w-[calc(100vw-32px)]" },
+      lg: { content: "w-[520px] max-w-[calc(100vw-32px)]" },
+      xl: { content: "w-[680px] max-w-[calc(100vw-32px)]" },
     },
     resize: {
       fixed: { content: "max-h-[min(680px,calc(100vh-48px))]" },
@@ -73,7 +74,7 @@ const dialog = tv({
   ],
   defaultVariants: {
     variant: "popup",
-    size: "md",
+    size: "sm",
     resize: "fixed",
   },
 });
@@ -103,22 +104,40 @@ type DialogContentProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.
   size?: DialogVariants["size"];
   resize?: DialogVariants["resize"];
   overlayClassName?: string;
+  autoFocusOnOpen?: boolean;
 };
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   DialogContentProps
 >(function DialogContent(
-  { className, variant = "popup", size = "md", resize = "fixed", overlayClassName, children, ...props },
+  {
+    className,
+    variant = "popup",
+    size = "sm",
+    resize = "fixed",
+    overlayClassName,
+    autoFocusOnOpen = true,
+    onOpenAutoFocus,
+    children,
+    ...props
+  },
   ref,
 ) {
   const styles = dialog({ variant, size, resize });
+  const handleOpenAutoFocus = (event: Event) => {
+    if (!autoFocusOnOpen) {
+      event.preventDefault();
+    }
+    onOpenAutoFocus?.(event);
+  };
   return (
     <DialogPortal>
       <DialogOverlay className={overlayClassName} />
       <DialogPrimitive.Content
         ref={ref}
         className={cn(styles.content(), className)}
+        onOpenAutoFocus={handleOpenAutoFocus}
         {...props}
       >
         {children}
@@ -191,7 +210,7 @@ const DialogClose = React.forwardRef<
       aria-label={typeof children === "string" ? undefined : "닫기"}
       {...props}
     >
-      {children ?? (withIcon ? <X className="w-[16px] h-[16px]" /> : null)}
+      {children ?? (withIcon ? <X className="w-[14px] h-[14px]" /> : null)}
     </DialogPrimitive.Close>
   );
 });

@@ -21,7 +21,7 @@ export function DialogPopupDemo() {
         <DialogTrigger asChild>
           <Button>프로젝트 만들기</Button>
         </DialogTrigger>
-        <DialogContent size="md">
+        <DialogContent autoFocusOnOpen={false}>
           <DialogNavigation>
             <div>
               <DialogTitle>새 프로젝트</DialogTitle>
@@ -30,13 +30,13 @@ export function DialogPopupDemo() {
             <DialogClose />
           </DialogNavigation>
           <DialogBody>
-            <Input placeholder="프로젝트 이름" width="100%" />
+            <Input size="md" placeholder="프로젝트 이름" width="100%" />
           </DialogBody>
           <DialogActionArea>
             <DialogClose asChild>
-              <Button variant="secondary">취소</Button>
+              <Button variant="primary">취소</Button>
             </DialogClose>
-            <Button>만들기</Button>
+            <Button variant="solid">만들기</Button>
           </DialogActionArea>
         </DialogContent>
       </Dialog>
