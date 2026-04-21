@@ -29,6 +29,7 @@ export function ButtonSizeDemo() {
   return (
     <div className="pds-btn-card">
       <div className="pds-btn-row">
+        <Button size="xs">Extra Small</Button>
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
         <Button size="lg">Large</Button>
@@ -42,23 +43,57 @@ export function ButtonWithIconDemo() {
   return (
     <div className="pds-btn-card">
       <div className="pds-btn-row">
-        <Button leadingContent={<Icon icon={Plus} size="sm" />}>새로 만들기</Button>
-        <Button variant="secondary" trailingContent={<Icon icon={ArrowRight} size="sm" />}>
+        <Button leadingContent={<Icon icon={Plus} />}>새로 만들기</Button>
+        <Button variant="secondary" trailingContent={<Icon icon={ArrowRight} />}>
           다음
         </Button>
-        <Button variant="danger" leadingContent={<Icon icon={Trash2} size="sm" />}>
+        <Button variant="ghost" trailingContent={<Icon icon={ArrowRight} />}>
+          더 보기
+        </Button>
+        <Button variant="danger" leadingContent={<Icon icon={Trash2} />}>
           삭제
         </Button>
       </div>
       <div className="pds-btn-row">
+        <Button iconOnly size="xs" aria-label="추가">
+          <Icon icon={Plus} />
+        </Button>
         <Button iconOnly size="sm" aria-label="추가">
-          <Icon icon={Plus} size="sm" />
+          <Icon icon={Plus} />
         </Button>
         <Button iconOnly size="md" aria-label="추가">
-          <Icon icon={Plus} size="md" />
+          <Icon icon={Plus} />
+        </Button>
+        <Button iconOnly size="lg" aria-label="추가">
+          <Icon icon={Plus} />
+        </Button>
+      </div>
+      <div className="pds-btn-row">
+        <Button iconOnly size="xs" variant="secondary" aria-label="추가">
+          <Icon icon={Plus} />
+        </Button>
+        <Button iconOnly size="sm" variant="secondary" aria-label="추가">
+          <Icon icon={Plus} />
+        </Button>
+        <Button iconOnly size="md" variant="secondary" aria-label="추가">
+          <Icon icon={Plus} />
         </Button>
         <Button iconOnly size="lg" variant="secondary" aria-label="추가">
-          <Icon icon={Plus} size="lg" />
+          <Icon icon={Plus} />
+        </Button>
+      </div>
+      <div className="pds-btn-row">
+        <Button iconOnly size="xs" variant="ghost" aria-label="추가">
+          <Icon icon={Plus} />
+        </Button>
+        <Button iconOnly size="sm" variant="ghost" aria-label="추가">
+          <Icon icon={Plus} />
+        </Button>
+        <Button iconOnly size="md" variant="ghost" aria-label="추가">
+          <Icon icon={Plus} />
+        </Button>
+        <Button iconOnly size="lg" variant="ghost" aria-label="추가">
+          <Icon icon={Plus} />
         </Button>
       </div>
       <Styles />

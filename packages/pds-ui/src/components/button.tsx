@@ -26,14 +26,6 @@ const button = tv({
     variant: {
       primary: {
         root: [
-          "text-[color:var(--pds-static-white,_#fff)] bg-[var(--pds-primary-normal)]",
-          "hover:bg-[var(--pds-primary-strong)] active:bg-[var(--pds-primary-heavy)]",
-          "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
-          "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
-        ],
-      },
-      secondary: {
-        root: [
           "text-[color:var(--pds-label-normal)] bg-transparent",
           "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
           "hover:bg-[var(--pds-fill-normal)]",
@@ -41,7 +33,7 @@ const button = tv({
           "aria-disabled:text-[color:var(--pds-label-disable)] aria-disabled:bg-transparent",
         ],
       },
-      ghost: {
+      secondary: {
         root: [
           "text-[color:var(--pds-label-neutral)] bg-[var(--pds-fill-normal)]",
           "[backdrop-filter:blur(32px)] [will-change:backdrop-filter]",
@@ -49,6 +41,14 @@ const button = tv({
           "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
           "disabled:[backdrop-filter:none]",
           "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
+        ],
+      },
+      ghost: {
+        root: [
+          "text-[color:var(--pds-label-neutral)] bg-transparent",
+          "hover:bg-[var(--pds-fill-normal)]",
+          "disabled:text-[color:var(--pds-label-disable)] disabled:bg-transparent",
+          "aria-disabled:text-[color:var(--pds-label-disable)] aria-disabled:bg-transparent",
         ],
       },
       danger: {
@@ -61,16 +61,28 @@ const button = tv({
       },
     },
     size: {
+      xs: {
+        root: "h-[28px] px-[8px] rounded-[8px] text-[12px] font-medium",
+        content:
+          "[&_svg]:w-[12px] [&_svg]:h-[12px] [&_[data-slot=leading]]:mr-[4px] [&_[data-slot=trailing]]:ml-[2px]",
+        loading: "[&_svg]:w-[12px] [&_svg]:h-[12px]",
+      },
       sm: {
-        root: "h-[32px] px-[10px] rounded-[8px] gap-[4px] text-[13px] font-semibold",
+        root: "h-[32px] px-[10px] rounded-[10px] text-[13px] font-medium",
+        content:
+          "[&_svg]:w-[14px] [&_svg]:h-[14px] [&_[data-slot=leading]]:mr-[4px] [&_[data-slot=trailing]]:ml-[2px]",
         loading: "[&_svg]:w-[14px] [&_svg]:h-[14px]",
       },
       md: {
-        root: "h-[36px] px-[14px] rounded-[8px] gap-[6px] text-[14px] font-semibold",
+        root: "h-[36px] px-[12px] rounded-[12px] text-[14px] font-medium",
+        content:
+          "[&_svg]:w-[16px] [&_svg]:h-[16px] [&_[data-slot=leading]]:mr-[4px] [&_[data-slot=trailing]]:ml-[2px]",
         loading: "[&_svg]:w-[16px] [&_svg]:h-[16px]",
       },
       lg: {
-        root: "h-[44px] px-[18px] rounded-[8px] gap-[6px] text-[14px] font-semibold",
+        root: "h-[44px] px-[14px] rounded-[12px] text-[14px] font-medium",
+        content:
+          "[&_svg]:w-[16px] [&_svg]:h-[16px] [&_[data-slot=leading]]:mr-[4px] [&_[data-slot=trailing]]:ml-[2px]",
         loading: "[&_svg]:w-[16px] [&_svg]:h-[16px]",
       },
     },
@@ -88,7 +100,26 @@ const button = tv({
     },
   },
   compoundVariants: [
-    { variant: "ghost", class: { root: "font-medium" } },
+    {
+      iconOnly: true,
+      size: "xs",
+      class: { content: "[&_svg]:!w-[16px] [&_svg]:!h-[16px]" },
+    },
+    {
+      iconOnly: true,
+      size: "sm",
+      class: { content: "[&_svg]:!w-[18px] [&_svg]:!h-[18px]" },
+    },
+    {
+      iconOnly: true,
+      size: "md",
+      class: { content: "[&_svg]:!w-[20px] [&_svg]:!h-[20px]" },
+    },
+    {
+      iconOnly: true,
+      size: "lg",
+      class: { content: "[&_svg]:!w-[24px] [&_svg]:!h-[24px]" },
+    },
   ],
   defaultVariants: {
     variant: "primary",
@@ -141,9 +172,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
       {...props}
     >
       <span className={styles.content()}>
-        {leadingContent}
+        {leadingContent ? (
+          <span data-slot="leading" className="inline-flex shrink-0">
+            {leadingContent}
+          </span>
+        ) : null}
         {children}
-        {trailingContent}
+        {trailingContent ? (
+          <span data-slot="trailing" className="inline-flex shrink-0">
+            {trailingContent}
+          </span>
+        ) : null}
       </span>
       {loading ? (
         <span className={styles.loading()} aria-hidden="true">
