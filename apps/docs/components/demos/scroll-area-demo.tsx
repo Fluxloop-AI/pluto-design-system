@@ -26,9 +26,9 @@ export function ScrollAreaHorizontalDemo() {
     <div className="pds-sa-card">
       <ScrollArea className="pds-sa-box-h" scrollBarSize="sm">
         <div className="pds-sa-strip">
-          {Array.from({ length: 20 }, (_, i) => (
-            <figure key={i} className="pds-sa-tile">
-              #{i + 1}
+          {Array.from({ length: 20 }, (_, i) => i + 1).map((n) => (
+            <figure key={`tile-${n}`} className="pds-sa-tile">
+              #{n}
             </figure>
           ))}
         </div>

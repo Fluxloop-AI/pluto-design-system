@@ -1,8 +1,8 @@
 "use client";
 
-import { Input } from "@fluxloop-ai/pds-ui/components/input";
+import { Envelope, MagnifyingGlass } from "@fluxloop-ai/pds-icons/icons";
 import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
-import { MagnifyingGlass, Envelope } from "@fluxloop-ai/pds-icons/icons";
+import { Input } from "@fluxloop-ai/pds-ui/components/input";
 import { useState } from "react";
 
 export function InputBasicDemo() {

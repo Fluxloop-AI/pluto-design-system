@@ -72,5 +72,5 @@ const Separator = React.forwardRef<
   );
 });
 
-export { Separator, separator };
 export type { SeparatorProps };
+export { Separator, separator };

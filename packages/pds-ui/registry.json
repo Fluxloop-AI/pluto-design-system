@@ -22,10 +22,7 @@
       "type": "registry:ui",
       "title": "Separator",
       "description": "Radix-based horizontal/vertical divider using PDS line tokens.",
-      "dependencies": [
-        "@radix-ui/react-separator",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@radix-ui/react-separator", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
@@ -40,11 +37,7 @@
       "type": "registry:ui",
       "title": "Avatar",
       "description": "Radix Avatar, 8 sizes, person/company/academy fallback icons from pds-icons.",
-      "dependencies": [
-        "@radix-ui/react-avatar",
-        "@fluxloop-ai/pds-icons",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@radix-ui/react-avatar", "@fluxloop-ai/pds-icons", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
@@ -59,10 +52,7 @@
       "type": "registry:ui",
       "title": "Icon",
       "description": "phosphor wrapper with PDS size/color tokens. Accepts custom SVG components.",
-      "dependencies": [
-        "@fluxloop-ai/pds-icons",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-icons", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
@@ -77,11 +67,7 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "4 variants × 3 sizes, icon slots, loading state, asChild support.",
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "@fluxloop-ai/pds-icons",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@radix-ui/react-slot", "@fluxloop-ai/pds-icons", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
@@ -115,10 +101,7 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "Radix Tooltip with size, shortcut slot, and mode(hover/always/click).",
-      "dependencies": [
-        "@radix-ui/react-tooltip",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@radix-ui/react-tooltip", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
@@ -152,11 +135,7 @@
       "type": "registry:ui",
       "title": "Dialog",
       "description": "Radix Dialog — popup/full × sm/md/lg/xl × fixed/free. Navigation/Body/ActionArea slots.",
-      "dependencies": [
-        "@radix-ui/react-dialog",
-        "@fluxloop-ai/pds-icons",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@radix-ui/react-dialog", "@fluxloop-ai/pds-icons", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
@@ -171,11 +150,7 @@
       "type": "registry:ui",
       "title": "Toast",
       "description": "Radix Toast with info/success/warning/error variants.",
-      "dependencies": [
-        "@radix-ui/react-toast",
-        "@fluxloop-ai/pds-icons",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@radix-ui/react-toast", "@fluxloop-ai/pds-icons", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
@@ -190,10 +165,7 @@
       "type": "registry:ui",
       "title": "ScrollArea",
       "description": "Radix ScrollArea with macOS-style thin scrollbar + hover expand.",
-      "dependencies": [
-        "@radix-ui/react-scroll-area",
-        "tailwind-variants"
-      ],
+      "dependencies": ["@radix-ui/react-scroll-area", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {

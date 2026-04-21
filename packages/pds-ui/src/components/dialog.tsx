@@ -3,8 +3,8 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
-import { CloseButton } from "./close-button";
 import { cn } from "../utils/cn";
+import { CloseButton } from "./close-button";
 
 const dialog = tv({
   slots: {
@@ -46,10 +46,7 @@ const dialog = tv({
         ],
       },
       full: {
-        content: [
-          "inset-[24px] rounded-[20px]",
-          "data-[state=open]:slide-in-from-bottom-4",
-        ],
+        content: ["inset-[24px] rounded-[20px]", "data-[state=open]:slide-in-from-bottom-4"],
       },
     },
     size: {
@@ -63,9 +60,7 @@ const dialog = tv({
       free: { content: "max-h-[calc(100vh-48px)]" },
     },
   },
-  compoundVariants: [
-    { variant: "full", class: { content: "w-auto max-w-none" } },
-  ],
+  compoundVariants: [{ variant: "full", class: { content: "w-auto max-w-none" } }],
   defaultVariants: {
     variant: "popup",
     size: "sm",
@@ -85,11 +80,7 @@ const DialogOverlay = React.forwardRef<
 >(function DialogOverlay({ className, ...props }, ref) {
   const styles = dialog();
   return (
-    <DialogPrimitive.Overlay
-      ref={ref}
-      className={cn(styles.overlay(), className)}
-      {...props}
-    />
+    <DialogPrimitive.Overlay ref={ref} className={cn(styles.overlay(), className)} {...props} />
   );
 });
 
@@ -140,42 +131,33 @@ const DialogContent = React.forwardRef<
   );
 });
 
-const DialogNavigation = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(function DialogNavigation({ className, ...props }, ref) {
-  const styles = dialog();
-  return <div ref={ref} className={cn(styles.navigation(), className)} {...props} />;
-});
+const DialogNavigation = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  function DialogNavigation({ className, ...props }, ref) {
+    const styles = dialog();
+    return <div ref={ref} className={cn(styles.navigation(), className)} {...props} />;
+  },
+);
 
-const DialogBody = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(function DialogBody({ className, ...props }, ref) {
-  const styles = dialog();
-  return <div ref={ref} className={cn(styles.body(), className)} {...props} />;
-});
+const DialogBody = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  function DialogBody({ className, ...props }, ref) {
+    const styles = dialog();
+    return <div ref={ref} className={cn(styles.body(), className)} {...props} />;
+  },
+);
 
-const DialogActionArea = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(function DialogActionArea({ className, ...props }, ref) {
-  const styles = dialog();
-  return <div ref={ref} className={cn(styles.actionArea(), className)} {...props} />;
-});
+const DialogActionArea = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  function DialogActionArea({ className, ...props }, ref) {
+    const styles = dialog();
+    return <div ref={ref} className={cn(styles.actionArea(), className)} {...props} />;
+  },
+);
 
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 >(function DialogTitle({ className, ...props }, ref) {
   const styles = dialog();
-  return (
-    <DialogPrimitive.Title
-      ref={ref}
-      className={cn(styles.title(), className)}
-      {...props}
-    />
-  );
+  return <DialogPrimitive.Title ref={ref} className={cn(styles.title(), className)} {...props} />;
 });
 
 const DialogDescription = React.forwardRef<
@@ -199,10 +181,7 @@ type DialogCloseProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Cl
 const DialogClose = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Close>,
   DialogCloseProps
->(function DialogClose(
-  { className, asChild, size = "md", children, ...props },
-  ref,
-) {
+>(function DialogClose({ className, asChild, size = "md", children, ...props }, ref) {
   if (asChild) {
     return (
       <DialogPrimitive.Close ref={ref} asChild {...props}>
@@ -219,18 +198,18 @@ const DialogClose = React.forwardRef<
   );
 });
 
+export type { DialogContentProps };
 export {
   Dialog,
-  DialogTrigger,
-  DialogPortal,
-  DialogOverlay,
-  DialogContent,
-  DialogNavigation,
-  DialogBody,
   DialogActionArea,
-  DialogTitle,
-  DialogDescription,
+  DialogBody,
   DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogNavigation,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
   dialog,
 };
-export type { DialogContentProps };

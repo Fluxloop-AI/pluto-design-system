@@ -1,12 +1,7 @@
 "use client";
 
+import { Check, Info, Warning, WarningCircle } from "@fluxloop-ai/pds-icons/icons";
 import * as ToastPrimitive from "@radix-ui/react-toast";
-import {
-  Check,
-  Info,
-  Warning,
-  WarningCircle,
-} from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -69,11 +64,7 @@ const ToastViewport = React.forwardRef<
 >(function ToastViewport({ className, ...props }, ref) {
   const styles = toast();
   return (
-    <ToastPrimitive.Viewport
-      ref={ref}
-      className={cn(styles.viewport(), className)}
-      {...props}
-    />
+    <ToastPrimitive.Viewport ref={ref} className={cn(styles.viewport(), className)} {...props} />
   );
 });
 
@@ -91,51 +82,38 @@ type ToastRootProps = React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root>
   action?: React.ReactNode;
 };
 
-const Toast = React.forwardRef<
-  React.ElementRef<typeof ToastPrimitive.Root>,
-  ToastRootProps
->(function Toast(
-  { className, variant = "info", title, description, action, children, ...props },
-  ref,
-) {
-  const styles = toast({ variant });
-  const key = variant ?? "info";
-  const VariantIcon = VARIANT_ICON[key];
-  return (
-    <ToastPrimitive.Root
-      ref={ref}
-      className={cn(styles.root(), className)}
-      {...props}
-    >
-      <Icon
-        icon={VariantIcon}
-        size="sm"
-        className={styles.icon()}
-      />
-      <div className={styles.body()}>
-        {title ? <ToastPrimitive.Title className={styles.title()}>{title}</ToastPrimitive.Title> : null}
-        {description ? (
-          <ToastPrimitive.Description className={styles.description()}>
-            {description}
-          </ToastPrimitive.Description>
-        ) : null}
-        {children}
-      </div>
-      {action}
-      <ToastPrimitive.Close asChild>
-        <CloseButton size="sm" className={styles.close()} />
-      </ToastPrimitive.Close>
-    </ToastPrimitive.Root>
-  );
-});
+const Toast = React.forwardRef<React.ElementRef<typeof ToastPrimitive.Root>, ToastRootProps>(
+  function Toast(
+    { className, variant = "info", title, description, action, children, ...props },
+    ref,
+  ) {
+    const styles = toast({ variant });
+    const key = variant ?? "info";
+    const VariantIcon = VARIANT_ICON[key];
+    return (
+      <ToastPrimitive.Root ref={ref} className={cn(styles.root(), className)} {...props}>
+        <Icon icon={VariantIcon} size="sm" className={styles.icon()} />
+        <div className={styles.body()}>
+          {title ? (
+            <ToastPrimitive.Title className={styles.title()}>{title}</ToastPrimitive.Title>
+          ) : null}
+          {description ? (
+            <ToastPrimitive.Description className={styles.description()}>
+              {description}
+            </ToastPrimitive.Description>
+          ) : null}
+          {children}
+        </div>
+        {action}
+        <ToastPrimitive.Close asChild>
+          <CloseButton size="sm" className={styles.close()} />
+        </ToastPrimitive.Close>
+      </ToastPrimitive.Root>
+    );
+  },
+);
 
 const ToastAction = ToastPrimitive.Action;
 
-export {
-  Toast,
-  ToastAction,
-  ToastProvider,
-  ToastViewport,
-  toast,
-};
 export type { ToastRootProps };
+export { Toast, ToastAction, ToastProvider, ToastViewport, toast };

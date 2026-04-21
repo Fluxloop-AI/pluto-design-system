@@ -1,7 +1,7 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
 import { CircleNotch } from "@fluxloop-ai/pds-icons/icons";
+import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -202,5 +202,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   );
 });
 
-export { Button, button };
 export type { ButtonProps };
+export { Button, button };

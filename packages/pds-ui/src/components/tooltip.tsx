@@ -47,9 +47,7 @@ const TooltipProvider = TooltipPrimitive.Provider;
 const TooltipRoot = TooltipPrimitive.Root;
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
-type TooltipContentProps = React.ComponentPropsWithoutRef<
-  typeof TooltipPrimitive.Content
-> & {
+type TooltipContentProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> & {
   size?: TooltipVariants["size"];
   shortcut?: React.ReactNode;
 };
@@ -83,13 +81,7 @@ type TooltipProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>
 
 function Tooltip({ mode = "hover", open, defaultOpen, onOpenChange, ...props }: TooltipProps) {
   if (mode === "always") {
-    return (
-      <TooltipPrimitive.Root
-        open
-        onOpenChange={onOpenChange}
-        {...props}
-      />
-    );
+    return <TooltipPrimitive.Root open onOpenChange={onOpenChange} {...props} />;
   }
   if (mode === "click") {
     return (
@@ -113,12 +105,5 @@ function Tooltip({ mode = "hover", open, defaultOpen, onOpenChange, ...props }: 
   );
 }
 
-export {
-  Tooltip,
-  TooltipProvider,
-  TooltipRoot,
-  TooltipTrigger,
-  TooltipContent,
-  tooltip,
-};
 export type { TooltipContentProps, TooltipProps };
+export { Tooltip, TooltipContent, TooltipProvider, TooltipRoot, TooltipTrigger, tooltip };

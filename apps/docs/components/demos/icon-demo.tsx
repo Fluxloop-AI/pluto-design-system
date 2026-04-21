@@ -1,14 +1,7 @@
 "use client";
 
+import { Check, Gear, Lightning, MagnifyingGlass, Warning, X } from "@fluxloop-ai/pds-icons/icons";
 import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
-import {
-  Check,
-  Gear,
-  Lightning,
-  MagnifyingGlass,
-  Warning,
-  X,
-} from "@fluxloop-ai/pds-icons/icons";
 
 const SIZES = ["xs", "sm", "md", "lg", "xl"] as const;
 const COLORS = [

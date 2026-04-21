@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@fluxloop-ai/pds-ui/components/button";
 import {
   Dialog,
   DialogActionArea,
@@ -11,7 +12,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@fluxloop-ai/pds-ui/components/dialog";
-import { Button } from "@fluxloop-ai/pds-ui/components/button";
 import { Input } from "@fluxloop-ai/pds-ui/components/input";
 
 export function DialogPopupDemo() {
@@ -59,8 +59,8 @@ export function DialogFullDemo() {
           </DialogNavigation>
           <DialogBody>
             <p className="text-[color:var(--pds-label-alternative)] text-[13px]">
-              Phase 1 Dialog 의 <code>variant=&quot;full&quot;</code> 데모.
-              데스크탑 앱 MVP 기준이라 <code>bottom</code> variant 는 제외.
+              Phase 1 Dialog 의 <code>variant=&quot;full&quot;</code> 데모. 데스크탑 앱 MVP 기준이라{" "}
+              <code>bottom</code> variant 는 제외.
             </p>
           </DialogBody>
         </DialogContent>

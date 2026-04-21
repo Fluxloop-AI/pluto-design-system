@@ -61,5 +61,5 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
   );
 });
 
-export { Icon, icon };
 export type { IconProps };
+export { Icon, icon };

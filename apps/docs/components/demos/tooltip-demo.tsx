@@ -1,12 +1,12 @@
 "use client";
 
+import { Button } from "@fluxloop-ai/pds-ui/components/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@fluxloop-ai/pds-ui/components/tooltip";
-import { Button } from "@fluxloop-ai/pds-ui/components/button";
 
 export function TooltipBasicDemo() {
   return (
@@ -22,7 +22,9 @@ export function TooltipBasicDemo() {
           <TooltipTrigger asChild>
             <Button variant="secondary">With shortcut</Button>
           </TooltipTrigger>
-          <TooltipContent size="md" shortcut="⌘K">명령 팔레트</TooltipContent>
+          <TooltipContent size="md" shortcut="⌘K">
+            명령 팔레트
+          </TooltipContent>
         </Tooltip>
         <Styles />
       </div>

@@ -85,5 +85,5 @@ const ScrollBar = React.forwardRef<
   );
 });
 
-export { ScrollArea, ScrollBar, scrollArea };
 export type { ScrollAreaProps };
+export { ScrollArea, ScrollBar, scrollArea };

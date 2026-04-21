@@ -1,8 +1,8 @@
 "use client";
 
+import { ArrowRight, Plus, Trash } from "@fluxloop-ai/pds-icons/icons";
 import { Button } from "@fluxloop-ai/pds-ui/components/button";
 import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
-import { ArrowRight, Plus, Trash } from "@fluxloop-ai/pds-icons/icons";
 import { useState } from "react";
 
 export function ButtonVariantDemo() {
@@ -16,11 +16,21 @@ export function ButtonVariantDemo() {
         <Button variant="danger">Danger</Button>
       </div>
       <div className="pds-btn-row">
-        <Button variant="solid" disabled>Solid</Button>
-        <Button variant="primary" disabled>Primary</Button>
-        <Button variant="secondary" disabled>Secondary</Button>
-        <Button variant="ghost" disabled>Ghost</Button>
-        <Button variant="danger" disabled>Danger</Button>
+        <Button variant="solid" disabled>
+          Solid
+        </Button>
+        <Button variant="primary" disabled>
+          Primary
+        </Button>
+        <Button variant="secondary" disabled>
+          Secondary
+        </Button>
+        <Button variant="ghost" disabled>
+          Ghost
+        </Button>
+        <Button variant="danger" disabled>
+          Danger
+        </Button>
       </div>
       <Styles />
     </div>
@@ -117,8 +127,12 @@ export function ButtonLoadingDemo() {
         >
           저장
         </Button>
-        <Button variant="secondary" loading>로딩 중</Button>
-        <Button variant="ghost" loading>로딩 중</Button>
+        <Button variant="secondary" loading>
+          로딩 중
+        </Button>
+        <Button variant="ghost" loading>
+          로딩 중
+        </Button>
       </div>
       <Styles />
     </div>

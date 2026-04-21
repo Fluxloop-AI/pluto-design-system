@@ -1,6 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import {
+  ChatCircle,
+  Copy,
+  Envelope,
+  Link,
+  Pencil,
+  Plus,
+  ShareNetwork,
+  Trash,
+} from "@fluxloop-ai/pds-icons/icons";
+import { Button } from "@fluxloop-ai/pds-ui/components/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -17,17 +27,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@fluxloop-ai/pds-ui/components/dropdown-menu";
-import { Button } from "@fluxloop-ai/pds-ui/components/button";
-import {
-  ChatCircle,
-  Copy,
-  Envelope,
-  Link,
-  Pencil,
-  Plus,
-  ShareNetwork,
-  Trash,
-} from "@fluxloop-ai/pds-icons/icons";
+import { useState } from "react";
 
 export function DropdownBasicDemo() {
   return (
@@ -170,7 +170,9 @@ export function DropdownSizeDemo() {
     <div className="pds-dd-card pds-dd-row">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="sm">sm 메뉴</Button>
+          <Button variant="secondary" size="sm">
+            sm 메뉴
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent size="sm">
           <DropdownMenuLabel>프로젝트</DropdownMenuLabel>

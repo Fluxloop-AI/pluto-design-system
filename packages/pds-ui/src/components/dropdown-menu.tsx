@@ -1,7 +1,7 @@
 "use client";
 
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { CaretRight, Check, Circle } from "@fluxloop-ai/pds-icons/icons";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -31,9 +31,7 @@ const menu = tv({
       "ml-auto inline-flex shrink-0 items-center justify-center",
       "[color:var(--pds-label-neutral)]",
     ],
-    label: [
-      "font-semibold [color:var(--pds-label-alternative)]",
-    ],
+    label: ["font-semibold [color:var(--pds-label-alternative)]"],
     separator: "h-px bg-[var(--pds-line-normal-neutral)]",
     shortcut: [
       "ml-auto tracking-wide",
@@ -117,21 +115,14 @@ const DropdownMenuItem = React.forwardRef<
 >(function DropdownMenuItem({ className, ...props }, ref) {
   const styles = menu({ size: useMenuSize() });
   return (
-    <DropdownMenuPrimitive.Item
-      ref={ref}
-      className={cn(styles.item(), className)}
-      {...props}
-    />
+    <DropdownMenuPrimitive.Item ref={ref} className={cn(styles.item(), className)} {...props} />
   );
 });
 
 const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
->(function DropdownMenuCheckboxItem(
-  { className, children, checked, ...props },
-  ref,
-) {
+>(function DropdownMenuCheckboxItem({ className, children, checked, ...props }, ref) {
   const styles = menu({ size: useMenuSize() });
   return (
     <DropdownMenuPrimitive.CheckboxItem
@@ -156,11 +147,7 @@ const DropdownMenuRadioItem = React.forwardRef<
 >(function DropdownMenuRadioItem({ className, children, ...props }, ref) {
   const styles = menu({ size: useMenuSize() });
   return (
-    <DropdownMenuPrimitive.RadioItem
-      ref={ref}
-      className={cn(styles.item(), className)}
-      {...props}
-    >
+    <DropdownMenuPrimitive.RadioItem ref={ref} className={cn(styles.item(), className)} {...props}>
       {children}
       <span className={styles.trailing()}>
         <DropdownMenuPrimitive.ItemIndicator>
@@ -177,11 +164,7 @@ const DropdownMenuLabel = React.forwardRef<
 >(function DropdownMenuLabel({ className, ...props }, ref) {
   const styles = menu({ size: useMenuSize() });
   return (
-    <DropdownMenuPrimitive.Label
-      ref={ref}
-      className={cn(styles.label(), className)}
-      {...props}
-    />
+    <DropdownMenuPrimitive.Label ref={ref} className={cn(styles.label(), className)} {...props} />
   );
 });
 
@@ -199,10 +182,7 @@ const DropdownMenuSeparator = React.forwardRef<
   );
 });
 
-function DropdownMenuShortcut({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLSpanElement>) {
+function DropdownMenuShortcut({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
   const styles = menu({ size: useMenuSize() });
   return <span className={cn(styles.shortcut(), className)} {...props} />;
 }
@@ -214,11 +194,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
   const size = useMenuSize();
   const styles = menu({ size });
   return (
-    <DropdownMenuPrimitive.SubTrigger
-      ref={ref}
-      className={cn(styles.item(), className)}
-      {...props}
-    >
+    <DropdownMenuPrimitive.SubTrigger ref={ref} className={cn(styles.item(), className)} {...props}>
       {children}
       <CaretRight
         className={cn(
@@ -239,10 +215,7 @@ type DropdownMenuSubContentProps = React.ComponentPropsWithoutRef<
 const DropdownMenuSubContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
   DropdownMenuSubContentProps
->(function DropdownMenuSubContent(
-  { className, size: sizeProp, children, ...props },
-  ref,
-) {
+>(function DropdownMenuSubContent({ className, size: sizeProp, children, ...props }, ref) {
   const ctxSize = useMenuSize();
   const size = sizeProp ?? ctxSize;
   const styles = menu({ size });
@@ -257,22 +230,22 @@ const DropdownMenuSubContent = React.forwardRef<
   );
 });
 
+export type { DropdownMenuContentProps, DropdownMenuSubContentProps, MenuSize };
 export {
   DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuPortal,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuCheckboxItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
-  DropdownMenuSubTrigger,
   DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
   menu,
 };
-export type { DropdownMenuContentProps, DropdownMenuSubContentProps, MenuSize };

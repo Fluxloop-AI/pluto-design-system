@@ -35,24 +35,22 @@ type CloseButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "chi
   children?: React.ReactNode;
 };
 
-const CloseButton = React.forwardRef<HTMLButtonElement, CloseButtonProps>(
-  function CloseButton(
-    { className, size = "md", label = "닫기", children, type = "button", ...props },
-    ref,
-  ) {
-    return (
-      <button
-        ref={ref}
-        type={type}
-        aria-label={label}
-        className={cn(closeButton({ size }), className)}
-        {...props}
-      >
-        {children ?? <X />}
-      </button>
-    );
-  },
-);
+const CloseButton = React.forwardRef<HTMLButtonElement, CloseButtonProps>(function CloseButton(
+  { className, size = "md", label = "닫기", children, type = "button", ...props },
+  ref,
+) {
+  return (
+    <button
+      ref={ref}
+      type={type}
+      aria-label={label}
+      className={cn(closeButton({ size }), className)}
+      {...props}
+    >
+      {children ?? <X />}
+    </button>
+  );
+});
 
-export { CloseButton, closeButton };
 export type { CloseButtonProps };
+export { CloseButton, closeButton };

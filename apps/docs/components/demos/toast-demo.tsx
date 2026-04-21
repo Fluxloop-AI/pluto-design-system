@@ -1,12 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Toast,
-  ToastProvider,
-  ToastViewport,
-} from "@fluxloop-ai/pds-ui/components/toast";
 import { Button } from "@fluxloop-ai/pds-ui/components/button";
+import { Toast, ToastProvider, ToastViewport } from "@fluxloop-ai/pds-ui/components/toast";
+import { useState } from "react";
 
 type Item = {
   id: number;
@@ -50,22 +46,13 @@ export function ToastDemo() {
         <div className="pds-toast-section-label">Title only</div>
         <div className="pds-toast-row">
           <Button onClick={() => push("info", "새 업데이트가 있어요")}>Info</Button>
-          <Button
-            variant="secondary"
-            onClick={() => push("success", "저장됨")}
-          >
+          <Button variant="secondary" onClick={() => push("success", "저장됨")}>
             Success
           </Button>
-          <Button
-            variant="secondary"
-            onClick={() => push("warning", "연결이 불안정합니다")}
-          >
+          <Button variant="secondary" onClick={() => push("warning", "연결이 불안정합니다")}>
             Warning
           </Button>
-          <Button
-            variant="danger"
-            onClick={() => push("error", "요청 실패")}
-          >
+          <Button variant="danger" onClick={() => push("error", "요청 실패")}>
             Error
           </Button>
         </div>

@@ -1,11 +1,7 @@
 "use client";
 
+import { Check, X, XCircle as XCircleFill } from "@fluxloop-ai/pds-icons/icons";
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
-import {
-  Check,
-  X,
-  XCircle as XCircleFill,
-} from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -164,10 +160,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
     const el = inputRef.current;
     if (!el) return;
     const prev = el.value;
-    const setter = Object.getOwnPropertyDescriptor(
-      window.HTMLInputElement.prototype,
-      "value",
-    )?.set;
+    const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
     setter?.call(el, "");
     el.dispatchEvent(new Event("input", { bubbles: true }));
     onReset?.(prev);
@@ -210,10 +203,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
             onClick={handleReset}
             tabIndex={-1}
             aria-label="초기화"
-            className={cn(
-              styles.reset(),
-              "group-focus-within:flex peer-placeholder-shown:hidden",
-            )}
+            className={cn(styles.reset(), "group-focus-within:flex peer-placeholder-shown:hidden")}
           >
             <XCircleFill weight="fill" />
           </button>
@@ -225,5 +215,5 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   );
 });
 
-export { Input, input };
 export type { InputProps };
+export { Input, input };

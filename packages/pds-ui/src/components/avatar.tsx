@@ -1,7 +1,7 @@
 "use client";
 
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { Buildings, GraduationCap, User } from "@fluxloop-ai/pds-icons/icons";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -75,30 +75,25 @@ const fallbackIconFor = (variant: NonNullable<AvatarVariants["variant"]>) => {
   }
 };
 
-const Avatar = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>,
-  AvatarProps
->(function Avatar(
-  { className, size = "md", variant = "person", src, alt, fallback, children, ...props },
-  ref,
-) {
-  const styles = avatar({ size, variant });
-  return (
-    <AvatarPrimitive.Root
-      ref={ref}
-      className={cn(styles.root(), className)}
-      {...props}
-    >
-      {src ? (
-        <AvatarPrimitive.Image className={styles.image()} src={src} alt={alt ?? ""} />
-      ) : null}
-      <AvatarPrimitive.Fallback className={styles.fallback()} delayMs={src ? 300 : 0}>
-        {fallback ?? fallbackIconFor(variant)}
-      </AvatarPrimitive.Fallback>
-      {children}
-    </AvatarPrimitive.Root>
-  );
-});
+const Avatar = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Root>, AvatarProps>(
+  function Avatar(
+    { className, size = "md", variant = "person", src, alt, fallback, children, ...props },
+    ref,
+  ) {
+    const styles = avatar({ size, variant });
+    return (
+      <AvatarPrimitive.Root ref={ref} className={cn(styles.root(), className)} {...props}>
+        {src ? (
+          <AvatarPrimitive.Image className={styles.image()} src={src} alt={alt ?? ""} />
+        ) : null}
+        <AvatarPrimitive.Fallback className={styles.fallback()} delayMs={src ? 300 : 0}>
+          {fallback ?? fallbackIconFor(variant)}
+        </AvatarPrimitive.Fallback>
+        {children}
+      </AvatarPrimitive.Root>
+    );
+  },
+);
 
-export { Avatar, avatar };
 export type { AvatarProps };
+export { Avatar, avatar };
