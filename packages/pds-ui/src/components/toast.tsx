@@ -2,25 +2,25 @@
 
 import * as ToastPrimitive from "@radix-ui/react-toast";
 import {
-  CheckCircle,
+  Check,
   Info,
   Warning,
   WarningCircle,
-  X,
 } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
+import { CloseButton } from "./close-button";
 import { Icon } from "./icon";
 
 const toast = tv({
   slots: {
     viewport: [
       "fixed z-[var(--pds-z-toast)] top-[16px] right-[16px] flex flex-col gap-[8px]",
-      "w-[380px] max-w-[calc(100vw-32px)] m-0 p-0 list-none outline-none",
+      "w-[280px] max-w-[calc(100vw-32px)] m-0 p-0 list-none outline-none",
     ],
     root: [
-      "relative flex items-start gap-[12px] p-[12px] pr-[40px] rounded-[12px]",
+      "relative flex items-start gap-[6px] p-[14px] pr-[44px] rounded-[12px]",
       "bg-[var(--pds-background-elevated-normal)]",
       "border border-[var(--pds-line-normal-neutral)]",
       "shadow-[var(--pds-shadow-lg)]",
@@ -28,23 +28,30 @@ const toast = tv({
       "data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-top-2",
       "data-[swipe=end]:animate-out data-[swipe=end]:slide-out-to-right-full",
     ],
-    icon: "mt-[1px]",
-    body: "flex-1 min-w-0 flex flex-col gap-[2px]",
-    title: "text-[13px] font-semibold text-[color:var(--pds-label-normal)] m-0",
-    description: "text-[12px] text-[color:var(--pds-label-alternative)] m-0",
-    close: [
-      "absolute right-[8px] top-[8px] inline-flex w-[28px] h-[28px] items-center justify-center",
-      "rounded-[6px] text-[color:var(--pds-label-alternative)]",
-      "hover:bg-[var(--pds-fill-normal)]",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--pds-focus-ring)]",
-    ],
+    icon: "mt-[2px]",
+    body: "flex-1 min-w-0 flex flex-col gap-[4px]",
+    title: "text-[14px] leading-[20px] font-semibold m-0",
+    description: "text-[13px] leading-[18px] text-[color:var(--pds-label-alternative)] m-0",
+    close: "absolute right-[10px] top-[10px]",
   },
   variants: {
     variant: {
-      info: {},
-      success: {},
-      warning: {},
-      error: {},
+      info: {
+        icon: "text-[color:var(--pds-label-normal)]",
+        title: "text-[color:var(--pds-label-normal)]",
+      },
+      success: {
+        icon: "text-[color:var(--pds-color-blue-50)]",
+        title: "text-[color:var(--pds-color-blue-50)]",
+      },
+      warning: {
+        icon: "text-[color:var(--pds-status-cautionary)]",
+        title: "text-[color:var(--pds-status-cautionary)]",
+      },
+      error: {
+        icon: "text-[color:var(--pds-status-negative)]",
+        title: "text-[color:var(--pds-status-negative)]",
+      },
     },
   },
   defaultVariants: {
@@ -72,16 +79,9 @@ const ToastViewport = React.forwardRef<
 
 const VARIANT_ICON = {
   info: Info,
-  success: CheckCircle,
+  success: Check,
   warning: Warning,
   error: WarningCircle,
-} as const;
-
-const VARIANT_COLOR = {
-  info: "label-alternative",
-  success: "positive",
-  warning: "cautionary",
-  error: "negative",
 } as const;
 
 type ToastRootProps = React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root> & {
@@ -110,7 +110,6 @@ const Toast = React.forwardRef<
       <Icon
         icon={VariantIcon}
         size="sm"
-        color={VARIANT_COLOR[key]}
         className={styles.icon()}
       />
       <div className={styles.body()}>
@@ -123,8 +122,8 @@ const Toast = React.forwardRef<
         {children}
       </div>
       {action}
-      <ToastPrimitive.Close className={styles.close()} aria-label="닫기">
-        <Icon icon={X} size="xs" />
+      <ToastPrimitive.Close asChild>
+        <CloseButton size="sm" className={styles.close()} />
       </ToastPrimitive.Close>
     </ToastPrimitive.Root>
   );
