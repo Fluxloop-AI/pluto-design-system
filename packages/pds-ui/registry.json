@@ -2,5 +2,206 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "pluto-design-system",
   "homepage": "https://pds.pluto.com",
-  "items": []
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "cn utility",
+      "description": "clsx + tailwind-merge helper used by every PDS component.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "src/utils/cn.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Radix-based horizontal/vertical divider using PDS line tokens.",
+      "dependencies": [
+        "@radix-ui/react-separator",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Radix Avatar, 8 sizes, person/company/academy fallback icons from pds-icons.",
+      "dependencies": [
+        "@radix-ui/react-avatar",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "registry:ui",
+      "title": "Icon",
+      "description": "lucide-react wrapper with PDS size/color tokens. Accepts custom SVG components.",
+      "dependencies": [
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/icon.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "4 variants × 3 sizes, icon slots, loading state, asChild support.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "9-slot TextField with invalid/positive/disabled/readOnly + leading/trailing + reset.",
+      "dependencies": [
+        "@radix-ui/react-compose-refs",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Radix Tooltip with size, shortcut slot, and mode(hover/always/click).",
+      "dependencies": [
+        "@radix-ui/react-tooltip",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "DropdownMenu",
+      "description": "Radix DropdownMenu with items/checkbox/radio/submenu/shortcut slot.",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Radix Dialog — popup/full × sm/md/lg/xl × fixed/free. Navigation/Body/ActionArea slots.",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Radix Toast with info/success/warning/error variants.",
+      "dependencies": [
+        "@radix-ui/react-toast",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/toast.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "ScrollArea",
+      "description": "Radix ScrollArea with macOS-style thin scrollbar + hover expand.",
+      "dependencies": [
+        "@radix-ui/react-scroll-area",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-area.tsx"
+        }
+      ]
+    }
+  ]
 }
