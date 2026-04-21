@@ -12,6 +12,8 @@ export type { AgentStatusIndicatorProps } from "./components/agent-status-indica
 export { AgentStatusIndicator } from "./components/agent-status-indicator";
 export type { AvatarProps } from "./components/avatar";
 export { Avatar, avatar } from "./components/avatar";
+export type { BadgeProps } from "./components/badge";
+export { Badge, badge } from "./components/badge";
 export type { ButtonProps } from "./components/button";
 export { Button, button } from "./components/button";
 export type { ChatBlockProps } from "./components/chat-block";
@@ -28,6 +30,26 @@ export type { ChatTab, ChatTabBarProps } from "./components/chat-tab-bar";
 export { ChatTabBar, chatTabBar } from "./components/chat-tab-bar";
 export type { ChatThreadProps } from "./components/chat-thread";
 export { ChatThread, chatThread } from "./components/chat-thread";
+export type { CheckboxProps } from "./components/checkbox";
+export { Checkbox, checkbox } from "./components/checkbox";
+export type {
+  ComboboxContentProps,
+  ComboboxFilter,
+  ComboboxItemProps,
+  ComboboxProps,
+} from "./components/combobox";
+export {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  combobox,
+} from "./components/combobox";
 export type { DialogContentProps } from "./components/dialog";
 export {
   Dialog,
@@ -59,14 +81,73 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "./components/dropdown-menu";
+export type {
+  FormDescriptionProps,
+  FormErrorMessageProps,
+  FormFieldProps,
+  FormLabelProps,
+} from "./components/form";
+export {
+  FormControl,
+  FormDescription,
+  FormErrorMessage,
+  FormField,
+  FormLabel,
+  form,
+} from "./components/form";
 export type { IconProps } from "./components/icon";
 export { Icon, icon } from "./components/icon";
 export type { InputProps } from "./components/input";
 export { Input, input } from "./components/input";
+export type { PopoverContentProps } from "./components/popover";
+export {
+  Popover,
+  PopoverActionArea,
+  PopoverAnchor,
+  PopoverArrow,
+  PopoverBody,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTitleRow,
+  PopoverTrigger,
+  popover,
+} from "./components/popover";
+export type { ProgressIndicatorProps, ProgressProps } from "./components/progress";
+export { Progress, ProgressIndicator, progress } from "./components/progress";
+export type { RadioGroupItemProps, RadioGroupProps } from "./components/radio-group";
+export { RadioGroup, RadioGroupItem, radio } from "./components/radio-group";
 export type { ScrollAreaProps } from "./components/scroll-area";
 export { ScrollArea, ScrollBar } from "./components/scroll-area";
+export type { SelectContentProps, SelectTriggerProps } from "./components/select";
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport,
+  select,
+} from "./components/select";
 export type { SeparatorProps } from "./components/separator";
 export { Separator, separator } from "./components/separator";
+export type { SpinnerProps } from "./components/spinner";
+export { Spinner, spinner } from "./components/spinner";
+export type { SwitchProps } from "./components/switch";
+export { Switch, switchStyles } from "./components/switch";
+export type { TabsProps } from "./components/tabs";
+export { Tabs, TabsContent, TabsList, TabsTrigger, tabs } from "./components/tabs";
+export type { TagProps } from "./components/tag";
+export { Tag, tag } from "./components/tag";
 export type { ThinkingBlockProps } from "./components/thinking-block";
 export {
   REDACTED_THINKING_MESSAGE,

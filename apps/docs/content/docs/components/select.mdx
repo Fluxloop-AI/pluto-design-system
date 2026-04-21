@@ -1,0 +1,71 @@
+---
+title: Select
+description: Radix Select. sm/md/lg Trigger, Input-aligned 토큰, Group / Label / Separator 슬롯.
+---
+
+import {
+  SelectBasicDemo,
+  SelectSizeDemo,
+  SelectGroupDemo,
+  SelectInvalidDemo,
+} from "@/components/demos/select-demo";
+
+## 사용
+
+```tsx
+import {
+  Select, SelectTrigger, SelectValue, SelectContent,
+  SelectItem, SelectGroup, SelectLabel, SelectSeparator,
+} from "@fluxloop-ai/pds-ui/components/select";
+
+<Select defaultValue="seoul">
+  <SelectTrigger size="sm"><SelectValue placeholder="지역" /></SelectTrigger>
+  <SelectContent>
+    <SelectItem value="seoul">서울</SelectItem>
+    <SelectItem value="busan">부산</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## Basic
+
+<SelectBasicDemo />
+
+## Size
+
+<SelectSizeDemo />
+
+## Group + Separator
+
+<SelectGroupDemo />
+
+## Invalid
+
+<SelectInvalidDemo />
+
+## Props
+
+### SelectTrigger
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `size` | `sm \| md \| lg` | `sm` | Input 과 동일한 32/36/44 px |
+| `invalid` | `boolean` | `false` | `aria-invalid` + negative border |
+
+### SelectContent
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `position` | `item-aligned \| popper` | `popper` | Radix 표준 |
+| `sideOffset` | `number` | `4` | popper 일 때만 |
+
+## Decision vs Montage
+
+- **Trigger 분리**: Montage 는 루트가 트리거였지만 PDS 는 **Radix 관례(Trigger 별도)** 유지 — Phase 1 Dialog/DropdownMenu 와 일관성
+- **leading/trailing 아이콘**: Input 과 동일한 슬롯 API 로 확장 가능 — 이번 범위 밖
+
+## Registry 설치
+
+```bash
+npx shadcn add https://pds.pluto.com/r/select
+```

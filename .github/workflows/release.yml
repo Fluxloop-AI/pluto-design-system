@@ -1,8 +1,9 @@
 name: Release
 
+# Disabled until the user explicitly declares 0.1.0.
+# See CLAUDE.md → "Release workflow gating" before re-enabling.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: release-${{ github.ref }}
