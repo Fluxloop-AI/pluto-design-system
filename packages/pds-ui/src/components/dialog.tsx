@@ -25,14 +25,14 @@ const dialog = tv({
     ],
     navigation: [
       "flex items-center justify-between gap-[8px] shrink-0",
-      "px-[20px] py-[12px] border-b border-[var(--pds-line-normal-neutral)]",
+      "px-[20px] py-[12px]",
     ],
     title: "text-[15px] font-semibold text-[color:var(--pds-label-normal)] m-0",
     description: "text-[13px] text-[color:var(--pds-label-alternative)] m-0",
     body: "flex-1 min-h-0 overflow-auto px-[20px] py-[16px]",
     actionArea: [
       "flex items-center justify-end gap-[8px] shrink-0",
-      "px-[20px] py-[12px] border-t border-[var(--pds-line-normal-neutral)]",
+      "px-[20px] py-[12px]",
     ],
     close: [
       "inline-flex w-[32px] h-[32px] items-center justify-center rounded-[8px]",
