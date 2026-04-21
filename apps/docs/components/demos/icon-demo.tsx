@@ -2,13 +2,13 @@
 
 import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
 import {
-  AlertTriangle,
   Check,
-  Search,
-  Settings,
-  Zap,
+  Gear,
+  Lightning,
+  MagnifyingGlass,
+  Warning,
   X,
-} from "@fluxloop-ai/pds-icons/lucide";
+} from "@fluxloop-ai/pds-icons/icons";
 
 const SIZES = ["xs", "sm", "md", "lg", "xl"] as const;
 const COLORS = [
@@ -27,7 +27,7 @@ export function IconSizeDemo() {
       <div className="pds-icon-row">
         {SIZES.map((s) => (
           <div key={s} className="pds-icon-cell">
-            <Icon icon={Search} size={s} />
+            <Icon icon={MagnifyingGlass} size={s} />
             <code>{s}</code>
           </div>
         ))}
@@ -43,7 +43,7 @@ export function IconColorDemo() {
       <div className="pds-icon-row">
         {COLORS.map((c) => (
           <div key={c} className="pds-icon-cell">
-            <Icon icon={Zap} size="lg" color={c} />
+            <Icon icon={Lightning} size="lg" color={c} />
             <code>{c}</code>
           </div>
         ))}
@@ -55,12 +55,12 @@ export function IconColorDemo() {
 
 export function IconGalleryDemo() {
   const items = [
-    { icon: Search, name: "Search" },
+    { icon: MagnifyingGlass, name: "MagnifyingGlass" },
     { icon: Check, name: "Check" },
     { icon: X, name: "X" },
-    { icon: AlertTriangle, name: "AlertTriangle" },
-    { icon: Settings, name: "Settings" },
-    { icon: Zap, name: "Zap" },
+    { icon: Warning, name: "Warning" },
+    { icon: Gear, name: "Gear" },
+    { icon: Lightning, name: "Lightning" },
   ];
   return (
     <div className="pds-icon-card">

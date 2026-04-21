@@ -12,7 +12,7 @@ Wanted Montage 구조를 뼈대로, Radix headless + Tailwind v4 + `tailwind-var
 
 - `Separator` — Radix Separator, `--pds-line-*` 토큰, orientation/color/thickness
 - `Avatar` — Radix Avatar, 8단계 size (xs~4xl), person/company/academy
-- `Icon` — lucide-react 래퍼 + pds-icons 슬롯, size(xs~xl) + semantic color
+- `Icon` — phosphor 래퍼 + pds-icons 슬롯, size(xs~xl) + semantic color
 - `Button` — 4 variant (primary/secondary/ghost/danger) × sm/md/lg, leading/trailing, loading, asChild
 - `Input` — 9 slot TextField, invalid/positive/disabled/readOnly, reset 버튼, leading/trailing/trailingButton
 - `Tooltip` — Radix Tooltip, size(sm/md), shortcut slot, mode(hover/always/click)
@@ -33,7 +33,7 @@ Wanted Montage 구조를 뼈대로, Radix headless + Tailwind v4 + `tailwind-var
 ### 도구
 
 - `packages/pds-ui/src/utils/cn.ts` — clsx + tailwind-merge v3
-- 공통 deps: `@radix-ui/react-*`, `tailwind-variants`, `clsx`, `tailwind-merge@^3`, `lucide-react`
+- 공통 deps: `@radix-ui/react-*`, `tailwind-variants`, `clsx`, `tailwind-merge@^3`, `@phosphor-icons/react`
 
 ### 문서
 

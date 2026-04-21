@@ -2,7 +2,7 @@
 
 import { Button } from "@fluxloop-ai/pds-ui/components/button";
 import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
-import { ArrowRight, Plus, Trash2 } from "@fluxloop-ai/pds-icons/lucide";
+import { ArrowRight, Plus, Trash } from "@fluxloop-ai/pds-icons/icons";
 import { useState } from "react";
 
 export function ButtonVariantDemo() {
@@ -52,7 +52,7 @@ export function ButtonWithIconDemo() {
         <Button variant="ghost" trailingContent={<Icon icon={ArrowRight} />}>
           더 보기
         </Button>
-        <Button variant="danger" leadingContent={<Icon icon={Trash2} />}>
+        <Button variant="danger" leadingContent={<Icon icon={Trash} />}>
           삭제
         </Button>
       </div>

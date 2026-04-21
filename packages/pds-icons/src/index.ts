@@ -1,2 +1,2 @@
 export * from "./custom/index.js";
-export * from "./lucide.js";
+export * from "./icons.js";

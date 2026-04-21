@@ -4,8 +4,8 @@ import { useComposedRefs } from "@radix-ui/react-compose-refs";
 import {
   Check,
   X,
-  XCircle as CircleCloseFill,
-} from "@fluxloop-ai/pds-icons/lucide";
+  XCircle as XCircleFill,
+} from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -215,7 +215,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
               "group-focus-within:flex peer-placeholder-shown:hidden",
             )}
           >
-            <CircleCloseFill />
+            <XCircleFill weight="fill" />
           </button>
         ) : null}
         {trailingContent ? <div className={styles.trailing()}>{trailingContent}</div> : null}

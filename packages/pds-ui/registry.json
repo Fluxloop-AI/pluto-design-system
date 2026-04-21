@@ -58,7 +58,7 @@
       "name": "icon",
       "type": "registry:ui",
       "title": "Icon",
-      "description": "lucide-react wrapper with PDS size/color tokens. Accepts custom SVG components.",
+      "description": "phosphor wrapper with PDS size/color tokens. Accepts custom SVG components.",
       "dependencies": [
         "@fluxloop-ai/pds-icons",
         "tailwind-variants"

@@ -2,7 +2,7 @@
 
 import { Input } from "@fluxloop-ai/pds-ui/components/input";
 import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
-import { Search, Mail } from "@fluxloop-ai/pds-icons/lucide";
+import { MagnifyingGlass, Envelope } from "@fluxloop-ai/pds-icons/icons";
 import { useState } from "react";
 
 export function InputBasicDemo() {
@@ -49,12 +49,12 @@ export function InputWithSlotsDemo() {
     <div className="pds-input-card">
       <Input
         placeholder="검색"
-        leadingContent={<Icon icon={Search} size="md" />}
+        leadingContent={<Icon icon={MagnifyingGlass} size="md" />}
         width={360}
       />
       <Input
         placeholder="email@pluto.com"
-        leadingContent={<Icon icon={Mail} size="md" />}
+        leadingContent={<Icon icon={Envelope} size="md" />}
         trailingContent={
           <span className="text-[color:var(--pds-label-alternative)] text-[12px]">@pluto.com</span>
         }

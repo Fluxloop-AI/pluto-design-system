@@ -19,15 +19,15 @@ import {
 } from "@fluxloop-ai/pds-ui/components/dropdown-menu";
 import { Button } from "@fluxloop-ai/pds-ui/components/button";
 import {
+  ChatCircle,
   Copy,
-  Link2,
-  Mail,
-  MessageCircle,
+  Envelope,
+  Link,
   Pencil,
   Plus,
-  Share2,
-  Trash2,
-} from "@fluxloop-ai/pds-icons/lucide";
+  ShareNetwork,
+  Trash,
+} from "@fluxloop-ai/pds-icons/icons";
 
 export function DropdownBasicDemo() {
   return (
@@ -55,27 +55,27 @@ export function DropdownBasicDemo() {
           <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-              <Share2 />
+              <ShareNetwork />
               공유
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
               <DropdownMenuItem>
-                <Link2 />
+                <Link />
                 링크 복사
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Mail />
+                <Envelope />
                 이메일
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <MessageCircle />
+                <ChatCircle />
                 슬랙
               </DropdownMenuItem>
             </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
           <DropdownMenuItem disabled>
-            <Trash2 />
+            <Trash />
             삭제
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -123,7 +123,7 @@ export function DropdownPlacementDemo() {
       </DropdownMenuItem>
       <DropdownMenuSeparator />
       <DropdownMenuItem disabled>
-        <Trash2 />
+        <Trash />
         삭제
       </DropdownMenuItem>
     </>
@@ -190,7 +190,7 @@ export function DropdownSizeDemo() {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem disabled>
-            <Trash2 />
+            <Trash />
             삭제
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -218,7 +218,7 @@ export function DropdownSizeDemo() {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem disabled>
-            <Trash2 />
+            <Trash />
             삭제
           </DropdownMenuItem>
         </DropdownMenuContent>

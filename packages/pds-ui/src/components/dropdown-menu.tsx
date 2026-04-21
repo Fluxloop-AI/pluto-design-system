@@ -1,7 +1,7 @@
 "use client";
 
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { Check, ChevronRight, Circle } from "@fluxloop-ai/pds-icons/lucide";
+import { CaretRight, Check, Circle } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -220,7 +220,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronRight
+      <CaretRight
         className={cn(
           "ml-auto shrink-0 [color:var(--pds-label-assistive)]",
           size === "sm" ? "w-[14px] h-[14px]" : "w-[16px] h-[16px]",

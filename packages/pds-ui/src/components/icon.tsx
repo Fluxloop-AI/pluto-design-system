@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "@fluxloop-ai/pds-icons/lucide";
+import type { PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -38,7 +38,7 @@ const icon = tv({
 type IconVariants = VariantProps<typeof icon>;
 
 type IconProps = Omit<React.SVGAttributes<SVGSVGElement>, "color"> & {
-  icon: LucideIcon | React.ComponentType<React.SVGAttributes<SVGSVGElement>>;
+  icon: PhosphorIcon | React.ComponentType<React.SVGAttributes<SVGSVGElement>>;
   size?: IconVariants["size"];
   color?: IconVariants["color"];
   label?: string;

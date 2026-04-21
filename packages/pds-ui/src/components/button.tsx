@@ -1,7 +1,7 @@
 "use client";
 
 import { Slot } from "@radix-ui/react-slot";
-import { Loader2 } from "@fluxloop-ai/pds-icons/lucide";
+import { CircleNotch } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -195,7 +195,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
       </span>
       {loading ? (
         <span className={styles.loading()} aria-hidden="true">
-          <Loader2 className="animate-spin" />
+          <CircleNotch className="animate-spin" />
         </span>
       ) : null}
     </Component>

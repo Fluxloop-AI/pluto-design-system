@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: {
     index: "src/index.ts",
-    lucide: "src/lucide.ts",
+    icons: "src/icons.ts",
     "custom/index": "src/custom/index.ts",
   },
   format: ["esm"],
@@ -13,5 +13,5 @@ export default defineConfig({
   target: "es2022",
   treeshake: true,
   splitting: false,
-  external: ["react", "react-dom", "lucide-react"],
+  external: ["react", "react-dom", "@phosphor-icons/react"],
 });

@@ -1,7 +1,7 @@
 "use client";
 
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
-import { Building2, GraduationCap, User } from "@fluxloop-ai/pds-icons/lucide";
+import { Buildings, GraduationCap, User } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -69,7 +69,7 @@ const fallbackIconFor = (variant: NonNullable<AvatarVariants["variant"]>) => {
     case "person":
       return <User className="size-[0.6em]" aria-hidden="true" />;
     case "company":
-      return <Building2 className="size-[0.6em]" aria-hidden="true" />;
+      return <Buildings className="size-[0.6em]" aria-hidden="true" />;
     case "academy":
       return <GraduationCap className="size-[0.6em]" aria-hidden="true" />;
   }

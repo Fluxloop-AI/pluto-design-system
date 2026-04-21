@@ -2,12 +2,12 @@
 
 import * as ToastPrimitive from "@radix-ui/react-toast";
 import {
-  AlertCircle,
-  AlertTriangle,
-  CheckCircle2,
+  CheckCircle,
   Info,
+  Warning,
+  WarningCircle,
   X,
-} from "@fluxloop-ai/pds-icons/lucide";
+} from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -71,9 +71,9 @@ const ToastViewport = React.forwardRef<
 
 const VARIANT_ICON: Record<NonNullable<ToastVariants["variant"]>, React.ComponentType<{ className?: string }>> = {
   info: Info,
-  success: CheckCircle2,
-  warning: AlertTriangle,
-  error: AlertCircle,
+  success: CheckCircle,
+  warning: Warning,
+  error: WarningCircle,
 };
 
 type ToastRootProps = React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root> & {
