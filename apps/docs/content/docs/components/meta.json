@@ -15,6 +15,18 @@
     "dialog",
     "---Feedback---",
     "toast",
-    "scroll-area"
+    "scroll-area",
+    "---AI / Agent Chat---",
+    "chat-loading-dots",
+    "chat-step-dot",
+    "agent-status-indicator",
+    "chat-block",
+    "chat-bubble",
+    "chat-composer",
+    "thinking-block",
+    "tool-code-block",
+    "tool-call-card",
+    "chat-thread",
+    "chat-tab-bar"
   ]
 }

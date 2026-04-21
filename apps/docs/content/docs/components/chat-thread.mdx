@@ -1,0 +1,54 @@
+---
+title: ChatThread
+description: 메시지 배열을 순회하며 user/assistant 블록을 렌더하는 컨테이너
+---
+
+import {
+  ChatThreadDemo,
+  ChatThreadEmptyDemo,
+  ChatThreadLoadingDemo,
+} from "@/components/demos/chat-thread-demo";
+
+## 사용
+
+```tsx
+import { ChatThread } from "@fluxloop-ai/pds-ui/components/chat-thread";
+import type { ChatMessage } from "@fluxloop-ai/pds-ui/types";
+
+<ChatThread
+  messages={messages}
+  loadingDots={isStreaming}
+  renderMarkdown={(text) => <Markdown>{text}</Markdown>}
+/>
+```
+
+- Anthropic content 블록(`text` / `thinking` / `tool_use` / `tool_result` / `image`)을 그대로 소비.
+- `tool_use` 블록은 **뒤따르는 user 메시지**의 `tool_result` 중 `tool_use_id` 매칭되는 것과 페어링.
+- `renderMarkdown` / `renderToolCall` / `renderThinking` slot 으로 외부 구현 주입 가능. 미주입 시 PDS 기본 렌더.
+- 스크롤 페이드·selection 메뉴 등 앱 전용 기능은 포함 안 함. `viewportRef` 받아서 외부에서 제어.
+
+<ChatThreadDemo />
+
+## Empty state
+
+<ChatThreadEmptyDemo />
+
+## Loading dots
+
+`loadingDots` 프롭으로 마지막 assistant 메시지 다음에 3-dot wave 를 배치.
+
+<ChatThreadLoadingDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `messages` | `ChatMessage[]` | — | 전체 메시지 배열 |
+| `emptyState` | `ReactNode` | `"메시지가 없습니다."` | 빈 화면 |
+| `loadingDots` | `boolean` | `false` | 하단에 로딩 dots 표시 |
+| `renderMarkdown` | `(text: string) => ReactNode` | — | assistant `text` / `thinking` 렌더 |
+| `renderToolCall` | `(toolUse, toolResult?) => ReactNode` | — | tool_use 렌더 |
+| `renderThinking` | `(block, phase?) => ReactNode` | — | thinking 렌더 |
+| `renderUserBubble` | `(message) => ReactNode` | — | user 메시지 override |
+| `renderAssistantActions` | `(message) => ReactNode` | — | assistant 메시지 하단 action bar |
+| `viewportRef` | `React.Ref<HTMLDivElement>` | — | 스크롤 컨테이너 ref |

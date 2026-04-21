@@ -1,0 +1,51 @@
+---
+title: ToolCallCard
+description: Tool use / tool result 페어를 접힘 카드로 렌더
+---
+
+import { ToolCallCardDemo } from "@/components/demos/tool-call-card-demo";
+
+## 사용
+
+```tsx
+import { ToolCallCard } from "@fluxloop-ai/pds-ui/components/tool-call-card";
+
+<ToolCallCard
+  toolCallId="tool_01"
+  toolName="read"
+  args={{ file_path: "/src/app.ts" }}
+  result={output}
+  statusPhase="complete"
+/>
+```
+
+- Anthropic `tool_use` + `tool_result` 페어링은 상위 컨테이너(`ChatThread`)가 담당.
+  이 컴포넌트는 받은 props 를 그대로 렌더.
+- `toolLabels` / `keyParamFields` override 로 도메인 특화 라벨링 가능.
+- `renderCode` slot 으로 shiki 하이라이팅 주입.
+
+<ToolCallCardDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `toolCallId` | `string` | — | 페어링용 id |
+| `toolName` | `string` | — | 툴 이름 (`toolLabels` 키) |
+| `args` | `Record<string, unknown>` | — | 툴 인자 |
+| `argsText` | `string` | — | 원시 인자 텍스트 (streaming 용) |
+| `result` | `unknown` | — | 툴 결과 |
+| `isError` | `boolean` | — | 에러 여부 |
+| `statusType` | `"running" \| "complete" \| "requires-action"` | — | assistant-ui 호환 phase 소스 |
+| `statusPhase` | `ChatStatusPhase` | — | 명시 phase (최우선) |
+| `toolLabels` | `Record<string, string>` | `DEFAULT_TOOL_LABELS` | 라벨 override |
+| `keyParamFields` | `readonly string[]` | `DEFAULT_KEY_PARAM_FIELDS` | key param 추출 필드 순서 |
+| `renderCode` | `(code, lang) => ReactNode` | — | 하이라이터 slot |
+| `defaultExpanded` | `boolean` | `false` | 초기 펼침 여부 |
+
+## Phase 결정 규칙
+
+1. `statusPhase` 명시 → 사용
+2. `statusType === 'requires-action'` → `requires-action`
+3. `isError` → `error`
+4. `result === undefined` → `running` / 아니면 `complete`

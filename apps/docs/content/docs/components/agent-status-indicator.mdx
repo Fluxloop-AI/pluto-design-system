@@ -1,0 +1,28 @@
+---
+title: AgentStatusIndicator
+description: Agent SDK status 이벤트를 스피너/도트 텍스트로 시각화
+---
+
+import { AgentStatusIndicatorDemo } from "@/components/demos/agent-status-indicator-demo";
+
+## 사용
+
+```tsx
+import { AgentStatusIndicator } from "@fluxloop-ai/pds-ui/components/agent-status-indicator";
+
+<AgentStatusIndicator status="thinking" />
+<AgentStatusIndicator status="tool_executing" />
+<AgentStatusIndicator status={null} /> // null/undefined 면 렌더 없음
+```
+
+`status` 가 `null` 이면 아무것도 그리지 않는다. `tool_executing` / `compacting` 은 `| / - \` 스피너,
+그 외는 `. .. ...` 도트 애니메이션으로 진행을 표현.
+
+<AgentStatusIndicatorDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `status` | `ChatAgentStatus \| null` | — | `speculating \| thinking \| tool_executing \| generating \| compacting` |
+| `labels` | `Partial<Record<ChatAgentStatus, string>>` | 한국어 기본 | 텍스트 override |
