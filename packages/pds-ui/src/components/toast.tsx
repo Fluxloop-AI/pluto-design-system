@@ -11,6 +11,7 @@ import {
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
+import { Icon } from "./icon";
 
 const toast = tv({
   slots: {
@@ -27,7 +28,7 @@ const toast = tv({
       "data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-top-2",
       "data-[swipe=end]:animate-out data-[swipe=end]:slide-out-to-right-full",
     ],
-    icon: "mt-[2px] shrink-0 w-[16px] h-[16px]",
+    icon: "mt-[1px]",
     body: "flex-1 min-w-0 flex flex-col gap-[2px]",
     title: "text-[13px] font-semibold text-[color:var(--pds-label-normal)] m-0",
     description: "text-[12px] text-[color:var(--pds-label-alternative)] m-0",
@@ -40,10 +41,10 @@ const toast = tv({
   },
   variants: {
     variant: {
-      info: { icon: "text-[color:var(--pds-label-alternative)]" },
-      success: { icon: "text-[color:var(--pds-status-positive)]" },
-      warning: { icon: "text-[color:var(--pds-status-cautionary)]" },
-      error: { icon: "text-[color:var(--pds-status-negative)]" },
+      info: {},
+      success: {},
+      warning: {},
+      error: {},
     },
   },
   defaultVariants: {
@@ -69,12 +70,19 @@ const ToastViewport = React.forwardRef<
   );
 });
 
-const VARIANT_ICON: Record<NonNullable<ToastVariants["variant"]>, React.ComponentType<{ className?: string }>> = {
+const VARIANT_ICON = {
   info: Info,
   success: CheckCircle,
   warning: Warning,
   error: WarningCircle,
-};
+} as const;
+
+const VARIANT_COLOR = {
+  info: "label-alternative",
+  success: "positive",
+  warning: "cautionary",
+  error: "negative",
+} as const;
 
 type ToastRootProps = React.ComponentPropsWithoutRef<typeof ToastPrimitive.Root> & {
   variant?: ToastVariants["variant"];
@@ -91,14 +99,20 @@ const Toast = React.forwardRef<
   ref,
 ) {
   const styles = toast({ variant });
-  const VariantIcon = VARIANT_ICON[variant ?? "info"];
+  const key = variant ?? "info";
+  const VariantIcon = VARIANT_ICON[key];
   return (
     <ToastPrimitive.Root
       ref={ref}
       className={cn(styles.root(), className)}
       {...props}
     >
-      <VariantIcon className={styles.icon()} />
+      <Icon
+        icon={VariantIcon}
+        size="sm"
+        color={VARIANT_COLOR[key]}
+        className={styles.icon()}
+      />
       <div className={styles.body()}>
         {title ? <ToastPrimitive.Title className={styles.title()}>{title}</ToastPrimitive.Title> : null}
         {description ? (
@@ -110,7 +124,7 @@ const Toast = React.forwardRef<
       </div>
       {action}
       <ToastPrimitive.Close className={styles.close()} aria-label="닫기">
-        <X className="w-[14px] h-[14px]" />
+        <Icon icon={X} size="xs" />
       </ToastPrimitive.Close>
     </ToastPrimitive.Root>
   );
