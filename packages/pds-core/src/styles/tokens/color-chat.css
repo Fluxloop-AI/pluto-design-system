@@ -16,4 +16,9 @@
   --pds-chat-dot-done: var(--pds-status-positive);
   --pds-chat-dot-error: var(--pds-status-negative);
   --pds-chat-dot-action: var(--pds-status-cautionary);
+
+  /* tool-call tone backgrounds (10% alpha) — replaces pluto-note hardcoded rgba */
+  --pds-chat-tone-error-bg: color-mix(in srgb, var(--pds-status-negative) 10%, transparent);
+  --pds-chat-tone-error-card-bg: color-mix(in srgb, var(--pds-status-negative) 6%, transparent);
+  --pds-chat-tone-caution-bg: color-mix(in srgb, var(--pds-status-cautionary) 10%, transparent);
 }

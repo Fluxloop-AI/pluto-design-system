@@ -135,6 +135,34 @@
   animation: pds-shimmer 1.6s linear infinite;
 }
 
+/* ---- dot ripple — ChatStepDot `running` 상태에서 동심원 퍼짐 ---- */
+.pds-animate-dot-ripple {
+  position: relative;
+}
+.pds-animate-dot-ripple::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--pds-radius-full);
+  background: currentColor;
+  animation: pds-dot-ripple 1.4s ease-out infinite;
+  pointer-events: none;
+}
+
+/* ---- chat collapsible (grid-template-rows 트릭) ---- */
+.pds-chat-collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms var(--pds-chat-easing);
+}
+.pds-chat-collapsible[data-expanded="true"] {
+  grid-template-rows: 1fr;
+}
+.pds-chat-collapsible > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
 /* ---- reduced motion ----
  * !important 는 user preference(OS 접근성)가 모든 덮어쓰기를 이기도록 강제하기 위함.
  */
@@ -143,6 +171,8 @@
   .pds-animate-card-in,
   .pds-animate-glow,
   .pds-animate-dot-wave > span,
+  .pds-animate-dot-ripple::after,
+  .pds-chat-collapsible,
   .pds-animate-shimmer {
     /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
     animation-duration: 0.01ms !important;
