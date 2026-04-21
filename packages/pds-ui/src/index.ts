@@ -8,10 +8,26 @@
  *   import { Separator } from "@fluxloop-ai/pds-ui/components/separator";
  */
 
+export type { AgentStatusIndicatorProps } from "./components/agent-status-indicator";
+export { AgentStatusIndicator } from "./components/agent-status-indicator";
 export type { AvatarProps } from "./components/avatar";
 export { Avatar, avatar } from "./components/avatar";
 export type { ButtonProps } from "./components/button";
 export { Button, button } from "./components/button";
+export type { ChatBlockProps } from "./components/chat-block";
+export { ChatBlock, chatBlock } from "./components/chat-block";
+export type { ChatBubbleProps } from "./components/chat-bubble";
+export { ChatBubble, chatBubble } from "./components/chat-bubble";
+export type { ChatComposerProps } from "./components/chat-composer";
+export { ChatComposer, chatComposer } from "./components/chat-composer";
+export type { ChatLoadingDotsProps } from "./components/chat-loading-dots";
+export { ChatLoadingDots, chatLoadingDots } from "./components/chat-loading-dots";
+export type { ChatStepDotProps } from "./components/chat-step-dot";
+export { ChatStepDot } from "./components/chat-step-dot";
+export type { ChatTab, ChatTabBarProps } from "./components/chat-tab-bar";
+export { ChatTabBar, chatTabBar } from "./components/chat-tab-bar";
+export type { ChatThreadProps } from "./components/chat-thread";
+export { ChatThread, chatThread } from "./components/chat-thread";
 export type { DialogContentProps } from "./components/dialog";
 export {
   Dialog,
@@ -51,6 +67,11 @@ export type { ScrollAreaProps } from "./components/scroll-area";
 export { ScrollArea, ScrollBar } from "./components/scroll-area";
 export type { SeparatorProps } from "./components/separator";
 export { Separator, separator } from "./components/separator";
+export type { ThinkingBlockProps } from "./components/thinking-block";
+export {
+  REDACTED_THINKING_MESSAGE,
+  ThinkingBlock,
+} from "./components/thinking-block";
 export type { ToastRootProps } from "./components/toast";
 export {
   Toast,
@@ -58,6 +79,14 @@ export {
   ToastProvider,
   ToastViewport,
 } from "./components/toast";
+export type { ToolCallCardProps } from "./components/tool-call-card";
+export {
+  DEFAULT_KEY_PARAM_FIELDS,
+  DEFAULT_TOOL_LABELS,
+  ToolCallCard,
+} from "./components/tool-call-card";
+export type { ToolCodeBlockProps, ToolCodeLanguage } from "./components/tool-code-block";
+export { ToolCodeBlock, toolCodeBlock } from "./components/tool-code-block";
 export type { TooltipContentProps, TooltipProps } from "./components/tooltip";
 export {
   Tooltip,

@@ -1,0 +1,26 @@
+---
+title: ChatLoadingDots
+description: 어시스턴트 응답 대기 중 표시되는 3-dot wave primitive
+---
+
+import { ChatLoadingDotsDemo } from "@/components/demos/chat-loading-dots-demo";
+
+## 사용
+
+```tsx
+import { ChatLoadingDots } from "@fluxloop-ai/pds-ui/components/chat-loading-dots";
+
+<ChatLoadingDots />
+<ChatLoadingDots size="sm" />
+```
+
+어시스턴트가 스트리밍 시작 전 생각 중일 때 표시. 내부적으로 `.pds-animate-dot-wave` 유틸을 사용하고 `prefers-reduced-motion` 시 자동으로 축약된다.
+
+<ChatLoadingDotsDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `size` | `sm \| md` | `md` | 도트 크기. sm=4px / md=6px |
+| `className` | `string` | — | 추가 클래스 |

@@ -1,6 +1,6 @@
 ---
 title: Components
-description: Phase 1 Tier 1 기본 위젯 — 10개 전부 이식 완료 (v0.1)
+description: Phase 1 Tier 1 (10개) + Phase 3 Tier 3 AI/Agent Chat (10개) 이식 완료
 ---
 
 Wanted Montage 를 뼈대로 삼아 PDS 스택(Tailwind v4 + Radix + `tailwind-variants`)으로 번역·개량했다.
@@ -19,6 +19,26 @@ Wanted Montage 를 뼈대로 삼아 PDS 스택(Tailwind v4 + Radix + `tailwind-v
 | 8 | [Dialog](/docs/components/dialog) | `@radix-ui/react-dialog` | 7 |
 | 9 | [Toast](/docs/components/toast) | `@radix-ui/react-toast` | 6 |
 | 10 | [ScrollArea](/docs/components/scroll-area) | `@radix-ui/react-scroll-area` | 4 |
+
+## Phase 3 — AI / Agent Chat
+
+pluto-note `chat-panel/` 의 9개 소스를 Anthropic Messages API 계약의 controlled 컴포넌트로 이식. `@assistant-ui/react` · Zustand · `@pluto/wds-icon` 의존성 제거.
+
+| # | 컴포넌트 | 분류 |
+|---|---|---|
+| 1 | [ChatLoadingDots](/docs/components/chat-loading-dots) | primitive |
+| 2 | [ChatStepDot](/docs/components/chat-step-dot) | primitive |
+| 3 | [AgentStatusIndicator](/docs/components/agent-status-indicator) | primitive |
+| 4 | [ChatBlock](/docs/components/chat-block) | container |
+| 5 | [ChatBubble](/docs/components/chat-bubble) | message |
+| 6 | [ChatComposer](/docs/components/chat-composer) | message |
+| 7 | [ThinkingBlock](/docs/components/thinking-block) | agent |
+| 8 | [ToolCodeBlock](/docs/components/tool-code-block) | agent |
+| 9 | [ToolCallCard](/docs/components/tool-call-card) | agent |
+| 10 | [ChatThread](/docs/components/chat-thread) | container |
+| 11 | [ChatTabBar](/docs/components/chat-tab-bar) | container |
+
+Markdown 렌더링과 syntax highlighting 은 `renderMarkdown` / `renderCode` slot 주입으로 PDS 본체에서 분리한다.
 
 ## 공통 원칙
 

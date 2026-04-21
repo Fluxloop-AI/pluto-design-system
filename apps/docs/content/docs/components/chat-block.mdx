@@ -1,0 +1,40 @@
+---
+title: ChatBlock
+description: ChatStepDot + 헤더 + 펼침 영역의 조립형 컨테이너
+---
+
+import { ChatBlockDemo } from "@/components/demos/chat-block-demo";
+
+## 사용
+
+```tsx
+import { ChatBlock } from "@fluxloop-ai/pds-ui/components/chat-block";
+
+<ChatBlock
+  open={open}
+  onToggle={() => setOpen((v) => !v)}
+  phase="running"
+  headerContent={<span>추론 중…</span>}
+>
+  <div>본문</div>
+</ChatBlock>
+```
+
+`ThinkingBlock` · `ToolCallCard` 의 기반이 되는 컴포넌트. grid-template-rows 트릭으로 접힘/펼침을 애니메이션.
+Chevron 은 `phase === "running"` 이면 숨기는 패턴이 일반적 (`showChevron={false}`).
+
+<ChatBlockDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `open` | `boolean` | — | 펼침 여부 |
+| `onToggle` | `() => void` | — | 트리거 클릭 콜백 |
+| `phase` | `ChatStatusPhase` | — | 리더 도트 색 |
+| `headerContent` | `ReactNode` | — | 트리거 내부 본문 |
+| `children` | `ReactNode` | — | 펼침 영역 본문 |
+| `animationClass` | `string` | — | 루트에 입장 애니메이션 추가 (`pds-animate-step-in` 등) |
+| `showChevron` | `boolean` | `true` | 우측 chevron 표시 |
+| `className` | `string` | — | 루트 클래스 |
+| `testId` / `triggerTestId` | `string` | — | data-testid |
