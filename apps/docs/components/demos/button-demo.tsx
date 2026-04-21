@@ -9,12 +9,14 @@ export function ButtonVariantDemo() {
   return (
     <div className="pds-btn-card">
       <div className="pds-btn-row">
+        <Button variant="solid">Solid</Button>
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="ghost">Ghost</Button>
         <Button variant="danger">Danger</Button>
       </div>
       <div className="pds-btn-row">
+        <Button variant="solid" disabled>Solid</Button>
         <Button variant="primary" disabled>Primary</Button>
         <Button variant="secondary" disabled>Secondary</Button>
         <Button variant="ghost" disabled>Ghost</Button>

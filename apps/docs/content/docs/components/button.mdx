@@ -1,6 +1,6 @@
 ---
 title: Button
-description: 4 variant (primary/secondary/ghost/danger) × 4 size, leading/trailing slot, loading
+description: 5 variant (solid/primary/secondary/ghost/danger) × 4 size, leading/trailing slot, loading
 ---
 
 import {
@@ -15,6 +15,7 @@ import {
 ```tsx
 import { Button } from "@fluxloop-ai/pds-ui/components/button";
 
+<Button variant="solid">시작하기</Button>
 <Button>저장</Button>
 <Button variant="secondary" size="sm">취소</Button>
 <Button variant="danger" loading>삭제</Button>
@@ -22,7 +23,12 @@ import { Button } from "@fluxloop-ai/pds-ui/components/button";
 
 ## Variant
 
-4 종 — primary / secondary / ghost / danger. Montage 의 `color=assistive` 는 **ghost** 로 흡수.
+5 종 — **solid** / primary / secondary / ghost / danger.
+
+- **solid** — 브랜드 컬러 fill + inverse 라벨. 페이지 단위 CTA 1개.
+- **primary** — outline (default). 기본 액션.
+- **secondary** / **ghost** — 보조. Montage 의 `color=assistive` 는 **ghost** 로 흡수.
+- **danger** — negative 액션 (`status-negative`).
 
 <ButtonVariantDemo />
 
@@ -53,7 +59,7 @@ import { Button } from "@fluxloop-ai/pds-ui/components/button";
 
 | Prop | 타입 | 기본 | 설명 |
 |---|---|---|---|
-| `variant` | `primary \| secondary \| ghost \| danger` | `primary` | 색/톤 |
+| `variant` | `solid \| primary \| secondary \| ghost \| danger` | `primary` | 색/톤 |
 | `size` | `xs \| sm \| md \| lg` | `md` | 크기 |
 | `iconOnly` | `boolean` | `false` | 정사각형 + padding 제거 |
 | `fullWidth` | `boolean` | `false` | `width:100%` |
@@ -64,7 +70,8 @@ import { Button } from "@fluxloop-ai/pds-ui/components/button";
 
 ## Montage 대비 변경점
 
-- **variant 축소**: `variant × color` 2축 → `variant` 1축 (primary/secondary/ghost/danger)
+- **variant 축소**: `variant × color` 2축 → `variant` 1축 (solid/primary/secondary/ghost/danger)
+- **solid 추가**: 브랜드 fill CTA — `primary`(outline)와 위계 분리
 - **danger 추가**: Montage 에 없던 negative 시각 (status-negative)
 - **squircle**: 전역 `corner-shape: squircle` 이 모든 radius 에 자동 적용
 - **focus ring**: `--pds-focus-ring` 2px ring + offset (primary 와 분리된 전용 액센트)

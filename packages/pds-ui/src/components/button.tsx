@@ -24,6 +24,15 @@ const button = tv({
   },
   variants: {
     variant: {
+      solid: {
+        root: [
+          "text-[color:var(--pds-inverse-label)] bg-[var(--pds-primary-normal)]",
+          "hover:brightness-110 active:brightness-95",
+          "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
+          "disabled:hover:brightness-100",
+          "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
+        ],
+      },
       primary: {
         root: [
           "text-[color:var(--pds-label-normal)] bg-transparent",
@@ -53,7 +62,7 @@ const button = tv({
       },
       danger: {
         root: [
-          "text-[color:var(--pds-static-white,_#fff)] bg-[var(--pds-status-negative)]",
+          "text-[color:var(--pds-inverse-label)] bg-[var(--pds-status-negative)]",
           "hover:brightness-110 active:brightness-95",
           "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
           "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
