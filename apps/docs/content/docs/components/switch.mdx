@@ -1,0 +1,43 @@
+---
+title: Switch
+description: Radix Switch. sm/md × on/off · disabled. ON 상태는 `--pds-primary-normal`.
+---
+
+import { SwitchSizeDemo, SwitchStatesDemo } from "@/components/demos/switch-demo";
+
+## 사용
+
+```tsx
+import { Switch } from "@fluxloop-ai/pds-ui/components/switch";
+
+<Switch defaultChecked />
+<Switch checked={value} onCheckedChange={setValue} disabled />
+```
+
+## Size
+
+<SwitchSizeDemo />
+
+## States
+
+<SwitchStatesDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `size` | `sm \| md` | `md` | 18×30 / 22×38 px |
+| `checked` / `defaultChecked` / `onCheckedChange` | Radix 표준 | - | |
+| `disabled` / `required` | `boolean` | - | |
+
+## Montage 대비 변경점
+
+- **headless**: Montage Emotion → `@radix-ui/react-switch`
+- **thumb 위치**: `--pds-switch-thumb-on` CSS 변수로 인라인 스타일 (Montage 와 동일한 idea, 로컬이라 토큰화 안 함)
+- **토큰**: off track `--pds-interaction-inactive`, on track `--pds-primary-normal`, thumb `--pds-background-elevated-normal`
+
+## Registry 설치
+
+```bash
+npx shadcn add https://pds.pluto.com/r/switch
+```

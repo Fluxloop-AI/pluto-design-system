@@ -1,0 +1,63 @@
+---
+title: RadioGroup
+description: Radix RadioGroup. sm/md × horizontal/vertical, loop 기본 on.
+---
+
+import {
+  RadioGroupVerticalDemo,
+  RadioGroupHorizontalDemo,
+  RadioGroupDisabledDemo,
+} from "@/components/demos/radio-group-demo";
+
+## 사용
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@fluxloop-ai/pds-ui/components/radio-group";
+
+<RadioGroup defaultValue="pro">
+  <label htmlFor="free"><RadioGroupItem id="free" value="free" /> Free</label>
+  <label htmlFor="pro"><RadioGroupItem id="pro" value="pro" /> Pro</label>
+</RadioGroup>
+```
+
+## Vertical (default)
+
+<RadioGroupVerticalDemo />
+
+## Horizontal + size sm
+
+<RadioGroupHorizontalDemo />
+
+## Disabled item
+
+<RadioGroupDisabledDemo />
+
+## Props
+
+### RadioGroup
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `value` / `defaultValue` / `onValueChange` | Radix 표준 | - | |
+| `size` | `sm \| md` | `md` | context 로 자식 item 에 전파 |
+| `orientation` | `horizontal \| vertical` | `vertical` | |
+| `loop` | `boolean` | `true` | |
+| `name` | `string` | - | |
+
+### RadioGroupItem
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `value` | `string` | - | 필수 |
+| `size` | `sm \| md` | (상위 값) | 개별 오버라이드 |
+| `disabled` | `boolean` | - | |
+
+## Decision vs Montage
+
+Montage 는 `Radio` standalone + `RadioGroup` + `RadioGroupItem` 3-class. PDS 는 shadcn 관례를 따라 **RadioGroup + RadioGroupItem 2-class 로 단순화**.
+
+## Registry 설치
+
+```bash
+npx shadcn add https://pds.pluto.com/r/radio-group
+```

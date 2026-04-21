@@ -249,6 +249,81 @@
           "target": "components/ui/progress.tsx"
         }
       ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Radix Checkbox — sm/md, checked/indeterminate/invalid/disabled states.",
+      "dependencies": ["@radix-ui/react-checkbox", "@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Radix Switch — sm/md track, primary-normal on-state.",
+      "dependencies": ["@radix-ui/react-switch", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "RadioGroup",
+      "description": "Radix RadioGroup — sm/md, horizontal/vertical orientation, loop on by default.",
+      "dependencies": ["@radix-ui/react-radio-group", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Radix Select — sm/md/lg trigger with Input-aligned tokens, item-aligned/popper content.",
+      "dependencies": ["@radix-ui/react-select", "@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "FormField + FormLabel + FormControl + FormDescription + FormErrorMessage — useId-based id wiring via context.",
+      "dependencies": ["@radix-ui/react-slot", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/form.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/form.tsx"
+        }
+      ]
     }
   ]
 }
