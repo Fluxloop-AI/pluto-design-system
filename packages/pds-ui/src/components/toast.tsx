@@ -35,7 +35,7 @@ const toast = tv({
       "absolute right-[8px] top-[8px] inline-flex w-[28px] h-[28px] items-center justify-center",
       "rounded-[6px] text-[color:var(--pds-label-alternative)]",
       "hover:bg-[var(--pds-fill-normal)]",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--pds-primary-normal)]",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--pds-focus-ring)]",
     ],
   },
   variants: {

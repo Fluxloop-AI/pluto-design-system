@@ -21,7 +21,7 @@ const input = tv({
     field: [
       "flex w-full h-full items-center gap-[8px] rounded-[inherit]",
       "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
-      "group-focus-within:shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--pds-primary-normal)_43%,transparent)]",
+      "group-focus-within:shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--pds-focus-ring)_43%,transparent)]",
       "transition-[box-shadow] duration-200 cursor-text relative",
     ],
     leading: "flex shrink-0 items-center text-[color:var(--pds-interaction-inactive)]",

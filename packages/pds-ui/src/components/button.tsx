@@ -14,7 +14,7 @@ const button = tv({
       "transition-[background-color,color,box-shadow] duration-[var(--pds-motion-duration-fast)]",
       "ease-[cubic-bezier(0.4,0,0.2,1)]",
       "focus-visible:outline-none",
-      "focus-visible:ring-2 focus-visible:ring-[color:var(--pds-primary-normal)] focus-visible:ring-offset-2",
+      "focus-visible:ring-2 focus-visible:ring-[color:var(--pds-focus-ring)] focus-visible:ring-offset-2",
       "focus-visible:ring-offset-[color:var(--pds-background-normal-normal)]",
       "disabled:pointer-events-none aria-disabled:pointer-events-none",
       "data-[loading=true]:cursor-wait",

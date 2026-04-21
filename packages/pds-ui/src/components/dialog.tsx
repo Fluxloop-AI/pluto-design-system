@@ -38,7 +38,7 @@ const dialog = tv({
       "inline-flex w-[32px] h-[32px] items-center justify-center rounded-[8px]",
       "text-[color:var(--pds-label-alternative)] hover:bg-[var(--pds-fill-normal)]",
       "focus-visible:outline-none focus-visible:ring-2",
-      "focus-visible:ring-[color:var(--pds-primary-normal)]",
+      "focus-visible:ring-[color:var(--pds-focus-ring)]",
     ],
   },
   variants: {
