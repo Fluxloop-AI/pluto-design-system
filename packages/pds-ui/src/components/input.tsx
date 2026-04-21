@@ -13,7 +13,7 @@ import { cn } from "../utils/cn";
 const input = tv({
   slots: {
     wrapper: [
-      "group relative flex items-center rounded-[12px] overflow-hidden",
+      "group relative flex items-center rounded-[8px] overflow-hidden",
       "bg-[var(--pds-background-transparent-normal)]",
       "[backdrop-filter:blur(32px)]",
       "shadow-[var(--pds-shadow-xs)]",
@@ -27,7 +27,7 @@ const input = tv({
     ],
     leading: "flex shrink-0 items-center text-[color:var(--pds-label-alternative)]",
     input: [
-      "flex-1 min-w-0 bg-transparent outline-none border-0 px-[4px] min-h-[24px]",
+      "flex-1 min-w-0 bg-transparent outline-none border-0 px-[4px]",
       "text-[color:var(--pds-label-normal)]",
       "placeholder:text-[color:var(--pds-label-assistive)]",
       "caret-[color:var(--pds-primary-normal)]",
@@ -38,17 +38,17 @@ const input = tv({
     trailing: "flex shrink-0 items-center text-[color:var(--pds-label-alternative)]",
     trailingButton: "shrink-0 self-stretch",
     reset: [
-      "hidden shrink-0 items-center justify-center size-[22px]",
+      "hidden shrink-0 items-center justify-center",
       "text-[color:var(--pds-label-assistive)]",
       "group-focus-within:not(:has(input:placeholder-shown)):flex",
     ],
     invalidIcon: [
-      "flex shrink-0 items-center justify-center size-[22px]",
+      "flex shrink-0 items-center justify-center",
       "text-[color:var(--pds-status-negative)]",
       "group-focus-within:hidden",
     ],
     positiveIcon: [
-      "flex shrink-0 items-center justify-center size-[22px]",
+      "flex shrink-0 items-center justify-center",
       "text-[color:var(--pds-primary-normal)]",
       "group-focus-within:hidden",
     ],
@@ -56,13 +56,22 @@ const input = tv({
   variants: {
     size: {
       sm: {
-        field: "px-[10px] py-[8px] text-[13px]",
+        field: "h-[28px] px-[10px] text-[13px]",
+        reset: "size-[18px]",
+        invalidIcon: "size-[18px]",
+        positiveIcon: "size-[18px]",
       },
       md: {
-        field: "px-[12px] py-[12px] text-[14px]",
+        field: "h-[36px] px-[12px] text-[14px]",
+        reset: "size-[22px]",
+        invalidIcon: "size-[22px]",
+        positiveIcon: "size-[22px]",
       },
       lg: {
-        field: "px-[16px] py-[14px] text-[16px]",
+        field: "h-[44px] px-[14px] text-[14px]",
+        reset: "size-[22px]",
+        invalidIcon: "size-[22px]",
+        positiveIcon: "size-[22px]",
       },
     },
     invalid: {
@@ -87,7 +96,7 @@ const input = tv({
     },
   },
   defaultVariants: {
-    size: "md",
+    size: "sm",
     invalid: false,
     disabled: false,
   },
@@ -113,7 +122,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
     className,
     wrapperClassName,
     wrapperRef,
-    size = "md",
+    size = "sm",
     invalid = false,
     positive = false,
     disabled = false,
@@ -133,6 +142,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   const inputRef = React.useRef<HTMLInputElement>(null);
   const composedRef = useComposedRefs(inputRef, ref);
   const styles = input({ size, invalid, disabled });
+  const iconClass = size === "sm" ? "size-[16px]" : "size-[18px]";
 
   const handleReset = () => {
     const el = inputRef.current;
@@ -170,11 +180,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
         />
         {invalid ? (
           <span className={styles.invalidIcon()} aria-hidden="true">
-            <AlertCircle className="size-[18px]" />
+            <AlertCircle className={iconClass} />
           </span>
         ) : positive ? (
           <span className={styles.positiveIcon()} aria-hidden="true">
-            <CheckCircle2 className="size-[18px]" />
+            <CheckCircle2 className={iconClass} />
           </span>
         ) : null}
         {!readOnly && !disabled ? (
@@ -189,7 +199,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
               "group-focus-within:flex peer-placeholder-shown:hidden",
             )}
           >
-            <CircleCloseFill className="size-[18px]" />
+            <CircleCloseFill className={iconClass} />
           </button>
         ) : null}
         {trailingContent ? <div className={styles.trailing()}>{trailingContent}</div> : null}

@@ -62,16 +62,16 @@ const button = tv({
     },
     size: {
       sm: {
-        root: "h-[32px] px-[14px] rounded-[8px] gap-[4px] text-[13px] font-semibold",
+        root: "h-[32px] px-[10px] rounded-[8px] gap-[4px] text-[13px] font-semibold",
         loading: "[&_svg]:w-[14px] [&_svg]:h-[14px]",
       },
       md: {
-        root: "h-[40px] px-[20px] rounded-[10px] gap-[6px] text-[14px] font-semibold",
+        root: "h-[36px] px-[14px] rounded-[8px] gap-[6px] text-[14px] font-semibold",
         loading: "[&_svg]:w-[16px] [&_svg]:h-[16px]",
       },
       lg: {
-        root: "h-[48px] px-[28px] rounded-[12px] gap-[6px] text-[16px] font-semibold",
-        loading: "[&_svg]:w-[18px] [&_svg]:h-[18px]",
+        root: "h-[44px] px-[18px] rounded-[8px] gap-[6px] text-[14px] font-semibold",
+        loading: "[&_svg]:w-[16px] [&_svg]:h-[16px]",
       },
     },
     iconOnly: {
@@ -92,7 +92,7 @@ const button = tv({
   ],
   defaultVariants: {
     variant: "primary",
-    size: "md",
+    size: "sm",
     iconOnly: false,
     fullWidth: false,
     loading: false,
@@ -116,7 +116,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
     className,
     variant = "primary",
-    size = "md",
+    size = "sm",
     iconOnly = false,
     fullWidth = false,
     loading = false,
