@@ -2,9 +2,9 @@
 
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
 import {
-  CheckCircle2,
+  Check,
+  X,
   XCircle as CircleCloseFill,
-  AlertCircle,
 } from "@fluxloop-ai/pds-icons/lucide";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
@@ -13,19 +13,18 @@ import { cn } from "../utils/cn";
 const input = tv({
   slots: {
     wrapper: [
-      "group relative flex items-center rounded-[8px] overflow-hidden",
+      "group relative flex items-center overflow-hidden",
       "bg-[var(--pds-background-transparent-normal)]",
       "[backdrop-filter:blur(32px)]",
-      "shadow-[var(--pds-shadow-xs)]",
       "transition-[box-shadow] duration-200",
     ],
     field: [
       "flex w-full h-full items-center gap-[8px] rounded-[inherit]",
       "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
-      "group-focus-within:shadow-[inset_0_0_0_2px_color-mix(in_srgb,var(--pds-primary-normal)_43%,transparent)]",
+      "group-focus-within:shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--pds-primary-normal)_43%,transparent)]",
       "transition-[box-shadow] duration-200 cursor-text relative",
     ],
-    leading: "flex shrink-0 items-center text-[color:var(--pds-label-alternative)]",
+    leading: "flex shrink-0 items-center text-[color:var(--pds-interaction-inactive)]",
     input: [
       "flex-1 min-w-0 bg-transparent outline-none border-0 px-[4px]",
       "text-[color:var(--pds-label-normal)]",
@@ -35,11 +34,11 @@ const input = tv({
       "disabled:placeholder:text-[color:var(--pds-label-disable)]",
       "read-only:cursor-default",
     ],
-    trailing: "flex shrink-0 items-center text-[color:var(--pds-label-alternative)]",
+    trailing: "flex shrink-0 items-center text-[color:var(--pds-interaction-inactive)]",
     trailingButton: "shrink-0 self-stretch",
     reset: [
       "hidden shrink-0 items-center justify-center",
-      "text-[color:var(--pds-label-assistive)]",
+      "text-[color:var(--pds-interaction-inactive)]",
       "group-focus-within:not(:has(input:placeholder-shown)):flex",
     ],
     invalidIcon: [
@@ -55,30 +54,48 @@ const input = tv({
   },
   variants: {
     size: {
+      xs: {
+        wrapper: "rounded-[8px]",
+        field: "h-[28px] px-[8px] rounded-[8px] text-[12px]",
+        leading: "[&_svg]:!w-[14px] [&_svg]:!h-[14px]",
+        trailing: "[&_svg]:!w-[14px] [&_svg]:!h-[14px]",
+        reset: "size-[18px] [&_svg]:w-[12px] [&_svg]:h-[12px]",
+        invalidIcon: "size-[18px] [&_svg]:w-[12px] [&_svg]:h-[12px]",
+        positiveIcon: "size-[18px] [&_svg]:w-[12px] [&_svg]:h-[12px]",
+      },
       sm: {
-        field: "h-[28px] px-[10px] text-[13px]",
-        reset: "size-[18px]",
-        invalidIcon: "size-[18px]",
-        positiveIcon: "size-[18px]",
+        wrapper: "rounded-[10px]",
+        field: "h-[32px] px-[10px] rounded-[10px] text-[13px]",
+        leading: "[&_svg]:!w-[16px] [&_svg]:!h-[16px]",
+        trailing: "[&_svg]:!w-[16px] [&_svg]:!h-[16px]",
+        reset: "size-[20px] [&_svg]:w-[14px] [&_svg]:h-[14px]",
+        invalidIcon: "size-[20px] [&_svg]:w-[14px] [&_svg]:h-[14px]",
+        positiveIcon: "size-[20px] [&_svg]:w-[14px] [&_svg]:h-[14px]",
       },
       md: {
-        field: "h-[36px] px-[12px] text-[14px]",
-        reset: "size-[22px]",
-        invalidIcon: "size-[22px]",
-        positiveIcon: "size-[22px]",
+        wrapper: "rounded-[12px]",
+        field: "h-[36px] px-[12px] rounded-[12px] text-[14px]",
+        leading: "[&_svg]:!w-[18px] [&_svg]:!h-[18px]",
+        trailing: "[&_svg]:!w-[18px] [&_svg]:!h-[18px]",
+        reset: "size-[22px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
+        invalidIcon: "size-[22px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
+        positiveIcon: "size-[22px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
       },
       lg: {
-        field: "h-[44px] px-[14px] text-[14px]",
-        reset: "size-[22px]",
-        invalidIcon: "size-[22px]",
-        positiveIcon: "size-[22px]",
+        wrapper: "rounded-[12px]",
+        field: "h-[44px] px-[14px] rounded-[12px] text-[14px]",
+        leading: "[&_svg]:!w-[18px] [&_svg]:!h-[18px]",
+        trailing: "[&_svg]:!w-[18px] [&_svg]:!h-[18px]",
+        reset: "size-[22px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
+        invalidIcon: "size-[22px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
+        positiveIcon: "size-[22px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
       },
     },
     invalid: {
       true: {
         field: [
           "shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--pds-status-negative)_28%,transparent)]",
-          "group-focus-within:shadow-[inset_0_0_0_2px_color-mix(in_srgb,var(--pds-status-negative)_43%,transparent)]",
+          "group-focus-within:shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--pds-status-negative)_43%,transparent)]",
         ],
       },
       false: {},
@@ -142,7 +159,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   const inputRef = React.useRef<HTMLInputElement>(null);
   const composedRef = useComposedRefs(inputRef, ref);
   const styles = input({ size, invalid, disabled });
-  const iconClass = size === "sm" ? "size-[16px]" : "size-[18px]";
 
   const handleReset = () => {
     const el = inputRef.current;
@@ -180,11 +196,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
         />
         {invalid ? (
           <span className={styles.invalidIcon()} aria-hidden="true">
-            <AlertCircle className={iconClass} />
+            <X />
           </span>
         ) : positive ? (
           <span className={styles.positiveIcon()} aria-hidden="true">
-            <CheckCircle2 className={iconClass} />
+            <Check />
           </span>
         ) : null}
         {!readOnly && !disabled ? (
@@ -199,7 +215,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
               "group-focus-within:flex peer-placeholder-shown:hidden",
             )}
           >
-            <CircleCloseFill className={iconClass} />
+            <CircleCloseFill />
           </button>
         ) : null}
         {trailingContent ? <div className={styles.trailing()}>{trailingContent}</div> : null}
