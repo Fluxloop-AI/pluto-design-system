@@ -32,6 +32,24 @@ export type { ChatThreadProps } from "./components/chat-thread";
 export { ChatThread, chatThread } from "./components/chat-thread";
 export type { CheckboxProps } from "./components/checkbox";
 export { Checkbox, checkbox } from "./components/checkbox";
+export type {
+  ComboboxContentProps,
+  ComboboxFilter,
+  ComboboxItemProps,
+  ComboboxProps,
+} from "./components/combobox";
+export {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  combobox,
+} from "./components/combobox";
 export type { DialogContentProps } from "./components/dialog";
 export {
   Dialog,
@@ -126,6 +144,8 @@ export type { SpinnerProps } from "./components/spinner";
 export { Spinner, spinner } from "./components/spinner";
 export type { SwitchProps } from "./components/switch";
 export { Switch, switchStyles } from "./components/switch";
+export type { TabsProps } from "./components/tabs";
+export { Tabs, TabsContent, TabsList, TabsTrigger, tabs } from "./components/tabs";
 export type { TagProps } from "./components/tag";
 export { Tag, tag } from "./components/tag";
 export type { ThinkingBlockProps } from "./components/thinking-block";

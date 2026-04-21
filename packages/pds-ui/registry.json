@@ -324,6 +324,41 @@
           "target": "components/ui/form.tsx"
         }
       ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Radix Tabs — sm/md/lg × hug/fill, horizontal/vertical, underline indicator.",
+      "dependencies": ["@radix-ui/react-tabs", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "cmdk inside Radix Popover — searchable select wrapped behind PDS vocabulary.",
+      "dependencies": [
+        "cmdk",
+        "@radix-ui/react-popover",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/combobox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/combobox.tsx"
+        }
+      ]
     }
   ]
 }
