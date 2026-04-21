@@ -8,9 +8,9 @@ import { cn } from "../utils/cn";
 const tooltip = tv({
   slots: {
     content: [
-      "z-[var(--pds-z-tooltip)] inline-flex items-center gap-[8px]",
-      "bg-[var(--pds-inverse-background)] text-[color:var(--pds-inverse-label)]",
-      "rounded-[8px] shadow-[var(--pds-shadow-md)]",
+      "z-[var(--pds-z-tooltip)] inline-flex items-center gap-[4px]",
+      "bg-[var(--pds-background-elevated-normal)] text-[color:var(--pds-label-normal)]",
+      "border border-[var(--pds-line-normal-neutral)]",
       "data-[state=delayed-open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=delayed-open]:fade-in-0",
       "data-[side=top]:slide-in-from-bottom-1 data-[side=bottom]:slide-in-from-top-1",
@@ -18,15 +18,22 @@ const tooltip = tv({
     ],
     label: "text-left",
     shortcut: [
-      "text-[color:color-mix(in_srgb,var(--pds-inverse-label)_70%,transparent)]",
-      "font-[var(--pds-font-mono)] text-[11px] tracking-wide",
+      "inline-flex items-center",
+      "bg-[var(--pds-fill-normal)] text-[color:var(--pds-label-normal)]",
+      "font-[var(--pds-font-mono)] tracking-wide",
+      "px-[4px] py-[1px] rounded-[4px]",
     ],
-    arrow: "fill-[var(--pds-inverse-background)]",
   },
   variants: {
     size: {
-      sm: { content: "px-[8px] py-[4px] text-[12px]" },
-      md: { content: "px-[10px] py-[6px] text-[13px]" },
+      sm: {
+        content: "px-[8px] py-[4px] text-[12px] rounded-[8px]",
+        shortcut: "text-[10px]",
+      },
+      md: {
+        content: "px-[10px] py-[6px] text-[13px] rounded-[10px]",
+        shortcut: "text-[10px]",
+      },
     },
   },
   defaultVariants: {
@@ -45,14 +52,13 @@ type TooltipContentProps = React.ComponentPropsWithoutRef<
 > & {
   size?: TooltipVariants["size"];
   shortcut?: React.ReactNode;
-  arrow?: boolean;
 };
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
   TooltipContentProps
 >(function TooltipContent(
-  { className, size = "md", shortcut, arrow = false, sideOffset = 6, children, ...props },
+  { className, size = "md", shortcut, sideOffset = 6, children, ...props },
   ref,
 ) {
   const styles = tooltip({ size });
@@ -66,7 +72,6 @@ const TooltipContent = React.forwardRef<
       >
         <span className={styles.label()}>{children}</span>
         {shortcut ? <span className={styles.shortcut()}>{shortcut}</span> : null}
-        {arrow ? <TooltipPrimitive.Arrow className={styles.arrow()} /> : null}
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   );

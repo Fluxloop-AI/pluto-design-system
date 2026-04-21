@@ -24,12 +24,6 @@ export function TooltipBasicDemo() {
           </TooltipTrigger>
           <TooltipContent size="md" shortcut="⌘K">명령 팔레트</TooltipContent>
         </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="secondary">With arrow</Button>
-          </TooltipTrigger>
-          <TooltipContent arrow>화살표 달린 툴팁</TooltipContent>
-        </Tooltip>
         <Styles />
       </div>
     </TooltipProvider>
