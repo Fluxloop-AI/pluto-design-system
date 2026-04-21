@@ -19,9 +19,14 @@ const SEMANTIC_SECTIONS: Section[] = [
   {
     title: "Primary",
     items: [
-      { name: "primary-normal", variable: "--pds-primary-normal", note: "브랜드 기본 (blue.50)" },
+      {
+        name: "primary-normal",
+        variable: "--pds-primary-normal",
+        note: "브랜드 기본 (cool-neutral.15)",
+      },
       { name: "primary-strong", variable: "--pds-primary-strong" },
       { name: "primary-heavy", variable: "--pds-primary-heavy" },
+      { name: "focus-ring", variable: "--pds-focus-ring", note: "포커스 전용 (blue.50)" },
     ],
   },
   {

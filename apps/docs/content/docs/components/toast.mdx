@@ -1,0 +1,65 @@
+---
+title: Toast
+description: Radix Toast 기반 알림 — info / success / warning / error
+---
+
+import { ToastDemo } from "@/components/demos/toast-demo";
+
+Phase 1 기본은 `@radix-ui/react-toast`. sonner 전환은 구현 중 판단 기준이었으나 Phase 1 MVP 는 Radix Toast 로 확정.
+
+## 사용
+
+```tsx
+import {
+  Toast, ToastProvider, ToastViewport,
+} from "@fluxloop-ai/pds-ui/components/toast";
+
+<ToastProvider>
+  <Toast variant="success" title="저장됨" description="변경사항이 저장됐어요." />
+  <ToastViewport />
+</ToastProvider>
+```
+
+## Demo
+
+<ToastDemo />
+
+## Props
+
+### `<Toast />`
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `variant` | `info \| success \| warning \| error` | `info` | 좌측 아이콘 + 색상 |
+| `title` | `ReactNode` | — | 제목 |
+| `description` | `ReactNode` | — | 설명 |
+| `action` | `ReactNode` | — | `<ToastAction>` 버튼 |
+| `duration` | `number` | `3000` | auto-close ms. `Infinity` 면 유지 |
+| `open` / `defaultOpen` / `onOpenChange` | Radix | — | controlled API |
+
+### `<ToastProvider />`
+
+Radix Provider — `duration`, `swipeDirection`, `swipeThreshold`. viewport 는 `<ToastViewport />`.
+
+## Variant 색상
+
+| Variant | 아이콘 | 토큰 |
+|---|---|---|
+| `info` | Info | `--pds-label-alternative` |
+| `success` | CheckCircle2 | `--pds-status-positive` |
+| `warning` | AlertTriangle | `--pds-status-cautionary` |
+| `error` | AlertCircle | `--pds-status-negative` |
+
+## Montage 대비 변경점
+
+- **headless**: 자체 stack manager → `@radix-ui/react-toast` (뷰포트/스와이프/정지 처리)
+- **variant 고정 4종**: Montage 와 동일 (success/error/info/warning)
+- **토큰 치환**: `theme.semantic.*` → `var(--pds-*)`
+- **z-index**: `--pds-z-toast` (1600) — 다른 오버레이 위
+- **sonner**: Phase 1 스코프 밖 (필요 시 Phase 5+ 에서 대체 검토)
+
+## Registry 설치
+
+```bash
+npx shadcn add https://pds.pluto.com/r/toast
+```

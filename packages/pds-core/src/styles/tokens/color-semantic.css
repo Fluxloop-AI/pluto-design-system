@@ -8,9 +8,12 @@
  */
 :root {
   /* primary */
-  --pds-primary-normal: var(--pds-color-blue-50);
-  --pds-primary-strong: var(--pds-color-blue-45);
-  --pds-primary-heavy: var(--pds-color-blue-40);
+  --pds-primary-normal: var(--pds-color-cool-neutral-15);
+  --pds-primary-strong: var(--pds-color-cool-neutral-10);
+  --pds-primary-heavy: var(--pds-color-cool-neutral-5);
+
+  /* focus ring — primary 와 분리된 전용 액센트 (블랙 브랜드에서 시인성 확보) */
+  --pds-focus-ring: var(--pds-color-blue-50);
 
   /* label */
   --pds-label-normal: var(--pds-color-cool-neutral-10);
@@ -82,7 +85,7 @@
   --pds-accent-foreground-pink: var(--pds-color-pink-46);
 
   /* inverse */
-  --pds-inverse-primary: var(--pds-color-blue-60);
+  --pds-inverse-primary: var(--pds-color-cool-neutral-99);
   --pds-inverse-background: var(--pds-color-cool-neutral-15);
   --pds-inverse-label: var(--pds-color-cool-neutral-99);
 

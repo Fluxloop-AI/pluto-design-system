@@ -1,0 +1,20 @@
+{
+  "title": "Components",
+  "pages": [
+    "index",
+    "---Primitives---",
+    "separator",
+    "avatar",
+    "icon",
+    "---Actions---",
+    "button",
+    "input",
+    "---Overlays---",
+    "tooltip",
+    "dropdown-menu",
+    "dialog",
+    "---Feedback---",
+    "toast",
+    "scroll-area"
+  ]
+}

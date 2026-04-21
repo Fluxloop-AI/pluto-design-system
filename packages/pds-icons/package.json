@@ -2,7 +2,7 @@
   "name": "@fluxloop-ai/pds-icons",
   "version": "0.0.0",
   "private": false,
-  "description": "Pluto Design System — lucide wrappers + PDS-native icons",
+  "description": "Pluto Design System — phosphor wrappers + PDS-native icons",
   "license": "UNLICENSED",
   "type": "module",
   "sideEffects": false,
@@ -11,9 +11,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./lucide": {
-      "types": "./dist/lucide.d.ts",
-      "import": "./dist/lucide.js"
+    "./icons": {
+      "types": "./dist/icons.d.ts",
+      "import": "./dist/icons.js"
     },
     "./custom": {
       "types": "./dist/custom/index.d.ts",
@@ -34,7 +34,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "lucide-react": "^0.469.0"
+    "@phosphor-icons/react": "^2.1.7"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

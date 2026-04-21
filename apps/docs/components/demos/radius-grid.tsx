@@ -1,17 +1,18 @@
 /**
- * 8단계 radius 박스 샘플 + squircle on/off 비교.
+ * 9단계 radius 박스 샘플 + squircle on/off 비교.
  * 글로벌 squircle 은 pds-core reset.css 에서 모든 요소에 `corner-shape: squircle` 를 건다.
  * 여기서 squircle-off 열은 `corner-shape: round` 로 강제 오버라이드.
  */
 
 const RADII = [
-  { name: "none", value: "0", cssVar: "--pds-radius-none" },
-  { name: "xs", value: "2px", cssVar: "--pds-radius-xs" },
-  { name: "sm", value: "4px", cssVar: "--pds-radius-sm" },
-  { name: "md ★", value: "6px", cssVar: "--pds-radius-md" },
-  { name: "lg", value: "8px", cssVar: "--pds-radius-lg" },
-  { name: "xl", value: "12px", cssVar: "--pds-radius-xl" },
-  { name: "2xl", value: "16px", cssVar: "--pds-radius-2xl" },
+  { name: "0", value: "0", cssVar: "--pds-radius-0" },
+  { name: "2", value: "2px", cssVar: "--pds-radius-2" },
+  { name: "4", value: "4px", cssVar: "--pds-radius-4" },
+  { name: "6", value: "6px", cssVar: "--pds-radius-6" },
+  { name: "8", value: "8px", cssVar: "--pds-radius-8" },
+  { name: "10", value: "10px", cssVar: "--pds-radius-10" },
+  { name: "12", value: "12px", cssVar: "--pds-radius-12" },
+  { name: "16", value: "16px", cssVar: "--pds-radius-16" },
   { name: "full", value: "9999px", cssVar: "--pds-radius-full" },
 ];
 

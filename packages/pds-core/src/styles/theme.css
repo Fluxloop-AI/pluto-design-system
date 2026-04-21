@@ -6,7 +6,13 @@
 @import "./tokens/color-semantic.css";
 @import "./tokens/color-chat.css";
 @import "./tokens/typography.css";
-@import "./tokens/spacing.css";
+/**
+ * spacing.css 는 theme.css 에서 제외.
+ * `--spacing-N: Npx` 개별 override 가 Tailwind v4 의 `--spacing` multiplier 를
+ * 덮어써 `h-14`, `py-24` 등 기본 유틸리티가 전부 깨진다.
+ * Montage px 스케일이 필요한 앱/컴포넌트는 이 파일을 직접 import 하거나
+ * arbitrary `[Npx]` 로 대응한다.
+ */
 @import "./tokens/radius.css";
 @import "./tokens/shadow.css";
 @import "./tokens/zindex.css";

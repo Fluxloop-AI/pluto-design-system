@@ -6,3 +6,7 @@
 @import "@fluxloop-ai/pds-core/styles/theme.css";
 @import "@fluxloop-ai/pds-core/styles/fonts.css";
 @import "@fluxloop-ai/pds-core/styles/keyframes.css";
+
+/* pds-ui 컴포넌트 Tailwind class 스캐닝 경로 */
+@source "../../../packages/pds-ui/src/**/*.{ts,tsx}";
+@source "../components/demos/**/*.{ts,tsx}";
