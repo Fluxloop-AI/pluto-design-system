@@ -1,0 +1,89 @@
+---
+title: Input
+description: 9 slot TextField — leading/trailing/reset/invalid/positive 포함
+---
+
+import {
+  InputBasicDemo,
+  InputSizeDemo,
+  InputStateDemo,
+  InputWithSlotsDemo,
+} from "@/components/demos/input-demo";
+
+Montage `text-field` 을 9 slot 그대로 이식. `TextFieldButton` / `TextFieldContent` 서브컴포넌트는 **Phase 1 스코프 밖** (Phase 5+).
+
+## 사용
+
+```tsx
+import { Input } from "@fluxloop-ai/pds-ui/components/input";
+
+<Input placeholder="프로젝트 이름" />
+<Input invalid defaultValue="잘못된 값" />
+<Input leadingContent={<Icon icon={Search} />} />
+```
+
+## Basic
+
+<InputBasicDemo />
+
+## Size
+
+<InputSizeDemo />
+
+## State
+
+invalid / positive / readOnly / disabled. 포커스 시 reset 버튼이 표시된다.
+
+<InputStateDemo />
+
+## Slots
+
+`leadingContent` · `trailingContent` 로 아이콘/배지 삽입.
+
+<InputWithSlotsDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `size` | `sm \| md \| lg` | `md` | 높이 + 폰트 크기 |
+| `invalid` | `boolean` | `false` | 빨간 링 + invalid 아이콘 |
+| `positive` | `boolean` | `false` | 파란 체크 아이콘 |
+| `disabled` | `boolean` | `false` | — |
+| `readOnly` | `boolean` | `false` | reset 버튼 숨김 |
+| `leadingContent` | `ReactNode` | — | 좌측 slot |
+| `trailingContent` | `ReactNode` | — | 우측 slot (reset 앞) |
+| `trailingButton` | `ReactNode` | — | 오른쪽 붙는 버튼 슬롯 |
+| `width` | `CSSProperties["width"]` | — | wrapper 너비 |
+| `onReset` | `(prev: string) => void` | — | reset 콜백 |
+
+## 9 Slot 구조
+
+`wrapper` → `field` → `[leading, input, invalidIcon | positiveIcon, reset, trailing]` + `trailingButton`
+
+| Slot | 역할 |
+|---|---|
+| `wrapper` | 외곽 컨테이너, 배경/그림자/블러 |
+| `field` | 내부 border + focus ring 담당 |
+| `leading` | 왼쪽 아이콘/배지 |
+| `input` | 실제 `<input>` |
+| `trailing` | 오른쪽 커스텀 slot |
+| `trailingButton` | 오른쪽 붙는 버튼 (미래 `InputButton`) |
+| `reset` | 포커스 시 나타나는 ⓧ 초기화 |
+| `invalidIcon` | invalid ⚠ 아이콘 |
+| `positiveIcon` | positive ✓ 아이콘 |
+
+## Montage 대비 변경점
+
+- **토큰 치환**: `theme.semantic.*` → `var(--pds-*)`
+- **단일 `tv()`**: 9 slot · compound 를 하나의 variants 정의로
+- **size 추가**: Montage 단일 사이즈 → `sm/md/lg` (Button 과 스케일 일치)
+- **서브컴포넌트 유보**: `TextFieldButton` / `TextFieldContent` 는 Phase 5+
+- **reset 구현**: `document.execCommand` 대신 native setter + `input` 이벤트
+- **Radix compose-refs**: ref 합성
+
+## Registry 설치
+
+```bash
+npx shadcn add https://pds.pluto.com/r/input
+```

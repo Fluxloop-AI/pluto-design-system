@@ -1,0 +1,73 @@
+---
+title: Button
+description: 4 variant (primary/secondary/ghost/danger) × 3 size, leading/trailing slot, loading
+---
+
+import {
+  ButtonVariantDemo,
+  ButtonSizeDemo,
+  ButtonWithIconDemo,
+  ButtonLoadingDemo,
+} from "@/components/demos/button-demo";
+
+## 사용
+
+```tsx
+import { Button } from "@fluxloop-ai/pds-ui/components/button";
+
+<Button>저장</Button>
+<Button variant="secondary" size="sm">취소</Button>
+<Button variant="danger" loading>삭제</Button>
+```
+
+## Variant
+
+4 종 — primary / secondary / ghost / danger. Montage 의 `color=assistive` 는 **ghost** 로 흡수.
+
+<ButtonVariantDemo />
+
+## Size
+
+`sm` · `md` · `lg` — radius 8 / 10 / 12 에 대응. `iconOnly` 는 square.
+
+<ButtonSizeDemo />
+
+## Icon + Slot
+
+`leadingContent` / `trailingContent` 로 아이콘/텍스트 주입. `iconOnly` 는 `aria-label` 필수.
+
+<ButtonWithIconDemo />
+
+## Loading
+
+`loading` 상태에서 이벤트 차단 + 스피너 표시. 본문은 `invisible` 로 레이아웃 유지.
+
+<ButtonLoadingDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `variant` | `primary \| secondary \| ghost \| danger` | `primary` | 색/톤 |
+| `size` | `sm \| md \| lg` | `md` | 크기 |
+| `iconOnly` | `boolean` | `false` | 정사각형 + padding 제거 |
+| `fullWidth` | `boolean` | `false` | `width:100%` |
+| `loading` | `boolean` | `false` | 스피너 + disabled |
+| `leadingContent` | `ReactNode` | — | 좌측 슬롯 |
+| `trailingContent` | `ReactNode` | — | 우측 슬롯 |
+| `asChild` | `boolean` | `false` | Radix Slot 위임 (Link 등) |
+
+## Montage 대비 변경점
+
+- **variant 축소**: `variant × color` 2축 → `variant` 1축 (primary/secondary/ghost/danger)
+- **danger 추가**: Montage 에 없던 negative 시각 (status-negative)
+- **squircle**: 전역 `corner-shape: squircle` 이 모든 radius 에 자동 적용
+- **focus ring**: `--pds-primary-normal` 2px ring + offset
+- **Radix Slot**: `asChild` 지원 (Montage 미지원)
+- **responsive props 제거**: Phase 1 범위 밖
+
+## Registry 설치
+
+```bash
+npx shadcn add https://pds.pluto.com/r/button
+```

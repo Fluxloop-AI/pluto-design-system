@@ -1,0 +1,75 @@
+---
+title: Dialog
+description: Radix Dialog — popup/full × sm/md/lg/xl × fixed/free. bottom variant 은 Phase 5+
+---
+
+import { DialogPopupDemo, DialogFullDemo } from "@/components/demos/dialog-demo";
+
+## 사용
+
+```tsx
+import {
+  Dialog, DialogTrigger, DialogContent,
+  DialogNavigation, DialogBody, DialogActionArea,
+  DialogTitle, DialogDescription, DialogClose,
+} from "@fluxloop-ai/pds-ui/components/dialog";
+
+<Dialog>
+  <DialogTrigger asChild><Button>열기</Button></DialogTrigger>
+  <DialogContent size="md">
+    <DialogNavigation>
+      <DialogTitle>제목</DialogTitle>
+      <DialogClose />
+    </DialogNavigation>
+    <DialogBody>...</DialogBody>
+    <DialogActionArea>
+      <Button>확인</Button>
+    </DialogActionArea>
+  </DialogContent>
+</Dialog>
+```
+
+## Popup
+
+<DialogPopupDemo />
+
+## Full
+
+<DialogFullDemo />
+
+## DialogContent Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `variant` | `popup \| full` | `popup` | `popup` 중앙 정렬, `full` 화면 거의 전체 |
+| `size` | `sm \| md \| lg \| xl` | `md` | width — popup 모드에만 적용 |
+| `resize` | `fixed \| free` | `fixed` | `fixed` 는 680px cap, `free` 는 viewport cap |
+
+## Slots
+
+| Slot | 컴포넌트 |
+|---|---|
+| Overlay | `DialogOverlay` (Portal 내부 자동) |
+| Container | `DialogContent` |
+| Navigation | `DialogNavigation` — 상단 바, 제목/Close 배치 |
+| Content | `DialogBody` — 스크롤 영역 |
+| ActionArea | `DialogActionArea` — 하단 액션 바 |
+
+## 범위 밖 (Phase 1)
+
+- **`bottom` variant** — 모바일 패턴. 데스크탑 앱 MVP에서 수요 낮음. Phase 5+
+- **drag handle / peekHeight** — `bottom` 용 prop, 함께 유보
+
+## Montage 대비 변경점
+
+- **headless**: 자체 dismissable-layer + focus-scope → `@radix-ui/react-dialog` 일괄
+- **bottom variant 제외**: 위 참조
+- **Slot 단순화**: `ModalNavigation` / `ModalContent` / `ModalActionArea` 를 동일 컨셉의 `DialogNavigation` / `DialogBody` / `DialogActionArea` 로
+- **토큰 치환**: `theme.semantic.*` → `var(--pds-*)`, overlay `--pds-material-dimmer`
+- **z-index**: overlay `--pds-z-overlay` (1200), content `--pds-z-modal` (1300)
+
+## Registry 설치
+
+```bash
+npx shadcn add https://pds.pluto.com/r/dialog
+```

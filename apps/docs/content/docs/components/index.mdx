@@ -1,0 +1,36 @@
+---
+title: Components
+description: Phase 1 Tier 1 기본 위젯 — 10개 전부 이식 완료 (v0.1)
+---
+
+Wanted Montage 를 뼈대로 삼아 PDS 스택(Tailwind v4 + Radix + `tailwind-variants`)으로 번역·개량했다.
+
+## Phase 1 진행
+
+| # | 컴포넌트 | Headless | Slot 수 |
+|---|---|---|---|
+| 1 | [Separator](/docs/components/separator) | `@radix-ui/react-separator` | 1 |
+| 2 | [Avatar](/docs/components/avatar) | `@radix-ui/react-avatar` | 3 |
+| 3 | [Icon](/docs/components/icon) | — (lucide 래퍼) | 1 |
+| 4 | [Button](/docs/components/button) | `@radix-ui/react-slot` | 3 |
+| 5 | [Input](/docs/components/input) | `@radix-ui/react-compose-refs` | 9 |
+| 6 | [Tooltip](/docs/components/tooltip) | `@radix-ui/react-tooltip` | 4 |
+| 7 | [DropdownMenu](/docs/components/dropdown-menu) | `@radix-ui/react-dropdown-menu` | 8 |
+| 8 | [Dialog](/docs/components/dialog) | `@radix-ui/react-dialog` | 7 |
+| 9 | [Toast](/docs/components/toast) | `@radix-ui/react-toast` | 6 |
+| 10 | [ScrollArea](/docs/components/scroll-area) | `@radix-ui/react-scroll-area` | 4 |
+
+## 공통 원칙
+
+- **Montage 구조 이식**: slot 개수·variant 축을 임의 축약하지 않음
+- **토큰**: `theme.semantic.*` → `var(--pds-*)` 일괄 치환
+- **전역 squircle**: `corner-shape: squircle` 이 모든 radius 에 자동 적용
+- **Motion 토큰**: duration/easing 은 `var(--pds-motion-duration-*)` / `var(--pds-motion-easing-*)`
+- **단일 `tv()`**: slot/variant/compound 를 한 정의로
+
+## 범위 밖 (Phase 5+)
+
+- Dialog `bottom` variant
+- `TextFieldButton` / `TextFieldContent` 서브컴포넌트
+- 다크 모드 (Phase 4)
+- Tabs · Select · Combobox · Checkbox · Switch · Radio · Tag · Badge · Progress · Spinner · Table · Accordion · Popover · Form · Command palette
