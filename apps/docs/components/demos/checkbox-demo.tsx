@@ -6,12 +6,15 @@ import * as React from "react";
 function LabeledCheckbox({
   id,
   label,
+  size = "md",
   ...props
 }: { id: string; label: string } & React.ComponentProps<typeof Checkbox>) {
+  const gap = size === "sm" ? 4 : 6;
+  const fontSize = size === "sm" ? 12 : 13;
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-      <Checkbox id={id} {...props} />
-      <label htmlFor={id} style={{ fontSize: 13 }}>
+    <span style={{ display: "inline-flex", alignItems: "center", gap }}>
+      <Checkbox id={id} size={size} {...props} />
+      <label htmlFor={id} style={{ fontSize }}>
         {label}
       </label>
     </span>
