@@ -1,6 +1,6 @@
 "use client";
 
-import type { PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
+import type { IconWeight, PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
@@ -41,21 +41,25 @@ type IconProps = Omit<React.SVGAttributes<SVGSVGElement>, "color"> & {
   icon: PhosphorIcon | React.ComponentType<React.SVGAttributes<SVGSVGElement>>;
   size?: IconVariants["size"];
   color?: IconVariants["color"];
+  /** Phosphor icon weight. 비-Phosphor 아이콘에는 무시된다. */
+  weight?: IconWeight;
   label?: string;
 };
 
 const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
-  { icon: Component, size = "md", color = "inherit", label, className, ...props },
+  { icon: Component, size = "md", color = "inherit", weight, label, className, ...props },
   ref,
 ) {
   const a11y = label
     ? { role: "img" as const, "aria-label": label }
     : { "aria-hidden": true as const };
+  const weightProp = weight ? ({ weight } as { weight: IconWeight }) : null;
   return (
     <Component
       ref={ref as never}
       className={cn(icon({ size, color }), className)}
       {...a11y}
+      {...weightProp}
       {...props}
     />
   );
