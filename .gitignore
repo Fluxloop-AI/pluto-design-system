@@ -41,3 +41,12 @@ coverage/
 
 # misc
 *.tgz
+
+# local working files (not committed)
+.claude/
+.playwright-mcp/
+thoughts/
+
+# screenshots (ad-hoc visual diffs at repo root, kept locally)
+/*.png
+
