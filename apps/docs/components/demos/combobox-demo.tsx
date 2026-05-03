@@ -27,9 +27,11 @@ export function ComboboxBasicDemo() {
   const [value, setValue] = React.useState<string>("react");
   const selectedLabel = FRAMEWORKS.find((f) => f.value === value)?.label ?? value;
   return (
-    <div className="pds-demo-row" style={{ width: 280 }}>
+    <div className="pds-demo-row">
       <Combobox value={value} onValueChange={setValue}>
-        <ComboboxTrigger placeholder="프레임워크 선택">{selectedLabel}</ComboboxTrigger>
+        <ComboboxTrigger placeholder="프레임워크 선택" style={{ width: 280 }}>
+          {selectedLabel}
+        </ComboboxTrigger>
         <ComboboxContent>
           <ComboboxInput placeholder="검색" leadingContent={<MagnifyingGlass />} />
           <ComboboxList>
@@ -54,9 +56,9 @@ const CITIES = [
 
 export function ComboboxGroupDemo() {
   return (
-    <div className="pds-demo-row" style={{ width: 280 }}>
+    <div className="pds-demo-row">
       <Combobox size="md" defaultValue="Seoul">
-        <ComboboxTrigger>Seoul</ComboboxTrigger>
+        <ComboboxTrigger style={{ width: 280 }} />
         <ComboboxContent>
           <ComboboxInput placeholder="도시 검색 (한/영)" leadingContent={<MagnifyingGlass />} />
           <ComboboxList>
@@ -81,11 +83,41 @@ export function ComboboxGroupDemo() {
   );
 }
 
+export function ComboboxFilledDemo() {
+  const [value, setValue] = React.useState<string>("react");
+  const selectedLabel = FRAMEWORKS.find((f) => f.value === value)?.label ?? value;
+  return (
+    <div className="pds-demo-row">
+      <Combobox value={value} onValueChange={setValue}>
+        <ComboboxTrigger
+          variant="filled"
+          placeholder="프레임워크 선택"
+          style={{ width: 280 }}
+        >
+          {selectedLabel}
+        </ComboboxTrigger>
+        <ComboboxContent>
+          <ComboboxInput placeholder="검색" leadingContent={<MagnifyingGlass />} />
+          <ComboboxList>
+            <ComboboxEmpty>일치하는 항목이 없습니다.</ComboboxEmpty>
+            {FRAMEWORKS.map((f) => (
+              <ComboboxItem key={f.value} value={f.value}>
+                {f.label}
+              </ComboboxItem>
+            ))}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+      <Styles />
+    </div>
+  );
+}
+
 export function ComboboxDisabledDemo() {
   return (
-    <div className="pds-demo-row" style={{ width: 280 }}>
+    <div className="pds-demo-row">
       <Combobox disabled defaultValue="react">
-        <ComboboxTrigger>React (disabled)</ComboboxTrigger>
+        <ComboboxTrigger style={{ width: 280 }}>React (disabled)</ComboboxTrigger>
         <ComboboxContent>
           <ComboboxInput />
           <ComboboxList>

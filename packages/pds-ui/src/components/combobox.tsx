@@ -11,10 +11,8 @@ const combobox = tv({
   slots: {
     trigger: [
       "group inline-flex items-center justify-between gap-[8px]",
-      "bg-[var(--pds-background-transparent-normal)]",
-      "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
       "text-[color:var(--pds-label-normal)]",
-      "transition-[box-shadow] duration-[var(--pds-duration-fast)]",
+      "transition-[box-shadow,background-color] duration-[var(--pds-duration-fast)]",
       "focus-visible:outline-none",
       "focus-visible:shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--pds-focus-ring)_43%,transparent)]",
       "data-[placeholder]:text-[color:var(--pds-label-assistive)]",
@@ -38,10 +36,7 @@ const combobox = tv({
       "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
     ],
     commandRoot: "flex flex-col",
-    inputWrap: [
-      "flex items-center gap-[6px] border-b border-[var(--pds-line-normal-neutral)]",
-      "px-[10px]",
-    ],
+    inputWrap: "flex items-center gap-[6px]",
     input: [
       "flex-1 min-w-0 bg-transparent outline-none border-0",
       "text-[color:var(--pds-label-normal)]",
@@ -49,15 +44,14 @@ const combobox = tv({
       "caret-[color:var(--pds-primary-normal)]",
       "disabled:cursor-default disabled:text-[color:var(--pds-label-alternative)]",
     ],
-    list: "max-h-[256px] overflow-y-auto overflow-x-hidden py-[4px]",
+    list: "max-h-[256px] overflow-y-auto overflow-x-hidden p-[4px]",
     empty: [
       "py-[16px] px-[12px] text-center",
       "text-[12px] text-[color:var(--pds-label-assistive)]",
     ],
     group: [
       "py-[2px]",
-      "[&_[cmdk-group-heading]]:px-[10px] [&_[cmdk-group-heading]]:py-[4px]",
-      "[&_[cmdk-group-heading]]:text-[11px]",
+      "[&_[cmdk-group-heading]]:py-[4px]",
       "[&_[cmdk-group-heading]]:font-semibold",
       "[&_[cmdk-group-heading]]:text-[color:var(--pds-label-alternative)]",
     ],
@@ -68,35 +62,56 @@ const combobox = tv({
       "data-[disabled=true]:pointer-events-none data-[disabled=true]:[color:var(--pds-label-disable)]",
       "aria-selected:bg-[var(--pds-fill-normal)]",
     ],
-    separator: "h-px bg-[var(--pds-line-normal-neutral)] my-[4px] mx-[10px]",
+    separator: "h-px bg-[var(--pds-line-normal-neutral)]",
   },
   variants: {
+    variant: {
+      outlined: {
+        trigger: [
+          "bg-[var(--pds-background-transparent-normal)]",
+          "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
+        ],
+      },
+      filled: {
+        trigger: [
+          "bg-[var(--pds-fill-normal)]",
+          "hover:bg-[var(--pds-fill-strong)]",
+          "data-[state=open]:bg-[var(--pds-fill-strong)]",
+        ],
+      },
+    },
     size: {
       sm: {
         trigger: "h-[32px] px-[10px] rounded-[10px] text-[13px]",
         icon: "w-[14px] h-[14px]",
         content: "rounded-[10px]",
-        inputWrap: "h-[32px]",
+        inputWrap: "h-[32px] px-[10px]",
         input: "text-[13px]",
         item: "px-[8px] py-[4px] rounded-[8px] text-[13px] [&_svg]:w-[14px] [&_svg]:h-[14px]",
+        group: "[&_[cmdk-group-heading]]:px-[8px] [&_[cmdk-group-heading]]:text-[11px]",
+        separator: "my-[2px] mx-[8px]",
       },
       md: {
         trigger: "h-[36px] px-[12px] rounded-[12px] text-[14px]",
         icon: "w-[16px] h-[16px]",
         content: "rounded-[12px]",
-        inputWrap: "h-[36px]",
+        inputWrap: "h-[36px] px-[12px]",
         input: "text-[14px]",
         item: "px-[10px] py-[6px] rounded-[10px] text-[14px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
+        group: "[&_[cmdk-group-heading]]:px-[10px] [&_[cmdk-group-heading]]:text-[12px]",
+        separator: "my-[4px] mx-[10px]",
       },
     },
   },
   defaultVariants: {
     size: "sm",
+    variant: "outlined",
   },
 });
 
 type ComboboxVariants = VariantProps<typeof combobox>;
 type ComboboxSize = NonNullable<ComboboxVariants["size"]>;
+type ComboboxVariant = NonNullable<ComboboxVariants["variant"]>;
 
 type ComboboxFilter = (value: string, search: string, keywords?: string[]) => number;
 
@@ -106,6 +121,7 @@ type ComboboxContextValue = {
   onValueChange: ((value: string) => void) | undefined;
   inputValue: string | undefined;
   onInputValueChange: ((value: string) => void) | undefined;
+  setOpen: (open: boolean) => void;
 };
 
 const ComboboxContext = React.createContext<ComboboxContextValue | null>(null);
@@ -150,8 +166,10 @@ function Combobox({
     defaultValue,
   );
   const [uncontrolledInput, setUncontrolledInput] = React.useState<string>(defaultInputValue ?? "");
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState<boolean>(defaultOpen ?? false);
   const value = controlledValue !== undefined ? controlledValue : uncontrolledValue;
   const inputValue = controlledInputValue !== undefined ? controlledInputValue : uncontrolledInput;
+  const openState = open !== undefined ? open : uncontrolledOpen;
 
   const handleValueChange = React.useCallback(
     (next: string) => {
@@ -167,6 +185,18 @@ function Combobox({
     },
     [controlledInputValue, onInputValueChange],
   );
+  const handleOpenChange = React.useCallback(
+    (next: boolean) => {
+      if (open === undefined) setUncontrolledOpen(next);
+      // Reset search input on close so the next open shows the full list
+      if (!next) {
+        if (controlledInputValue === undefined) setUncontrolledInput("");
+        onInputValueChange?.("");
+      }
+      onOpenChange?.(next);
+    },
+    [open, controlledInputValue, onInputValueChange, onOpenChange],
+  );
 
   const ctx = React.useMemo<ComboboxContextValue>(
     () => ({
@@ -175,18 +205,17 @@ function Combobox({
       onValueChange: handleValueChange,
       inputValue,
       onInputValueChange: handleInputValueChange,
+      setOpen: handleOpenChange,
     }),
-    [size, value, handleValueChange, inputValue, handleInputValueChange],
+    [size, value, handleValueChange, inputValue, handleInputValueChange, handleOpenChange],
   );
 
   const styles = combobox({ size });
 
   return (
     <ComboboxContext.Provider value={ctx}>
-      <PopoverPrimitive.Root open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
+      <PopoverPrimitive.Root open={openState} onOpenChange={handleOpenChange}>
         <CommandRoot
-          value={value}
-          onValueChange={handleValueChange}
           filter={filter}
           shouldFilter={filter ? undefined : true}
           label="Combobox"
@@ -209,14 +238,18 @@ function Combobox({
 type ComboboxTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger> & {
   invalid?: boolean;
   placeholder?: string;
+  variant?: ComboboxVariant;
 };
 
 const ComboboxTrigger = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Trigger>,
   ComboboxTriggerProps
->(function ComboboxTrigger({ className, invalid, placeholder, children, ...props }, ref) {
+>(function ComboboxTrigger(
+  { className, invalid, placeholder, variant = "outlined", children, ...props },
+  ref,
+) {
   const ctx = useComboboxContext("ComboboxTrigger");
-  const styles = combobox({ size: ctx.size });
+  const styles = combobox({ size: ctx.size, variant });
   const showPlaceholder = !children && !ctx.value;
   return (
     <PopoverPrimitive.Trigger
@@ -335,6 +368,7 @@ const ComboboxItem = React.forwardRef<React.ElementRef<typeof CommandRoot.Item>,
         onSelect={(value) => {
           ctx.onValueChange?.(value);
           onSelect?.(value);
+          ctx.setOpen(false);
         }}
         className={cn(styles.item(), className)}
         {...props}
@@ -354,7 +388,13 @@ const ComboboxSeparator = React.forwardRef<
   );
 });
 
-export type { ComboboxContentProps, ComboboxFilter, ComboboxItemProps, ComboboxProps };
+export type {
+  ComboboxContentProps,
+  ComboboxFilter,
+  ComboboxItemProps,
+  ComboboxProps,
+  ComboboxTriggerProps,
+};
 export {
   Combobox,
   ComboboxContent,

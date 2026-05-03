@@ -6,6 +6,7 @@ description: cmdk + Radix Popover 기반 searchable select. cmdk 는 PDS 공개 
 import {
   ComboboxBasicDemo,
   ComboboxGroupDemo,
+  ComboboxFilledDemo,
   ComboboxDisabledDemo,
 } from "@/components/demos/combobox-demo";
 
@@ -39,6 +40,10 @@ import {
 
 <ComboboxGroupDemo />
 
+## Filled
+
+<ComboboxFilledDemo />
+
 ## Disabled
 
 <ComboboxDisabledDemo />
@@ -55,6 +60,14 @@ import {
 | `filter` | `(value, search, keywords?) => number` | - | 커스텀 필터 — 지정 시 내부 자동 필터링 비활성 |
 | `disabled` | `boolean` | - | 루트 `<fieldset>` 으로 적용 |
 | `size` | `sm \| md` | `sm` | |
+
+### ComboboxTrigger
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `variant` | `outlined \| filled` | `outlined` | |
+| `placeholder` | `string` | `"선택"` | `children` · `value` 모두 비었을 때 표시 |
+| `invalid` | `boolean` | - | `aria-invalid` 부여 → 오류 색 보더 |
 
 ### ComboboxItem
 
