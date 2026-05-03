@@ -27,9 +27,9 @@ const button = tv({
       solid: {
         root: [
           "text-[color:var(--pds-inverse-label)] bg-[var(--pds-primary-normal)]",
-          "hover:brightness-110 active:brightness-95",
+          "hover:bg-[color-mix(in_srgb,var(--pds-primary-normal)_86%,white)]",
+          "active:bg-[color-mix(in_srgb,var(--pds-primary-normal)_92%,white)]",
           "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
-          "disabled:hover:brightness-100",
           "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
         ],
       },
@@ -54,8 +54,9 @@ const button = tv({
       },
       danger: {
         root: [
-          "text-[color:var(--pds-inverse-label)] bg-[var(--pds-status-negative)]",
-          "hover:brightness-110 active:brightness-95",
+          "text-[color:var(--pds-accent-foreground-red)] bg-[var(--pds-color-red-95)]",
+          "hover:bg-[var(--pds-color-red-90)]",
+          "active:bg-[var(--pds-color-red-80)]",
           "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
           "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
         ],
