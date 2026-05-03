@@ -1,6 +1,6 @@
 ---
 title: Badge
-description: 상태 표시용 레이블. solid/outlined × xs/sm/md × 5 컬러.
+description: 상태/속성 표시용 레이블. solid/outlined × neutral|accent × xs/sm/md.
 ---
 
 import { BadgeGridDemo, BadgeContentDemo } from "@/components/demos/badge-demo";
@@ -10,11 +10,12 @@ import { BadgeGridDemo, BadgeContentDemo } from "@/components/demos/badge-demo";
 ```tsx
 import { Badge } from "@fluxloop-ai/pds-ui/components/badge";
 
-<Badge color="positive">New</Badge>
-<Badge variant="outlined" color="accent" size="sm">Beta</Badge>
+<Badge>Default (accent + cyan)</Badge>
+<Badge color="accent" accentColor="positive">Positive</Badge>
+<Badge variant="outlined" color="neutral" neutralColor="strong">Strong</Badge>
 ```
 
-## 5 color × 2 variant × 3 size
+## Variants × Color × Size
 
 <BadgeGridDemo />
 
@@ -26,10 +27,21 @@ import { Badge } from "@fluxloop-ai/pds-ui/components/badge";
 
 | Prop | 타입 | 기본 | 설명 |
 |---|---|---|---|
-| `variant` | `solid \| outlined` | `solid` | 배경 채움 / 외곽선만 |
-| `size` | `xs \| sm \| md` | `xs` | 16 / 18 / 22 px 높이 |
-| `color` | `neutral \| accent \| positive \| cautionary \| negative` | `neutral` | |
+| `variant` | `solid \| outlined` | `solid` | solid = bg `accentColor @ 8%` / outlined = white bg + `accentColor @ 43%` border |
+| `size` | `xs \| sm \| md` | `xs` | radius 8/8/10, font 11/12/13, py 3/4/5 px |
+| `color` | `neutral \| accent` | `accent` | foreground 토큰 종류 |
+| `accentColor` | `red \| red-orange \| orange \| lime \| green \| cyan \| light-blue \| blue \| violet \| purple \| pink \| positive \| cautionary \| negative` | `cyan` | `color=accent` 일 때 사용할 foreground 토큰 |
+| `neutralColor` | `normal \| strong \| neutral \| alternative \| assistive \| disable` | `alternative` | `color=neutral` 일 때 사용할 label 토큰 |
 | `leadingContent` / `trailingContent` | `ReactNode` | - | 아이콘 등 |
+
+## Hierarchy
+
+| Level | 조합 |
+|---|---|
+| 4 — 가장 높은 주목 | `variant="solid" color="accent"` |
+| 3 — 강조 | `variant="outlined" color="accent"` |
+| 2 — 일반 | `variant="solid" color="neutral"` |
+| 1 — 부가 | `variant="outlined" color="neutral"` |
 
 ## Registry 설치
 
