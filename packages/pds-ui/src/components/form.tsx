@@ -15,6 +15,7 @@ type FormFieldContextValue = {
   hasDescription: boolean;
   setHasError: (v: boolean) => void;
   setHasDescription: (v: boolean) => void;
+  orientation: "vertical" | "inline";
 };
 
 const FormFieldContext = React.createContext<FormFieldContextValue | null>(null);
@@ -28,13 +29,16 @@ const useFormFieldContext = (caller: string): FormFieldContextValue => {
 
 const form = tv({
   slots: {
-    field: "flex flex-col gap-[6px]",
+    field: "not-prose leading-[1.4]",
     label: [
       "inline-flex items-center gap-[4px] select-none",
       "text-[13px] font-medium text-[color:var(--pds-label-normal)]",
     ],
     description: "text-[12px] text-[color:var(--pds-label-alternative)]",
-    error: ["text-[12px] text-[color:var(--pds-status-negative)]", "flex items-center gap-[4px]"],
+    error: [
+      "text-[12px] text-[color:var(--pds-status-negative)]",
+      "flex items-center gap-[4px]",
+    ],
     required: "text-[color:var(--pds-status-negative)]",
   },
   variants: {
@@ -46,8 +50,20 @@ const form = tv({
       },
       md: {},
     },
+    orientation: {
+      vertical: {
+        field: "flex flex-col gap-[6px]",
+        description: "pl-[4px]",
+        error: "pl-[4px]",
+      },
+      inline: {
+        field: "grid grid-cols-[auto_1fr] gap-x-[8px] gap-y-[6px] items-center",
+        description: "[grid-column:2]",
+        error: "[grid-column:2]",
+      },
+    },
   },
-  defaultVariants: { size: "md" },
+  defaultVariants: { size: "md", orientation: "vertical" },
 });
 
 type FormVariants = VariantProps<typeof form>;
@@ -55,10 +71,11 @@ type FormVariants = VariantProps<typeof form>;
 type FormFieldProps = React.HTMLAttributes<HTMLDivElement> & {
   name?: string;
   size?: FormVariants["size"];
+  orientation?: FormVariants["orientation"];
 };
 
 const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(function FormField(
-  { className, name, size = "md", children, ...props },
+  { className, name, size = "md", orientation = "vertical", children, ...props },
   ref,
 ) {
   const reactId = React.useId();
@@ -76,10 +93,11 @@ const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(function Form
       hasDescription,
       setHasError,
       setHasDescription,
+      orientation: orientation ?? "vertical",
     }),
-    [baseId, hasError, hasDescription],
+    [baseId, hasError, hasDescription, orientation],
   );
-  const styles = form({ size });
+  const styles = form({ size, orientation });
   return (
     <FormFieldContext.Provider value={value}>
       <div ref={ref} className={cn(styles.field(), className)} {...props}>
@@ -99,7 +117,7 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(function Fo
   ref,
 ) {
   const ctx = useFormFieldContext("FormLabel");
-  const styles = form({ size });
+  const styles = form({ size, orientation: ctx.orientation });
   return (
     <label
       ref={ref}
@@ -157,7 +175,7 @@ const FormDescription = React.forwardRef<HTMLParagraphElement, FormDescriptionPr
       ctx.setHasDescription(true);
       return () => ctx.setHasDescription(false);
     }, [ctx]);
-    const styles = form({ size });
+    const styles = form({ size, orientation: ctx.orientation });
     return (
       <p
         ref={ref}
@@ -184,7 +202,7 @@ const FormErrorMessage = React.forwardRef<HTMLParagraphElement, FormErrorMessage
       return () => ctx.setHasError(false);
     }, [ctx, visible]);
     if (!visible) return null;
-    const styles = form({ size });
+    const styles = form({ size, orientation: ctx.orientation });
     return (
       <p
         ref={ref}

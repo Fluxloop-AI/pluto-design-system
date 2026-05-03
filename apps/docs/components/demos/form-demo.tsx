@@ -71,13 +71,11 @@ export function FormSelectDemo() {
 export function FormCheckboxDemo() {
   return (
     <div className="pds-demo-row">
-      <FormField>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <FormControl>
-            <Checkbox />
-          </FormControl>
-          <FormLabel>이용약관에 동의합니다.</FormLabel>
-        </div>
+      <FormField orientation="inline">
+        <FormControl>
+          <Checkbox />
+        </FormControl>
+        <FormLabel>이용약관에 동의합니다.</FormLabel>
         <FormDescription>필수 항목입니다.</FormDescription>
       </FormField>
       <Styles />
