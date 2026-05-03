@@ -44,12 +44,6 @@ import { Progress } from "@fluxloop-ai/pds-ui/components/progress";
 - `@radix-ui/react-progress` 가 `role="progressbar"`, `aria-valuemin/max/now` 자동 처리
 - `prefers-reduced-motion: reduce` 에서는 indeterminate 애니메이션 정지 (`motion-reduce:animate-none`)
 
-## Montage 대비 변경점
-
-- **이름**: Montage `ProgressIndicator` → **`Progress`**
-- **headless**: Montage Emotion keyframes → Tailwind arbitrary + inline `@keyframes pds-progress-indeterminate`
-- **토큰**: 트랙 `var(--pds-fill-alternative)`, 바 `var(--pds-primary-normal)`
-
 ## Registry 설치
 
 ```bash

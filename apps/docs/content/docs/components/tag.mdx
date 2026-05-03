@@ -39,12 +39,6 @@ import { Tag } from "@fluxloop-ai/pds-ui/components/tag";
 | `onRemove` | `() => void` | - | 지정 시 trailing 자리에 × 아이콘 |
 | `asChild` | `boolean` | - | 루트를 `<a>` 등으로 교체 |
 
-## Montage 대비 변경점
-
-- **이름**: Montage `Chip` → **`Tag`** (제품명 변형 환원)
-- **폴리모픽**: `asChild` 지원 (`@radix-ui/react-slot`)
-- **pressed**: `aria-pressed` + `data-pressed` 양방향 — 스타일은 `data-pressed=true` 선택자 사용
-
 ## Registry 설치
 
 ```bash

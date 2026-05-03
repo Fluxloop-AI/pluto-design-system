@@ -72,13 +72,6 @@ Radix의 `side` / `align` / `sideOffset` / `alignOffset` 을 그대로 받습니
 | `DropdownMenuSub` / `SubTrigger` / `SubContent` | 서브메뉴 |
 | `DropdownMenuGroup` | 그룹 컨테이너 |
 
-## Montage 대비 변경점
-
-- **headless**: 자체 popover → `@radix-ui/react-dropdown-menu` (focus trap + a11y)
-- **Slot 분리**: Item/CheckboxItem/RadioItem 을 각각 컴포넌트로 노출 (Montage 는 `variant` prop 로 분기했음 — tree-shaking 및 타입 안정성 측면에서 분리가 유리)
-- **Shortcut slot**: `<DropdownMenuShortcut>⌘N</DropdownMenuShortcut>` — Montage 는 children에 섞어 넣었음
-- **z-index**: `--pds-z-dropdown` (1000)
-
 ## Registry 설치
 
 ```bash

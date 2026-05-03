@@ -80,14 +80,6 @@ import {
 - **`bottom` variant** — 모바일 패턴. 데스크탑 앱 MVP에서 수요 낮음. Phase 5+
 - **drag handle / peekHeight** — `bottom` 용 prop, 함께 유보
 
-## Montage 대비 변경점
-
-- **headless**: 자체 dismissable-layer + focus-scope → `@radix-ui/react-dialog` 일괄
-- **bottom variant 제외**: 위 참조
-- **Slot 단순화**: `ModalNavigation` / `ModalContent` / `ModalActionArea` 를 동일 컨셉의 `DialogNavigation` / `DialogBody` / `DialogActionArea` 로
-- **토큰 치환**: `theme.semantic.*` → `var(--pds-*)`, overlay `--pds-material-dimmer`
-- **z-index**: overlay `--pds-z-overlay` (1200), content `--pds-z-modal` (1300)
-
 ## Registry 설치
 
 ```bash

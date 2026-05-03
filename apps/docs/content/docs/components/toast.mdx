@@ -50,14 +50,6 @@ Radix Provider — `duration`, `swipeDirection`, `swipeThreshold`. viewport 는 
 | `warning` | AlertTriangle | `--pds-status-cautionary` |
 | `error` | AlertCircle | `--pds-status-negative` |
 
-## Montage 대비 변경점
-
-- **headless**: 자체 stack manager → `@radix-ui/react-toast` (뷰포트/스와이프/정지 처리)
-- **variant 고정 4종**: Montage 와 동일 (success/error/info/warning)
-- **토큰 치환**: `theme.semantic.*` → `var(--pds-*)`
-- **z-index**: `--pds-z-toast` (1600) — 다른 오버레이 위
-- **sonner**: Phase 1 스코프 밖 (필요 시 Phase 5+ 에서 대체 검토)
-
 ## Registry 설치
 
 ```bash

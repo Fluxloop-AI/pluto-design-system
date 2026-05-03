@@ -40,13 +40,6 @@ import { ScrollArea } from "@fluxloop-ai/pds-ui/components/scroll-area";
 - thumb 색상은 `color-mix(--pds-label-alternative 45%)`, hover 시 65%
 - min hit-area 44×44 (before pseudo) — 포인터 여유
 
-## Montage 대비 변경점
-
-- **headless**: 자체 구현 → `@radix-ui/react-scroll-area` (macOS/Windows/iOS 모두 커버)
-- **토큰 치환**: `theme.semantic.*` → `var(--pds-*)`
-- **`-webkit-scrollbar` 폴백**: Radix ScrollArea 는 자체 viewport overflow 처리. 네이티브 scrollbar 숨김은 Radix 내부 처리
-- **size 간소화**: Montage `responsive` 는 sm alias 로 유지 (viewport 넓이 기반 동적 크기는 Phase 5+)
-
 ## Registry 설치
 
 ```bash

@@ -27,7 +27,7 @@ import { Button } from "@fluxloop-ai/pds-ui/components/button";
 
 - **solid** — 브랜드 컬러 fill + inverse 라벨. 페이지 단위 CTA 1개.
 - **primary** — outline (default). 기본 액션.
-- **secondary** / **ghost** — 보조. Montage 의 `color=assistive` 는 **ghost** 로 흡수.
+- **secondary** / **ghost** — 보조. ghost 는 배경 없이 hover 시에만 fill.
 - **danger** — negative 액션 (`status-negative`).
 
 <ButtonVariantDemo />
@@ -67,16 +67,6 @@ import { Button } from "@fluxloop-ai/pds-ui/components/button";
 | `leadingContent` | `ReactNode` | — | 좌측 슬롯 |
 | `trailingContent` | `ReactNode` | — | 우측 슬롯 |
 | `asChild` | `boolean` | `false` | Radix Slot 위임 (Link 등) |
-
-## Montage 대비 변경점
-
-- **variant 축소**: `variant × color` 2축 → `variant` 1축 (solid/primary/secondary/ghost/danger)
-- **solid 추가**: 브랜드 fill CTA — `primary`(outline)와 위계 분리
-- **danger 추가**: Montage 에 없던 negative 시각 (status-negative)
-- **squircle**: 전역 `corner-shape: squircle` 이 모든 radius 에 자동 적용
-- **focus ring**: `--pds-focus-ring` 2px ring + offset (primary 와 분리된 전용 액센트)
-- **Radix Slot**: `asChild` 지원 (Montage 미지원)
-- **responsive props 제거**: Phase 1 범위 밖
 
 ## Registry 설치
 

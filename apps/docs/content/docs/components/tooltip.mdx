@@ -61,13 +61,6 @@ import {
 | `shortcut` | `ReactNode` | — | 오른쪽 shortcut slot (⌘K 등) |
 | `side` / `align` / `sideOffset` | Radix | — | 표준 positioning |
 
-## Montage 대비 변경점
-
-- **headless**: 자체 popper → `@radix-ui/react-tooltip` (a11y + positioning)
-- **mode 간소화**: `hover` (기본) + `always` (open=true) + `click` (controlled + `disableHoverableContent`)
-- **shortcut slot 유지**: Montage 와 동일한 slot 구조
-- **토큰 치환**: `theme.semantic.inverse.*` → `var(--pds-inverse-*)`, z-index `--pds-z-tooltip` (1500)
-
 ## Registry 설치
 
 ```bash

@@ -35,14 +35,6 @@ import { Separator } from "@fluxloop-ai/pds-ui/components/separator";
 | `thickness` | `1 \| 2` | `1` | 선 두께(px). `2` 는 `h-0.5` / `w-0.5` 로 매핑 |
 | `decorative` | `boolean` | `true` | Radix `decorative` prop. 의미 없는 분리선일 때 `true` |
 
-## Montage 대비 변경점
-
-- **토큰 치환**: `--wds-line-*` → `--pds-line-*`
-- **alpha / solid 통합**: Montage 가 별도 prop 으로 분리했던 alpha/solid 스케일을 `color` 한 축으로 통합 (`"alpha-*"` prefix)
-- **headless**: 자체 `<hr>` 구현 → `@radix-ui/react-separator` 로 표준화 (a11y 자동 처리)
-- **단일 `tv()`**: Emotion `` css`...` `` 다중 함수 → `tailwind-variants` 1개
-- **squircle / motion 무관**: 단색 분리선이라 글로벌 squircle 과 motion 토큰은 해당 없음
-
 ## Registry 설치
 
 ```bash

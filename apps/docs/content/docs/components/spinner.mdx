@@ -35,12 +35,6 @@ import { Spinner } from "@fluxloop-ai/pds-ui/components/spinner";
 - `role="status"` + `aria-label` 기본 적용
 - `prefers-reduced-motion: reduce` 환경에서는 `animate-spin` 정지 (`motion-reduce:animate-none`)
 
-## Montage 대비 변경점
-
-- **헤드리스 SVG**: Montage `Loading` 의 Emotion + keyframes → Tailwind `animate-spin` + `--pds-duration-slower`
-- **사이즈 어휘**: Montage `xsmall/small/medium/large` → PDS `sm/md/lg`
-- **currentColor 상속**: variant 별 색 상수 대신 부모 `color` 로 제어
-
 ## Registry 설치
 
 ```bash

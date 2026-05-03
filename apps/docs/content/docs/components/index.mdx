@@ -3,7 +3,7 @@ title: Components
 description: Phase 1 Tier 1 (10개) + Phase 3 Tier 3 AI/Agent Chat (10개) 이식 완료
 ---
 
-Wanted Montage 를 뼈대로 삼아 PDS 스택(Tailwind v4 + Radix + `tailwind-variants`)으로 번역·개량했다.
+Tailwind v4 + Radix + `tailwind-variants` 위에서, 데스크탑 밀도(14px 본문) 기준으로 슬롯·variant 구조를 정의한다. 헤드리스는 가능한 모두 Radix UI 로 위임하고, 토큰은 `var(--pds-*)` 한 계층만 노출한다.
 
 ## Phase 1 진행
 
@@ -22,7 +22,7 @@ Wanted Montage 를 뼈대로 삼아 PDS 스택(Tailwind v4 + Radix + `tailwind-v
 
 ## Phase 3 — AI / Agent Chat
 
-pluto-note `chat-panel/` 의 9개 소스를 Anthropic Messages API 계약의 controlled 컴포넌트로 이식. `@assistant-ui/react` · Zustand · `@pluto/wds-icon` 의존성 제거.
+pluto-note `chat-panel/` 의 9개 소스를 Anthropic Messages API 계약의 controlled 컴포넌트로 이식. `@assistant-ui/react` · Zustand 의존성 제거, 아이콘은 `@fluxloop-ai/pds-icons` 로 통일.
 
 | # | 컴포넌트 | 분류 |
 |---|---|---|
@@ -42,7 +42,7 @@ Markdown 렌더링과 syntax highlighting 은 `renderMarkdown` / `renderCode` sl
 
 ## 공통 원칙
 
-- **Montage 구조 이식**: slot 개수·variant 축을 임의 축약하지 않음
+- **slot/variant 보존**: slot 개수·variant 축을 임의 축약하지 않음
 - **토큰**: `theme.semantic.*` → `var(--pds-*)` 일괄 치환
 - **전역 squircle**: `corner-shape: squircle` 이 모든 radius 에 자동 적용
 - **Motion 토큰**: duration/easing 은 `var(--pds-motion-duration-*)` / `var(--pds-motion-easing-*)`

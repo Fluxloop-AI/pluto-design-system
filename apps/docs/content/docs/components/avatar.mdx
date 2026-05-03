@@ -39,14 +39,6 @@ fallback 아이콘은 `@fluxloop-ai/pds-icons/icons` 의 `User` / `Buildings` / 
 | `alt` | `string` | `""` | 이미지 alt |
 | `fallback` | `ReactNode` | 자동 | 커스텀 fallback (아이콘/이니셜 등) |
 
-## Montage 대비 변경점
-
-- **headless**: 자체 loading state → `@radix-ui/react-avatar` 의 `Image` / `Fallback` 이 자동 처리
-- **size 확장**: 5단계 → **8단계** (xs 20 / 4xl 80 추가, 나머지는 Montage 유지)
-- **fallback 아이콘**: `@pluto/wds-icon` → `@fluxloop-ai/pds-icons/icons`
-- **토큰 치환**: `theme.semantic.*` → `var(--pds-*)`
-- **responsive props 제거**: `xs/sm/md/lg/xl` breakpoint 오버라이드 제거 (Phase 1 범위 밖, 필요 시 Phase 5+)
-
 ## Registry 설치
 
 ```bash
