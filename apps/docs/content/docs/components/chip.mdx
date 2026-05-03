@@ -13,7 +13,7 @@ import { ChipSizeDemo, ChipVariantDemo, ChipToggleDemo, ChipRemovableDemo } from
 import { Chip } from "@fluxloop-ai/pds-ui/components/chip";
 
 <Chip size="small">필터</Chip>
-<Chip size="small" active onClick={() => {}}>선택됨</Chip>
+<Chip size="small" interactive active onClick={() => {}}>선택됨</Chip>
 <Chip size="small" variant="outlined" leadingContent={<Hash />}>tag</Chip>
 ```
 
@@ -39,15 +39,15 @@ radius/padding/typography 가 사이즈별로 비례.
 
 <ChipVariantDemo />
 
-## Toggle (`active`)
+## Toggle (`active` + `interactive`)
 
-`active` 를 제공하면 `aria-pressed` 와 `data-active` 가 함께 연결됨.
+칩 본체를 클릭 가능하게 하려면 `interactive` 를 켜서 `<button>` 으로 렌더. `active` 를 함께 주면 `aria-pressed` 와 `data-active` 가 연결됨.
 
 <ChipToggleDemo />
 
 ## Removable (trailing slot)
 
-별도 prop 없이 `trailingContent` 자리에 닫기 버튼을 직접 배치. 칩 본체 클릭과 분리하기 위해 trailing 은 별도 `<button>` 으로 두고 `stopPropagation` 처리.
+칩을 비인터랙티브(`<span>`, 기본값)로 두고 `trailingContent` 자리에 닫기 버튼을 직접 배치. 본체가 button 이 아니므로 trailing 의 `<button>` 이 안전하게 중첩 없이 들어감.
 
 <ChipRemovableDemo />
 
@@ -57,10 +57,11 @@ radius/padding/typography 가 사이즈별로 비례.
 |---|---|---|---|
 | `size` | `xsmall \| small \| medium \| large` | `medium` | |
 | `variant` | `solid \| outlined` | `solid` | |
-| `active` | `boolean` | - | 지정 시 `aria-pressed` + `data-active` 연결 |
+| `interactive` | `boolean` | `false` | true 면 `<button>` 으로 렌더. 기본 `<span>` 이라 trailing 에 별도 버튼을 둘 수 있음 |
+| `active` | `boolean` | - | 시각 상태. interactive 일 때 `aria-pressed` 도 연결 |
 | `leadingContent` | `ReactNode` | - | 텍스트 앞 (보통 아이콘/아바타) |
 | `trailingContent` | `ReactNode` | - | 텍스트 뒤 (제거 버튼/카운트 등) |
-| `disabled` | `boolean` | - | |
+| `disabled` | `boolean` | - | interactive 일 때 `disabled`, 아니면 `aria-disabled` 로 노출 |
 | `asChild` | `boolean` | - | 루트를 `<a>` 등으로 교체 |
 
 ## Registry 설치

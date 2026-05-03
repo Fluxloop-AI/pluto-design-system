@@ -47,6 +47,7 @@ export function ChipToggleDemo() {
         <Chip
           key={opt}
           size="small"
+          interactive
           active={active.includes(opt)}
           onClick={() => toggle(opt)}
           leadingContent={<Hash />}

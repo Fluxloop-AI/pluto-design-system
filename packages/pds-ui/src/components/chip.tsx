@@ -9,11 +9,12 @@ const chip = tv({
   slots: {
     root: [
       "inline-flex items-center justify-center align-middle shrink-0 whitespace-nowrap box-border",
-      "leading-none select-none cursor-pointer",
+      "leading-none select-none",
       "transition-[background-color,color,box-shadow] duration-[var(--pds-duration-fast)]",
       "focus-visible:outline-none focus-visible:ring-2",
       "focus-visible:ring-[color:var(--pds-focus-ring)] focus-visible:ring-offset-2",
       "focus-visible:ring-offset-[color:var(--pds-background-normal-normal)]",
+      "data-[interactive=true]:cursor-pointer",
       "disabled:cursor-default disabled:pointer-events-none aria-disabled:pointer-events-none",
     ],
     label: "inline-flex items-center",
@@ -86,20 +87,26 @@ type ChipVariants = VariantProps<typeof chip>;
 type ChipProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color"> & {
   size?: ChipVariants["size"];
   variant?: ChipVariants["variant"];
-  /** 활성/선택 상태. `aria-pressed` 가 함께 연결됨. */
+  /** 활성/선택 상태. interactive 일 때 `aria-pressed` 도 함께 연결됨. */
   active?: boolean;
+  /**
+   * `<button>` 으로 렌더할지 여부. true 면 onClick/disabled/aria-pressed 등 button 시멘틱 적용.
+   * 기본 false → `<span>` 으로 렌더되어 trailing 에 별도 버튼(제거 등)을 안전하게 둘 수 있음.
+   */
+  interactive?: boolean;
   leadingContent?: React.ReactNode;
   trailingContent?: React.ReactNode;
   asChild?: boolean;
 };
 
-const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(function Chip(
+const Chip = React.forwardRef<HTMLElement, ChipProps>(function Chip(
   {
     className,
     size = "medium",
     variant = "solid",
     active,
     disabled,
+    interactive = false,
     leadingContent,
     trailingContent,
     asChild,
@@ -110,19 +117,26 @@ const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(function Chip(
   ref,
 ) {
   const styles = chip({ size, variant });
-  const Component: React.ElementType = asChild ? Slot : "button";
+  const Component = (asChild ? Slot : interactive ? "button" : "span") as React.ElementType;
+  const isButton = !asChild && interactive;
+
+  const elementProps: Record<string, unknown> = {
+    ...props,
+    ref,
+    className: cn(styles.root(), className),
+    "data-active": active || undefined,
+    "data-interactive": interactive || undefined,
+    "aria-pressed": isButton && typeof active === "boolean" ? active : undefined,
+  };
+  if (isButton) {
+    elementProps.type = type;
+    elementProps.disabled = disabled;
+  } else if (disabled) {
+    elementProps["aria-disabled"] = true;
+  }
 
   return (
-    <Component
-      ref={ref}
-      type={asChild ? undefined : type}
-      disabled={asChild ? undefined : disabled}
-      aria-disabled={asChild && disabled ? true : undefined}
-      aria-pressed={typeof active === "boolean" ? active : undefined}
-      data-active={active || undefined}
-      className={cn(styles.root(), className)}
-      {...props}
-    >
+    <Component {...elementProps}>
       {leadingContent ? <span className={styles.leading()}>{leadingContent}</span> : null}
       <span className={styles.label()}>{children}</span>
       {trailingContent ? <span className={styles.trailing()}>{trailingContent}</span> : null}
