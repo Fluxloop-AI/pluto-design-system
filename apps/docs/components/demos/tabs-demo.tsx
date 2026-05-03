@@ -1,27 +1,46 @@
 "use client";
 
+import {
+  Atom,
+  ChartBar,
+  ClockCounterClockwise,
+  Compass,
+  DotsThree,
+  Gear,
+  PencilRuler,
+} from "@fluxloop-ai/pds-icons/icons";
+import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@fluxloop-ai/pds-ui/components/tabs";
 
 export function TabsHorizontalDemo() {
   return (
     <div className="pds-demo-row">
-      <Tabs defaultValue="overview">
+      <Tabs defaultValue="loop">
         <TabsList>
-          <TabsTrigger value="overview">개요</TabsTrigger>
-          <TabsTrigger value="members">멤버</TabsTrigger>
-          <TabsTrigger value="settings">설정</TabsTrigger>
-          <TabsTrigger value="billing" disabled>
-            결제 (비활성)
+          <TabsTrigger value="loop" aria-label="Loop">
+            <Icon icon={Atom} />
+          </TabsTrigger>
+          <TabsTrigger value="profile" aria-label="Profile">
+            <Icon icon={PencilRuler} />
+          </TabsTrigger>
+          <TabsTrigger value="history" aria-label="History">
+            <Icon icon={ClockCounterClockwise} />
+          </TabsTrigger>
+          <TabsTrigger value="more" aria-label="More">
+            <Icon icon={DotsThree} />
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="overview" style={{ padding: 12, fontSize: 13 }}>
-          프로젝트 개요 탭. Arrow 키로 이동, 기본 activation=automatic.
+        <TabsContent value="loop" style={{ paddingTop: 12, fontSize: 13 }}>
+          Loop 탭. Arrow 키로 이동, hover 시 라벨 툴팁.
         </TabsContent>
-        <TabsContent value="members" style={{ padding: 12, fontSize: 13 }}>
-          멤버 목록 탭.
+        <TabsContent value="profile" style={{ paddingTop: 12, fontSize: 13 }}>
+          Profile 탭.
         </TabsContent>
-        <TabsContent value="settings" style={{ padding: 12, fontSize: 13 }}>
-          설정 탭.
+        <TabsContent value="history" style={{ paddingTop: 12, fontSize: 13 }}>
+          History 탭.
+        </TabsContent>
+        <TabsContent value="more" style={{ paddingTop: 12, fontSize: 13 }}>
+          More 탭.
         </TabsContent>
       </Tabs>
       <Styles />
@@ -29,44 +48,20 @@ export function TabsHorizontalDemo() {
   );
 }
 
-export function TabsSizeDemo() {
-  return (
-    <div className="pds-demo-row" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      {(["sm", "md", "lg"] as const).map((s) => (
-        <div key={s}>
-          <div
-            style={{
-              fontSize: 11,
-              color: "var(--pds-label-alternative)",
-              marginBottom: 4,
-              textTransform: "uppercase",
-              letterSpacing: "0.04em",
-            }}
-          >
-            {s}
-          </div>
-          <Tabs defaultValue="a" size={s}>
-            <TabsList>
-              <TabsTrigger value="a">첫 번째</TabsTrigger>
-              <TabsTrigger value="b">두 번째</TabsTrigger>
-              <TabsTrigger value="c">세 번째</TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-      ))}
-      <Styles />
-    </div>
-  );
-}
-
-export function TabsFillDemo() {
+export function TabsDisabledDemo() {
   return (
     <div className="pds-demo-row">
-      <Tabs defaultValue="a" resize="fill">
+      <Tabs defaultValue="a">
         <TabsList>
-          <TabsTrigger value="a">Fill</TabsTrigger>
-          <TabsTrigger value="b">같은</TabsTrigger>
-          <TabsTrigger value="c">폭</TabsTrigger>
+          <TabsTrigger value="a" aria-label="Compass">
+            <Icon icon={Compass} />
+          </TabsTrigger>
+          <TabsTrigger value="b" aria-label="Chart">
+            <Icon icon={ChartBar} />
+          </TabsTrigger>
+          <TabsTrigger value="c" aria-label="Settings (disabled)" disabled>
+            <Icon icon={Gear} />
+          </TabsTrigger>
         </TabsList>
       </Tabs>
       <Styles />
@@ -77,20 +72,26 @@ export function TabsFillDemo() {
 export function TabsVerticalDemo() {
   return (
     <div className="pds-demo-row">
-      <Tabs defaultValue="a" orientation="vertical" size="sm">
+      <Tabs defaultValue="a" orientation="vertical">
         <TabsList>
-          <TabsTrigger value="a">일반</TabsTrigger>
-          <TabsTrigger value="b">알림</TabsTrigger>
-          <TabsTrigger value="c">통합</TabsTrigger>
+          <TabsTrigger value="a" aria-label="Compass" tooltipSide="right">
+            <Icon icon={Compass} />
+          </TabsTrigger>
+          <TabsTrigger value="b" aria-label="Chart" tooltipSide="right">
+            <Icon icon={ChartBar} />
+          </TabsTrigger>
+          <TabsTrigger value="c" aria-label="Settings" tooltipSide="right">
+            <Icon icon={Gear} />
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="a" style={{ padding: "0 16px", fontSize: 13 }}>
-          일반 설정
+          Compass 패널
         </TabsContent>
         <TabsContent value="b" style={{ padding: "0 16px", fontSize: 13 }}>
-          알림 설정
+          Chart 패널
         </TabsContent>
         <TabsContent value="c" style={{ padding: "0 16px", fontSize: 13 }}>
-          통합 설정
+          Settings 패널
         </TabsContent>
       </Tabs>
       <Styles />

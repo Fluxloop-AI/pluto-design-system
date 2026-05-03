@@ -1,27 +1,34 @@
 ---
 title: Tabs
-description: Radix Tabs. sm/md/lg × hug/fill × horizontal/vertical. 활성 탭 밑줄 indicator.
+description: Radix Tabs. icon-only segmented + 툴팁 내장. 24×24 단일 사이즈, horizontal/vertical.
 ---
 
 import {
   TabsHorizontalDemo,
-  TabsSizeDemo,
-  TabsFillDemo,
+  TabsDisabledDemo,
   TabsVerticalDemo,
 } from "@/components/demos/tabs-demo";
 
 ## 사용
 
+아이콘만 노출하는 콤팩트 tab bar. `aria-label` 이 툴팁 텍스트 + 스크린리더 라벨로 동시에 쓰인다. 아이콘 사이즈는 `TabsTrigger` 가 18px 로 강제하므로 `<Icon>` 에 `size` 를 넘기지 않아도 된다.
+
 ```tsx
+import { Atom, PencilRuler } from "@fluxloop-ai/pds-icons/icons";
+import { Icon } from "@fluxloop-ai/pds-ui/components/icon";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@fluxloop-ai/pds-ui/components/tabs";
 
-<Tabs defaultValue="overview">
+<Tabs defaultValue="loop">
   <TabsList>
-    <TabsTrigger value="overview">개요</TabsTrigger>
-    <TabsTrigger value="members">멤버</TabsTrigger>
+    <TabsTrigger value="loop" aria-label="Loop">
+      <Icon icon={Atom} />
+    </TabsTrigger>
+    <TabsTrigger value="profile" aria-label="Profile">
+      <Icon icon={PencilRuler} />
+    </TabsTrigger>
   </TabsList>
-  <TabsContent value="overview">...</TabsContent>
-  <TabsContent value="members">...</TabsContent>
+  <TabsContent value="loop">...</TabsContent>
+  <TabsContent value="profile">...</TabsContent>
 </Tabs>
 ```
 
@@ -29,17 +36,13 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@fluxloop-ai/pds-ui/co
 
 <TabsHorizontalDemo />
 
-## Size
+## Disabled
 
-<TabsSizeDemo />
-
-## Fill
-
-`resize="fill"` — 각 트리거가 `flex-1` 로 전체 폭을 나눠 가진다.
-
-<TabsFillDemo />
+<TabsDisabledDemo />
 
 ## Vertical
+
+`tooltipSide="right"` 로 세로 배치에 맞춰 툴팁 위치 조정.
 
 <TabsVerticalDemo />
 
@@ -52,15 +55,31 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@fluxloop-ai/pds-ui/co
 | `value` / `defaultValue` / `onValueChange` | Radix 표준 | - | |
 | `orientation` | `horizontal \| vertical` | `horizontal` | |
 | `activationMode` | `automatic \| manual` | `automatic` | Radix 기본 |
-| `size` | `sm \| md \| lg` | `md` | context 로 자식에 전파 |
-| `resize` | `hug \| fill` | `hug` | fill 이면 트리거가 폭 나눔 |
 
 ### TabsTrigger
 
 | Prop | 타입 | 기본 | 설명 |
 |---|---|---|---|
 | `value` | `string` | - | 필수 |
+| `aria-label` | `string` | - | **필수**. 툴팁 텍스트 + a11y 라벨 |
+| `tooltipSide` | `top \| bottom \| left \| right` | `bottom` | 툴팁 위치 |
 | `disabled` | `boolean` | - | |
+
+children 자리에는 `<Icon />` 한 개를 넣는 것을 권장. 라벨 텍스트는 children 으로 넣지 않음 (툴팁이 그 역할).
+
+## 토큰 매핑
+
+| 속성 | 토큰 |
+|---|---|
+| trigger size | 24×24, 아이콘 18 (강제) |
+| trigger radius | `--pds-radius-6` |
+| 컨테이너 gap | `--spacing-2` |
+| selected bg | `--pds-fill-strong` |
+| selected text | `--pds-label-normal` |
+| inactive text | `--pds-label-alternative` |
+| hover bg | `--pds-fill-normal` |
+| hover text | `--pds-label-neutral` |
+| disabled text | `--pds-label-disable` |
 
 ## Registry 설치
 
