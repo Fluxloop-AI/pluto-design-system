@@ -10,6 +10,30 @@
 
 export type { AgentStatusIndicatorProps } from "./components/agent-status-indicator";
 export { AgentStatusIndicator } from "./components/agent-status-indicator";
+export type {
+  AppShellMainProps,
+  AppShellPanelHeaderProps,
+  AppShellProps,
+  AppShellSidebarProps,
+  AppShellSidePanelProps,
+  AppShellSplitterProps,
+} from "./components/app-shell";
+export {
+  AppShell,
+  AppShellLeadingControls,
+  AppShellMain,
+  AppShellMainBody,
+  AppShellMainHeader,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+  AppShellSidePanel,
+  AppShellSidePanelBody,
+  AppShellSidePanelHeader,
+  AppShellSplitter,
+  AppShellTrailingControls,
+} from "./components/app-shell";
 export type { AvatarProps } from "./components/avatar";
 export { Avatar, avatar } from "./components/avatar";
 export type { BadgeProps } from "./components/badge";
@@ -151,21 +175,27 @@ export {
   SelectViewport,
   select,
 } from "./components/select";
+export type { SectionHeaderProps } from "./components/section-header";
+export { SectionHeader, sectionHeader } from "./components/section-header";
 export type { SeparatorProps } from "./components/separator";
 export { Separator, separator } from "./components/separator";
+export type { SidebarListItem, SidebarListProps } from "./components/sidebar-list";
+export { SidebarList, sidebarList } from "./components/sidebar-list";
+export type { SidebarMenuItem, SidebarMenuProps } from "./components/sidebar-menu";
+export { SidebarMenu, sidebarMenu } from "./components/sidebar-menu";
 export type { SpinnerProps } from "./components/spinner";
 export { Spinner, spinner } from "./components/spinner";
 export type { SwitchProps } from "./components/switch";
 export { Switch, switchStyles } from "./components/switch";
 export type { TabsProps } from "./components/tabs";
 export { Tabs, TabsContent, TabsList, TabsTrigger, tabs } from "./components/tabs";
+export type { TextButtonProps } from "./components/text-button";
+export { TextButton, textButton } from "./components/text-button";
 export type { ThinkingBlockProps } from "./components/thinking-block";
 export {
   REDACTED_THINKING_MESSAGE,
   ThinkingBlock,
 } from "./components/thinking-block";
-export type { TextButtonProps } from "./components/text-button";
-export { TextButton, textButton } from "./components/text-button";
 export type { ToastRootProps } from "./components/toast";
 export {
   Toast,
