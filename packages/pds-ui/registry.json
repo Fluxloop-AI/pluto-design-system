@@ -221,17 +221,17 @@
       ]
     },
     {
-      "name": "tag",
+      "name": "chip",
       "type": "registry:ui",
-      "title": "Tag",
-      "description": "Interactive chip — solid/outlined × xs/sm/md/lg with pressed toggle + onRemove.",
-      "dependencies": ["@radix-ui/react-slot", "@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "title": "Chip",
+      "description": "Compact action chip — solid/outlined × xsmall/small/medium/large with active toggle and leading/trailing slots.",
+      "dependencies": ["@radix-ui/react-slot", "tailwind-variants"],
       "registryDependencies": ["utils"],
       "files": [
         {
-          "path": "src/components/tag.tsx",
+          "path": "src/components/chip.tsx",
           "type": "registry:ui",
-          "target": "components/ui/tag.tsx"
+          "target": "components/ui/chip.tsx"
         }
       ]
     },
