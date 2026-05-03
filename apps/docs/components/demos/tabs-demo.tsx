@@ -69,6 +69,30 @@ export function TabsDisabledDemo() {
   );
 }
 
+export function TabsLabelDemo() {
+  return (
+    <div className="pds-demo-row">
+      <Tabs variant="label" defaultValue="spirit">
+        <TabsList>
+          <TabsTrigger value="spirit">Spirit</TabsTrigger>
+          <TabsTrigger value="personas">Personas</TabsTrigger>
+          <TabsTrigger value="archive" disabled>Archive</TabsTrigger>
+        </TabsList>
+        <TabsContent value="spirit" style={{ paddingTop: 12, fontSize: 13 }}>
+          Spirit 탭. 텍스트 라벨이 그대로 노출되므로 툴팁은 띄우지 않는다.
+        </TabsContent>
+        <TabsContent value="personas" style={{ paddingTop: 12, fontSize: 13 }}>
+          Personas 탭.
+        </TabsContent>
+        <TabsContent value="archive" style={{ paddingTop: 12, fontSize: 13 }}>
+          Archive 탭 (비활성화 예시).
+        </TabsContent>
+      </Tabs>
+      <Styles />
+    </div>
+  );
+}
+
 export function TabsVerticalDemo() {
   return (
     <div className="pds-demo-row">
