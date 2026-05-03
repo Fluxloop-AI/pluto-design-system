@@ -57,15 +57,27 @@ npx shadcn add https://pds.pluto.com/r/button
 
 > 소비자 레포에서 PDS 를 도입 · 유지하는 자세한 절차(인증 · 업데이트 흐름 · tradeoff · FAQ)는 [`INTEGRATION.md`](./INTEGRATION.md) 참조.
 
-## 문서
+## 문서 (카탈로그)
 
-`apps/docs` 에 전체 가이드(파운데이션 · 컴포넌트별 사용법)가 들어있습니다.
+`apps/docs` 가 PDS 의 **컴포넌트 · 토큰 카탈로그**입니다.
+[fumadocs](https://fumadocs.vercel.app/) (Next.js 15) 기반이고, 다음 영역으로 구성됩니다.
+
+| 경로 | 내용 |
+| --- | --- |
+| `/` | 홈 — PDS 개요 |
+| `/docs/foundations/*` | 컬러 · 타이포 · 간격 · 라디우스 · 그림자 · 모션 · z-index 토큰 가이드 |
+| `/docs/components/*` | 컴포넌트별 사용법 · variant · slot · 코드 예시 |
+| `/preview/*` | 풀페이지 프리뷰 (예: `app-shell`) |
+
 로컬 실행:
 
 ```bash
 pnpm install
 pnpm --filter docs dev
+# → http://localhost:3000
 ```
+
+> 사내 호스팅(Vercel 등)은 아직 연결되지 않았습니다. 현재는 각 개발자가 로컬에서 띄워 봅니다.
 
 ## 개발
 
