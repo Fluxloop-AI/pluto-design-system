@@ -63,7 +63,6 @@ function DemoStyles() {
         display: flex;
         align-items: center;
         gap: 12px;
-        height: 28px;
         font-size: var(--text-body2);
         color: var(--pds-label-normal);
       }

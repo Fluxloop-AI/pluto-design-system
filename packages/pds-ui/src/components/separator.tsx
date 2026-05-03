@@ -10,7 +10,7 @@ const separator = tv({
   variants: {
     orientation: {
       horizontal: "w-full h-px",
-      vertical: "h-full w-px",
+      vertical: "h-[1em] w-px",
     },
     color: {
       normal: "bg-[var(--pds-line-solid-normal)]",
