@@ -55,6 +55,8 @@ npx shadcn add https://pds.pluto.com/r/button
 @import "@fluxloop-ai/pds-core/styles";
 ```
 
+> 소비자 레포에서 PDS 를 도입 · 유지하는 자세한 절차(인증 · 업데이트 흐름 · tradeoff · FAQ)는 [`INTEGRATION.md`](./INTEGRATION.md) 참조.
+
 ## 문서
 
 `apps/docs` 에 전체 가이드(파운데이션 · 컴포넌트별 사용법)가 들어있습니다.
