@@ -10,10 +10,8 @@ const select = tv({
   slots: {
     trigger: [
       "group inline-flex items-center justify-between gap-[8px]",
-      "bg-[var(--pds-background-transparent-normal)]",
-      "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
       "text-[color:var(--pds-label-normal)]",
-      "transition-[box-shadow] duration-[var(--pds-duration-fast)]",
+      "transition-[box-shadow,background-color] duration-[var(--pds-duration-fast)]",
       "focus-visible:outline-none",
       "focus-visible:shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--pds-focus-ring)_43%,transparent)]",
       "data-[placeholder]:text-[color:var(--pds-label-assistive)]",
@@ -55,6 +53,21 @@ const select = tv({
     ],
   },
   variants: {
+    variant: {
+      outlined: {
+        trigger: [
+          "bg-[var(--pds-background-transparent-normal)]",
+          "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
+        ],
+      },
+      filled: {
+        trigger: [
+          "bg-[var(--pds-fill-normal)]",
+          "hover:bg-[var(--pds-fill-strong)]",
+          "data-[state=open]:bg-[var(--pds-fill-strong)]",
+        ],
+      },
+    },
     size: {
       sm: {
         trigger: "h-[32px] px-[10px] rounded-[10px] text-[13px]",
@@ -87,11 +100,13 @@ const select = tv({
   },
   defaultVariants: {
     size: "sm",
+    variant: "outlined",
   },
 });
 
 type SelectVariants = VariantProps<typeof select>;
 type SelectSize = NonNullable<SelectVariants["size"]>;
+type SelectVariant = NonNullable<SelectVariants["variant"]>;
 
 const SizeContext = React.createContext<SelectSize>("sm");
 const useSelectSize = () => React.useContext(SizeContext);
@@ -102,14 +117,18 @@ const SelectValue = SelectPrimitive.Value;
 
 type SelectTriggerProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
   size?: SelectSize;
+  variant?: SelectVariant;
   invalid?: boolean;
 };
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   SelectTriggerProps
->(function SelectTrigger({ className, size = "sm", invalid, children, ...props }, ref) {
-  const styles = select({ size });
+>(function SelectTrigger(
+  { className, size = "sm", variant = "outlined", invalid, children, ...props },
+  ref,
+) {
+  const styles = select({ size, variant });
   return (
     <SizeContext.Provider value={size}>
       <SelectPrimitive.Trigger

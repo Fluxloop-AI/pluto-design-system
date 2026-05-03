@@ -82,6 +82,26 @@ export function SelectGroupDemo() {
   );
 }
 
+export function SelectVariantDemo() {
+  return (
+    <div className="pds-demo-row" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+      {(["outlined", "filled"] as const).map((v) => (
+        <Select key={v} defaultValue="always">
+          <SelectTrigger variant={v} size="md" style={{ width: 200 }}>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="never">절대 안 함</SelectItem>
+            <SelectItem value="unfocused">집중하지 않았을 때만</SelectItem>
+            <SelectItem value="always">항상</SelectItem>
+          </SelectContent>
+        </Select>
+      ))}
+      <Styles />
+    </div>
+  );
+}
+
 export function SelectInvalidDemo() {
   return (
     <div className="pds-demo-row">
