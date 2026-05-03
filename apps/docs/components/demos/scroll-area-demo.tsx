@@ -1,6 +1,7 @@
 "use client";
 
 import { ScrollArea } from "@fluxloop-ai/pds-ui/components/scroll-area";
+import { useScrollFade } from "@fluxloop-ai/pds-ui";
 
 const TAGS = Array.from({ length: 40 }, (_, i) => `Item ${i + 1}`);
 
@@ -8,6 +9,29 @@ export function ScrollAreaVerticalDemo() {
   return (
     <div className="pds-sa-card">
       <ScrollArea className="pds-sa-box">
+        <div className="pds-sa-list">
+          {TAGS.map((t) => (
+            <div key={t} className="pds-sa-row">
+              {t}
+            </div>
+          ))}
+        </div>
+      </ScrollArea>
+      <Styles />
+    </div>
+  );
+}
+
+export function ScrollAreaFadeDemo() {
+  const { ref, onScroll, maskImage } = useScrollFade<HTMLDivElement>({ size: 40 });
+  return (
+    <div className="pds-sa-card">
+      <ScrollArea
+        className="pds-sa-box"
+        viewportRef={ref}
+        onViewportScroll={onScroll}
+        viewportStyle={{ maskImage, WebkitMaskImage: maskImage }}
+      >
         <div className="pds-sa-list">
           {TAGS.map((t) => (
             <div key={t} className="pds-sa-row">

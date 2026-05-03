@@ -41,13 +41,26 @@ type ScrollAreaVariants = VariantProps<typeof scrollArea>;
 type ScrollAreaProps = React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
   scrollBarSize?: ScrollAreaVariants["scrollBarSize"];
   viewportClassName?: string;
+  viewportStyle?: React.CSSProperties;
+  viewportRef?: React.Ref<HTMLDivElement>;
+  onViewportScroll?: React.UIEventHandler<HTMLDivElement>;
 };
 
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   ScrollAreaProps
 >(function ScrollArea(
-  { className, viewportClassName, scrollBarSize = "md", type = "hover", children, ...props },
+  {
+    className,
+    viewportClassName,
+    viewportStyle,
+    viewportRef,
+    onViewportScroll,
+    scrollBarSize = "md",
+    type = "hover",
+    children,
+    ...props
+  },
   ref,
 ) {
   const styles = scrollArea({ scrollBarSize });
@@ -58,7 +71,12 @@ const ScrollArea = React.forwardRef<
       className={cn(styles.root(), className)}
       {...props}
     >
-      <ScrollAreaPrimitive.Viewport className={cn(styles.viewport(), viewportClassName)}>
+      <ScrollAreaPrimitive.Viewport
+        ref={viewportRef}
+        onScroll={onViewportScroll}
+        style={viewportStyle}
+        className={cn(styles.viewport(), viewportClassName)}
+      >
         {children}
       </ScrollAreaPrimitive.Viewport>
       <ScrollBar />

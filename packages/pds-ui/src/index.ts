@@ -191,3 +191,9 @@ export {
   tooltip,
 } from "./components/tooltip";
 export { cn } from "./utils/cn";
+export type {
+  ScrollFadeMaskOptions,
+  UseScrollFadeOptions,
+  UseScrollFadeResult,
+} from "./utils/scroll-fade";
+export { getScrollFadeMask, useScrollFade } from "./utils/scroll-fade";
