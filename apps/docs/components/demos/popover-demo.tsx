@@ -2,6 +2,7 @@
 
 import { Info } from "@fluxloop-ai/pds-icons/icons";
 import { Button } from "@fluxloop-ai/pds-ui/components/button";
+import { IconButton } from "@fluxloop-ai/pds-ui/components/icon-button";
 import { Input } from "@fluxloop-ai/pds-ui/components/input";
 import {
   Popover,
@@ -22,7 +23,7 @@ export function PopoverNormalDemo() {
     <div className="pds-demo-row">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="primary">정보 보기</Button>
+          <Button variant="outlined">정보 보기</Button>
         </PopoverTrigger>
         <PopoverContent size="md">
           <PopoverHeader>
@@ -37,7 +38,7 @@ export function PopoverNormalDemo() {
           </PopoverBody>
           <PopoverActionArea>
             <PopoverClose asChild>
-              <Button variant="primary" size="xs">
+              <Button variant="outlined" size="xs">
                 취소
               </Button>
             </PopoverClose>
@@ -61,7 +62,7 @@ export function PopoverSizeDemo() {
       {(["sm", "md", "lg"] as const).map((s) => (
         <Popover key={s}>
           <PopoverTrigger asChild>
-            <Button size="xs" variant="secondary">
+            <Button size="xs" variant="frosted">
               size {s}
             </Button>
           </PopoverTrigger>
@@ -84,9 +85,9 @@ export function PopoverCustomDemo() {
     <div className="pds-demo-row">
       <Popover>
         <PopoverTrigger asChild>
-          <Button iconOnly size="sm" variant="ghost" aria-label="도움말">
+          <IconButton size="sm" variant="normal" aria-label="도움말">
             <Info />
-          </Button>
+          </IconButton>
         </PopoverTrigger>
         <PopoverContent variant="custom" size="sm" className="p-0 overflow-hidden">
           <div className="p-[12px] text-[12px] leading-[1.5] text-[color:var(--pds-label-neutral)]">

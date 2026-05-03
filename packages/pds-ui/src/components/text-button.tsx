@@ -6,11 +6,12 @@ import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "../utils/cn";
 
-const button = tv({
+const textButton = tv({
   slots: {
     root: [
       "relative inline-flex items-center justify-center align-middle box-border",
       "whitespace-nowrap leading-none cursor-pointer select-none",
+      "border-0 bg-transparent",
       "transition-[background-color,color,box-shadow] duration-[var(--pds-motion-duration-fast)]",
       "ease-[cubic-bezier(0.4,0,0.2,1)]",
       "focus-visible:outline-none",
@@ -23,51 +24,25 @@ const button = tv({
     content: "inline-flex items-center justify-center",
   },
   variants: {
-    variant: {
-      solid: {
+    color: {
+      primary: {
         root: [
-          "text-[color:var(--pds-inverse-label)] bg-[var(--pds-primary-normal)]",
-          "hover:brightness-110 active:brightness-95",
-          "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
-          "disabled:hover:brightness-100",
-          "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
-        ],
-      },
-      outlined: {
-        root: [
-          "text-[color:var(--pds-label-normal)] bg-transparent",
-          "shadow-[inset_0_0_0_1px_var(--pds-line-normal-neutral)]",
+          "text-[color:var(--pds-primary-normal)]",
           "hover:bg-[var(--pds-fill-normal)]",
           "disabled:text-[color:var(--pds-label-disable)] disabled:bg-transparent",
           "aria-disabled:text-[color:var(--pds-label-disable)] aria-disabled:bg-transparent",
         ],
       },
-      frosted: {
+      assistive: {
         root: [
-          "text-[color:var(--pds-label-neutral)] bg-[var(--pds-fill-normal)]",
-          "[backdrop-filter:blur(32px)] [will-change:backdrop-filter]",
-          "hover:bg-[var(--pds-fill-strong)]",
-          "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
-          "disabled:[backdrop-filter:none]",
-          "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
-        ],
-      },
-      danger: {
-        root: [
-          "text-[color:var(--pds-inverse-label)] bg-[var(--pds-status-negative)]",
-          "hover:brightness-110 active:brightness-95",
-          "disabled:text-[color:var(--pds-label-assistive)] disabled:bg-[var(--pds-interaction-disable)]",
-          "aria-disabled:text-[color:var(--pds-label-assistive)] aria-disabled:bg-[var(--pds-interaction-disable)]",
+          "text-[color:var(--pds-label-neutral)]",
+          "hover:bg-[var(--pds-fill-normal)]",
+          "disabled:text-[color:var(--pds-label-disable)] disabled:bg-transparent",
+          "aria-disabled:text-[color:var(--pds-label-disable)] aria-disabled:bg-transparent",
         ],
       },
     },
     size: {
-      xs: {
-        root: "h-[28px] px-[8px] rounded-[8px] text-[12px] font-medium",
-        content:
-          "[&_svg]:w-[12px] [&_svg]:h-[12px] [&_[data-slot=leading]]:mr-[4px] [&_[data-slot=trailing]]:ml-[2px]",
-        loading: "[&_svg]:w-[12px] [&_svg]:h-[12px]",
-      },
       sm: {
         root: "h-[32px] px-[10px] rounded-[10px] text-[13px] font-medium",
         content:
@@ -80,16 +55,6 @@ const button = tv({
           "[&_svg]:w-[16px] [&_svg]:h-[16px] [&_[data-slot=leading]]:mr-[4px] [&_[data-slot=trailing]]:ml-[2px]",
         loading: "[&_svg]:w-[16px] [&_svg]:h-[16px]",
       },
-      lg: {
-        root: "h-[44px] px-[14px] rounded-[12px] text-[14px] font-medium",
-        content:
-          "[&_svg]:w-[16px] [&_svg]:h-[16px] [&_[data-slot=leading]]:mr-[4px] [&_[data-slot=trailing]]:ml-[2px]",
-        loading: "[&_svg]:w-[16px] [&_svg]:h-[16px]",
-      },
-    },
-    fullWidth: {
-      true: { root: "w-full" },
-      false: { root: "w-fit" },
     },
     loading: {
       true: { content: "invisible" },
@@ -97,46 +62,45 @@ const button = tv({
     },
   },
   defaultVariants: {
-    variant: "outlined",
+    color: "primary",
     size: "sm",
-    fullWidth: false,
     loading: false,
   },
 });
 
-type ButtonVariants = VariantProps<typeof button>;
+type TextButtonVariants = VariantProps<typeof textButton>;
 
-type ButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color"> & {
-  variant?: ButtonVariants["variant"];
-  size?: ButtonVariants["size"];
-  fullWidth?: boolean;
+type TextButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color"> & {
+  color?: TextButtonVariants["color"];
+  size?: TextButtonVariants["size"];
   loading?: boolean;
   leadingContent?: React.ReactNode;
   trailingContent?: React.ReactNode;
   asChild?: boolean;
 };
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(function TextButton(
   {
     className,
-    variant = "outlined",
+    color = "primary",
     size = "sm",
-    fullWidth = false,
     loading = false,
     disabled,
     leadingContent,
     trailingContent,
     asChild,
     children,
+    type = "button",
     ...props
   },
   ref,
 ) {
-  const styles = button({ variant, size, fullWidth, loading });
+  const styles = textButton({ color, size, loading });
   const Component: React.ElementType = asChild ? Slot : "button";
   return (
     <Component
       ref={ref}
+      type={asChild ? undefined : type}
       data-loading={loading || undefined}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
@@ -165,5 +129,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   );
 });
 
-export type { ButtonProps };
-export { Button, button };
+export type { TextButtonProps };
+export { TextButton, textButton };

@@ -99,6 +99,8 @@ export {
 } from "./components/form";
 export type { IconProps } from "./components/icon";
 export { Icon, icon } from "./components/icon";
+export type { IconButtonProps } from "./components/icon-button";
+export { IconButton, iconButton } from "./components/icon-button";
 export type { InputProps } from "./components/input";
 export { Input, input } from "./components/input";
 export type { PopoverContentProps } from "./components/popover";
@@ -162,6 +164,8 @@ export {
   REDACTED_THINKING_MESSAGE,
   ThinkingBlock,
 } from "./components/thinking-block";
+export type { TextButtonProps } from "./components/text-button";
+export { TextButton, textButton } from "./components/text-button";
 export type { ToastRootProps } from "./components/toast";
 export {
   Toast,

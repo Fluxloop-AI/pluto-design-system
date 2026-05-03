@@ -34,7 +34,7 @@ export function DialogPopupDemo() {
           </DialogBody>
           <DialogActionArea>
             <DialogClose asChild>
-              <Button variant="primary">취소</Button>
+              <Button variant="outlined">취소</Button>
             </DialogClose>
             <Button variant="solid">만들기</Button>
           </DialogActionArea>
@@ -50,7 +50,7 @@ export function DialogFullDemo() {
     <div className="pds-dlg-card">
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="secondary">전체 설정 열기</Button>
+          <Button variant="frosted">전체 설정 열기</Button>
         </DialogTrigger>
         <DialogContent variant="full" resize="free">
           <DialogNavigation>

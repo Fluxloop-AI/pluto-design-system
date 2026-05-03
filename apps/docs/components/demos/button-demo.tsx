@@ -10,23 +10,19 @@ export function ButtonVariantDemo() {
     <div className="pds-btn-card">
       <div className="pds-btn-row">
         <Button variant="solid">Solid</Button>
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="ghost">Ghost</Button>
+        <Button variant="outlined">Outlined</Button>
+        <Button variant="frosted">Frosted</Button>
         <Button variant="danger">Danger</Button>
       </div>
       <div className="pds-btn-row">
         <Button variant="solid" disabled>
           Solid
         </Button>
-        <Button variant="primary" disabled>
-          Primary
+        <Button variant="outlined" disabled>
+          Outlined
         </Button>
-        <Button variant="secondary" disabled>
-          Secondary
-        </Button>
-        <Button variant="ghost" disabled>
-          Ghost
+        <Button variant="frosted" disabled>
+          Frosted
         </Button>
         <Button variant="danger" disabled>
           Danger
@@ -56,56 +52,14 @@ export function ButtonWithIconDemo() {
     <div className="pds-btn-card">
       <div className="pds-btn-row">
         <Button leadingContent={<Icon icon={Plus} />}>새로 만들기</Button>
-        <Button variant="secondary" trailingContent={<Icon icon={ArrowRight} />}>
+        <Button variant="frosted" trailingContent={<Icon icon={ArrowRight} />}>
           다음
         </Button>
-        <Button variant="ghost" trailingContent={<Icon icon={ArrowRight} />}>
-          더 보기
+        <Button variant="solid" trailingContent={<Icon icon={ArrowRight} />}>
+          시작하기
         </Button>
         <Button variant="danger" leadingContent={<Icon icon={Trash} />}>
           삭제
-        </Button>
-      </div>
-      <div className="pds-btn-row">
-        <Button iconOnly size="xs" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="sm" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="md" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="lg" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-      </div>
-      <div className="pds-btn-row">
-        <Button iconOnly size="xs" variant="secondary" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="sm" variant="secondary" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="md" variant="secondary" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="lg" variant="secondary" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-      </div>
-      <div className="pds-btn-row">
-        <Button iconOnly size="xs" variant="ghost" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="sm" variant="ghost" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="md" variant="ghost" aria-label="추가">
-          <Icon icon={Plus} />
-        </Button>
-        <Button iconOnly size="lg" variant="ghost" aria-label="추가">
-          <Icon icon={Plus} />
         </Button>
       </div>
       <Styles />
@@ -127,10 +81,10 @@ export function ButtonLoadingDemo() {
         >
           저장
         </Button>
-        <Button variant="secondary" loading>
+        <Button variant="frosted" loading>
           로딩 중
         </Button>
-        <Button variant="ghost" loading>
+        <Button variant="solid" loading>
           로딩 중
         </Button>
       </div>

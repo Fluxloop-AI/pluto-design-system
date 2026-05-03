@@ -34,7 +34,7 @@ export function DropdownBasicDemo() {
     <div className="pds-dd-card">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">메뉴 열기</Button>
+          <Button variant="frosted">메뉴 열기</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>프로젝트</DropdownMenuLabel>
@@ -92,7 +92,7 @@ export function DropdownCheckDemo() {
     <div className="pds-dd-card">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">보기 옵션</Button>
+          <Button variant="frosted">보기 옵션</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>보기</DropdownMenuLabel>
@@ -133,28 +133,28 @@ export function DropdownPlacementDemo() {
     <div className="pds-dd-card pds-dd-row">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">align=&quot;start&quot;</Button>
+          <Button variant="frosted">align=&quot;start&quot;</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">{items}</DropdownMenuContent>
       </DropdownMenu>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">align=&quot;center&quot;</Button>
+          <Button variant="frosted">align=&quot;center&quot;</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="center">{items}</DropdownMenuContent>
       </DropdownMenu>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">align=&quot;end&quot;</Button>
+          <Button variant="frosted">align=&quot;end&quot;</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">{items}</DropdownMenuContent>
       </DropdownMenu>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">side=&quot;right&quot;</Button>
+          <Button variant="frosted">side=&quot;right&quot;</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent side="right" align="start">
           {items}
@@ -170,7 +170,7 @@ export function DropdownSizeDemo() {
     <div className="pds-dd-card pds-dd-row">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="sm">
+          <Button variant="frosted" size="sm">
             sm 메뉴
           </Button>
         </DropdownMenuTrigger>
@@ -200,7 +200,7 @@ export function DropdownSizeDemo() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">md 메뉴</Button>
+          <Button variant="frosted">md 메뉴</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent size="md">
           <DropdownMenuLabel>프로젝트</DropdownMenuLabel>
@@ -236,7 +236,7 @@ export function DropdownRadioDemo() {
     <div className="pds-dd-card">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary">패널 위치: {pos}</Button>
+          <Button variant="frosted">패널 위치: {pos}</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>패널 위치</DropdownMenuLabel>

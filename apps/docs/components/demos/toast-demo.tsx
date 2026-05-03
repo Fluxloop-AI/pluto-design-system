@@ -25,13 +25,13 @@ export function ToastDemo() {
         <div className="pds-toast-row">
           <Button onClick={() => push("info", "정보", "새 업데이트가 있어요.")}>Info</Button>
           <Button
-            variant="secondary"
+            variant="frosted"
             onClick={() => push("success", "저장됨", "변경사항이 저장되었습니다.")}
           >
             Success
           </Button>
           <Button
-            variant="secondary"
+            variant="frosted"
             onClick={() => push("warning", "주의", "연결이 불안정합니다.")}
           >
             Warning
@@ -46,10 +46,10 @@ export function ToastDemo() {
         <div className="pds-toast-section-label">Title only</div>
         <div className="pds-toast-row">
           <Button onClick={() => push("info", "새 업데이트가 있어요")}>Info</Button>
-          <Button variant="secondary" onClick={() => push("success", "저장됨")}>
+          <Button variant="frosted" onClick={() => push("success", "저장됨")}>
             Success
           </Button>
-          <Button variant="secondary" onClick={() => push("warning", "연결이 불안정합니다")}>
+          <Button variant="frosted" onClick={() => push("warning", "연결이 불안정합니다")}>
             Warning
           </Button>
           <Button variant="danger" onClick={() => push("error", "요청 실패")}>

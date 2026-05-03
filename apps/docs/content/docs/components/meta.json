@@ -8,6 +8,8 @@
     "icon",
     "---Actions---",
     "button",
+    "icon-button",
+    "text-button",
     "chip",
     "input",
     "---Form---",

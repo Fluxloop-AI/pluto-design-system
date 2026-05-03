@@ -14,13 +14,13 @@ export function TooltipBasicDemo() {
       <div className="pds-tt-card">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="secondary">Hover me</Button>
+            <Button variant="frosted">Hover me</Button>
           </TooltipTrigger>
           <TooltipContent>기본 툴팁</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="secondary">With shortcut</Button>
+            <Button variant="frosted">With shortcut</Button>
           </TooltipTrigger>
           <TooltipContent size="md" shortcut="⌘K">
             명령 팔레트
@@ -39,7 +39,7 @@ export function TooltipSideDemo() {
         {(["top", "right", "bottom", "left"] as const).map((side) => (
           <Tooltip key={side}>
             <TooltipTrigger asChild>
-              <Button variant="secondary" size="sm">
+              <Button variant="frosted" size="sm">
                 {side}
               </Button>
             </TooltipTrigger>
@@ -58,13 +58,13 @@ export function TooltipSizeDemo() {
       <div className="pds-tt-card">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="secondary">size sm</Button>
+            <Button variant="frosted">size sm</Button>
           </TooltipTrigger>
           <TooltipContent size="sm">small tooltip</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="secondary">size md</Button>
+            <Button variant="frosted">size md</Button>
           </TooltipTrigger>
           <TooltipContent size="md">medium tooltip</TooltipContent>
         </Tooltip>
