@@ -296,6 +296,21 @@
       ]
     },
     {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "SegmentedControl",
+      "description": "Trackless single-select control for 2-3 inline options — sm/md, hug or fullWidth, snap selection.",
+      "dependencies": ["@radix-ui/react-radio-group", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/segmented-control.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/segmented-control.tsx"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",

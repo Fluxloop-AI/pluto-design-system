@@ -121,6 +121,15 @@ export type { RadioGroupItemProps, RadioGroupProps } from "./components/radio-gr
 export { RadioGroup, RadioGroupItem, radio } from "./components/radio-group";
 export type { ScrollAreaProps } from "./components/scroll-area";
 export { ScrollArea, ScrollBar } from "./components/scroll-area";
+export type {
+  SegmentedControlItemProps,
+  SegmentedControlProps,
+} from "./components/segmented-control";
+export {
+  SegmentedControl,
+  SegmentedControlItem,
+  segmentedControl,
+} from "./components/segmented-control";
 export type { SelectContentProps, SelectTriggerProps } from "./components/select";
 export {
   Select,

@@ -14,6 +14,7 @@
     "switch",
     "radio-group",
     "select",
+    "segmented-control",
     "combobox",
     "form",
     "---Navigation---",
