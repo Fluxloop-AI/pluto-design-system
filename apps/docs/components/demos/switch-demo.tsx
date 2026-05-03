@@ -21,7 +21,7 @@ function LabeledSwitch({
 export function SwitchSizeDemo() {
   return (
     <div className="pds-demo-row" style={{ display: "flex", gap: 16, alignItems: "center" }}>
-      {(["sm", "md"] as const).map((s) => (
+      {(["sm", "md", "lg"] as const).map((s) => (
         <LabeledSwitch key={s} id={`sw-size-${s}`} size={s} defaultChecked label={s} />
       ))}
       <Styles />
