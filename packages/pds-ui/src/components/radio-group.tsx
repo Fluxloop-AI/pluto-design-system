@@ -7,38 +7,33 @@ import { cn } from "../utils/cn";
 
 const radio = tv({
   slots: {
-    group:
-      "flex gap-[12px] data-[orientation=vertical]:flex-col data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:flex-wrap",
+    group: "",
     item: [
-      "peer inline-flex shrink-0 items-center justify-center",
-      "rounded-full border",
-      "border-[var(--pds-line-normal-neutral)]",
+      "group/radio relative inline-flex shrink-0 items-center justify-center",
+      "rounded-full bg-transparent cursor-pointer",
+      "disabled:cursor-default disabled:pointer-events-none disabled:opacity-[0.43]",
+    ],
+    ring: [
+      "relative flex h-full w-full items-center justify-center rounded-full",
       "bg-[var(--pds-background-elevated-normal)]",
-      "transition-[background-color,border-color,color]",
+      "shadow-[inset_0_0_0_1.5px_var(--pds-line-normal-normal)]",
+      "transition-[background-color,box-shadow]",
       "duration-[var(--pds-duration-fast)]",
-      "focus-visible:outline-none focus-visible:ring-2",
-      "focus-visible:ring-[color:var(--pds-focus-ring)] focus-visible:ring-offset-2",
-      "focus-visible:ring-offset-[color:var(--pds-background-normal-normal)]",
-      "data-[state=checked]:border-[var(--pds-primary-normal)]",
-      "disabled:cursor-default disabled:pointer-events-none",
-      "disabled:bg-[var(--pds-interaction-disable)]",
-      "disabled:border-[var(--pds-line-normal-alternative)]",
-      "aria-invalid:border-[var(--pds-status-negative)]",
+      "group-data-[state=checked]/radio:bg-[var(--pds-primary-normal)]",
+      "group-data-[state=checked]/radio:shadow-none",
+      "group-aria-invalid/radio:shadow-[inset_0_0_0_1.5px_var(--pds-status-negative)]",
     ],
-    indicator: [
-      "flex items-center justify-center",
-      "after:block after:rounded-full after:bg-[var(--pds-primary-normal)]",
-    ],
+    dot: "block rounded-full bg-[var(--pds-color-common-100)]",
   },
   variants: {
     size: {
       sm: {
         item: "w-[16px] h-[16px]",
-        indicator: "after:w-[8px] after:h-[8px]",
+        dot: "w-[5px] h-[5px]",
       },
       md: {
         item: "w-[20px] h-[20px]",
-        indicator: "after:w-[10px] after:h-[10px]",
+        dot: "w-[6px] h-[6px]",
       },
     },
   },
@@ -53,6 +48,37 @@ type RadioSize = NonNullable<RadioVariants["size"]>;
 const SizeContext = React.createContext<RadioSize>("md");
 const useRadioSize = () => React.useContext(SizeContext);
 
+const RADIO_CSS = `
+[data-pds-radio] {
+  border: 0;
+  outline: none;
+}
+[data-pds-radio][data-pds-radio-size="sm"] { padding: 1px; }
+[data-pds-radio][data-pds-radio-size="md"] { padding: 2px; }
+[data-pds-radio]::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color var(--pds-duration-fast) var(--pds-ease-standard);
+}
+[data-pds-radio]:not(:disabled):hover::before {
+  background-color: var(--pds-fill-normal);
+}
+[data-pds-radio]:not(:disabled):active::before {
+  background-color: var(--pds-fill-strong);
+}
+[data-pds-radio]:disabled::before {
+  display: none;
+}
+[data-pds-radio]:focus-visible > [data-pds-radio-ring] {
+  outline: 2px solid var(--pds-focus-ring);
+  outline-offset: 2px;
+}
+`;
+
 type RadioGroupProps = React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
   size?: RadioSize;
 };
@@ -60,16 +86,10 @@ type RadioGroupProps = React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroupProps
->(function RadioGroup({ className, size = "md", orientation = "vertical", ...props }, ref) {
-  const styles = radio();
+>(function RadioGroup({ className, size = "md", ...props }, ref) {
   return (
     <SizeContext.Provider value={size}>
-      <RadioGroupPrimitive.Root
-        ref={ref}
-        orientation={orientation}
-        className={cn(styles.group(), className)}
-        {...props}
-      />
+      <RadioGroupPrimitive.Root ref={ref} className={cn(className)} {...props} />
     </SizeContext.Provider>
   );
 });
@@ -86,9 +106,20 @@ const RadioGroupItem = React.forwardRef<
   const size = sizeProp ?? ctxSize;
   const styles = radio({ size });
   return (
-    <RadioGroupPrimitive.Item ref={ref} className={cn(styles.item(), className)} {...props}>
-      <RadioGroupPrimitive.Indicator className={styles.indicator()} />
-    </RadioGroupPrimitive.Item>
+    <>
+      <style>{RADIO_CSS}</style>
+      <RadioGroupPrimitive.Item
+        ref={ref}
+        data-pds-radio=""
+        data-pds-radio-size={size}
+        className={cn(styles.item(), className)}
+        {...props}
+      >
+        <span data-pds-radio-ring="" className={styles.ring()}>
+          <RadioGroupPrimitive.Indicator className={styles.dot()} />
+        </span>
+      </RadioGroupPrimitive.Item>
+    </>
   );
 });
 
