@@ -89,6 +89,16 @@
   }
 }
 
+/* ---- text shimmer (ChatProcessTrace `Thinking` trigger) ---- */
+@keyframes pds-text-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* ---- utility classes ---- */
 .pds-animate-step-in {
   animation: pds-fade-in-up var(--pds-duration-slower) var(--pds-ease-standard) both;
@@ -119,6 +129,20 @@
   );
   background-size: 200% 100%;
   animation: pds-shimmer 1.6s linear infinite;
+}
+
+.pds-animate-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--pds-label-alternative) 0%,
+    var(--pds-label-normal) 50%,
+    var(--pds-label-alternative) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: pds-text-shimmer 2s linear infinite;
 }
 
 /* ---- dot ripple — ChatStepDot `running` 상태에서 동심원 퍼짐 ---- */
@@ -159,12 +183,26 @@
   .pds-animate-dot-pulse,
   .pds-animate-dot-ripple::after,
   .pds-chat-collapsible,
-  .pds-animate-shimmer {
+  .pds-animate-shimmer,
+  .pds-animate-text-shimmer {
     /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
     animation-duration: 0.01ms !important;
     /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
     animation-iteration-count: 1 !important;
     /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
     transition-duration: 0.01ms !important;
+  }
+
+  /* text-shimmer 는 background-clip:text + color:transparent 라서
+     애니메이션만 멈추면 텍스트가 보이지 않음 → 정적 색상으로 fallback. */
+  .pds-animate-text-shimmer {
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
+    background: none !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
+    -webkit-background-clip: initial !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
+    background-clip: initial !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override */
+    color: var(--pds-label-alternative) !important;
   }
 }

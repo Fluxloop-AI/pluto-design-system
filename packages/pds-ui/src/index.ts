@@ -46,6 +46,13 @@ export type { ChatComposerProps } from "./components/chat-composer";
 export { ChatComposer, chatComposer } from "./components/chat-composer";
 export type { ChatLoadingDotsProps } from "./components/chat-loading-dots";
 export { ChatLoadingDots, chatLoadingDots } from "./components/chat-loading-dots";
+export type {
+  ChatProcessTraceProps,
+  ProcessTraceBlock,
+  ResolveToolIcon,
+  ResolveToolLabel,
+} from "./components/chat-process-trace";
+export { ChatProcessTrace, chatProcessTrace } from "./components/chat-process-trace";
 export type { ChatTab, ChatTabBarProps } from "./components/chat-tab-bar";
 export { ChatTabBar, chatTabBar } from "./components/chat-tab-bar";
 export type { ChatUserMessageProps } from "./components/chat-user-message";

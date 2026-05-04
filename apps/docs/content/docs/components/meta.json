@@ -43,6 +43,7 @@
     "chat-loading-dots",
     "chat-user-message",
     "chat-assistant-message",
+    "chat-process-trace",
     "chat-composer",
     "chat-attachment-chip",
     "chat-tab-bar",
