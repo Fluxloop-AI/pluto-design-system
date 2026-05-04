@@ -1,6 +1,6 @@
 "use client";
 
-import { PaperPlaneRight } from "@fluxloop-ai/pds-icons/icons";
+import { ArrowUp } from "@fluxloop-ai/pds-icons/icons";
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
 import * as React from "react";
 import { tv } from "tailwind-variants";
@@ -36,6 +36,8 @@ const chatComposer = tv({
       "cursor-pointer transition-opacity duration-150",
       "disabled:opacity-40 disabled:cursor-not-allowed",
     ],
+    topAccessory: "mb-[4px]",
+    bottomAccessory: "mt-[8px]",
   },
 });
 
@@ -54,6 +56,8 @@ type ChatComposerProps = {
   footerText?: React.ReactNode;
   leadingToolbar?: React.ReactNode;
   trailingToolbar?: React.ReactNode;
+  topAccessory?: React.ReactNode;
+  bottomAccessory?: React.ReactNode;
   className?: string;
   textareaRef?: React.Ref<HTMLTextAreaElement>;
 };
@@ -77,7 +81,7 @@ const ChatComposer = React.forwardRef<HTMLDivElement, ChatComposerProps>(functio
     onCancel,
     isStreaming = false,
     placeholder = "ask a question...",
-    minRows = 3,
+    minRows = 2,
     maxRows = 10,
     disabled = false,
     helperText,
@@ -85,6 +89,8 @@ const ChatComposer = React.forwardRef<HTMLDivElement, ChatComposerProps>(functio
     footerText,
     leadingToolbar,
     trailingToolbar,
+    topAccessory,
+    bottomAccessory,
     className,
     textareaRef,
   },
@@ -121,6 +127,7 @@ const ChatComposer = React.forwardRef<HTMLDivElement, ChatComposerProps>(functio
 
   return (
     <div ref={ref} data-slot="chat-composer" className={cn(styles.root(), className)}>
+      {topAccessory ? <div className={styles.topAccessory()}>{topAccessory}</div> : null}
       <div className={styles.shell()}>
         <textarea
           ref={composedRef}
@@ -170,12 +177,13 @@ const ChatComposer = React.forwardRef<HTMLDivElement, ChatComposerProps>(functio
                   onSubmit(value);
                 }}
               >
-                <PaperPlaneRight width={12} height={12} weight="fill" />
+                <ArrowUp width={14} height={14} weight="bold" />
               </button>
             )}
           </div>
         </div>
       </div>
+      {bottomAccessory ? <div className={styles.bottomAccessory()}>{bottomAccessory}</div> : null}
     </div>
   );
 });

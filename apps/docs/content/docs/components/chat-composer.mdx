@@ -4,9 +4,10 @@ description: 제어형 textarea + send/cancel 토글 composer
 ---
 
 import {
+  ChatComposerAccessoriesDemo,
   ChatComposerIdleDemo,
-  ChatComposerStreamingDemo,
   ChatComposerStatesDemo,
+  ChatComposerStreamingDemo,
 } from "@/components/demos/chat-composer-demo";
 import { ExperimentalNotice } from "@/components/experimental-notice";
 
@@ -36,11 +37,17 @@ const [value, setValue] = useState("");
 
 <ChatComposerIdleDemo />
 
+## Toolbar / accessory slots
+
+`leadingToolbar` · `trailingToolbar` 는 send 버튼 row(shell 안), `topAccessory` · `bottomAccessory` 는 shell 바깥 위/아래에 렌더됩니다.
+
+<ChatComposerAccessoriesDemo />
+
 ## Streaming toggle
 
 <ChatComposerStreamingDemo />
 
-## Disabled / error
+## Disabled
 
 <ChatComposerStatesDemo />
 
@@ -54,8 +61,9 @@ const [value, setValue] = useState("");
 | `onCancel` | `() => void` | — | Cancel 버튼 (`isStreaming=true` 일 때) |
 | `isStreaming` | `boolean` | `false` | Send/Cancel 토글 |
 | `placeholder` | `string` | `"ask a question..."` | placeholder |
-| `minRows` / `maxRows` | `number` | `3` / `10` | auto-grow 범위 |
+| `minRows` / `maxRows` | `number` | `2` / `10` | auto-grow 범위 |
 | `disabled` | `boolean` | `false` | 입력 비활성 |
 | `helperText` / `errorText` / `footerText` | `ReactNode` | — | 3종 보조 텍스트 라인 |
-| `leadingToolbar` / `trailingToolbar` | `ReactNode` | — | toolbar slot |
+| `leadingToolbar` / `trailingToolbar` | `ReactNode` | — | toolbar slot (send 버튼 row 좌/우, shell 안) |
+| `topAccessory` / `bottomAccessory` | `ReactNode` | — | shell 바깥 위/아래 슬롯 (외부 컨트롤 row 등) |
 | `autoFocus` | `boolean` | — | 초기 포커스 |
