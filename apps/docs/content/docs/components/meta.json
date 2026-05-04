@@ -40,17 +40,10 @@
     "scroll-area",
     "---AI / Agent Chat---",
     "chat-loading-dots",
-    "chat-step-dot",
-    "agent-status-indicator",
-    "chat-block",
     "chat-user-message",
     "chat-assistant-message",
     "chat-composer",
     "chat-attachment-chip",
-    "thinking-block",
-    "tool-code-block",
-    "tool-call-card",
-    "chat-thread",
     "chat-tab-bar",
     "chat-markdown"
   ]

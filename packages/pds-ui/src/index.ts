@@ -8,8 +8,6 @@
  *   import { Separator } from "@fluxloop-ai/pds-ui/components/separator";
  */
 
-export type { AgentStatusIndicatorProps } from "./components/agent-status-indicator";
-export { AgentStatusIndicator } from "./components/agent-status-indicator";
 export type {
   AppShellMainProps,
   AppShellPanelHeaderProps,
@@ -44,18 +42,12 @@ export type { ChatAssistantMessageProps } from "./components/chat-assistant-mess
 export { ChatAssistantMessage, chatAssistantMessage } from "./components/chat-assistant-message";
 export type { ChatAttachmentChipProps } from "./components/chat-attachment-chip";
 export { ChatAttachmentChip, chatAttachmentChip } from "./components/chat-attachment-chip";
-export type { ChatBlockProps } from "./components/chat-block";
-export { ChatBlock, chatBlock } from "./components/chat-block";
 export type { ChatComposerProps } from "./components/chat-composer";
 export { ChatComposer, chatComposer } from "./components/chat-composer";
 export type { ChatLoadingDotsProps } from "./components/chat-loading-dots";
 export { ChatLoadingDots, chatLoadingDots } from "./components/chat-loading-dots";
-export type { ChatStepDotProps } from "./components/chat-step-dot";
-export { ChatStepDot } from "./components/chat-step-dot";
 export type { ChatTab, ChatTabBarProps } from "./components/chat-tab-bar";
 export { ChatTabBar, chatTabBar } from "./components/chat-tab-bar";
-export type { ChatThreadProps } from "./components/chat-thread";
-export { ChatThread, chatThread } from "./components/chat-thread";
 export type { ChatUserMessageProps } from "./components/chat-user-message";
 export { ChatUserMessage, chatUserMessage } from "./components/chat-user-message";
 export type { CheckboxProps } from "./components/checkbox";
@@ -195,11 +187,6 @@ export type { TabsProps } from "./components/tabs";
 export { Tabs, TabsContent, TabsList, TabsTrigger, tabs } from "./components/tabs";
 export type { TextButtonProps } from "./components/text-button";
 export { TextButton, textButton } from "./components/text-button";
-export type { ThinkingBlockProps } from "./components/thinking-block";
-export {
-  REDACTED_THINKING_MESSAGE,
-  ThinkingBlock,
-} from "./components/thinking-block";
 export type { ToastRootProps } from "./components/toast";
 export {
   Toast,
@@ -207,14 +194,6 @@ export {
   ToastProvider,
   ToastViewport,
 } from "./components/toast";
-export type { ToolCallCardProps } from "./components/tool-call-card";
-export {
-  DEFAULT_KEY_PARAM_FIELDS,
-  DEFAULT_TOOL_LABELS,
-  ToolCallCard,
-} from "./components/tool-call-card";
-export type { ToolCodeBlockProps, ToolCodeLanguage } from "./components/tool-code-block";
-export { ToolCodeBlock, toolCodeBlock } from "./components/tool-code-block";
 export type { TooltipContentProps, TooltipProps } from "./components/tooltip";
 export {
   Tooltip,

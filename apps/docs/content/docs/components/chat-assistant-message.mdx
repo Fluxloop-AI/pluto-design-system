@@ -1,6 +1,6 @@
 ---
 title: ChatAssistantMessage
-description: 어시스턴트 응답 — 풍선 없는 plain text + thinking + tool call 블록 렌더
+description: 어시스턴트 응답 — 풍선 없는 plain text 본문
 ---
 
 import { ChatAssistantMessageDemo } from "@/components/demos/chat-assistant-message-demo";
@@ -9,7 +9,6 @@ import { ExperimentalNotice } from "@/components/experimental-notice";
 <ExperimentalNotice area="AI / Agent Chat" />
 
 PDS 채팅 모델은 **사용자 메시지에는 풍선**, **어시스턴트 응답에는 풍선 없이 본문만** 노출한다. 응답이 곧 본문이라 별도 시각 컨테이너로 가두지 않는다.
-이 컴포넌트는 `ChatThread` 가 내부적으로 사용하지만, 단일 응답 미리보기·문서·테스트 용도로 단독 사용도 가능하다.
 
 ## 사용
 
@@ -23,12 +22,9 @@ import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
 />
 ```
 
-`content` 는 문자열 또는 Anthropic 콘텐츠 블록 배열. `text` / `thinking` / `tool_use` 블록을 인식하고, 그 외는 무시.
-`tool_use` 블록의 결과는 `toolResults` Map (`tool_use_id` → `ToolResultBlock`) 으로 전달한다.
-
 마크다운 렌더는 옵셔널. `renderMarkdown` 미주입 시 plain text 로 떨어진다. 권장 구현체와 커스터마이즈 가이드는 [Chat Markdown](/docs/components/chat-markdown).
 
-기본 복사 버튼이 응답 아래에 내장돼 있다. 메시지 행에 호버하거나 포커스하면 노출되고, 클릭 시 1.5초간 체크 아이콘으로 바뀌며 클립보드에 텍스트가 저장된다. 텍스트 블록만 join 되며 `thinking` / `tool_use` 블록은 스킵. `showCopy={false}` 로 끄거나, `actions` 로 추가 버튼을 붙일 수 있다 (기본 복사 옆에 함께 노출).
+기본 복사 버튼이 응답 아래에 내장돼 있다. 메시지 행에 호버하거나 포커스하면 노출되고, 클릭 시 1.5초간 체크 아이콘으로 바뀌며 클립보드에 텍스트가 저장된다. `showCopy={false}` 로 끄거나, `actions` 로 추가 버튼을 붙일 수 있다 (기본 복사 옆에 함께 노출).
 
 <ChatAssistantMessageDemo />
 
@@ -36,18 +32,8 @@ import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
 
 | Prop | 타입 | 기본 | 설명 |
 |---|---|---|---|
-| `content` | `string \| ContentBlock[]` | — | 응답 본문 |
-| `toolResults` | `Map<string, ToolResultBlock>` | — | `tool_use_id` 별 결과 매핑 |
-| `renderMarkdown` | `(text: string) => ReactNode` | — | 텍스트 블록 렌더러. 미지정 시 plain text 폴백 |
-| `renderToolCall` | `(use, result?) => ReactNode` | `<ToolCallCard />` | tool_use 블록 커스텀 렌더 |
-| `renderThinking` | `(block, phase?) => ReactNode` | `<ThinkingBlock />` | thinking 블록 커스텀 렌더 |
+| `content` | `string` | — | 응답 본문 |
+| `renderMarkdown` | `(text: string) => ReactNode` | — | 텍스트 렌더러. 미지정 시 plain text 폴백 |
 | `showCopy` | `boolean` | `true` | 응답 아래 기본 복사 버튼 노출 여부. 텍스트가 있을 때만 그려짐 |
 | `actions` | `ReactNode` | — | 추가 액션 슬롯. 기본 복사 버튼 옆에 함께 노출 |
 | `className` | `string` | — | 루트 클래스 |
-
-## 렌더 규칙
-
-- `text` → `renderMarkdown` 결과 또는 plain text (`whitespace-pre-wrap`) 폴백
-- `thinking` → `renderThinking` 결과 또는 `ThinkingBlock`
-- `tool_use` → `renderToolCall` 결과 또는 `ToolCallCard` (`toolResults` 에서 매칭된 결과 전달)
-- 그 외 (`image`, `tool_result`, `redacted_thinking` 등) → 무시

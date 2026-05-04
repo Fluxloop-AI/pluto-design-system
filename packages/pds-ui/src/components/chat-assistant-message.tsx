@@ -2,18 +2,8 @@
 
 import * as React from "react";
 import { tv } from "tailwind-variants";
-import type {
-  ChatStatusPhase,
-  ContentBlock,
-  TextBlock,
-  ThinkingBlock as ThinkingBlockType,
-  ToolResultBlock,
-  ToolUseBlock,
-} from "../types/chat";
 import { cn } from "../utils/cn";
-import { ChatCopyButton, extractCopyText } from "./internal/chat-copy-button";
-import { ThinkingBlock } from "./thinking-block";
-import { ToolCallCard } from "./tool-call-card";
+import { ChatCopyButton } from "./internal/chat-copy-button";
 import { TooltipProvider } from "./tooltip";
 
 const chatAssistantMessage = tv({
@@ -35,11 +25,8 @@ type ChatAssistantMessageProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "children" | "content"
 > & {
-  content: string | ContentBlock[];
-  toolResults?: Map<string, ToolResultBlock>;
+  content: string;
   renderMarkdown?: (text: string) => React.ReactNode;
-  renderToolCall?: (toolUse: ToolUseBlock, toolResult?: ToolResultBlock) => React.ReactNode;
-  renderThinking?: (block: ThinkingBlockType, phase?: ChatStatusPhase) => React.ReactNode;
   /** 메시지 아래 추가 액션. `showCopy` 가 true 면 기본 복사 버튼 옆에 함께 노출. */
   actions?: React.ReactNode;
   /** 기본 복사 버튼 노출 여부. 텍스트 컨텐츠가 있을 때만 실제로 그려짐. 기본 true. */
@@ -47,34 +34,14 @@ type ChatAssistantMessageProps = Omit<
   className?: string;
 };
 
-function toBlocks(content: string | ContentBlock[]): ContentBlock[] {
-  if (typeof content === "string") {
-    const textBlock: TextBlock = { type: "text", text: content };
-    return [textBlock];
-  }
-  return content;
-}
-
 const ChatAssistantMessage = React.forwardRef<HTMLDivElement, ChatAssistantMessageProps>(
   function ChatAssistantMessage(
-    {
-      content,
-      toolResults,
-      renderMarkdown,
-      renderToolCall,
-      renderThinking,
-      actions,
-      showCopy = true,
-      className,
-      ...props
-    },
+    { content, renderMarkdown, actions, showCopy = true, className, ...props },
     ref,
   ) {
     const styles = chatAssistantMessage();
-    const blocks = toBlocks(content);
 
-    const copyText = showCopy ? extractCopyText(blocks) : "";
-    const hasCopy = copyText.length > 0;
+    const hasCopy = showCopy && content.length > 0;
     const hasActionBar = hasCopy || Boolean(actions);
 
     return (
@@ -85,57 +52,17 @@ const ChatAssistantMessage = React.forwardRef<HTMLDivElement, ChatAssistantMessa
         className={cn(styles.root(), className)}
         {...props}
       >
-        {blocks.map((block, blockIndex) => {
-          const blockKey = `${blockIndex}-${block.type}`;
-          if (block.type === "text") {
-            return (
-              <div key={blockKey} className={styles.text()}>
-                {renderMarkdown ? (
-                  renderMarkdown(block.text)
-                ) : (
-                  <span className="whitespace-pre-wrap">{block.text}</span>
-                )}
-              </div>
-            );
-          }
-          if (block.type === "thinking") {
-            if (renderThinking) {
-              return <React.Fragment key={blockKey}>{renderThinking(block)}</React.Fragment>;
-            }
-            return (
-              <ThinkingBlock
-                key={blockKey}
-                thinking={block.thinking}
-                renderMarkdown={renderMarkdown}
-              />
-            );
-          }
-          if (block.type === "tool_use") {
-            const toolResult = toolResults?.get(block.id);
-            if (renderToolCall) {
-              return (
-                <React.Fragment key={blockKey}>
-                  {renderToolCall(block, toolResult)}
-                </React.Fragment>
-              );
-            }
-            return (
-              <ToolCallCard
-                key={blockKey}
-                toolCallId={block.id}
-                toolName={block.name}
-                args={block.input as Record<string, unknown>}
-                result={toolResult?.content}
-                isError={toolResult?.is_error}
-              />
-            );
-          }
-          return null;
-        })}
+        <div className={styles.text()}>
+          {renderMarkdown ? (
+            renderMarkdown(content)
+          ) : (
+            <span className="whitespace-pre-wrap">{content}</span>
+          )}
+        </div>
         {hasActionBar ? (
           <TooltipProvider>
             <div className={styles.actions()}>
-              {hasCopy ? <ChatCopyButton text={copyText} /> : null}
+              {hasCopy ? <ChatCopyButton text={content} /> : null}
               {actions}
             </div>
           </TooltipProvider>
