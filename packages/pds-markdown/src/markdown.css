@@ -61,7 +61,9 @@
   min-width: 100%;
 }
 
-.pds-markdown-table-scroll :is(th, td) {
+.pds-markdown-table-scroll th,
+.pds-markdown-table-scroll td {
+  background: transparent;
   border: 0;
   padding: 8px 12px;
 }
@@ -70,6 +72,10 @@
   border-bottom: 1px solid var(--pds-line-solid-normal);
 }
 
-.pds-markdown-table-scroll tbody tr {
+.pds-markdown-table-scroll tbody td {
   border-bottom: 1px solid var(--pds-line-solid-normal);
+}
+
+.pds-markdown-table-scroll tbody tr:last-child td {
+  border-bottom: 0;
 }

@@ -16,9 +16,9 @@ import { ToolCallCard } from "./tool-call-card";
 
 const chatAssistantMessage = tv({
   slots: {
-    root: "flex flex-col items-start pl-[4px]",
+    root: "flex w-full min-w-0 flex-col items-start pl-[4px]",
     text: [
-      "max-w-[100%] break-words",
+      "w-full min-w-0 max-w-full break-words",
       "text-[14px] leading-[22px] text-[color:var(--pds-label-normal)]",
     ],
   },
