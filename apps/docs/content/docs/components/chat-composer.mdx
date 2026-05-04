@@ -39,7 +39,9 @@ const [value, setValue] = useState("");
 
 ## Toolbar / accessory slots
 
-`leadingToolbar` · `trailingToolbar` 는 send 버튼 row(shell 안), `topAccessory` · `bottomAccessory` 는 shell 바깥 위/아래에 렌더됩니다.
+- `leadingToolbar` · `trailingToolbar` — send 버튼 row(shell 안 하단)
+- `topAccessory` — shell **안쪽** 상단 (textarea 위). 첨부 chip 등 입력 컨텍스트 표시 자리.
+- `bottomAccessory` — shell **바깥** 하단 (composer 카드 아래). 톤·모델 선택 row 같은 외부 컨트롤.
 
 <ChatComposerAccessoriesDemo />
 
@@ -65,5 +67,6 @@ const [value, setValue] = useState("");
 | `disabled` | `boolean` | `false` | 입력 비활성 |
 | `helperText` / `errorText` / `footerText` | `ReactNode` | — | 3종 보조 텍스트 라인 |
 | `leadingToolbar` / `trailingToolbar` | `ReactNode` | — | toolbar slot (send 버튼 row 좌/우, shell 안) |
-| `topAccessory` / `bottomAccessory` | `ReactNode` | — | shell 바깥 위/아래 슬롯 (외부 컨트롤 row 등) |
+| `topAccessory` | `ReactNode` | — | shell **안쪽** 상단 슬롯 (첨부 chip 등) |
+| `bottomAccessory` | `ReactNode` | — | shell **바깥** 하단 슬롯 (외부 컨트롤 row) |
 | `autoFocus` | `boolean` | — | 초기 포커스 |

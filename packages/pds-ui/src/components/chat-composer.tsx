@@ -36,7 +36,7 @@ const chatComposer = tv({
       "cursor-pointer transition-opacity duration-150",
       "disabled:opacity-40 disabled:cursor-not-allowed",
     ],
-    topAccessory: "mb-[4px]",
+    topAccessory: "px-[10px] pt-[10px]",
     bottomAccessory: "mt-[8px]",
   },
 });
@@ -127,8 +127,8 @@ const ChatComposer = React.forwardRef<HTMLDivElement, ChatComposerProps>(functio
 
   return (
     <div ref={ref} data-slot="chat-composer" className={cn(styles.root(), className)}>
-      {topAccessory ? <div className={styles.topAccessory()}>{topAccessory}</div> : null}
       <div className={styles.shell()}>
+        {topAccessory ? <div className={styles.topAccessory()}>{topAccessory}</div> : null}
         <textarea
           ref={composedRef}
           value={value}
