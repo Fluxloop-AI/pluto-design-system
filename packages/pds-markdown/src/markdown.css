@@ -46,6 +46,11 @@
   margin-bottom: 4px;
 }
 
+.pds-markdown a {
+  color: var(--pds-accent-foreground-blue);
+  text-decoration: none;
+}
+
 .pds-markdown-table-scroll {
   margin: 16px 0;
   overflow-x: auto;
