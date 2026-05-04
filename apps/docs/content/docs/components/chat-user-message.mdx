@@ -1,0 +1,41 @@
+---
+title: ChatUserMessage
+description: 사용자 메시지 풍선. 텍스트 + 이미지 블록을 렌더
+---
+
+import { ChatUserMessageDemo } from "@/components/demos/chat-user-message-demo";
+import { ExperimentalNotice } from "@/components/experimental-notice";
+
+<ExperimentalNotice area="AI / Agent Chat" />
+
+## 사용
+
+```tsx
+import { ChatUserMessage } from "@fluxloop-ai/pds-ui/components/chat-user-message";
+import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
+
+<ChatUserMessage content="안녕하세요" />
+<ChatUserMessage content="**bold** 와 `code` 가 들어간 메시지" renderMarkdown={renderMarkdown} />
+<ChatUserMessage content={[
+  { type: "text", text: "아래 이미지 참고" },
+  { type: "image", source: { type: "url", url: "/foo.png" } },
+]} />
+```
+
+`content` 는 문자열 또는 Anthropic 콘텐츠 블록 배열. 이미지 로드 실패 시 자동으로 fallback 박스로 대체.
+
+마크다운 렌더는 옵셔널. `renderMarkdown` 미주입 시 plain text 로 떨어진다 (사용자 입력은 보통 plain 이라 디폴트로도 자연스러움). 자세한 가이드 — 패키지 설치·보안·커스터마이즈 — 는 [Chat Markdown](/docs/components/chat-markdown).
+
+어시스턴트 메시지는 풍선이 없는 별도 컴포넌트 [`ChatAssistantMessage`](/docs/components/chat-assistant-message) 가 담당.
+
+<ChatUserMessageDemo />
+
+## Props
+
+| Prop | 타입 | 기본 | 설명 |
+|---|---|---|---|
+| `content` | `string \| ContentBlock[]` | — | 메시지 본문 |
+| `role` | `"user"` | `"user"` | 현재 user 만 지원 |
+| `renderMarkdown` | `(text: string) => ReactNode` | — | 텍스트 블록 렌더러. 미지정 시 plain text |
+| `actions` | `ReactNode` | — | 풍선 아래 action bar 슬롯 (copy/send-to-note 등) |
+| `className` | `string` | — | 루트 클래스 |

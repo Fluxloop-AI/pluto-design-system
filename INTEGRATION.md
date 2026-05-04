@@ -75,7 +75,7 @@ import { Plus, ArrowRight } from "@fluxloop-ai/pds-icons/icons";
 ```bash
 npx shadcn add https://pds.pluto.com/r/button
 npx shadcn add https://pds.pluto.com/r/dialog
-npx shadcn add https://pds.pluto.com/r/chat-bubble
+npx shadcn add https://pds.pluto.com/r/chat-user-message
 ```
 
 이게 하는 일: PDS 레포의 `packages/pds-ui/src/components/button.tsx` 를 **너의 레포 안의 `components/ui/button.tsx` 로 복사**. 의존성이 아니다. 이후 그 파일은 소비자 레포가 소유 — 마음대로 수정 가능.

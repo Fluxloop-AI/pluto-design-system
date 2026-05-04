@@ -5,17 +5,14 @@ import { tv } from "tailwind-variants";
 import type {
   ChatMessage,
   ChatStatusPhase,
-  ContentBlock,
-  TextBlock,
   ThinkingBlock as ThinkingBlockType,
   ToolResultBlock,
   ToolUseBlock,
 } from "../types/chat";
 import { cn } from "../utils/cn";
-import { ChatBubble } from "./chat-bubble";
+import { ChatAssistantMessage } from "./chat-assistant-message";
 import { ChatLoadingDots } from "./chat-loading-dots";
-import { ThinkingBlock } from "./thinking-block";
-import { ToolCallCard } from "./tool-call-card";
+import { ChatUserMessage } from "./chat-user-message";
 
 const chatThread = tv({
   slots: {
@@ -26,11 +23,6 @@ const chatThread = tv({
       "flex flex-1 items-center justify-center text-center",
       "text-[14px] p-[24px] text-[color:var(--pds-label-assistive)]",
     ],
-    assistantText: [
-      "max-w-[100%] break-words",
-      "text-[14px] leading-[22px] text-[color:var(--pds-label-normal)]",
-    ],
-    assistantWrapper: "flex flex-col items-start pl-[4px]",
   },
 });
 
@@ -46,14 +38,6 @@ type ChatThreadProps = {
   className?: string;
   viewportRef?: React.Ref<HTMLDivElement>;
 };
-
-function toBlocks(content: ChatMessage["content"]): ContentBlock[] {
-  if (typeof content === "string") {
-    const textBlock: TextBlock = { type: "text", text: content };
-    return [textBlock];
-  }
-  return content;
-}
 
 function collectToolResults(messages: ChatMessage[]): Map<string, ToolResultBlock> {
   const map = new Map<string, ToolResultBlock>();
@@ -107,58 +91,25 @@ const ChatThread = React.forwardRef<HTMLDivElement, ChatThreadProps>(function Ch
                   <React.Fragment key={message.id}>{renderUserBubble(message)}</React.Fragment>
                 );
               }
-              return <ChatBubble key={message.id} content={message.content} />;
+              return (
+                <ChatUserMessage
+                  key={message.id}
+                  content={message.content}
+                  renderMarkdown={renderMarkdown}
+                />
+              );
             }
 
-            const blocks = toBlocks(message.content);
             return (
-              <div key={message.id} className={styles.assistantWrapper()} data-role="assistant">
-                {blocks.map((block, blockIndex) => {
-                  const blockKey = `${message.id}-${blockIndex}`;
-                  if (block.type === "text") {
-                    return (
-                      <div key={blockKey} className={styles.assistantText()}>
-                        {renderMarkdown ? renderMarkdown(block.text) : <pre>{block.text}</pre>}
-                      </div>
-                    );
-                  }
-                  if (block.type === "thinking") {
-                    if (renderThinking)
-                      return (
-                        <React.Fragment key={blockKey}>{renderThinking(block)}</React.Fragment>
-                      );
-                    return (
-                      <ThinkingBlock
-                        key={blockKey}
-                        thinking={block.thinking}
-                        renderMarkdown={renderMarkdown}
-                      />
-                    );
-                  }
-                  if (block.type === "tool_use") {
-                    const toolResult = toolResultMap.get(block.id);
-                    if (renderToolCall) {
-                      return (
-                        <React.Fragment key={blockKey}>
-                          {renderToolCall(block, toolResult)}
-                        </React.Fragment>
-                      );
-                    }
-                    return (
-                      <ToolCallCard
-                        key={blockKey}
-                        toolCallId={block.id}
-                        toolName={block.name}
-                        args={block.input as Record<string, unknown>}
-                        result={toolResult?.content}
-                        isError={toolResult?.is_error}
-                      />
-                    );
-                  }
-                  return null;
-                })}
-                {renderAssistantActions ? renderAssistantActions(message) : null}
-              </div>
+              <ChatAssistantMessage
+                key={message.id}
+                content={message.content}
+                toolResults={toolResultMap}
+                renderMarkdown={renderMarkdown}
+                renderToolCall={renderToolCall}
+                renderThinking={renderThinking}
+                actions={renderAssistantActions ? renderAssistantActions(message) : undefined}
+              />
             );
           })}
           {loadingDots ? <ChatLoadingDots /> : null}
