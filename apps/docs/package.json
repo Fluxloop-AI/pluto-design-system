@@ -14,6 +14,7 @@
   "dependencies": {
     "@fluxloop-ai/pds-core": "workspace:*",
     "@fluxloop-ai/pds-icons": "workspace:*",
+    "@fluxloop-ai/pds-markdown": "workspace:*",
     "@fluxloop-ai/pds-ui": "workspace:*",
     "fumadocs-core": "^15.0.0",
     "fumadocs-mdx": "^11.0.0",
