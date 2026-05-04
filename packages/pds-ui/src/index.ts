@@ -123,6 +123,8 @@ export type { IconButtonProps } from "./components/icon-button";
 export { IconButton, iconButton } from "./components/icon-button";
 export type { InputProps } from "./components/input";
 export { Input, input } from "./components/input";
+export type { PageContainerProps } from "./components/page-container";
+export { PageContainer, pageContainer } from "./components/page-container";
 export type { PopoverContentProps } from "./components/popover";
 export {
   Popover,
@@ -145,6 +147,8 @@ export type { RadioGroupItemProps, RadioGroupProps } from "./components/radio-gr
 export { RadioGroup, RadioGroupItem, radio } from "./components/radio-group";
 export type { ScrollAreaProps } from "./components/scroll-area";
 export { ScrollArea, ScrollBar } from "./components/scroll-area";
+export type { SectionHeaderProps } from "./components/section-header";
+export { SectionHeader, sectionHeader } from "./components/section-header";
 export type {
   SegmentedControlItemProps,
   SegmentedControlProps,
@@ -171,8 +175,6 @@ export {
   SelectViewport,
   select,
 } from "./components/select";
-export type { SectionHeaderProps } from "./components/section-header";
-export { SectionHeader, sectionHeader } from "./components/section-header";
 export type { SeparatorProps } from "./components/separator";
 export { Separator, separator } from "./components/separator";
 export type { SidebarListItem, SidebarListProps } from "./components/sidebar-list";
