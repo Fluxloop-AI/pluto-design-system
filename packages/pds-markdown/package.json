@@ -5,9 +5,12 @@
   "description": "Pluto Design System — markdown renderer (react-markdown + remark-gfm) for chat slots",
   "license": "UNLICENSED",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./styles": "./src/markdown.css"
   },
   "files": [
     "src",
