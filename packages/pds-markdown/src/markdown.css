@@ -66,6 +66,7 @@
   background: transparent;
   border: 0;
   padding: 8px 12px;
+  min-width: 80px;
 }
 
 .pds-markdown-table-scroll thead th {

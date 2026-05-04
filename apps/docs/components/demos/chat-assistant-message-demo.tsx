@@ -42,11 +42,13 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 ## 이벤트 타입 정리
 
-| 이벤트 | 의미 | 빈도 |
-|:--|:--|--:|
-| \`message_start\` | 응답 시작 | 1회 |
-| \`content_block_delta\` | 텍스트 chunk | N회 |
-| \`message_stop\` | 응답 종료 | 1회 |
+| 이벤트 | 페이즈 | 의미 | 빈도 | 처리 우선순위 |
+|:--|:--|:--|--:|:--|
+| \`message_start\` | init | 응답 시작 / 메타데이터 | 1회 | 메시지 ID·모델 정보 저장 |
+| \`content_block_delta\` | stream | 텍스트 / tool input chunk | N회 | UI 에 즉시 append |
+| \`content_block_stop\` | stream | 블록 1개 종료 | 블록 수 | 누적 버퍼 flush |
+| \`message_delta\` | finalize | usage / stop_reason 업데이트 | 1~2회 | 토큰 사용량 기록 |
+| \`message_stop\` | finalize | 응답 종료 | 1회 | 스트림 close, abort listener 해제 |
 
 ## 진행 체크리스트
 
