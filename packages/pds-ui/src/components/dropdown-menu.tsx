@@ -1,6 +1,6 @@
 "use client";
 
-import { CaretRight, Check, Circle } from "@fluxloop-ai/pds-icons/icons";
+import { CaretRight, Check } from "@fluxloop-ai/pds-icons/icons";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
@@ -151,7 +151,7 @@ const DropdownMenuRadioItem = React.forwardRef<
       {children}
       <span className={styles.trailing()}>
         <DropdownMenuPrimitive.ItemIndicator>
-          <Circle className="w-[8px] h-[8px] fill-current" />
+          <Check className="w-[14px] h-[14px]" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
     </DropdownMenuPrimitive.RadioItem>
