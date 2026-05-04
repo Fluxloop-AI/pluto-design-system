@@ -50,6 +50,12 @@ export ANTHROPIC_API_KEY=sk-ant-...
 | \`message_delta\` | finalize | usage / stop_reason 업데이트 | 1~2회 | 토큰 사용량 기록 |
 | \`message_stop\` | finalize | 응답 종료 | 1회 | 스트림 close, abort listener 해제 |
 
+## 핵심 포인트
+
+- 헬퍼는 \`messages.stream()\`, 저수준은 \`create({ stream: true })\`
+- 이벤트는 init / stream / finalize 세 페이즈로 흐른다
+- abort 와 timeout 은 별도 레이어로 다룬다
+
 ## 진행 체크리스트
 
 - [x] SDK 설치
