@@ -8,21 +8,22 @@ import { cn } from "../utils/cn";
 const chatAttachmentChip = tv({
   slots: {
     root: [
-      "group/attachment relative inline-flex items-center gap-[6px] shrink-0",
+      "group/attachment relative inline-flex items-center gap-[4px] shrink-0",
       "h-[24px] max-w-[160px] pl-[3px] pr-[10px] py-[2px]",
       "rounded-full border border-[color:var(--pds-line-normal-normal)]",
       "bg-[var(--pds-background-normal-normal)]",
       "text-[12px] leading-[14px] text-[color:var(--pds-label-normal)]",
     ],
-    leading: [
+    leadingImageWrap: [
       "shrink-0 inline-flex items-center justify-center",
       "w-[18px] h-[18px] rounded-full overflow-hidden",
     ],
     leadingImage: "w-full h-full object-cover",
     leadingIcon: [
-      "inline-flex items-center justify-center w-full h-full",
+      "shrink-0 inline-flex items-center justify-center",
+      "w-[18px] h-[18px] pl-[4px]",
       "text-[color:var(--pds-label-alternative)]",
-      "[&_svg]:w-[12px] [&_svg]:h-[12px]",
+      "[&_svg]:w-[14px] [&_svg]:h-[14px]",
     ],
     label: "min-w-0 truncate",
     remove: [
@@ -68,16 +69,16 @@ const ChatAttachmentChip = React.forwardRef<HTMLDivElement, ChatAttachmentChipPr
         className={cn(styles.root(), className)}
         {...props}
       >
-        <span className={styles.leading()}>
-          {type === "image" && imageSrc ? (
-            // eslint-disable-next-line @next/next/no-img-element
+        {type === "image" && imageSrc ? (
+          <span className={styles.leadingImageWrap()}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={imageSrc} alt="" className={styles.leadingImage()} />
-          ) : (
-            <span className={styles.leadingIcon()}>
-              <File />
-            </span>
-          )}
-        </span>
+          </span>
+        ) : (
+          <span className={styles.leadingIcon()}>
+            <File />
+          </span>
+        )}
         <span className={styles.label()}>{name}</span>
         {onRemove ? (
           <button
