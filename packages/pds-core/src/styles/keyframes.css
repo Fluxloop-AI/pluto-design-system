@@ -39,15 +39,14 @@
 }
 
 /* ---- loading / status dots ---- */
-@keyframes pds-dot-wave {
+@keyframes pds-dot-pulse {
   0%,
-  60%,
   100% {
-    transform: translateY(0);
-    opacity: 0.45;
+    transform: scale(0.85);
+    opacity: 0.5;
   }
-  30% {
-    transform: translateY(-3px);
+  50% {
+    transform: scale(1);
     opacity: 1;
   }
 }
@@ -103,25 +102,12 @@
   animation: pds-text-glow var(--pds-duration-glow) ease-in-out infinite;
 }
 
-.pds-animate-dot-wave {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.pds-animate-dot-wave > span {
-  width: 6px;
-  height: 6px;
+.pds-animate-dot-pulse {
+  display: inline-block;
   border-radius: var(--pds-radius-full);
   background: currentColor;
-  animation: pds-dot-wave 1.4s ease-in-out infinite;
-}
-
-.pds-animate-dot-wave > span:nth-child(2) {
-  animation-delay: 0.16s;
-}
-.pds-animate-dot-wave > span:nth-child(3) {
-  animation-delay: 0.32s;
+  animation: pds-dot-pulse 1.4s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .pds-animate-shimmer {
@@ -170,7 +156,7 @@
   .pds-animate-step-in,
   .pds-animate-card-in,
   .pds-animate-glow,
-  .pds-animate-dot-wave > span,
+  .pds-animate-dot-pulse,
   .pds-animate-dot-ripple::after,
   .pds-chat-collapsible,
   .pds-animate-shimmer {

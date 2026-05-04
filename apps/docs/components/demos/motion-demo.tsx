@@ -68,17 +68,17 @@ const KEYFRAMES: Keyframe[] = [
     ),
   },
   {
-    id: "dot-wave",
-    name: "pds-dot-wave",
-    util: ".pds-animate-dot-wave",
-    description: "3-dot 로딩 (0.16s stagger, 무한)",
+    id: "dot-pulse",
+    name: "pds-dot-pulse",
+    util: ".pds-animate-dot-pulse",
+    description: "단일 점 펄스 (scale 0.85↔1, opacity 0.5↔1)",
     duration: "1.4s loop",
     render: (k) => (
-      <div key={k} className="pds-animate-dot-wave" style={{ color: "var(--pds-primary-normal)" }}>
-        <span />
-        <span />
-        <span />
-      </div>
+      <span
+        key={k}
+        className="pds-animate-dot-pulse"
+        style={{ width: 8, height: 8, color: "var(--pds-primary-normal)" }}
+      />
     ),
   },
   {
