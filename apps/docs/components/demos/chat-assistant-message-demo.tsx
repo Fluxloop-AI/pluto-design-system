@@ -96,6 +96,7 @@ function Styles() {
         gap: 16px;
         padding: 20px;
         margin: 16px 0;
+        max-width: 400px;
         border: 1px solid var(--pds-line-solid-normal);
         border-radius: var(--pds-radius-lg);
         background: var(--pds-background-normal-normal);
