@@ -22,6 +22,18 @@
   border-radius: 0;
 }
 
+.pds-markdown p {
+  margin: 4px 0;
+}
+
+.pds-markdown > :first-child {
+  margin-top: 0;
+}
+
+.pds-markdown > :last-child {
+  margin-bottom: 0;
+}
+
 .pds-markdown hr {
   margin: 16px 0;
 }
