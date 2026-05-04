@@ -11,15 +11,22 @@ import type {
   ToolUseBlock,
 } from "../types/chat";
 import { cn } from "../utils/cn";
+import { ChatCopyButton, extractCopyText } from "./internal/chat-copy-button";
 import { ThinkingBlock } from "./thinking-block";
 import { ToolCallCard } from "./tool-call-card";
+import { TooltipProvider } from "./tooltip";
 
 const chatAssistantMessage = tv({
   slots: {
-    root: "flex w-full min-w-0 flex-col items-start pl-[4px]",
+    root: "group/msg flex w-full min-w-0 flex-col items-start pl-[4px]",
     text: [
       "w-full min-w-0 max-w-full break-words",
       "text-[14px] leading-[22px] text-[color:var(--pds-label-normal)]",
+    ],
+    actions: [
+      "flex gap-[2px] mt-[4px]",
+      "opacity-0 group-hover/msg:opacity-100 group-focus-within/msg:opacity-100",
+      "transition-opacity duration-[var(--pds-motion-duration-fast)]",
     ],
   },
 });
@@ -33,7 +40,10 @@ type ChatAssistantMessageProps = Omit<
   renderMarkdown?: (text: string) => React.ReactNode;
   renderToolCall?: (toolUse: ToolUseBlock, toolResult?: ToolResultBlock) => React.ReactNode;
   renderThinking?: (block: ThinkingBlockType, phase?: ChatStatusPhase) => React.ReactNode;
+  /** 메시지 아래 추가 액션. `showCopy` 가 true 면 기본 복사 버튼 옆에 함께 노출. */
   actions?: React.ReactNode;
+  /** 기본 복사 버튼 노출 여부. 텍스트 컨텐츠가 있을 때만 실제로 그려짐. 기본 true. */
+  showCopy?: boolean;
   className?: string;
 };
 
@@ -54,6 +64,7 @@ const ChatAssistantMessage = React.forwardRef<HTMLDivElement, ChatAssistantMessa
       renderToolCall,
       renderThinking,
       actions,
+      showCopy = true,
       className,
       ...props
     },
@@ -61,6 +72,10 @@ const ChatAssistantMessage = React.forwardRef<HTMLDivElement, ChatAssistantMessa
   ) {
     const styles = chatAssistantMessage();
     const blocks = toBlocks(content);
+
+    const copyText = showCopy ? extractCopyText(blocks) : "";
+    const hasCopy = copyText.length > 0;
+    const hasActionBar = hasCopy || Boolean(actions);
 
     return (
       <div
@@ -117,7 +132,14 @@ const ChatAssistantMessage = React.forwardRef<HTMLDivElement, ChatAssistantMessa
           }
           return null;
         })}
-        {actions}
+        {hasActionBar ? (
+          <TooltipProvider>
+            <div className={styles.actions()}>
+              {hasCopy ? <ChatCopyButton text={copyText} /> : null}
+              {actions}
+            </div>
+          </TooltipProvider>
+        ) : null}
       </div>
     );
   },

@@ -28,6 +28,8 @@ import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
 
 마크다운 렌더는 옵셔널. `renderMarkdown` 미주입 시 plain text 로 떨어진다. 권장 구현체와 커스터마이즈 가이드는 [Chat Markdown](/docs/components/chat-markdown).
 
+기본 복사 버튼이 응답 아래에 내장돼 있다. 메시지 행에 호버하거나 포커스하면 노출되고, 클릭 시 1.5초간 체크 아이콘으로 바뀌며 클립보드에 텍스트가 저장된다. 텍스트 블록만 join 되며 `thinking` / `tool_use` 블록은 스킵. `showCopy={false}` 로 끄거나, `actions` 로 추가 버튼을 붙일 수 있다 (기본 복사 옆에 함께 노출).
+
 <ChatAssistantMessageDemo />
 
 ## Props
@@ -39,7 +41,8 @@ import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
 | `renderMarkdown` | `(text: string) => ReactNode` | — | 텍스트 블록 렌더러. 미지정 시 plain text 폴백 |
 | `renderToolCall` | `(use, result?) => ReactNode` | `<ToolCallCard />` | tool_use 블록 커스텀 렌더 |
 | `renderThinking` | `(block, phase?) => ReactNode` | `<ThinkingBlock />` | thinking 블록 커스텀 렌더 |
-| `actions` | `ReactNode` | — | 응답 아래 action bar (copy/regenerate 등) |
+| `showCopy` | `boolean` | `true` | 응답 아래 기본 복사 버튼 노출 여부. 텍스트가 있을 때만 그려짐 |
+| `actions` | `ReactNode` | — | 추가 액션 슬롯. 기본 복사 버튼 옆에 함께 노출 |
 | `className` | `string` | — | 루트 클래스 |
 
 ## 렌더 규칙

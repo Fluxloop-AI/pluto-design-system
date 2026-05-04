@@ -80,7 +80,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 export function ChatAssistantMessageDemo() {
   return (
     <div className="pds-chat-demo-card">
-      <ChatUserMessage content={USER_QUESTION} renderMarkdown={renderMarkdown} />
+      <ChatUserMessage content={USER_QUESTION} />
       <ChatAssistantMessage content={ASSISTANT_REPLY} renderMarkdown={renderMarkdown} />
       <Styles />
     </div>
