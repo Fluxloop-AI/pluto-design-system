@@ -47,14 +47,14 @@ export function SectionHeaderFullDemo() {
     <Frame>
       <SectionHeader
         headingContent={
-          <IconButton size="sm" variant="normal" aria-label="필터">
+          <IconButton size="sm" variant="subtle" aria-label="필터">
             <Funnel />
           </IconButton>
         }
         trailingContent={
           <>
             <TextButton size="sm">전체 보기</TextButton>
-            <IconButton size="sm" variant="normal" aria-label="추가">
+            <IconButton size="sm" variant="subtle" aria-label="추가">
               <Plus />
             </IconButton>
           </>
@@ -73,7 +73,7 @@ export function SectionHeaderSizesDemo() {
         <SectionHeader
           size="lg"
           headingContent={
-            <IconButton size="md" variant="normal" aria-label="필터">
+            <IconButton size="md" variant="subtle" aria-label="필터">
               <Funnel />
             </IconButton>
           }
@@ -84,7 +84,7 @@ export function SectionHeaderSizesDemo() {
         <SectionHeader
           size="md"
           headingContent={
-            <IconButton size="sm" variant="normal" aria-label="필터">
+            <IconButton size="sm" variant="subtle" aria-label="필터">
               <Funnel />
             </IconButton>
           }

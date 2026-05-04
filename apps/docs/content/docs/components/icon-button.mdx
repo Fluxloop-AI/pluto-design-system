@@ -1,6 +1,6 @@
 ---
 title: IconButton
-description: 아이콘 1개 affordance — variant 4종(normal/background/outlined/solid) × size 3종
+description: 아이콘 1개 affordance — variant 5종(normal/subtle/background/outlined/solid) × size 3종
 ---
 
 import {
@@ -25,9 +25,10 @@ import { MagnifyingGlass } from "@fluxloop-ai/pds-icons/icons";
 
 ## Variant
 
-4 종 — **normal** / background / outlined / solid.
+5 종 — **normal** / **subtle** / background / outlined / solid.
 
 - **normal** — idle 시 배경 없음. hover 시에만 fill. 가장 약한 강조 (default).
+- **subtle** — `label-alternative`(흐림)로 시작 → hover 시 `label-normal`(또렷) + fill. 본 콘텐츠 옆 보조 액션(헤더·툴바·sidebar 액션)에 적합. idle 가시성을 한 단계 낮춰 시선을 안 뺏는다.
 - **background** — `fill-normal` 배경. 콘텐츠 안에서 자연스럽게 배경을 가짐.
 - **outlined** — 1px 테두리. 액션을 명시적으로 구획.
 - **solid** — primary fill. 페이지/패널의 main 아이콘 액션 (예: 채팅 send).
@@ -50,7 +51,7 @@ import { MagnifyingGlass } from "@fluxloop-ai/pds-icons/icons";
 
 | Prop | 타입 | 기본 | 설명 |
 |---|---|---|---|
-| `variant` | `normal \| background \| outlined \| solid` | `normal` | 컨테이너 톤 |
+| `variant` | `normal \| subtle \| background \| outlined \| solid` | `normal` | 컨테이너 톤 |
 | `size` | `sm \| md \| lg` | `md` | 정사각형 크기 |
 | `aria-label` | `string` | — | 접근성 라벨 (필수) |
 | `asChild` | `boolean` | `false` | Radix Slot 위임 |

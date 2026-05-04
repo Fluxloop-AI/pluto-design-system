@@ -24,6 +24,12 @@ const iconButton = tv({
         "disabled:text-[color:var(--pds-label-disable)] disabled:bg-transparent",
         "aria-disabled:text-[color:var(--pds-label-disable)] aria-disabled:bg-transparent",
       ],
+      subtle: [
+        "text-[color:var(--pds-label-alternative)] bg-transparent",
+        "hover:text-[color:var(--pds-label-normal)] hover:bg-[var(--pds-fill-normal)]",
+        "disabled:text-[color:var(--pds-label-disable)] disabled:bg-transparent",
+        "aria-disabled:text-[color:var(--pds-label-disable)] aria-disabled:bg-transparent",
+      ],
       background: [
         "text-[color:var(--pds-label-neutral)] bg-[var(--pds-fill-normal)]",
         "hover:bg-[var(--pds-fill-strong)]",

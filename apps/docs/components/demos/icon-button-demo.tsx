@@ -11,6 +11,9 @@ export function IconButtonVariantDemo() {
         <IconButton variant="normal" aria-label="검색">
           <Icon icon={MagnifyingGlass} />
         </IconButton>
+        <IconButton variant="subtle" aria-label="검색">
+          <Icon icon={MagnifyingGlass} />
+        </IconButton>
         <IconButton variant="background" aria-label="검색">
           <Icon icon={MagnifyingGlass} />
         </IconButton>
@@ -23,6 +26,9 @@ export function IconButtonVariantDemo() {
       </div>
       <div className="pds-icon-btn-row">
         <IconButton variant="normal" disabled aria-label="검색">
+          <Icon icon={MagnifyingGlass} />
+        </IconButton>
+        <IconButton variant="subtle" disabled aria-label="검색">
           <Icon icon={MagnifyingGlass} />
         </IconButton>
         <IconButton variant="background" disabled aria-label="검색">

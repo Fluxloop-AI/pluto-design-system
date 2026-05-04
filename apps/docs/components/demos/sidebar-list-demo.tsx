@@ -32,13 +32,13 @@ export function SidebarListBasicDemo() {
         count={SKILLS.length}
         actions={
           <>
-            <IconButton size="sm" aria-label="신규 스킬">
+            <IconButton size="sm" variant="subtle" aria-label="신규 스킬">
               <Plus />
             </IconButton>
-            <IconButton size="sm" aria-label="검색">
+            <IconButton size="sm" variant="subtle" aria-label="검색">
               <MagnifyingGlass />
             </IconButton>
-            <IconButton size="sm" aria-label="정렬">
+            <IconButton size="sm" variant="subtle" aria-label="정렬">
               <Funnel />
             </IconButton>
           </>
