@@ -50,6 +50,7 @@
     "tool-code-block",
     "tool-call-card",
     "chat-thread",
-    "chat-tab-bar"
+    "chat-tab-bar",
+    "chat-markdown"
   ]
 }
