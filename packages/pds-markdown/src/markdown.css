@@ -69,3 +69,7 @@
 .pds-markdown-table-scroll thead th {
   border-bottom: 1px solid var(--pds-line-solid-normal);
 }
+
+.pds-markdown-table-scroll tbody tr {
+  border-bottom: 1px solid var(--pds-line-solid-normal);
+}
