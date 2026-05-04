@@ -37,7 +37,27 @@ export type ImageBlock = {
   source: ImageBlockSource;
 };
 
-export type ContentBlock = TextBlock | ThinkingBlock | ToolUseBlock | ToolResultBlock | ImageBlock;
+export type DocumentBlockSource =
+  | { type: "base64"; media_type: string; data: string }
+  | { type: "url"; url: string }
+  | { type: "file"; file_id: string }
+  | { type: "text"; media_type: "text/plain"; data: string };
+
+export type DocumentBlock = {
+  type: "document";
+  source: DocumentBlockSource;
+  /** 표시용 파일명. 모델한테도 같이 전달되는 메타. */
+  title?: string;
+  context?: string;
+};
+
+export type ContentBlock =
+  | TextBlock
+  | ThinkingBlock
+  | ToolUseBlock
+  | ToolResultBlock
+  | ImageBlock
+  | DocumentBlock;
 
 export type ChatMessageRole = "user" | "assistant";
 
