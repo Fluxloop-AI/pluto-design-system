@@ -42,6 +42,8 @@ export type { ButtonProps } from "./components/button";
 export { Button, button } from "./components/button";
 export type { ChatAssistantMessageProps } from "./components/chat-assistant-message";
 export { ChatAssistantMessage, chatAssistantMessage } from "./components/chat-assistant-message";
+export type { ChatAttachmentChipProps } from "./components/chat-attachment-chip";
+export { ChatAttachmentChip, chatAttachmentChip } from "./components/chat-attachment-chip";
 export type { ChatBlockProps } from "./components/chat-block";
 export { ChatBlock, chatBlock } from "./components/chat-block";
 export type { ChatComposerProps } from "./components/chat-composer";

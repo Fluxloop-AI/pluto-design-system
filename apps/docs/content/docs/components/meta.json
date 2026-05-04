@@ -46,6 +46,7 @@
     "chat-user-message",
     "chat-assistant-message",
     "chat-composer",
+    "chat-attachment-chip",
     "thinking-block",
     "tool-code-block",
     "tool-call-card",

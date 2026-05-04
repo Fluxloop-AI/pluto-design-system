@@ -1,6 +1,7 @@
 "use client";
 
-import { At, CaretDown, HandWaving, Microphone, Plus, X } from "@fluxloop-ai/pds-icons/icons";
+import { CaretDown, HandWaving, Microphone, Plus } from "@fluxloop-ai/pds-icons/icons";
+import { ChatAttachmentChip } from "@fluxloop-ai/pds-ui/components/chat-attachment-chip";
 import { ChatComposer } from "@fluxloop-ai/pds-ui/components/chat-composer";
 import {
   DropdownMenu,
@@ -9,6 +10,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@fluxloop-ai/pds-ui/components/dropdown-menu";
+import { IconButton } from "@fluxloop-ai/pds-ui/components/icon-button";
 import {
   Tooltip,
   TooltipContent,
@@ -72,10 +74,38 @@ const MODEL_OPTIONS = [
   { id: "4.5", label: "4.5 일반" },
 ];
 
+const ATTACHMENT_THUMB_A =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23FFB347'/><stop offset='1' stop-color='%23FF6B6B'/></linearGradient></defs><rect width='40' height='40' fill='url(%23g)'/><circle cx='14' cy='16' r='5' fill='%23FFFFFF' opacity='0.9'/><circle cx='27' cy='24' r='7' fill='%23FFFFFF' opacity='0.7'/></svg>";
+
+const ATTACHMENT_THUMB_B =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%231F2937'/><stop offset='1' stop-color='%234B5563'/></linearGradient></defs><rect width='40' height='40' fill='url(%23g)'/><path d='M28 12a10 10 0 0 1-12 14 8 8 0 0 0 12-14z' fill='%23FCD34D'/></svg>";
+
+const INITIAL_ATTACHMENTS: Array<
+  | { id: string; type: "image"; name: string; imageSrc: string }
+  | { id: string; type: "file"; name: string }
+> = [
+  {
+    id: "img-1",
+    type: "image",
+    name: "ui-reference.png",
+    imageSrc: ATTACHMENT_THUMB_A,
+  },
+  {
+    id: "img-2",
+    type: "image",
+    name: "color-palette-draft-2026.jpg",
+    imageSrc: ATTACHMENT_THUMB_B,
+  },
+  { id: "file-1", type: "file", name: "release-notes-2026-q2.md" },
+  { id: "file-2", type: "file", name: "design-tokens.json" },
+  { id: "file-3", type: "file", name: "archive.zip" },
+];
+
 export function ChatComposerAccessoriesDemo() {
   const [value, setValue] = useState("");
   const [tone, setTone] = useState("wave");
   const [model, setModel] = useState("5.5-high");
+  const [attachments, setAttachments] = useState(INITIAL_ATTACHMENTS);
   return (
     <div className="pds-chat-demo-card">
       <ChatComposer
@@ -87,26 +117,38 @@ export function ChatComposerAccessoriesDemo() {
         }}
         placeholder="후속 변경 사항을 부탁하세요"
         topAccessory={
-          <div className="pds-chat-demo-mention">
-            <button type="button" className="pds-chat-demo-mention-main" aria-label="첨부된 컨텍스트 3개">
-              <At width={12} height={12} className="pds-chat-demo-mention-at" />
-              <span className="pds-chat-demo-mention-name">file.md</span>
-              <span className="pds-chat-demo-mention-more">+2</span>
-            </button>
-            <button type="button" className="pds-chat-demo-mention-close" aria-label="제거">
-              <X width={10} height={10} />
-            </button>
-          </div>
+          attachments.length > 0 ? (
+            <div className="pds-chat-demo-attachments">
+              {attachments.map((a) =>
+                a.type === "image" ? (
+                  <ChatAttachmentChip
+                    key={a.id}
+                    type="image"
+                    name={a.name}
+                    imageSrc={a.imageSrc}
+                    onRemove={() => setAttachments((list) => list.filter((x) => x.id !== a.id))}
+                  />
+                ) : (
+                  <ChatAttachmentChip
+                    key={a.id}
+                    type="file"
+                    name={a.name}
+                    onRemove={() => setAttachments((list) => list.filter((x) => x.id !== a.id))}
+                  />
+                ),
+              )}
+            </div>
+          ) : null
         }
         leadingToolbar={
-          <button type="button" className="pds-chat-demo-iconbtn" aria-label="첨부">
-            <Plus width={16} height={16} />
-          </button>
+          <IconButton size="sm" variant="subtle" aria-label="첨부">
+            <Plus />
+          </IconButton>
         }
         trailingToolbar={
-          <button type="button" className="pds-chat-demo-iconbtn" aria-label="음성">
-            <Microphone width={16} height={16} />
-          </button>
+          <IconButton size="sm" variant="subtle" aria-label="음성">
+            <Microphone />
+          </IconButton>
         }
         bottomAccessory={
           <div className="pds-chat-demo-row">
@@ -169,13 +211,14 @@ function ContextRingTrigger({ percent }: { percent: number }) {
     <TooltipProvider delayDuration={150}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <button
-            type="button"
-            className="pds-chat-demo-context"
+          <IconButton
+            size="sm"
+            variant="subtle"
+            className="ml-auto"
             aria-label={`컨텍스트 ${pct}/100% 사용`}
           >
             <ContextRing percent={percent} />
-          </button>
+          </IconButton>
         </TooltipTrigger>
         <TooltipContent size="sm" side="top">{`${pct}/100% 사용`}</TooltipContent>
       </Tooltip>
@@ -188,7 +231,15 @@ function ContextRing({ percent }: { percent: number }) {
   const c = 2 * Math.PI * r;
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-      <circle cx="7" cy="7" r={r} fill="none" stroke="currentColor" strokeWidth="2.5" opacity="0.25" />
+      <circle
+        cx="7"
+        cy="7"
+        r={r}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        opacity="0.25"
+      />
       <circle
         cx="7"
         cy="7"
@@ -229,23 +280,6 @@ function Styles() {
         background: var(--pds-background-normal-normal);
         cursor: pointer;
       }
-      .pds-chat-demo-iconbtn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 24px;
-        height: 24px;
-        padding: 0;
-        border: 0;
-        border-radius: 999px;
-        background: transparent;
-        color: var(--pds-label-alternative);
-        cursor: pointer;
-      }
-      .pds-chat-demo-iconbtn:hover {
-        background: var(--pds-background-normal-alternative);
-        color: var(--pds-label-normal);
-      }
       .pds-chat-demo-chip {
         display: inline-flex;
         align-items: center;
@@ -269,80 +303,10 @@ function Styles() {
         gap: 4px;
         padding: 0 6px;
       }
-      .pds-chat-demo-mention {
-        display: inline-flex;
-        align-items: center;
-        gap: 2px;
-        height: 22px;
-        padding: 0 4px 0 6px;
-        font-size: 12px;
-        color: var(--pds-label-normal);
-        background: var(--pds-fill-alternative);
-        border-radius: 6px;
-        transition: background 120ms;
-      }
-      .pds-chat-demo-mention:hover {
-        background: var(--pds-fill-normal);
-      }
-      .pds-chat-demo-mention-main {
-        display: inline-flex;
-        align-items: center;
+      .pds-chat-demo-attachments {
+        display: flex;
+        flex-wrap: wrap;
         gap: 4px;
-        background: transparent;
-        border: 0;
-        padding: 0;
-        font: inherit;
-        color: inherit;
-        cursor: pointer;
-      }
-      .pds-chat-demo-mention-close {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 16px;
-        height: 16px;
-        background: transparent;
-        border: 0;
-        border-radius: 4px;
-        color: var(--pds-label-alternative);
-        cursor: pointer;
-      }
-      .pds-chat-demo-mention-close:hover {
-        background: var(--pds-fill-strong);
-        color: var(--pds-label-normal);
-      }
-      .pds-chat-demo-mention-at {
-        color: var(--pds-label-assistive);
-      }
-      .pds-chat-demo-mention-name {
-        font-weight: 500;
-      }
-      .pds-chat-demo-mention-more {
-        font-size: 11px;
-        color: var(--pds-label-alternative);
-      }
-      .pds-chat-demo-context {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: auto;
-        width: 24px;
-        height: 24px;
-        padding: 0;
-        border: 0;
-        border-radius: 999px;
-        background: transparent;
-        color: var(--pds-label-alternative);
-        cursor: pointer;
-        transition: background 120ms, color 120ms;
-      }
-      .pds-chat-demo-context:hover {
-        background: var(--pds-fill-alternative);
-        color: var(--pds-label-normal);
-      }
-      .pds-chat-demo-context:focus-visible {
-        outline: 2px solid var(--pds-focus-ring);
-        outline-offset: 2px;
       }
     `}</style>
   );
