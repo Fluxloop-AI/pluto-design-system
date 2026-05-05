@@ -1,40 +1,42 @@
 "use client";
 
+import { ArrowSquareOut } from "@fluxloop-ai/pds-icons/icons";
 import { PageContainer } from "@fluxloop-ai/pds-ui/components/page-container";
+import { Button } from "@fluxloop-ai/pds-ui/components/button";
 
 export function PageContainerBasicDemo() {
   return (
     <ParentFrame>
       <PageContainer>
-        <Placeholder label="PageContainer (default · 960px)" />
+        <Placeholder label="PageContainer (default · 720px)" />
       </PageContainer>
     </ParentFrame>
   );
 }
 
+/**
+ * Variants 비교는 docs article column(약 800px) 보다 큰 viewport 가 필요해
+ * 별도 preview 라우트에서 띄운다. AppShell 데모와 동일한 패턴.
+ */
 export function PageContainerVariantsDemo() {
   return (
-    <div className="flex flex-col gap-[16px]">
-      <ParentFrame>
-        <PageContainer variant="narrow">
-          <Placeholder label="narrow · 720px" />
-        </PageContainer>
-      </ParentFrame>
-      <ParentFrame>
-        <PageContainer variant="default">
-          <Placeholder label="default · 960px" />
-        </PageContainer>
-      </ParentFrame>
-      <ParentFrame>
-        <PageContainer variant="wide">
-          <Placeholder label="wide · 1200px" />
-        </PageContainer>
-      </ParentFrame>
-      <ParentFrame>
-        <PageContainer variant="full">
-          <Placeholder label="full · max-width 없음 (gutter 32 유지)" />
-        </PageContainer>
-      </ParentFrame>
+    <div className="my-[16px] flex items-center justify-between gap-[16px] rounded-[var(--pds-radius-12)] border border-[var(--pds-line-normal-alternative)] bg-[var(--pds-background-normal-alternative)] px-[20px] py-[16px]">
+      <div className="flex flex-col gap-[2px]">
+        <span className="font-medium text-[13px] text-[color:var(--pds-label-normal)]">
+          전체 화면에서 비교하기
+        </span>
+        <span className="text-[12px] text-[color:var(--pds-label-alternative)]">
+          4개 variant 의 max-width 차이는 docs column 보다 넓은 viewport 가 필요해 새 창에서 띄운다.
+        </span>
+      </div>
+      <Button
+        variant="outlined"
+        size="sm"
+        trailingContent={<ArrowSquareOut />}
+        onClick={() => window.open("/preview/page-container", "_blank", "noopener,noreferrer")}
+      >
+        Preview 열기
+      </Button>
     </div>
   );
 }

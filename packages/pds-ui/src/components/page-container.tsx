@@ -46,9 +46,9 @@ const pageContainer = tv({
   base: ["w-full mx-auto", "px-[32px] pt-[32px] pb-[64px]"],
   variants: {
     variant: {
-      narrow: "max-w-[720px]",
-      default: "max-w-[960px]",
-      wide: "max-w-[1200px]",
+      narrow: "max-w-[640px]",
+      default: "max-w-[720px]",
+      wide: "max-w-[960px]",
       full: "max-w-none",
     },
   },
@@ -62,9 +62,9 @@ type PageContainerVariants = VariantProps<typeof pageContainer>;
 interface PageContainerProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * 본문 max-width 변종.
-   * - `narrow`  720px — 단일 컬럼 텍스트·폼·문서
-   * - `default` 960px — 일반 페이지 (기본)
-   * - `wide`    1200px — dashboard·다중 컬럼·grid
+   * - `narrow`  640px — 단일 컬럼 텍스트·폼·문서
+   * - `default` 720px — 일반 페이지 (기본)
+   * - `wide`    960px — dashboard·다중 컬럼·grid
    * - `full`    제한 없음 — 테이블·리스트 등 full-bleed (gutter 32 는 유지)
    */
   variant?: PageContainerVariants["variant"];
