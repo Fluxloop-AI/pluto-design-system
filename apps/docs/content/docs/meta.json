@@ -1,4 +1,4 @@
 {
   "title": "PDS",
-  "pages": ["index", "foundations", "components"]
+  "pages": ["index", "foundations", "components", "patterns", "examples"]
 }
