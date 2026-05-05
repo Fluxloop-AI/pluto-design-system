@@ -59,6 +59,7 @@ ScrollArea 가 아닌 임의의 `overflow:auto` 컨테이너에도 동일하게 
 |---|---|---|---|
 | `size` | `number` | `40` | fade 영역 높이 (px) |
 | `threshold` | `number` | `1` | 스크롤이 이만큼 넘었을 때 fade ON (px) |
+| `edges` | `{ top?: boolean; bottom?: boolean }` | `{ top: true, bottom: true }` | 페이드를 적용할 가장자리. sticky 헤더가 상단을 덮는 경우 `{ top: false }` 로 비활성 |
 
 반환값: `{ ref, onScroll, maskImage, isScrolledFromTop, isScrolledFromBottom }`. 마지막 두 boolean 은 헤더 그림자 등 다른 UI 토글에 활용 가능.
 
