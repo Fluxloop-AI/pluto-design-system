@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { tv } from "tailwind-variants";
+import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { ChatLoadingDots } from "./chat-loading-dots";
 import { ChatCopyButton } from "./internal/chat-copy-button";
 import { TooltipProvider } from "./tooltip";
 
@@ -11,7 +12,7 @@ const chatAssistantMessage = tv({
     root: "group/msg flex w-full min-w-0 flex-col items-start",
     text: [
       "w-full min-w-0 max-w-full break-words",
-      "text-[14px] leading-[22px] text-[color:var(--pds-label-normal)]",
+      "text-body2 text-[color:var(--pds-label-normal)]",
     ],
     actions: [
       "flex gap-[2px] mt-[4px]",
@@ -27,6 +28,11 @@ type ChatAssistantMessageProps = Omit<
 > & {
   content: string;
   renderMarkdown?: (text: string) => React.ReactNode;
+  /**
+   * 스트리밍 중 표시. true 면 markdown 렌더와 actions(복사 포함)가 모두 꺼지고,
+   * 본문 끝(또는 빈 본문일 때 단독)에 `<ChatLoadingDots />` 가 inline 노출된다.
+   */
+  loading?: boolean;
   /** 메시지 아래 추가 액션. `showCopy` 가 true 면 기본 복사 버튼 옆에 함께 노출. */
   actions?: React.ReactNode;
   /** 기본 복사 버튼 노출 여부. 텍스트 컨텐츠가 있을 때만 실제로 그려짐. 기본 true. */
@@ -36,24 +42,30 @@ type ChatAssistantMessageProps = Omit<
 
 const ChatAssistantMessage = React.forwardRef<HTMLDivElement, ChatAssistantMessageProps>(
   function ChatAssistantMessage(
-    { content, renderMarkdown, actions, showCopy = true, className, ...props },
+    { content, renderMarkdown, loading = false, actions, showCopy = true, className, ...props },
     ref,
   ) {
     const styles = chatAssistantMessage();
 
-    const hasCopy = showCopy && content.length > 0;
-    const hasActionBar = hasCopy || Boolean(actions);
+    const hasCopy = !loading && showCopy && content.length > 0;
+    const hasActionBar = !loading && (hasCopy || Boolean(actions));
 
     return (
       <div
         ref={ref}
         data-slot="chat-assistant-message"
         data-role="assistant"
+        data-loading={loading || undefined}
         className={cn(styles.root(), className)}
         {...props}
       >
         <div className={styles.text()}>
-          {renderMarkdown ? (
+          {loading ? (
+            <span className="whitespace-pre-wrap">
+              {content}
+              <ChatLoadingDots />
+            </span>
+          ) : renderMarkdown ? (
             renderMarkdown(content)
           ) : (
             <span className="whitespace-pre-wrap">{content}</span>
