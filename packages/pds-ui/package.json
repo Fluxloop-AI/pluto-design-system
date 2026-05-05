@@ -1,6 +1,6 @@
 {
   "name": "@fluxloop-ai/pds-ui",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": false,
   "description": "Pluto Design System — Radix + Tailwind components (source-only, shadcn registry)",
   "license": "UNLICENSED",

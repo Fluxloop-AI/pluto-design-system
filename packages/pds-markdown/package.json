@@ -1,6 +1,6 @@
 {
   "name": "@fluxloop-ai/pds-markdown",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": false,
   "description": "Pluto Design System — markdown renderer (react-markdown + remark-gfm) for chat slots",
   "license": "UNLICENSED",
