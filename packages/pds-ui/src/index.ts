@@ -53,8 +53,6 @@ export type {
   ResolveToolLabel,
 } from "./components/chat-process-trace";
 export { ChatProcessTrace, chatProcessTrace } from "./components/chat-process-trace";
-export type { ChatTab, ChatTabBarProps } from "./components/chat-tab-bar";
-export { ChatTabBar, chatTabBar } from "./components/chat-tab-bar";
 export type { ChatUserMessageProps } from "./components/chat-user-message";
 export { ChatUserMessage, chatUserMessage } from "./components/chat-user-message";
 export type { CheckboxProps } from "./components/checkbox";
@@ -152,6 +150,12 @@ export type { ProgressIndicatorProps, ProgressProps } from "./components/progres
 export { Progress, ProgressIndicator, progress } from "./components/progress";
 export type { RadioGroupItemProps, RadioGroupProps } from "./components/radio-group";
 export { RadioGroup, RadioGroupItem, radio } from "./components/radio-group";
+export type {
+  RemovableTab,
+  RemovableTabBarProps,
+  RemovableTabBarSize,
+} from "./components/removable-tab-bar";
+export { RemovableTabBar, removableTabBar } from "./components/removable-tab-bar";
 export type { ScrollAreaProps } from "./components/scroll-area";
 export { ScrollArea, ScrollBar } from "./components/scroll-area";
 export type { SectionHeaderProps } from "./components/section-header";

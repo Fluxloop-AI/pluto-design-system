@@ -26,6 +26,7 @@
     "section-header",
     "---Navigation---",
     "tabs",
+    "removable-tab-bar",
     "sidebar-menu",
     "sidebar-list",
     "---Overlays---",
@@ -46,7 +47,6 @@
     "chat-process-trace",
     "chat-composer",
     "chat-attachment-chip",
-    "chat-tab-bar",
     "chat-markdown"
   ]
 }
