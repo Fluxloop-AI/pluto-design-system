@@ -76,7 +76,9 @@ export function TabsLabelDemo() {
         <TabsList>
           <TabsTrigger value="spirit">Spirit</TabsTrigger>
           <TabsTrigger value="personas">Personas</TabsTrigger>
-          <TabsTrigger value="archive" disabled>Archive</TabsTrigger>
+          <TabsTrigger value="archive" disabled>
+            Archive
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="spirit" style={{ paddingTop: 12, fontSize: 13 }}>
           Spirit 탭. 텍스트 라벨이 그대로 노출되므로 툴팁은 띄우지 않는다.

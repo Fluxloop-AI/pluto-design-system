@@ -3,8 +3,8 @@
 import type { PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 import { Icon } from "./icon";
 
 /* ============================================================================
@@ -100,18 +100,10 @@ const actionTile = tv({
         ],
       },
       filled: {
-        root: [
-          "border-0",
-          "bg-[var(--pds-fill-alternative)]",
-          "hover:bg-[var(--pds-fill-normal)]",
-        ],
+        root: ["border-0", "bg-[var(--pds-fill-alternative)]", "hover:bg-[var(--pds-fill-normal)]"],
       },
       ghost: {
-        root: [
-          "border-0",
-          "bg-transparent",
-          "hover:bg-[var(--pds-fill-alternative)]",
-        ],
+        root: ["border-0", "bg-transparent", "hover:bg-[var(--pds-fill-alternative)]"],
       },
     },
     padding: {
@@ -362,16 +354,10 @@ interface ActionTileTitleProps extends React.HTMLAttributes<HTMLDivElement> {
 
 function renderTitleIcon(icon: TitleIconValue): React.ReactNode {
   if (icon == null) return null;
-  if (
-    React.isValidElement(icon) ||
-    typeof icon === "string" ||
-    typeof icon === "number"
-  ) {
+  if (React.isValidElement(icon) || typeof icon === "string" || typeof icon === "number") {
     return icon as React.ReactNode;
   }
-  return (
-    <Icon icon={icon as React.ComponentType<React.SVGAttributes<SVGSVGElement>>} size="sm" />
-  );
+  return <Icon icon={icon as React.ComponentType<React.SVGAttributes<SVGSVGElement>>} size="sm" />;
 }
 
 const ActionTileTitle = React.forwardRef<HTMLDivElement, ActionTileTitleProps>(

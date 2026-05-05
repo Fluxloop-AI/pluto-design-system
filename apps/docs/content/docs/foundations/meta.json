@@ -1,4 +1,14 @@
 {
   "title": "Foundations",
-  "pages": ["index", "color", "typography", "spacing", "radius", "shadow", "z-index", "motion", "squircle-shadow-research"]
+  "pages": [
+    "index",
+    "color",
+    "typography",
+    "spacing",
+    "radius",
+    "shadow",
+    "z-index",
+    "motion",
+    "squircle-shadow-research"
+  ]
 }

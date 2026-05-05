@@ -2,8 +2,8 @@
 
 import type { PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv } from "../utils/tv";
 import { Icon } from "./icon";
 
 const sidebarMenu = tv({

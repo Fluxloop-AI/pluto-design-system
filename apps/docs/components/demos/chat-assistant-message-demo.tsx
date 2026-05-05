@@ -1,10 +1,11 @@
 "use client";
 
+import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
 import { ChatAssistantMessage } from "@fluxloop-ai/pds-ui/components/chat-assistant-message";
 import { ChatUserMessage } from "@fluxloop-ai/pds-ui/components/chat-user-message";
-import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
 
-const USER_QUESTION = "Anthropic SDK 로 스트리밍 응답 받는 방법 알려줘. `messages.stream()` 이랑 `create({ stream: true })` 차이도 궁금해.";
+const USER_QUESTION =
+  "Anthropic SDK 로 스트리밍 응답 받는 방법 알려줘. `messages.stream()` 이랑 `create({ stream: true })` 차이도 궁금해.";
 
 const ASSISTANT_REPLY = `\`messages.stream()\` 은 헬퍼라서 가장 흔한 케이스에 적합하고, \`create({ stream: true })\` 는 raw SSE iterator 를 직접 다루고 싶을 때 쓰는 저수준 API 입니다. 아래에 차이와 실제 핸들링 패턴을 정리해뒀어요.
 

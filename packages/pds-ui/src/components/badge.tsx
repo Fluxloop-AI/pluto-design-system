@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const ACCENT_FOREGROUND_VARS = {
   red: "accent-foreground-red",
@@ -157,5 +157,5 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
   );
 });
 
-export type { BadgeProps, AccentColorToken, NeutralColorToken };
+export type { AccentColorToken, BadgeProps, NeutralColorToken };
 export { Badge, badge };

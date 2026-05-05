@@ -89,11 +89,7 @@ export function ComboboxFilledDemo() {
   return (
     <div className="pds-demo-row">
       <Combobox value={value} onValueChange={setValue}>
-        <ComboboxTrigger
-          variant="filled"
-          placeholder="프레임워크 선택"
-          style={{ width: 280 }}
-        >
+        <ComboboxTrigger variant="filled" placeholder="프레임워크 선택" style={{ width: 280 }}>
           {selectedLabel}
         </ComboboxTrigger>
         <ComboboxContent>

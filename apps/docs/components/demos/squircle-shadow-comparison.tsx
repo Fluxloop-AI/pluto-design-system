@@ -58,9 +58,7 @@ function Panel({ variant }: { variant: Variant }) {
   const useFilter = variant === "arc-filter" || variant === "squircle-filter";
 
   // filter: drop-shadow 는 부모 wrapper 에 걸어야 clip-path 로 잘리지 않는다.
-  const wrapperStyle: React.CSSProperties = useFilter
-    ? { filter: "var(--pds-drop-xl)" }
-    : {};
+  const wrapperStyle: React.CSSProperties = useFilter ? { filter: "var(--pds-drop-xl)" } : {};
 
   const panelStyle: React.CSSProperties = {
     boxShadow: useBoxShadow ? "var(--pds-shadow-xl)" : "none",
@@ -74,8 +72,7 @@ function Panel({ variant }: { variant: Variant }) {
         <div ref={ref} className="pds-sqsh-panel" style={panelStyle}>
           <div className="pds-sqsh-panel-header">Floating Panel</div>
           <div className="pds-sqsh-panel-body">
-            Dialog · Popover · DropdownMenu 같은 떠 있는 레이어의
-            elevation 을 그림자로 표현합니다.
+            Dialog · Popover · DropdownMenu 같은 떠 있는 레이어의 elevation 을 그림자로 표현합니다.
           </div>
         </div>
       </div>

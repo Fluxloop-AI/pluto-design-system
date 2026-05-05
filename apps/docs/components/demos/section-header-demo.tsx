@@ -18,9 +18,7 @@ export function SectionHeaderBasicDemo() {
 export function SectionHeaderWithHeadingContentDemo() {
   return (
     <Frame>
-      <SectionHeader headingContent={<Chip size="small">필터됨</Chip>}>
-        최근 작업
-      </SectionHeader>
+      <SectionHeader headingContent={<Chip size="small">필터됨</Chip>}>최근 작업</SectionHeader>
     </Frame>
   );
 }

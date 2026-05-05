@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import type * as React from "react";
 import ReactMarkdown, { type Options } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -23,9 +23,7 @@ const DEFAULT_COMPONENTS: Options["components"] = {
 };
 
 function Markdown({ children, className, components }: MarkdownProps) {
-  const merged = components
-    ? { ...DEFAULT_COMPONENTS, ...components }
-    : DEFAULT_COMPONENTS;
+  const merged = components ? { ...DEFAULT_COMPONENTS, ...components } : DEFAULT_COMPONENTS;
   return (
     <div className={["pds-markdown", className].filter(Boolean).join(" ")}>
       <ReactMarkdown remarkPlugins={REMARK_PLUGINS} components={merged}>

@@ -4,8 +4,8 @@ import { CaretDown } from "@fluxloop-ai/pds-icons/icons";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { Command as CommandRoot } from "cmdk";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const combobox = tv({
   slots: {

@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv } from "../utils/tv";
 import { ChatLoadingDots } from "./chat-loading-dots";
 import { ChatCopyButton } from "./internal/chat-copy-button";
 import { TooltipProvider } from "./tooltip";

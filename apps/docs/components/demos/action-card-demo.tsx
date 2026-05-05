@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Compass, Stethoscope, ChartBar, Wrench } from "@fluxloop-ai/pds-icons/icons";
+import { ChartBar, Check, Compass, Stethoscope, Wrench } from "@fluxloop-ai/pds-icons/icons";
 import {
   ActionCard,
   ActionCardDescription,
@@ -14,10 +14,26 @@ import * as React from "react";
 
 export function ActionCardSuggestionsDemo() {
   const items = [
-    { icon: Compass, title: "Where should I start?", desc: "Pick the first thing to look at in this skill, together" },
-    { icon: Stethoscope, title: "Diagnose this skill", desc: "Surface improvements from usage logs" },
-    { icon: ChartBar, title: "Review recent runs", desc: "Walk through recent runs and flag what felt off" },
-    { icon: Wrench, title: "Auto-improve skill", desc: "Let AI patch the skill based on diagnosis results" },
+    {
+      icon: Compass,
+      title: "Where should I start?",
+      desc: "Pick the first thing to look at in this skill, together",
+    },
+    {
+      icon: Stethoscope,
+      title: "Diagnose this skill",
+      desc: "Surface improvements from usage logs",
+    },
+    {
+      icon: ChartBar,
+      title: "Review recent runs",
+      desc: "Walk through recent runs and flag what felt off",
+    },
+    {
+      icon: Wrench,
+      title: "Auto-improve skill",
+      desc: "Let AI patch the skill based on diagnosis results",
+    },
   ];
   return (
     <div className="pds-demo-row" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -56,10 +72,7 @@ export function ActionCardWithLeadingTrailingDemo() {
       {items.map((it) => {
         const on = !!enabled[it.id];
         return (
-          <ActionCard
-            key={it.id}
-            onClick={() => setEnabled((s) => ({ ...s, [it.id]: !s[it.id] }))}
-          >
+          <ActionCard key={it.id} onClick={() => setEnabled((s) => ({ ...s, [it.id]: !s[it.id] }))}>
             <ActionCardLeading>
               <div
                 style={{
@@ -82,11 +95,7 @@ export function ActionCardWithLeadingTrailingDemo() {
             <ActionCardTitle>{it.title}</ActionCardTitle>
             <ActionCardDescription>{it.desc}</ActionCardDescription>
             <ActionCardTrailing>
-              <Icon
-                icon={Check}
-                size="md"
-                color={on ? "label-strong" : "label-assistive"}
-              />
+              <Icon icon={Check} size="md" color={on ? "label-strong" : "label-assistive"} />
             </ActionCardTrailing>
           </ActionCard>
         );
@@ -102,19 +111,31 @@ export function ActionCardTrailingBadgeDemo() {
       icon: ChartBar,
       title: "Review recent runs",
       desc: "Walk through recent runs and flag what felt off",
-      badge: <Badge size="xs" color="accent" accentColor="red">3</Badge>,
+      badge: (
+        <Badge size="xs" color="accent" accentColor="red">
+          3
+        </Badge>
+      ),
     },
     {
       icon: Wrench,
       title: "Auto-improve skill",
       desc: "Let AI patch the skill based on diagnosis results",
-      badge: <Badge size="xs" color="accent" accentColor="violet">NEW</Badge>,
+      badge: (
+        <Badge size="xs" color="accent" accentColor="violet">
+          NEW
+        </Badge>
+      ),
     },
     {
       icon: Stethoscope,
       title: "Diagnose this skill",
       desc: "Surface improvements from usage logs",
-      badge: <Badge size="xs" color="neutral" neutralColor="alternative">BETA</Badge>,
+      badge: (
+        <Badge size="xs" color="neutral" neutralColor="alternative">
+          BETA
+        </Badge>
+      ),
     },
   ];
   return (
@@ -150,7 +171,9 @@ export function ActionCardImageIconDemo() {
     <div className="pds-demo-row" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       <ActionCard onClick={() => {}}>
         <ActionCardTitle icon={Stethoscope}>Phosphor 컴포넌트 — 자동 wrap</ActionCardTitle>
-        <ActionCardDescription>icon prop 에 컴포넌트 참조를 넘기면 Icon 으로 자동 렌더</ActionCardDescription>
+        <ActionCardDescription>
+          icon prop 에 컴포넌트 참조를 넘기면 Icon 으로 자동 렌더
+        </ActionCardDescription>
       </ActionCard>
       <ActionCard onClick={() => {}}>
         <ActionCardTitle
@@ -194,8 +217,7 @@ export function ActionCardVariantDemo() {
               fontSize: 12,
               fontWeight: 500,
               color: "var(--pds-label-alternative)",
-              fontFamily:
-                "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+              fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
             }}
           >
             variant=&quot;{v}&quot;

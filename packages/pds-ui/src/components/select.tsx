@@ -3,8 +3,8 @@
 import { CaretDown, CaretUp, Check } from "@fluxloop-ai/pds-icons/icons";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const select = tv({
   slots: {

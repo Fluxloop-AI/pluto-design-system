@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { ChatAssistantMessage } from "@fluxloop-ai/pds-ui/components/chat-assistant-message";
 import { ChatLoadingDots } from "@fluxloop-ai/pds-ui/components/chat-loading-dots";
 import { ChatUserMessage } from "@fluxloop-ai/pds-ui/components/chat-user-message";
+import { useEffect, useState } from "react";
 
 const USER_QUESTION = "이건 어떻게 하는 거야?";
 const ASSISTANT_REPLY = `보통은 세 단계로 나눠서 진행해요.
@@ -68,7 +68,9 @@ export function ChatLoadingDotsDemo() {
       <footer className="pds-chat-demo-caption">
         <span className={phase === "idle" ? "is-active" : ""}>① 응답 대기 (placeholder)</span>
         <span aria-hidden="true">→</span>
-        <span className={phase === "typing" ? "is-active" : ""}>② 타이핑 (텍스트 + trailing dot)</span>
+        <span className={phase === "typing" ? "is-active" : ""}>
+          ② 타이핑 (텍스트 + trailing dot)
+        </span>
         <span aria-hidden="true">→</span>
         <span className={phase === "done" ? "is-active" : ""}>③ 완료 (dot 사라짐)</span>
       </footer>

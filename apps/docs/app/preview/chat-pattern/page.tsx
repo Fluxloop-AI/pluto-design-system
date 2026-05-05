@@ -11,6 +11,7 @@ import {
   SidebarSimple,
   Terminal,
 } from "@fluxloop-ai/pds-icons/icons";
+import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
 import {
   AppShell,
   AppShellLeadingControls,
@@ -27,8 +28,8 @@ import {
   AppShellTrailingControls,
   SegmentedControl,
   SegmentedControlItem,
+  useScrollFade,
 } from "@fluxloop-ai/pds-ui";
-import { Separator } from "@fluxloop-ai/pds-ui/components/separator";
 import { ChatAssistantMessage } from "@fluxloop-ai/pds-ui/components/chat-assistant-message";
 import { ChatComposer } from "@fluxloop-ai/pds-ui/components/chat-composer";
 import {
@@ -49,8 +50,7 @@ import {
   type RemovableTab,
   RemovableTabBar,
 } from "@fluxloop-ai/pds-ui/components/removable-tab-bar";
-import { useScrollFade } from "@fluxloop-ai/pds-ui";
-import { renderMarkdown } from "@fluxloop-ai/pds-markdown";
+import { Separator } from "@fluxloop-ai/pds-ui/components/separator";
 import { useEffect, useState } from "react";
 
 const TONE_OPTIONS = [
@@ -88,8 +88,7 @@ const LIVE_REPLY =
 const LIVE_TRACE_BLOCKS: ProcessTraceBlock[] = [
   {
     type: "thinking",
-    thinking:
-      "토큰 정의는 CSS 변수 파일을 봐야 정확합니다. tokens 패키지부터 확인할게요.",
+    thinking: "토큰 정의는 CSS 변수 파일을 봐야 정확합니다. tokens 패키지부터 확인할게요.",
   },
   {
     type: "tool_use",
@@ -140,7 +139,7 @@ const INITIAL_THREADS: Thread[] = [
       {
         id: "a1",
         role: "assistant",
-        text: "spacing 토큰은 **Montage 호환 px 인덱스**(`--spacing-4: 4px`, `--spacing-12: 12px` …)라 의미적인 시맨틱 토큰이 아니라 **단순 별칭**입니다. 그래서 컴포넌트 내부에서 `gap-[12px]` 처럼 쓰는 게 의미 손실이 없고, 빌드된 CSS 도 1:1 입니다.\n\n반면 색·radius·shadow 는 시맨틱이 붙어 있어서 **반드시 토큰 변수**(`var(--pds-label-normal)`, `var(--pds-radius-12)`)로 참조합니다.\n\n```tsx\n<div className=\"px-[12px] py-[8px] rounded-[var(--pds-radius-8)]\">\n  …\n</div>\n```",
+        text: 'spacing 토큰은 **Montage 호환 px 인덱스**(`--spacing-4: 4px`, `--spacing-12: 12px` …)라 의미적인 시맨틱 토큰이 아니라 **단순 별칭**입니다. 그래서 컴포넌트 내부에서 `gap-[12px]` 처럼 쓰는 게 의미 손실이 없고, 빌드된 CSS 도 1:1 입니다.\n\n반면 색·radius·shadow 는 시맨틱이 붙어 있어서 **반드시 토큰 변수**(`var(--pds-label-normal)`, `var(--pds-radius-12)`)로 참조합니다.\n\n```tsx\n<div className="px-[12px] py-[8px] rounded-[var(--pds-radius-8)]">\n  …\n</div>\n```',
       },
       {
         id: "u2",
@@ -150,7 +149,7 @@ const INITIAL_THREADS: Thread[] = [
       {
         id: "a2",
         role: "assistant",
-        text: "솔직히 말하면 **자동 갱신은 안 됩니다.** spacing 은 의도적으로 그렇게 둔 트레이드오프예요.\n\n- spacing 은 *비주얼 스케일* 자체가 거의 안 바뀐다는 전제 — 4·8·12·16·20·24… 가 흔들리면 컴포넌트 비율이 다 깨집니다.\n- 그래서 \"한 번에 갱신\" 보다 \"한 번 정해놓고 안 건드림\" 쪽 비용이 훨씬 쌉니다.\n- 진짜 일괄 갱신이 필요한 축 (의미가 변할 수 있는 축) 은 색·radius·shadow 라서 그쪽만 변수로 빼둔 거고요.",
+        text: '솔직히 말하면 **자동 갱신은 안 됩니다.** spacing 은 의도적으로 그렇게 둔 트레이드오프예요.\n\n- spacing 은 *비주얼 스케일* 자체가 거의 안 바뀐다는 전제 — 4·8·12·16·20·24… 가 흔들리면 컴포넌트 비율이 다 깨집니다.\n- 그래서 "한 번에 갱신" 보다 "한 번 정해놓고 안 건드림" 쪽 비용이 훨씬 쌉니다.\n- 진짜 일괄 갱신이 필요한 축 (의미가 변할 수 있는 축) 은 색·radius·shadow 라서 그쪽만 변수로 빼둔 거고요.',
       },
       {
         id: "u3",
@@ -160,7 +159,7 @@ const INITIAL_THREADS: Thread[] = [
       {
         id: "a3",
         role: "assistant",
-        text: "verbose 한 거 맞습니다. 두 가지 단축 방식이 있어요.\n\n1. **시맨틱 alias** — `rounded-lg` / `rounded-md` 같은 의미 단위. PDS 는 컴포넌트 사이즈와 짝지어 `var(--pds-radius-sm|md|lg)` 로 묶어두는 쪽을 권장.\n2. **컴포넌트 내부 const** — 한 컴포넌트 안에서 같은 radius 가 여러 슬롯에 반복되면 tailwind-variants 의 `tv` 안에서 한 번만 박는 게 깔끔.\n\n```ts\nconst panel = tv({\n  base: \"rounded-[var(--pds-radius-12)] bg-...\",\n});\n```\n\n호출부에선 `rounded-` 못 보고, 대신 `panel()` 만 보입니다.",
+        text: 'verbose 한 거 맞습니다. 두 가지 단축 방식이 있어요.\n\n1. **시맨틱 alias** — `rounded-lg` / `rounded-md` 같은 의미 단위. PDS 는 컴포넌트 사이즈와 짝지어 `var(--pds-radius-sm|md|lg)` 로 묶어두는 쪽을 권장.\n2. **컴포넌트 내부 const** — 한 컴포넌트 안에서 같은 radius 가 여러 슬롯에 반복되면 tailwind-variants 의 `tv` 안에서 한 번만 박는 게 깔끔.\n\n```ts\nconst panel = tv({\n  base: "rounded-[var(--pds-radius-12)] bg-...",\n});\n```\n\n호출부에선 `rounded-` 못 보고, 대신 `panel()` 만 보입니다.',
       },
       {
         id: "u4",
@@ -170,7 +169,7 @@ const INITIAL_THREADS: Thread[] = [
       {
         id: "a4",
         role: "assistant",
-        text: "권장 순서는 이렇습니다.\n\n1. **variant 추가** — 그 \"다른 라운드\" 가 *의도가 있는 한 변형* 이면 컴포넌트에 `radius: { sm | md | lg }` 같은 variant 로 노출. 일회성 외부 className override 보다 의도가 명시적.\n2. **className prop** — 진짜 일회성이고 한 곳에서만 쓰면 호출부에서 `className=\"rounded-[var(--pds-radius-8)]\"` 로 덮어쓰기. tailwind-merge 가 처리.\n3. **금지** — 컴포넌트 내부에서 `data-[…]` 로 임의 분기 만들지 않기. variant 로 승격하거나 외부 override 둘 중 하나.\n\n---\n\n어느 쪽인지 케이스 알려주면 더 구체적으로 잡을 수 있어요.",
+        text: '권장 순서는 이렇습니다.\n\n1. **variant 추가** — 그 "다른 라운드" 가 *의도가 있는 한 변형* 이면 컴포넌트에 `radius: { sm | md | lg }` 같은 variant 로 노출. 일회성 외부 className override 보다 의도가 명시적.\n2. **className prop** — 진짜 일회성이고 한 곳에서만 쓰면 호출부에서 `className="rounded-[var(--pds-radius-8)]"` 로 덮어쓰기. tailwind-merge 가 처리.\n3. **금지** — 컴포넌트 내부에서 `data-[…]` 로 임의 분기 만들지 않기. variant 로 승격하거나 외부 override 둘 중 하나.\n\n---\n\n어느 쪽인지 케이스 알려주면 더 구체적으로 잡을 수 있어요.',
       },
       {
         id: "u5",
@@ -180,7 +179,7 @@ const INITIAL_THREADS: Thread[] = [
       {
         id: "a5",
         role: "assistant",
-        text: "방향은 **코드 → Figma 단방향**입니다.\n\n- 코드의 CSS 변수 (`--pds-*`) 가 SSOT.\n- Figma Variables 는 *역생성* — 코드에서 정의된 값으로부터 Figma 쪽 변수를 갱신.\n- 디자이너가 Figma 에서 직접 변수를 바꾸면 그건 *제안* 일 뿐, 코드에 반영되어야 비로소 시스템 값.\n\n역생성 파이프라인은 아직 수동입니다 (Figma MCP `set_variables` 로 일괄 push). 자동 sync 는 첫 릴리즈 이후 검토 예정이고, 그전까지는 토큰 변경 PR 에서 \"Figma 도 갱신했음\" 체크박스를 수동으로 관리합니다.",
+        text: '방향은 **코드 → Figma 단방향**입니다.\n\n- 코드의 CSS 변수 (`--pds-*`) 가 SSOT.\n- Figma Variables 는 *역생성* — 코드에서 정의된 값으로부터 Figma 쪽 변수를 갱신.\n- 디자이너가 Figma 에서 직접 변수를 바꾸면 그건 *제안* 일 뿐, 코드에 반영되어야 비로소 시스템 값.\n\n역생성 파이프라인은 아직 수동입니다 (Figma MCP `set_variables` 로 일괄 push). 자동 sync 는 첫 릴리즈 이후 검토 예정이고, 그전까지는 토큰 변경 PR 에서 "Figma 도 갱신했음" 체크박스를 수동으로 관리합니다.',
       },
     ],
   },
@@ -417,16 +416,9 @@ export default function ChatPatternPreviewPage() {
                   onChange={setDraft}
                   onSubmit={submit}
                   disabled={!active}
-                  placeholder={
-                    active ? "메시지를 입력하세요…" : "탭을 먼저 추가하거나 선택하세요"
-                  }
+                  placeholder={active ? "메시지를 입력하세요…" : "탭을 먼저 추가하거나 선택하세요"}
                   leadingToolbar={
-                    <IconButton
-                      size="sm"
-                      variant="subtle"
-                      aria-label="첨부"
-                      disabled={!active}
-                    >
+                    <IconButton size="sm" variant="subtle" aria-label="첨부" disabled={!active}>
                       <Plus />
                     </IconButton>
                   }
@@ -512,6 +504,7 @@ export default function ChatPatternPreviewPage() {
 function ChatThread({ thread }: { thread: Thread | null }) {
   const { ref: scrollRef, onScroll, maskImage } = useScrollFade<HTMLDivElement>();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scrollRef from useScrollFade is a stable ref; listed deps reflect intentional re-trigger on thread change
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -546,11 +539,7 @@ function ChatThread({ thread }: { thread: Thread | null }) {
           m.role === "user" ? (
             <ChatUserMessage key={m.id} content={m.text} />
           ) : (
-            <ChatAssistantMessage
-              key={m.id}
-              content={m.text}
-              renderMarkdown={renderMarkdown}
-            />
+            <ChatAssistantMessage key={m.id} content={m.text} renderMarkdown={renderMarkdown} />
           ),
         )}
       </div>
@@ -573,16 +562,23 @@ function LiveResponseThread() {
     };
 
     let t = 0;
-    at((t += 600), () => {
+    t += 600;
+    at(t, () => {
       setPhase("trace_run");
       setTraceLen(1);
     });
-    at((t += 800), () => setTraceLen(2));
-    at((t += 700), () => setTraceLen(3));
-    at((t += 700), () => setTraceLen(4));
-    at((t += 700), () => setTraceLen(5));
-    at((t += 500), () => setPhase("trace_done"));
-    at((t += 400), () => setPhase("typing"));
+    t += 800;
+    at(t, () => setTraceLen(2));
+    t += 700;
+    at(t, () => setTraceLen(3));
+    t += 700;
+    at(t, () => setTraceLen(4));
+    t += 700;
+    at(t, () => setTraceLen(5));
+    t += 500;
+    at(t, () => setPhase("trace_done"));
+    t += 400;
+    at(t, () => setPhase("typing"));
 
     return () => timeouts.forEach(clearTimeout);
   }, []);
@@ -597,6 +593,7 @@ function LiveResponseThread() {
     return () => clearTimeout(t);
   }, [phase, typedLen]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scrollRef is a stable ref; deps drive re-trigger on phase/length progression
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;

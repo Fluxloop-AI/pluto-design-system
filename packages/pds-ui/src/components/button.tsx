@@ -3,8 +3,8 @@
 import { CircleNotch } from "@fluxloop-ai/pds-icons/icons";
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const button = tv({
   slots: {

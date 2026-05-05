@@ -2,8 +2,8 @@
 
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const progress = tv({
   slots: {

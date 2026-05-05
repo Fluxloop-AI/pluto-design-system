@@ -82,14 +82,19 @@ export function ChipRemovableDemo() {
   return (
     <div className="pds-demo-row" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-        <span style={{ width: 64, fontSize: 12, color: "var(--pds-label-assistive)" }}>outlined</span>
+        <span style={{ width: 64, fontSize: 12, color: "var(--pds-label-assistive)" }}>
+          outlined
+        </span>
         {outlined.map((t) => (
           <Chip
             key={t}
             size="small"
             variant="outlined"
             trailingContent={
-              <RemoveButton label={t} onRemove={() => setOutlined((xs) => xs.filter((x) => x !== t))} />
+              <RemoveButton
+                label={t}
+                onRemove={() => setOutlined((xs) => xs.filter((x) => x !== t))}
+              />
             }
           >
             {t}
@@ -107,7 +112,10 @@ export function ChipRemovableDemo() {
             size="small"
             variant="solid"
             trailingContent={
-              <RemoveButton label={t} onRemove={() => setSolid((xs) => xs.filter((x) => x !== t))} />
+              <RemoveButton
+                label={t}
+                onRemove={() => setSolid((xs) => xs.filter((x) => x !== t))}
+              />
             }
           >
             {t}

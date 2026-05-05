@@ -2,9 +2,9 @@
 
 import { ImageBroken } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import type { ContentBlock, DocumentBlock, ImageBlock, TextBlock } from "../types/chat";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 import { ChatAttachmentChip } from "./chat-attachment-chip";
 import { ChatCopyButton, extractCopyText } from "./internal/chat-copy-button";
 import { TooltipProvider } from "./tooltip";
@@ -130,6 +130,7 @@ const ChatUserMessage = React.forwardRef<HTMLDivElement, ChatUserMessageProps>(
               if (block.type === "image") {
                 const src =
                   block.source.type === "url" ? block.source.url : block.source.data.slice(0, 16);
+                // biome-ignore lint/suspicious/noArrayIndexKey: attachment ordering is stable within a single message render; src may repeat for inline duplicates
                 return <MessageImage key={`image-${i}-${src}`} block={block} />;
               }
               const key = `doc-${i}-${block.title ?? ""}`;

@@ -2,8 +2,8 @@
 
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 type FormFieldContextValue = {
   baseId: string;
@@ -35,10 +35,7 @@ const form = tv({
       "text-[13px] font-medium text-[color:var(--pds-label-normal)]",
     ],
     description: "text-[12px] text-[color:var(--pds-label-alternative)]",
-    error: [
-      "text-[12px] text-[color:var(--pds-status-negative)]",
-      "flex items-center gap-[4px]",
-    ],
+    error: ["text-[12px] text-[color:var(--pds-status-negative)]", "flex items-center gap-[4px]"],
     required: "text-[color:var(--pds-status-negative)]",
   },
   variants: {

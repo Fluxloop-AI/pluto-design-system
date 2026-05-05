@@ -2,8 +2,8 @@
 
 import type { IconWeight, PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const icon = tv({
   base: "inline-block shrink-0",
