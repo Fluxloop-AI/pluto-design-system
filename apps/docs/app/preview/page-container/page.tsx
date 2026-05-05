@@ -21,15 +21,14 @@ import { PageContainer } from "@fluxloop-ai/pds-ui/components/page-container";
 import { useState } from "react";
 
 /**
- * PageContainer preview — AppShell 안에서 PageContainer 4개 variant 의 실제 폭을 비교.
+ * PageContainer preview — AppShell 안에서 PageContainer 3개 variant 의 실제 폭을 비교.
  * AppShell preview 와 동일한 mock window chrome 을 두고, Main 영역에서 sidebar/sidepanel
  * 폭에 따라 max-width 가 어떻게 적용되는지(또는 capped 되는지) 직접 보여준다.
  */
 
 const VARIANTS = [
-  { variant: "narrow" as const, label: "narrow", spec: "640px", note: "단일 컬럼 텍스트·폼·문서" },
-  { variant: "default" as const, label: "default", spec: "720px", note: "일반 페이지 (기본)" },
-  { variant: "wide" as const, label: "wide", spec: "960px", note: "dashboard·다중 컬럼·grid" },
+  { variant: "narrow" as const, label: "narrow", spec: "480px", note: "단일 컬럼 텍스트·폼·문서" },
+  { variant: "default" as const, label: "default", spec: "800px", note: "일반 페이지 (기본)" },
   {
     variant: "full" as const,
     label: "full",

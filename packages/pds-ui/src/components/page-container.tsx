@@ -12,7 +12,7 @@ import { cn } from "../utils/cn";
  * AppShell 없는 단독 페이지 어디서든 본문을 감싸는 표준 컨테이너.
  *
  * 책임
- *   • max-width  — variant 로 결정 (narrow | default | wide | full)
+ *   • max-width  — variant 로 결정 (narrow | default | full)
  *   • 좌우 gutter — 32px 고정 (full variant 도 유지)
  *   • 상하 padding — top 32 / bottom 64 (스크롤 끝 호흡)
  *   • 가운데 정렬 — mx-auto
@@ -34,8 +34,8 @@ import { cn } from "../utils/cn";
  *   </AppShellMainBody>
  * </AppShellMain>
  *
- * // dashboard 류 (다중 컬럼·grid)
- * <PageContainer variant="wide">...</PageContainer>
+ * // 단일 컬럼 텍스트·폼·문서
+ * <PageContainer variant="narrow">...</PageContainer>
  *
  * // full-bleed (테이블/리스트). gutter 32 는 그대로 유지됨
  * <PageContainer variant="full">...</PageContainer>
@@ -46,9 +46,8 @@ const pageContainer = tv({
   base: ["w-full mx-auto", "px-[32px] pt-[32px] pb-[64px]"],
   variants: {
     variant: {
-      narrow: "max-w-[640px]",
-      default: "max-w-[720px]",
-      wide: "max-w-[960px]",
+      narrow: "max-w-[480px]",
+      default: "max-w-[800px]",
       full: "max-w-none",
     },
   },
@@ -62,9 +61,8 @@ type PageContainerVariants = VariantProps<typeof pageContainer>;
 interface PageContainerProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * 본문 max-width 변종.
-   * - `narrow`  640px — 단일 컬럼 텍스트·폼·문서
-   * - `default` 720px — 일반 페이지 (기본)
-   * - `wide`    960px — dashboard·다중 컬럼·grid
+   * - `narrow`  480px — 단일 컬럼 텍스트·폼·문서
+   * - `default` 800px — 일반 페이지 (기본)
    * - `full`    제한 없음 — 테이블·리스트 등 full-bleed (gutter 32 는 유지)
    */
   variant?: PageContainerVariants["variant"];

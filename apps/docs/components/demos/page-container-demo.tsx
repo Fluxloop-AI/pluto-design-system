@@ -8,7 +8,7 @@ export function PageContainerBasicDemo() {
   return (
     <ParentFrame>
       <PageContainer>
-        <Placeholder label="PageContainer (default · 720px)" />
+        <Placeholder label="PageContainer (default · 800px)" />
       </PageContainer>
     </ParentFrame>
   );

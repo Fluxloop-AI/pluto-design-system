@@ -29,21 +29,20 @@ import { PageContainer } from "@fluxloop-ai/pds-ui/components/page-container";
 
 ## Basic
 
-기본 variant 는 `default` (720px). 본문이 가운데 정렬되고 좌우 32px gutter, 상단 32px / 하단 64px padding 이 적용된다.
+기본 variant 는 `default` (800px). 본문이 가운데 정렬되고 좌우 32px gutter, 상단 32px / 하단 64px padding 이 적용된다.
 
 <PageContainerBasicDemo />
 
 ## Variants
 
-페이지 콘텐츠 성격에 따라 4가지 max-width 변종을 고른다. gutter 32 와 상하 padding 32/64 는 모든 variant 에서 동일.
+페이지 콘텐츠 성격에 따라 3가지 max-width 변종을 고른다. gutter 32 와 상하 padding 32/64 는 모든 variant 에서 동일.
 
 <PageContainerVariantsDemo />
 
 | variant | max-width | 용도 |
 |---|---|---|
-| `narrow` | `640px` | 단일 컬럼 텍스트·폼·문서. 한 줄 가독성 (대략 65~75자) |
-| `default` | `720px` | 일반 페이지 (기본) |
-| `wide` | `960px` | dashboard·다중 컬럼·grid |
+| `narrow` | `480px` | 단일 컬럼 텍스트·폼·문서 |
+| `default` | `800px` | 일반 페이지 (기본) |
 | `full` | 제한 없음 | 테이블·리스트 등 full-bleed. gutter 32 는 그대로 유지됨 |
 
 ## With content
@@ -58,7 +57,7 @@ import { PageContainer } from "@fluxloop-ai/pds-ui/components/page-container";
 
 | Prop | 타입 | 기본 | 설명 |
 |---|---|---|---|
-| `variant` | `"narrow" \| "default" \| "wide" \| "full"` | `"default"` | 본문 max-width 변종 |
+| `variant` | `"narrow" \| "default" \| "full"` | `"default"` | 본문 max-width 변종 |
 | `className` | `string` | - | 추가 클래스 (frame 토큰 override 용) |
 | `...rest` | `HTMLDivElement` | - | 일반 div 속성 |
 
