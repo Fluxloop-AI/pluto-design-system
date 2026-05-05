@@ -5,9 +5,6 @@
  * 소비는 `var(--pds-chat-*)` 직접 참조. Tailwind 유틸리티 불필요 → `:root`.
  */
 :root {
-  /* 파란 글로우 (streaming reasoning text), blue.50 alpha 45% */
-  --pds-chat-text-glow: color-mix(in srgb, var(--pds-color-blue-50) 45%, transparent);
-
   /* easing — standard PDS 이징과 동일 참조 (motion.css) */
   --pds-chat-easing: cubic-bezier(0.23, 1, 0.32, 1);
 

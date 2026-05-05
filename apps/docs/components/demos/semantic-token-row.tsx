@@ -136,7 +136,6 @@ const SEMANTIC_SECTIONS: Section[] = [
 ];
 
 const CHAT_TOKENS: TokenEntry[] = [
-  { name: "chat-text-glow", variable: "--pds-chat-text-glow", note: "blue.50 alpha 45%" },
   { name: "chat-dot-idle", variable: "--pds-chat-dot-idle", note: "→ label-assistive" },
   { name: "chat-dot-done", variable: "--pds-chat-dot-done", note: "→ status-positive" },
   { name: "chat-dot-error", variable: "--pds-chat-dot-error", note: "→ status-negative" },

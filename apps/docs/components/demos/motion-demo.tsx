@@ -94,26 +94,6 @@ const KEYFRAMES: Keyframe[] = [
     ),
   },
   {
-    id: "text-glow",
-    name: "pds-text-glow",
-    util: ".pds-animate-glow",
-    description: "스트리밍 추론 텍스트 글로우 (2s 루프, chat-text-glow 사용)",
-    duration: "duration-glow (2000ms)",
-    render: (k) => (
-      <span
-        key={k}
-        className="pds-animate-glow"
-        style={{
-          fontSize: "var(--text-heading1)",
-          color: "var(--pds-primary-normal)",
-          fontWeight: "var(--pds-font-weight-semibold)",
-        }}
-      >
-        Thinking deeply…
-      </span>
-    ),
-  },
-  {
     id: "shimmer",
     name: "pds-shimmer",
     util: ".pds-animate-shimmer",
@@ -272,7 +252,6 @@ const DURATIONS: TokenRow[] = [
   { name: "--pds-duration-normal", value: "200ms", note: "기본 transition" },
   { name: "--pds-duration-slow", value: "300ms", note: "fade-collapse" },
   { name: "--pds-duration-slower", value: "450ms", note: "step-in 기본" },
-  { name: "--pds-duration-glow", value: "2000ms", note: "text-glow 루프" },
 ];
 const EASINGS: TokenRow[] = [
   { name: "--pds-ease-linear", value: "linear" },

@@ -66,19 +66,6 @@
   }
 }
 
-/* ---- text glow (streaming reasoning) ---- */
-@keyframes pds-text-glow {
-  0%,
-  100% {
-    text-shadow: 0 0 8px var(--pds-chat-text-glow);
-    opacity: 0.85;
-  }
-  50% {
-    text-shadow: 0 0 18px var(--pds-chat-text-glow);
-    opacity: 1;
-  }
-}
-
 /* ---- skeleton shimmer ---- */
 @keyframes pds-shimmer {
   0% {
@@ -106,10 +93,6 @@
 
 .pds-animate-card-in {
   animation: pds-fade-in-card 500ms var(--pds-ease-standard) both;
-}
-
-.pds-animate-glow {
-  animation: pds-text-glow var(--pds-duration-glow) ease-in-out infinite;
 }
 
 .pds-animate-dot-pulse {
@@ -179,7 +162,6 @@
 @media (prefers-reduced-motion: reduce) {
   .pds-animate-step-in,
   .pds-animate-card-in,
-  .pds-animate-glow,
   .pds-animate-dot-pulse,
   .pds-animate-dot-ripple::after,
   .pds-chat-collapsible,
