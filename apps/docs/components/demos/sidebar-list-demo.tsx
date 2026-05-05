@@ -1,6 +1,20 @@
 "use client";
 
-import { Funnel, MagnifyingGlass, Plus } from "@fluxloop-ai/pds-icons/icons";
+import {
+  DotsThree,
+  Funnel,
+  MagnifyingGlass,
+  PencilSimple,
+  Plus,
+  Trash,
+} from "@fluxloop-ai/pds-icons/icons";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@fluxloop-ai/pds-ui/components/dropdown-menu";
 import { IconButton } from "@fluxloop-ai/pds-ui/components/icon-button";
 import { SidebarList } from "@fluxloop-ai/pds-ui/components/sidebar-list";
 import * as React from "react";
@@ -47,6 +61,42 @@ export function SidebarListBasicDemo() {
         selectedId={selected}
         onSelect={setSelected}
         initialVisibleCount={10}
+      />
+    </SidebarFrame>
+  );
+}
+
+export function SidebarListItemActionsDemo() {
+  const items = SKILLS.slice(0, 6);
+  const [selected, setSelected] = React.useState<string | null>(items[0]?.id ?? null);
+  return (
+    <SidebarFrame>
+      <SidebarList
+        title="Library"
+        count={items.length}
+        items={items}
+        selectedId={selected}
+        onSelect={setSelected}
+        renderItemTrailing={(item) => (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <IconButton size="sm" variant="subtle" aria-label={`${item.label} 메뉴 열기`}>
+                <DotsThree />
+              </IconButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent size="sm" align="end" sideOffset={4}>
+              <DropdownMenuItem onSelect={() => console.log("rename", item.id)}>
+                <PencilSimple />
+                <span>이름 변경</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onSelect={() => console.log("delete", item.id)}>
+                <Trash />
+                <span>삭제</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       />
     </SidebarFrame>
   );
