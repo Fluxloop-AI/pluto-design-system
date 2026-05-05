@@ -30,10 +30,7 @@ export function ToastDemo() {
           >
             Success
           </Button>
-          <Button
-            variant="frosted"
-            onClick={() => push("warning", "주의", "연결이 불안정합니다.")}
-          >
+          <Button variant="frosted" onClick={() => push("warning", "주의", "연결이 불안정합니다.")}>
             Warning
           </Button>
           <Button

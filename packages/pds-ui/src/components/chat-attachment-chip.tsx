@@ -2,8 +2,8 @@
 
 import { File, X } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv } from "../utils/tv";
 
 const chatAttachmentChip = tv({
   slots: {

@@ -1,15 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv } from "../utils/tv";
 
 const chatLoadingDots = tv({
   slots: {
-    root: [
-      "inline-flex items-center px-[2px]",
-      "text-[color:var(--pds-label-assistive)]",
-    ],
+    root: ["inline-flex items-center px-[2px]", "text-[color:var(--pds-label-assistive)]"],
     dot: ["pds-animate-dot-pulse w-[8px] h-[8px]"],
   },
 });

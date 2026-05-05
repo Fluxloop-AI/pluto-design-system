@@ -3,8 +3,8 @@
 import type { PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 import { Icon } from "./icon";
 
 /* ============================================================================
@@ -121,18 +121,10 @@ const actionCard = tv({
         ],
       },
       filled: {
-        root: [
-          "border-0",
-          "bg-[var(--pds-fill-alternative)]",
-          "hover:bg-[var(--pds-fill-normal)]",
-        ],
+        root: ["border-0", "bg-[var(--pds-fill-alternative)]", "hover:bg-[var(--pds-fill-normal)]"],
       },
       ghost: {
-        root: [
-          "border-0",
-          "bg-transparent",
-          "hover:bg-[var(--pds-fill-alternative)]",
-        ],
+        root: ["border-0", "bg-transparent", "hover:bg-[var(--pds-fill-alternative)]"],
       },
     },
   },
@@ -208,11 +200,13 @@ const ActionCardTitle = React.forwardRef<HTMLDivElement, ActionCardTitleProps>(
   function ActionCardTitle({ className, icon, children, ...props }, ref) {
     const styles = actionCard();
     const renderedIcon =
-      icon == null
-        ? null
-        : React.isValidElement(icon) || typeof icon === "string" || typeof icon === "number"
-          ? (icon as React.ReactNode)
-          : <Icon icon={icon as React.ComponentType<React.SVGAttributes<SVGSVGElement>>} size="sm" />;
+      icon == null ? null : React.isValidElement(icon) ||
+        typeof icon === "string" ||
+        typeof icon === "number" ? (
+        (icon as React.ReactNode)
+      ) : (
+        <Icon icon={icon as React.ComponentType<React.SVGAttributes<SVGSVGElement>>} size="sm" />
+      );
     return (
       <div
         ref={ref}

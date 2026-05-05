@@ -2,8 +2,8 @@
 
 import { DotsThree } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv } from "../utils/tv";
 import { Icon } from "./icon";
 
 const sidebarList = tv({
@@ -119,17 +119,11 @@ const SidebarList = React.forwardRef<HTMLElement, SidebarListProps>(function Sid
     typeof initialVisibleCount === "number" &&
     initialVisibleCount >= 0 &&
     items.length > initialVisibleCount;
-  const visibleItems =
-    truncating && !expanded ? items.slice(0, initialVisibleCount) : items;
+  const visibleItems = truncating && !expanded ? items.slice(0, initialVisibleCount) : items;
   const showMore = truncating && !expanded;
 
   return (
-    <section
-      ref={ref}
-      data-slot="sidebar-list"
-      className={cn(styles.root(), className)}
-      {...props}
-    >
+    <section ref={ref} data-slot="sidebar-list" className={cn(styles.root(), className)} {...props}>
       <header data-sticky={stickyHeader || undefined} className={styles.header()}>
         <div className={styles.headerLeading()}>
           <span className={styles.title()}>{title}</span>
@@ -143,6 +137,7 @@ const SidebarList = React.forwardRef<HTMLElement, SidebarListProps>(function Sid
           const selected = item.id === selectedId;
           const trailing = renderItemTrailing?.(item);
           return (
+            // biome-ignore lint/a11y/useSemanticElements: row is a div+role to allow nested interactive controls (trailing slot) without nested-button violation
             <div
               key={item.id}
               role="button"
@@ -161,6 +156,7 @@ const SidebarList = React.forwardRef<HTMLElement, SidebarListProps>(function Sid
             >
               <span className={styles.itemLabel()}>{item.label}</span>
               {trailing ? (
+                // biome-ignore lint/a11y/noStaticElementInteractions: trailing slot is a non-interactive wrapper; handlers exist solely to stop propagation to the row
                 <div
                   className={styles.itemTrailing()}
                   onClick={(e) => e.stopPropagation()}
@@ -174,11 +170,7 @@ const SidebarList = React.forwardRef<HTMLElement, SidebarListProps>(function Sid
           );
         })}
         {showMore ? (
-          <button
-            type="button"
-            className={styles.more()}
-            onClick={() => setExpanded(true)}
-          >
+          <button type="button" className={styles.more()} onClick={() => setExpanded(true)}>
             <Icon icon={DotsThree} size="sm" />
             <span>{moreLabel}</span>
           </button>

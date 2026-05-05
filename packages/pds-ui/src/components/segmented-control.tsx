@@ -2,8 +2,8 @@
 
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const segmentedControl = tv({
   slots: {
@@ -73,10 +73,7 @@ type SegmentedControlProps = Omit<
 const SegmentedControl = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   SegmentedControlProps
->(function SegmentedControl(
-  { className, size = "sm", fullWidth = false, ...props },
-  ref,
-) {
+>(function SegmentedControl({ className, size = "sm", fullWidth = false, ...props }, ref) {
   const styles = segmentedControl({ size, fullWidth });
   return (
     <SegmentedControlContext.Provider value={{ size, fullWidth }}>
@@ -90,9 +87,7 @@ const SegmentedControl = React.forwardRef<
   );
 });
 
-type SegmentedControlItemProps = React.ComponentPropsWithoutRef<
-  typeof RadioGroupPrimitive.Item
->;
+type SegmentedControlItemProps = React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>;
 
 const SegmentedControlItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
@@ -100,13 +95,7 @@ const SegmentedControlItem = React.forwardRef<
 >(function SegmentedControlItem({ className, ...props }, ref) {
   const { size, fullWidth } = useSegmentedControlContext();
   const styles = segmentedControl({ size, fullWidth });
-  return (
-    <RadioGroupPrimitive.Item
-      ref={ref}
-      className={cn(styles.item(), className)}
-      {...props}
-    />
-  );
+  return <RadioGroupPrimitive.Item ref={ref} className={cn(styles.item(), className)} {...props} />;
 });
 
 export type { SegmentedControlItemProps, SegmentedControlProps };

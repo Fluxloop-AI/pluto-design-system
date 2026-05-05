@@ -1,7 +1,7 @@
 "use client";
 
-import { ScrollArea } from "@fluxloop-ai/pds-ui/components/scroll-area";
 import { useScrollFade } from "@fluxloop-ai/pds-ui";
+import { ScrollArea } from "@fluxloop-ai/pds-ui/components/scroll-area";
 
 const TAGS = Array.from({ length: 40 }, (_, i) => `Item ${i + 1}`);
 

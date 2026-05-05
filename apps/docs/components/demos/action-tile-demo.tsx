@@ -1,6 +1,13 @@
 "use client";
 
-import { Bookmark, ChartBar, Compass, Sparkle, Stethoscope, Wrench } from "@fluxloop-ai/pds-icons/icons";
+import {
+  Bookmark,
+  ChartBar,
+  Compass,
+  Sparkle,
+  Stethoscope,
+  Wrench,
+} from "@fluxloop-ai/pds-icons/icons";
 import {
   ActionTile,
   ActionTileContent,
@@ -84,8 +91,12 @@ export function ActionTileFooterDemo() {
       desc: "Pick the first thing to look at",
       footer: (
         <>
-          <Badge size="xs" color="neutral" neutralColor="alternative">Tutorial</Badge>
-          <Badge size="xs" color="accent" accentColor="violet">5 min</Badge>
+          <Badge size="xs" color="neutral" neutralColor="alternative">
+            Tutorial
+          </Badge>
+          <Badge size="xs" color="accent" accentColor="violet">
+            5 min
+          </Badge>
         </>
       ),
     },
@@ -93,13 +104,21 @@ export function ActionTileFooterDemo() {
       icon: Stethoscope,
       title: "Diagnose",
       desc: "Surface improvements from logs",
-      footer: <Badge size="xs" color="neutral" neutralColor="alternative">Diagnostic</Badge>,
+      footer: (
+        <Badge size="xs" color="neutral" neutralColor="alternative">
+          Diagnostic
+        </Badge>
+      ),
     },
     {
       icon: Wrench,
       title: "Auto-improve",
       desc: "Let AI patch the skill",
-      footer: <Badge size="xs" color="neutral" neutralColor="alternative">Beta</Badge>,
+      footer: (
+        <Badge size="xs" color="neutral" neutralColor="alternative">
+          Beta
+        </Badge>
+      ),
     },
   ];
   return (
@@ -127,13 +146,21 @@ export function ActionTileHeaderDemo() {
       label: "Tutorial",
       title: "Where to start",
       desc: "Pick the first thing to look at",
-      tag: <Badge size="xs" color="accent" accentColor="blue">NEW</Badge>,
+      tag: (
+        <Badge size="xs" color="accent" accentColor="blue">
+          NEW
+        </Badge>
+      ),
     },
     {
       label: "Diagnostic",
       title: "Diagnose",
       desc: "Surface improvements from logs",
-      tag: <Badge size="xs" color="accent" accentColor="red">3</Badge>,
+      tag: (
+        <Badge size="xs" color="accent" accentColor="red">
+          3
+        </Badge>
+      ),
     },
     {
       label: "Beta",
@@ -181,7 +208,9 @@ function DiagnoseCard() {
           <ActionTileDescription>Surface improvements from usage logs</ActionTileDescription>
         </ActionTileContent>
         <ActionTileFooter>
-          <Badge size="xs" color="accent" accentColor="red">3 issues</Badge>
+          <Badge size="xs" color="accent" accentColor="red">
+            3 issues
+          </Badge>
         </ActionTileFooter>
       </ActionTile>
       <IconButton
@@ -211,19 +240,24 @@ export function ActionTileFullSpecDemo() {
         </ActionTileHeader>
         <ActionTileContent>
           <ActionTileTitle startIcon={Sparkle}>Where to start</ActionTileTitle>
-          <ActionTileDescription>Pick the first thing to look at in this skill</ActionTileDescription>
+          <ActionTileDescription>
+            Pick the first thing to look at in this skill
+          </ActionTileDescription>
         </ActionTileContent>
         <ActionTileFooter>
-          <Badge size="xs" color="accent" accentColor="violet">5 min</Badge>
+          <Badge size="xs" color="accent" accentColor="violet">
+            5 min
+          </Badge>
         </ActionTileFooter>
       </ActionTile>
 
       <DiagnoseCard />
 
-
       <ActionTile padding="compact" headerAlign="center" contentAlign="center" onClick={() => {}}>
         <ActionTileHeader>
-          <Badge size="xs" color="neutral" neutralColor="alternative">Beta</Badge>
+          <Badge size="xs" color="neutral" neutralColor="alternative">
+            Beta
+          </Badge>
         </ActionTileHeader>
         <ActionTileContent>
           <ActionTileLeading>

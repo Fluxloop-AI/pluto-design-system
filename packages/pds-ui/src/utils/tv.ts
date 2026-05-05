@@ -12,5 +12,5 @@ import { twMergeConfig } from "./tw-merge-config";
 
 const tv = createTV({ twMergeConfig });
 
-export { tv };
 export type { VariantProps } from "tailwind-variants";
+export { tv };

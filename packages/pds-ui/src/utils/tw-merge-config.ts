@@ -33,4 +33,4 @@ const twMergeConfig = {
   },
 };
 
-export { twMergeConfig, PDS_TYPOGRAPHY_VARIANTS };
+export { PDS_TYPOGRAPHY_VARIANTS, twMergeConfig };

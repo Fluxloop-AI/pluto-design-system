@@ -2,8 +2,8 @@
 
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const switchStyles = tv({
   slots: {

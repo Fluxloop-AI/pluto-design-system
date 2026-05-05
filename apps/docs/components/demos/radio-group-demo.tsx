@@ -100,10 +100,7 @@ export function RadioGroupDisabledDemo() {
         .pds-radio-row { display: flex; align-items: center; gap: 4px; }
         .pds-radio-row:has(:disabled) > span { color: var(--pds-label-disable); }
       `}</style>
-      <RadioGroup
-        defaultValue="a"
-        style={{ display: "flex", flexDirection: "column", gap: 6 }}
-      >
+      <RadioGroup defaultValue="a" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         <label htmlFor="opt-a" className="pds-radio-row">
           <RadioGroupItem id="opt-a" value="a" />
           <span>enabled</span>

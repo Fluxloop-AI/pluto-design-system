@@ -3,8 +3,8 @@
 import { ArrowUp } from "@fluxloop-ai/pds-icons/icons";
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
 import * as React from "react";
-import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv } from "../utils/tv";
 
 const chatComposer = tv({
   slots: {

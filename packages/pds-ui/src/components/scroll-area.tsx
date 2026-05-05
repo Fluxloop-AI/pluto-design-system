@@ -2,8 +2,8 @@
 
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const scrollArea = tv({
   slots: {

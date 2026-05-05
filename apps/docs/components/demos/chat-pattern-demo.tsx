@@ -16,7 +16,8 @@ export function ChatPatternDemo() {
           전체 화면에서 보기
         </span>
         <span className="text-[12px] text-[color:var(--pds-label-alternative)]">
-          RemovableTabBar + ChatUserMessage + ChatAssistantMessage + ChatComposer 조립을 풀 viewport 로 띄운다.
+          RemovableTabBar + ChatUserMessage + ChatAssistantMessage + ChatComposer 조립을 풀 viewport
+          로 띄운다.
         </span>
       </div>
       <Button

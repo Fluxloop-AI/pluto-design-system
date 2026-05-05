@@ -3,8 +3,8 @@
 import { Check, Minus } from "@fluxloop-ai/pds-icons/icons";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const checkbox = tv({
   slots: {

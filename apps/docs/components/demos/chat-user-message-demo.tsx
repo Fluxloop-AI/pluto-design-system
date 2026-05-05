@@ -42,14 +42,10 @@ export function ChatUserMessageDemo() {
       <ChatUserMessage content="안녕하세요. 오늘 날씨는 어떤가요?" />
       <ChatUserMessage content={MULTILINE_TEXT} />
       <ChatUserMessage content={LONG_TEXT} />
-      <ChatUserMessage
-        content={[IMAGE_A, IMAGE_B, { type: "text", text: "그림 여러개" }]}
-      />
+      <ChatUserMessage content={[IMAGE_A, IMAGE_B, { type: "text", text: "그림 여러개" }]} />
       <ChatUserMessage content={[IMAGE_A, EMPTY_TEXT]} />
       <ChatUserMessage content={[PDF_MCP, PDF_SKILLS, IMAGE_B, EMPTY_TEXT]} />
-      <ChatUserMessage
-        content={[FILE_MD, { type: "text", text: "이거를 한 번 읽어봐" }]}
-      />
+      <ChatUserMessage content={[FILE_MD, { type: "text", text: "이거를 한 번 읽어봐" }]} />
       <Styles />
     </div>
   );

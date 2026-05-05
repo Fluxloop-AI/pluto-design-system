@@ -9,30 +9,6 @@
  */
 
 export type {
-  AppShellMainProps,
-  AppShellPanelHeaderProps,
-  AppShellProps,
-  AppShellSidebarProps,
-  AppShellSidePanelProps,
-  AppShellSplitterProps,
-} from "./components/app-shell";
-export {
-  AppShell,
-  AppShellLeadingControls,
-  AppShellMain,
-  AppShellMainBody,
-  AppShellMainHeader,
-  AppShellSidebar,
-  AppShellSidebarBody,
-  AppShellSidebarFooter,
-  AppShellSidebarHeader,
-  AppShellSidePanel,
-  AppShellSidePanelBody,
-  AppShellSidePanelHeader,
-  AppShellSplitter,
-  AppShellTrailingControls,
-} from "./components/app-shell";
-export type {
   ActionCardDescriptionProps,
   ActionCardLeadingProps,
   ActionCardProps,
@@ -66,6 +42,30 @@ export {
   ActionTileTitle,
   actionTile,
 } from "./components/action-tile";
+export type {
+  AppShellMainProps,
+  AppShellPanelHeaderProps,
+  AppShellProps,
+  AppShellSidebarProps,
+  AppShellSidePanelProps,
+  AppShellSplitterProps,
+} from "./components/app-shell";
+export {
+  AppShell,
+  AppShellLeadingControls,
+  AppShellMain,
+  AppShellMainBody,
+  AppShellMainHeader,
+  AppShellSidebar,
+  AppShellSidebarBody,
+  AppShellSidebarFooter,
+  AppShellSidebarHeader,
+  AppShellSidePanel,
+  AppShellSidePanelBody,
+  AppShellSidePanelHeader,
+  AppShellSplitter,
+  AppShellTrailingControls,
+} from "./components/app-shell";
 export type { AvatarProps } from "./components/avatar";
 export { Avatar, avatar } from "./components/avatar";
 export type { BadgeProps } from "./components/badge";

@@ -2,8 +2,8 @@
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import * as React from "react";
-import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv } from "../utils/tv";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 
 type TabsVariant = "segmented" | "label";
@@ -15,10 +15,7 @@ const tabs = tv({
       "data-[orientation=horizontal]:flex-col",
       "data-[orientation=vertical]:flex-row",
     ],
-    list: [
-      "inline-flex items-center",
-      "data-[orientation=vertical]:flex-col",
-    ],
+    list: ["inline-flex items-center", "data-[orientation=vertical]:flex-col"],
     trigger: [
       "inline-flex items-center justify-center shrink-0 cursor-pointer",
       "transition-colors duration-[var(--pds-duration-fast)]",
@@ -104,11 +101,7 @@ const TabsTrigger = React.forwardRef<
   const variant = React.useContext(TabsVariantContext);
   const styles = tabs({ variant });
   const trigger = (
-    <TabsPrimitive.Trigger
-      ref={ref}
-      className={cn(styles.trigger(), className)}
-      {...props}
-    />
+    <TabsPrimitive.Trigger ref={ref} className={cn(styles.trigger(), className)} {...props} />
   );
   if (variant === "label") {
     return trigger;

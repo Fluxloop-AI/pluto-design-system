@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
+import { tv, type VariantProps } from "../utils/tv";
 
 const sectionHeader = tv({
   slots: {
@@ -59,59 +59,48 @@ type SectionHeaderProps = Omit<React.HTMLAttributes<HTMLDivElement>, "color"> & 
   children: React.ReactNode;
 };
 
-const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
-  function SectionHeader(
-    {
-      size = "md",
-      headingAs = "h2",
-      headingContent,
-      trailingContent,
-      color,
-      className,
-      children,
-      style,
-      ...props
-    },
-    ref,
-  ) {
-    const styles = sectionHeader({ size });
-    const HeadingTag = headingAs;
-    return (
-      <div
-        ref={ref}
-        data-slot="section-header"
-        className={cn(styles.root(), className)}
-        style={color ? { color, ...style } : style}
-        {...props}
-      >
-        <div data-slot="section-header-content" className={styles.content()}>
-          <HeadingTag
-            data-slot="section-header-heading"
-            className={styles.heading()}
-          >
-            {children}
-          </HeadingTag>
-          {headingContent ? (
-            <div
-              data-slot="section-header-heading-content"
-              className={styles.headingContent()}
-            >
-              {headingContent}
-            </div>
-          ) : null}
-        </div>
-        {trailingContent ? (
-          <div
-            data-slot="section-header-trailing-content"
-            className={styles.trailingContent()}
-          >
-            {trailingContent}
+const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(function SectionHeader(
+  {
+    size = "md",
+    headingAs = "h2",
+    headingContent,
+    trailingContent,
+    color,
+    className,
+    children,
+    style,
+    ...props
+  },
+  ref,
+) {
+  const styles = sectionHeader({ size });
+  const HeadingTag = headingAs;
+  return (
+    <div
+      ref={ref}
+      data-slot="section-header"
+      className={cn(styles.root(), className)}
+      style={color ? { color, ...style } : style}
+      {...props}
+    >
+      <div data-slot="section-header-content" className={styles.content()}>
+        <HeadingTag data-slot="section-header-heading" className={styles.heading()}>
+          {children}
+        </HeadingTag>
+        {headingContent ? (
+          <div data-slot="section-header-heading-content" className={styles.headingContent()}>
+            {headingContent}
           </div>
         ) : null}
       </div>
-    );
-  },
-);
+      {trailingContent ? (
+        <div data-slot="section-header-trailing-content" className={styles.trailingContent()}>
+          {trailingContent}
+        </div>
+      ) : null}
+    </div>
+  );
+});
 
 export type { SectionHeaderProps };
 export { SectionHeader, sectionHeader };
