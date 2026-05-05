@@ -3,10 +3,6 @@ title: Chat Markdown
 description: 채팅 메시지의 markdown 렌더 가이드 — 별도 패키지 @fluxloop-ai/pds-markdown
 ---
 
-import { ExperimentalNotice } from "@/components/experimental-notice";
-
-<ExperimentalNotice area="AI / Agent Chat" />
-
 `ChatUserMessage` · `ChatAssistantMessage` 는 모두 `renderMarkdown?: (text: string) => ReactNode` slot 을 받는다. PDS 자체는 markdown 렌더러 의존을 가지지 않고 — 권장 구현체를 별도 패키지 [`@fluxloop-ai/pds-markdown`](https://github.com/Fluxloop-AI/pluto-design-system/tree/main/packages/pds-markdown) 으로 분리해 제공한다.
 
 ## 왜 별도 패키지인가

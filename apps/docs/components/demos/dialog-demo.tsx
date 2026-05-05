@@ -59,7 +59,7 @@ export function DialogFullDemo() {
           </DialogNavigation>
           <DialogBody>
             <p className="text-[color:var(--pds-label-alternative)] text-[13px]">
-              Phase 1 Dialog 의 <code>variant=&quot;full&quot;</code> 데모. 데스크탑 앱 MVP 기준이라{" "}
+              Dialog 의 <code>variant=&quot;full&quot;</code> 데모. 데스크탑 앱 기준이라{" "}
               <code>bottom</code> variant 는 제외.
             </p>
           </DialogBody>
