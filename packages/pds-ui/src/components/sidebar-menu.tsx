@@ -59,7 +59,12 @@ const SidebarMenu = React.forwardRef<HTMLElement, SidebarMenuProps>(function Sid
             className={styles.item()}
             onClick={() => onSelect?.(item.id)}
           >
-            <Icon icon={item.icon} size="sm" weight={selected ? "fill" : "regular"} />
+            <Icon
+              icon={item.icon}
+              size="sm"
+              weight={selected ? "fill" : "regular"}
+              className={selected ? "pds-animate-icon-pop" : undefined}
+            />
             <span className={styles.label()}>{item.label}</span>
           </button>
         );

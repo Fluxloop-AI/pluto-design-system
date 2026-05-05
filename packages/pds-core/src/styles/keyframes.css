@@ -66,6 +66,19 @@
   }
 }
 
+/* ---- icon pop — selected/active 진입 시 1회 ---- */
+@keyframes pds-icon-pop {
+  0% {
+    transform: rotate(-12deg) scale(0.88);
+  }
+  55% {
+    transform: rotate(5deg) scale(1.06);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+
 /* ---- skeleton shimmer ---- */
 @keyframes pds-shimmer {
   0% {
@@ -93,6 +106,11 @@
 
 .pds-animate-card-in {
   animation: pds-fade-in-card 500ms var(--pds-ease-standard) both;
+}
+
+.pds-animate-icon-pop {
+  animation: pds-icon-pop var(--pds-duration-slow) var(--pds-ease-out) both;
+  transform-origin: center;
 }
 
 .pds-animate-dot-pulse {
@@ -162,6 +180,7 @@
 @media (prefers-reduced-motion: reduce) {
   .pds-animate-step-in,
   .pds-animate-card-in,
+  .pds-animate-icon-pop,
   .pds-animate-dot-pulse,
   .pds-animate-dot-ripple::after,
   .pds-chat-collapsible,
