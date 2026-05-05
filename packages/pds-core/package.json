@@ -1,6 +1,6 @@
 {
   "name": "@fluxloop-ai/pds-core",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": false,
   "description": "Pluto Design System — tokens, Tailwind preset, Pretendard, motion",
   "license": "UNLICENSED",
