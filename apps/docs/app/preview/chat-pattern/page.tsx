@@ -541,7 +541,7 @@ function ChatThread({ thread }: { thread: Thread | null }) {
       className="min-h-0 flex-1 overflow-y-auto"
       style={{ WebkitMaskImage: maskImage, maskImage }}
     >
-      <div className="flex flex-col gap-[8px] pl-[24px] pr-[16px] py-[20px]">
+      <div className="flex flex-col gap-[8px] pl-[24px] pr-[20px] py-[20px]">
         {thread.messages.map((m) =>
           m.role === "user" ? (
             <ChatUserMessage key={m.id} content={m.text} />
@@ -616,7 +616,7 @@ function LiveResponseThread() {
       className="min-h-0 flex-1 overflow-y-auto"
       style={{ WebkitMaskImage: maskImage, maskImage }}
     >
-      <div className="flex flex-col gap-[12px] pl-[24px] pr-[16px] py-[20px]">
+      <div className="flex flex-col gap-[12px] pl-[24px] pr-[20px] py-[20px]">
         <ChatUserMessage content={LIVE_USER_MESSAGE} />
         {showDots ? <ChatAssistantMessage content="" loading /> : null}
         {showTrace ? (
