@@ -101,7 +101,7 @@ const actionCard = tv({
     description: [
       "[grid-column:2] [grid-row:2] self-center",
       "min-w-0",
-      "text-label1 font-normal",
+      "text-label2 font-normal",
       "text-[color:var(--pds-label-alternative)]",
     ],
     trailing: [
