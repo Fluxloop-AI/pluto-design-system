@@ -32,6 +32,21 @@ export {
   AppShellSplitter,
   AppShellTrailingControls,
 } from "./components/app-shell";
+export type {
+  ActionCardDescriptionProps,
+  ActionCardLeadingProps,
+  ActionCardProps,
+  ActionCardTitleProps,
+  ActionCardTrailingProps,
+} from "./components/action-card";
+export {
+  ActionCard,
+  ActionCardDescription,
+  ActionCardLeading,
+  ActionCardTitle,
+  ActionCardTrailing,
+  actionCard,
+} from "./components/action-card";
 export type { AvatarProps } from "./components/avatar";
 export { Avatar, avatar } from "./components/avatar";
 export type { BadgeProps } from "./components/badge";
