@@ -12,3 +12,5 @@
 - `ActionCardTitle` 의 `icon` prop 으로 title 좌측 inline 아이콘(20px) 정렬
 - `variant` 3 종: `outlined` (기본, border 1px + 투명 bg) / `filled` (border 없음 + bg fill) / `ghost` (border·bg 모두 없음, hover 시에만 fill). 모든 variant 의 hover transition 단계는 PDS fill 스케일 (`alternative` < `normal`) 을 따름
 - radius 12px, padding 14×16px
+
+> 세로 stack 타일 (가로 짧고 세로 긴) 형태는 별도 컴포넌트 `ActionTile` 로 분리되어 있다 — 레이아웃 모델 (3-col row vs 3-region column with free-form header/footer) 이 다르고, 각자 고유 prop 이 다른 컴포넌트로 진화하기 쉬워 한 컴포넌트의 variant 로 묶지 않음.

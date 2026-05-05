@@ -47,6 +47,25 @@ export {
   ActionCardTrailing,
   actionCard,
 } from "./components/action-card";
+export type {
+  ActionTileContentProps,
+  ActionTileDescriptionProps,
+  ActionTileFooterProps,
+  ActionTileHeaderProps,
+  ActionTileLeadingProps,
+  ActionTileProps,
+  ActionTileTitleProps,
+} from "./components/action-tile";
+export {
+  ActionTile,
+  ActionTileContent,
+  ActionTileDescription,
+  ActionTileFooter,
+  ActionTileHeader,
+  ActionTileLeading,
+  ActionTileTitle,
+  actionTile,
+} from "./components/action-tile";
 export type { AvatarProps } from "./components/avatar";
 export { Avatar, avatar } from "./components/avatar";
 export type { BadgeProps } from "./components/badge";
