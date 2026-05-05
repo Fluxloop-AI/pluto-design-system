@@ -3,12 +3,12 @@
 import { ArrowUp } from "@fluxloop-ai/pds-icons/icons";
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
 import * as React from "react";
-import { tv } from "tailwind-variants";
+import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
 
 const chatComposer = tv({
   slots: {
-    root: "px-[16px] pt-[6px] pb-[16px]",
+    root: "px-[16px] pb-[16px]",
     shell: [
       "flex flex-col overflow-hidden",
       "rounded-[12px] border border-[color:var(--pds-line-normal-normal)]",
