@@ -140,13 +140,13 @@ export default function SidebarPatternPreviewPage() {
                   count={LIBRARY.length}
                   actions={
                     <>
-                      <IconButton size="sm" variant="subtle" aria-label="신규 스킬">
+                      <IconButton size="xs" variant="subtle" aria-label="신규 스킬">
                         <Plus />
                       </IconButton>
-                      <IconButton size="sm" variant="subtle" aria-label="검색">
+                      <IconButton size="xs" variant="subtle" aria-label="검색">
                         <MagnifyingGlass />
                       </IconButton>
-                      <IconButton size="sm" variant="subtle" aria-label="필터">
+                      <IconButton size="xs" variant="subtle" aria-label="필터">
                         <Funnel />
                       </IconButton>
                     </>

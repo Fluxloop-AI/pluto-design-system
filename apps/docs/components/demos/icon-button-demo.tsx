@@ -50,6 +50,9 @@ export function IconButtonSizeDemo() {
   return (
     <div className="pds-icon-btn-card">
       <div className="pds-icon-btn-row">
+        <IconButton size="xs" variant="background" aria-label="좋아요">
+          <Icon icon={Heart} />
+        </IconButton>
         <IconButton size="sm" variant="background" aria-label="좋아요">
           <Icon icon={Heart} />
         </IconButton>
@@ -61,6 +64,9 @@ export function IconButtonSizeDemo() {
         </IconButton>
       </div>
       <div className="pds-icon-btn-row">
+        <IconButton size="xs" variant="outlined" aria-label="삭제">
+          <Icon icon={Trash} />
+        </IconButton>
         <IconButton size="sm" variant="outlined" aria-label="삭제">
           <Icon icon={Trash} />
         </IconButton>

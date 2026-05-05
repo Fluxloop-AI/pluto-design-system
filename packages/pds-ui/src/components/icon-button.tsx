@@ -52,6 +52,7 @@ const iconButton = tv({
       ],
     },
     size: {
+      xs: "w-[18px] h-[18px] rounded-[4px] [&_svg]:w-[14px] [&_svg]:h-[14px]",
       sm: "w-[24px] h-[24px] rounded-[6px] [&_svg]:w-[14px] [&_svg]:h-[14px]",
       md: "w-[32px] h-[32px] rounded-[8px] [&_svg]:w-[16px] [&_svg]:h-[16px]",
       lg: "w-[40px] h-[40px] rounded-[10px] [&_svg]:w-[20px] [&_svg]:h-[20px]",

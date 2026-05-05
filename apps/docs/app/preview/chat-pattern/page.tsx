@@ -377,14 +377,14 @@ export default function ChatPatternPreviewPage() {
                       onClose={closeTab}
                     />
                   </div>
-                  <div className="flex items-center">
-                    <IconButton size="sm" variant="subtle" aria-label="새 채팅" onClick={addTab}>
+                  <div className="flex items-center gap-[2px]">
+                    <IconButton size="xs" variant="subtle" aria-label="새 채팅" onClick={addTab}>
                       <Plus />
                     </IconButton>
-                    <IconButton size="sm" variant="subtle" aria-label="채팅 기록">
+                    <IconButton size="xs" variant="subtle" aria-label="채팅 기록">
                       <Clock />
                     </IconButton>
-                    <IconButton size="sm" variant="subtle" aria-label="더보기">
+                    <IconButton size="xs" variant="subtle" aria-label="더보기">
                       <DotsThree />
                     </IconButton>
                   </div>
