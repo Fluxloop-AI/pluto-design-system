@@ -1,5 +1,5 @@
 ---
-"@fluxloop-ai/pds-ui": major
+"@fluxloop-ai/pds-ui": minor
 ---
 
 **Tag → Chip 으로 리네임 + Montage 스펙 정합화. (Breaking)**

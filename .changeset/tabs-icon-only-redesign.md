@@ -1,5 +1,5 @@
 ---
-"@fluxloop-ai/pds-ui": major
+"@fluxloop-ai/pds-ui": minor
 ---
 
 **Tabs 를 icon-only segmented + 툴팁 내장 패턴으로 전면 교체. (Breaking)**
