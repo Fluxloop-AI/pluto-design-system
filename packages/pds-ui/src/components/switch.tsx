@@ -2,7 +2,7 @@
 
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
 
 const switchStyles = tv({

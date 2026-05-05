@@ -3,7 +3,7 @@
 import { Check, X, XCircle as XCircleFill } from "@fluxloop-ai/pds-icons/icons";
 import { useComposedRefs } from "@radix-ui/react-compose-refs";
 import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
 
 const input = tv({

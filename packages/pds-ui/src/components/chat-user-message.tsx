@@ -2,7 +2,7 @@
 
 import { ImageBroken } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "../utils/tv";
 import type { ContentBlock, DocumentBlock, ImageBlock, TextBlock } from "../types/chat";
 import { cn } from "../utils/cn";
 import { ChatAttachmentChip } from "./chat-attachment-chip";
@@ -20,7 +20,7 @@ const chatUserMessage = tv({
       "flex flex-col gap-[8px]",
       "bg-[var(--pds-fill-normal)] text-[color:var(--pds-label-normal)]",
       "rounded-[10px] px-[14px] py-[10px]",
-      "text-[14px] leading-[20px] max-w-[min(85%,600px)] break-words",
+      "text-body2 max-w-[min(85%,600px)] break-words",
     ],
     actions: [
       "flex gap-[2px] mt-[4px]",

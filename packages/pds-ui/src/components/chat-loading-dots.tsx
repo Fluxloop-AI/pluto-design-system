@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { tv } from "tailwind-variants";
+import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
 
 const chatLoadingDots = tv({

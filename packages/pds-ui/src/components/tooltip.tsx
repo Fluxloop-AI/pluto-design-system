@@ -2,7 +2,7 @@
 
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
 
 const tooltip = tv({

@@ -3,7 +3,7 @@
 import { CaretRight, Check } from "@fluxloop-ai/pds-icons/icons";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
 
 const menu = tv({

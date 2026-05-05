@@ -23,6 +23,9 @@
 }
 
 .pds-markdown p {
+  font-size: var(--text-body2);
+  line-height: var(--text-body2--line-height);
+  letter-spacing: var(--text-body2--letter-spacing);
   margin: 4px 0;
 }
 

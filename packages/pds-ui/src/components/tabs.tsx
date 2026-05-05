@@ -2,7 +2,7 @@
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import * as React from "react";
-import { tv } from "tailwind-variants";
+import { tv } from "../utils/tv";
 import { cn } from "../utils/cn";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 

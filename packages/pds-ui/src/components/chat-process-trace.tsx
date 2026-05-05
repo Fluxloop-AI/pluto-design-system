@@ -2,7 +2,7 @@
 
 import { CaretRight } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv } from "tailwind-variants";
+import { tv } from "../utils/tv";
 import type { TextBlock, ThinkingBlock, ToolResultBlock, ToolUseBlock } from "../types/chat";
 import { cn } from "../utils/cn";
 

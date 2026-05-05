@@ -2,7 +2,7 @@
 
 import type { IconWeight, PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "../utils/tv";
 import { cn } from "../utils/cn";
 
 const icon = tv({
