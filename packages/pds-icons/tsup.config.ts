@@ -5,6 +5,7 @@ export default defineConfig({
     index: "src/index.ts",
     icons: "src/icons.ts",
     "custom/index": "src/custom/index.ts",
+    "brands/index": "src/brands/index.ts",
   },
   format: ["esm"],
   dts: true,
@@ -13,5 +14,5 @@ export default defineConfig({
   target: "es2022",
   treeshake: true,
   splitting: false,
-  external: ["react", "react-dom", "@phosphor-icons/react"],
+  external: ["react", "react-dom", "@phosphor-icons/react", "@lobehub/icons"],
 });

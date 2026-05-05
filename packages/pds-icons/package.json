@@ -18,6 +18,10 @@
     "./custom": {
       "types": "./dist/custom/index.d.ts",
       "import": "./dist/custom/index.js"
+    },
+    "./brands": {
+      "types": "./dist/brands/index.d.ts",
+      "import": "./dist/brands/index.js"
     }
   },
   "files": [
@@ -34,6 +38,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "@lobehub/icons": "^5.6.0",
     "@phosphor-icons/react": "^2.1.7"
   },
   "devDependencies": {
