@@ -130,6 +130,8 @@ export type { InputProps } from "./components/input";
 export { Input, input } from "./components/input";
 export type { PageContainerProps } from "./components/page-container";
 export { PageContainer, pageContainer } from "./components/page-container";
+export type { PanelCellProps, PanelProps } from "./components/panel";
+export { Panel, PanelCell, panel } from "./components/panel";
 export type { PopoverContentProps } from "./components/popover";
 export {
   Popover,
