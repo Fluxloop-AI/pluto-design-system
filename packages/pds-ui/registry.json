@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "pluto-design-system",
-  "homepage": "https://pds.pluto.com",
+  "homepage": "https://pds-docs.vercel.app",
   "items": [
     {
       "name": "utils",
