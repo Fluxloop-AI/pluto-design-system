@@ -1,5 +1,16 @@
 # @fluxloop-ai/pds-core
 
+## 0.1.2
+
+### Patch Changes
+
+- 4f3e4bf: `reset.css` 의 전역 `*` squircle 룰을 `[data-pds-squircle]` opt-in 으로 한정.
+
+  - 기존: 모든 요소에 `corner-shape: squircle` + `-electron-corner-smoothing` 이 적용돼 있었음. Electron 37+ 환경에서는 superellipse 곡선이 활성화돼 `rounded-full` 인 24×24 버튼이 완전한 원이 아니라 macOS 아이콘 모양(둥근 사각형) 으로 그려졌고, 브라우저에서는 이 속성들이 무시돼 표준 원으로 fallback — 같은 컴포넌트인데 데스크탑 앱과 docs/웹에서 모양이 달라지는 문제.
+  - 변경: squircle 은 `data-pds-squircle` 표식이 붙은 요소에만 적용. PDS 컴포넌트 어디에도 아직 표식을 부여하지 않았으므로 결과적으로 모든 표면이 표준 round 로 그려진다. 이게 의도된 단기 방향이고, 어느 표면(Card, Modal, Sheet 등) 이 다시 squircle 을 켤지는 후속 디자인 결정 라운드에서 정한다.
+  - 소비자 영향: published 0.1.1 에서 squircle 로 그려지던 모든 컨테이너·버튼이 표준 round 로 바뀐다. 별도 코드 변경은 필요 없음 — 패키지만 0.1.2 로 올리면 즉시 반영.
+  - 다시 squircle 을 켜고 싶다면: `<div data-pds-squircle className="...">` 처럼 명시적 opt-in.
+
 ## 0.1.1
 
 ### Patch Changes
@@ -20,6 +31,7 @@
   Wanted Montage 구조를 뼈대로, Radix headless + Tailwind v4 + `tailwind-variants` 로 번역·개량.
 
   ### pds-ui (신규)
+
   - `Separator` — Radix Separator, `--pds-line-*` 토큰, orientation/color/thickness
   - `Avatar` — Radix Avatar, 8단계 size (xs~4xl), person/company/academy
   - `Icon` — phosphor 래퍼 + pds-icons 슬롯, size(xs~xl) + semantic color
@@ -32,17 +44,21 @@
   - `ScrollArea` — Radix ScrollArea + macOS 얇은 스크롤바 hover-expand
 
   ### pds-icons
+
   - `tsup` config: `splitting: false` — Next.js 번들러의 `export *` 재노출 안정화
 
   ### 레지스트리
+
   - `packages/pds-ui/registry.json` — shadcn registry items 11개 (`utils` + 10 컴포넌트)
   - 소비: `npx shadcn add https://pds.pluto.com/r/{component}`
 
   ### 도구
+
   - `packages/pds-ui/src/utils/cn.ts` — clsx + tailwind-merge v3
   - 공통 deps: `@radix-ui/react-*`, `tailwind-variants`, `clsx`, `tailwind-merge@^3`, `@phosphor-icons/react`
 
   ### 문서
+
   - `apps/docs` — Components 섹션 신설, 10개 MDX + live demo
   - `apps/docs/app/global.css` — `@source` directive 로 pds-ui Tailwind 스캐닝
 
@@ -57,6 +73,7 @@
 - aebd24b: **ChatProcessTrace — thinking·tool 호출·중간 멘트를 한 접힘 컨테이너로 묶는 process-trace 컴포넌트 추가.**
 
   Anthropic Messages API 의 `thinking` · `tool_use` · `tool_result` · 중간 `text` 블록을 시간순으로 받아 단일 collapsible 로 표시한다. 최종 답변(`text`) 블록은 trace 외부에서 `ChatAssistantMessage` 등으로 분리.
+
   - **항상 접힘** 기본. 진행 중에도 자동 펼침 없음. 사용자 클릭으로만 펼침.
   - **Trigger 라벨**: `Thinking` (shimmer) → `Thought for {duration}` 단일 슬롯. 도구 사용 여부와 무관하게 동일 문구.
   - **Tool row 단위**: 1 `tool_use` = 1 row. 같은 도구 연속 호출이어도 묶지 않음.
@@ -72,6 +89,7 @@
   pluto-note `apps/desktop/src/components/chat-panel/` 의 9개 소스를 Anthropic Messages API 계약의 controlled 컴포넌트로 이식. `@assistant-ui/react` · Zustand · `@pluto/wds-icon` 의존성 전면 제거.
 
   ### pds-ui (신규)
+
   - `ChatLoadingDots` — 3-dot wave primitive, size(sm/md)
   - `ChatStepDot` — phase(pending/running/complete/error/requires-action) 상태 도트, ripple
   - `AgentStatusIndicator` — agent status 텍스트 라벨 + 스피너/도트 애니메이션
@@ -85,14 +103,17 @@
   - `ChatTabBar` — controlled 대화 탭 바
 
   ### pds-ui 계약
+
   - `@fluxloop-ai/pds-ui/types` 서브패스 신설 — `ChatMessage`, `ContentBlock`, `ChatStatusPhase`, `ChatAgentStatus` 공개
   - Markdown / syntax highlighter 는 **slot 주입**으로 PDS 본체와 분리
 
   ### pds-core (토큰 추가)
+
   - `--pds-chat-tone-error-bg`, `--pds-chat-tone-error-card-bg`, `--pds-chat-tone-caution-bg` — color-mix alpha 배경 (pluto-note 하드코딩 rgba 제거)
   - `.pds-animate-dot-ripple` / `.pds-chat-collapsible` — keyframes.css 유틸 클래스
 
   ### 문서
+
   - `apps/docs` — "AI / Agent Chat" 섹션 신설, 10개 MDX + live demo
   - 각 페이지에 phase/size/streaming 토글 데모
 

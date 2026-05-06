@@ -1,10 +1,19 @@
 # @fluxloop-ai/pds-ui
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [4f3e4bf]
+  - @fluxloop-ai/pds-core@0.1.2
+  - @fluxloop-ai/pds-icons@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
 
 - 2a873e3: Repair install/registry consumer flow surfaced by 0.1.0 dogfooding.
+
   - pds-ui: marked private (shadcn-copy only — was unintentionally publishing); 17 missing components registered (app-shell, sidebar-menu/list, action-card/tile, icon-button, text-button, panel, page-container, section-header, removable-tab-bar, full chat-\* family + chat-types lib + internal chat-copy-button); AppShell root switched to h-dvh
   - pds-markdown: built via tsup, ships dist with CSS auto-load (was raw .ts source)
   - pds-core: tailwind-merge bumped to v3 (Tailwind v4 alignment)
@@ -22,6 +31,7 @@
 - a4b2aa5: **`ActionCard` 신규 추가 — 제목 + 설명에 좌/우 슬롯이 붙는 클릭 가능한 카드.**
 
   `ActionCard`, `ActionCardLeading`, `ActionCardTitle`, `ActionCardDescription`, `ActionCardTrailing` 5 개로 구성된 flat compound. Suggestion / prompt 카드, permission · option toggle row 등 큰 면적의 액션 표면에 사용.
+
   - 기본 `<button type="button">`, `asChild` 로 `<a>` 등 polymorphic
   - Leading / Trailing 은 두 행 span, Title / Description 은 가운데 컬럼 두 행. CSS Grid `auto · minmax(0,1fr) · auto` 3-컬럼
   - 슬롯 간 간격은 column-gap 대신 Leading/Trailing 자체 margin 으로 만들어, 슬롯 미사용 시 빈 공간이 생기지 않음
@@ -36,11 +46,13 @@
   3 영역 모델 — `Header` / `Content` / `Footer`. Grid 3-column 같은 화면 구성에서 카드 여러 개를 가로로 배치하는 용도.
 
   영역
+
   - `ActionTileHeader` — 옵션. 상단 free-form 박스. 메타 row / NEW pill / 카테고리 라벨 / kebab 등. 안의 element 분포는 호출부 자유. 기본 `flex flex-row items-center gap-[6px]`. 정렬은 `headerAlign` prop
   - `ActionTileContent` — 의미 슬롯 묶음. `ActionTileLeading` (옵션) + `ActionTileTitle` (`startIcon` prop) + `ActionTileDescription` (옵션). 내부 typography 와 슬롯 간 간격은 컴포넌트 책임 (Leading→Title 8px, Title→Description 2px). 가로 정렬은 `contentAlign`
   - `ActionTileFooter` — 옵션. 하단 free-form 박스. 동작은 Header 와 동일. 정렬은 `footerAlign`
 
   Props
+
   - `variant` — `outlined` (기본) / `filled` / `ghost`. `ActionCard` 와 토큰 동일
   - `padding` — 카드 외곽 padding. `compact` (18/20/20) / `normal` (26/28/24, 기본) / `spacious` (36/38/28). top/bottom/horizontal
   - `headerGap` — Header ↔ Content 간격. `tight` (4px) / `normal` (8px, 기본) / `wide` (12px). Header 없으면 무시
@@ -55,6 +67,7 @@
 - 42d0b6e: **AppShell — 데스크탑 앱(Tauri/macOS Overlay)의 3-패널 레이아웃 셸 추가.**
 
   `<AppShell>` + `<AppShellSidebar>` (back layer) + `<AppShellMain>` / `<AppShellSidePanel>` (foreground card) + `<AppShellSplitter>` 컴포넌트군. 각 패널은 자체 헤더/바디(/푸터) 슬롯을 갖는다.
+
   - **레이어 모델**: 사이드바는 회색 _back layer_, Main+SidePanel 은 흰 _foreground card_. 사용자가 prop 으로 지정하지 않고 *컴포넌트 종류 자체*에 의미가 박혀있다.
   - **모서리 라운딩 자동**: foreground card 는 background layer 와 만나는 모서리만 둥글게 (`rounded-l-12`). 윈도우 가장자리 쪽은 OS squircle 이 처리하므로 PDS 가 신경쓰지 않음.
   - **Titlebar inset 자동 분배**: `leftInset` / `rightInset` 을 `<AppShell>` 에 주입하면 _현재 열려있는_ 좌/우 끝 패널의 헤더에만 자동 적용. 사이드바를 닫으면 Main 헤더가 leftInset 흡수.
@@ -71,6 +84,7 @@
   이전 5플랫 컬러(`neutral|accent|positive|cautionary|negative`) 구조와 임의 사이즈/alpha 매핑을 정리하고, foreground 토큰 선택형 API로 환원.
 
   ### API 변경 (Breaking)
+
   - `color` 축소: `neutral | accent`. 기본값 `accent`.
   - `accentColor` 추가 — `color=accent` 일 때 foreground 토큰 선택. 기본값 `cyan`.
     - 값: `red | red-orange | orange | lime | green | cyan | light-blue | blue | violet | purple | pink | positive | cautionary | negative`
@@ -94,6 +108,7 @@
   ### 컬러 매핑
 
   런타임에 `--pds-badge-color` 커스텀 프로퍼티로 선택 토큰을 주입, Tailwind는 단일 클래스로 참조.
+
   - `solid` accent: bg = `var(--pds-badge-color) @ 8%`
   - `solid` neutral: bg = `--pds-fill-normal`
   - `outlined` accent: bg = `--pds-background-normal-normal`, border = `var(--pds-badge-color) @ 43%`
@@ -105,11 +120,13 @@
   Montage(`/components/actions/{button,icon-button,text-button}`)의 분리 모델을 따라, 단일 Button 컴포넌트가 짊어지던 책임을 컨테이너 강도 기준으로 3개로 쪼갰다.
 
   ### 분리 기준 — 컨테이너
+
   - **Button** — 배경 또는 테두리(컨테이너 있음). 라벨이 들어가는 액션 버튼.
   - **IconButton** — 컨테이너 옵션 4단계. 텍스트 없이 아이콘만.
   - **TextButton** — 컨테이너 없음. 글자만의 인터랙션.
 
   ### Button (변경)
+
   - variant 5종 → 4종으로 정리:
     - `solid` (유지)
     - `primary` → **`outlined`** (실제로는 outline이라 이름 정정)
@@ -148,17 +165,20 @@
   - asChild 지원
 
   ### 기존 컴포넌트 유지
+
   - **`CloseButton`** — 기존 20/24/28 스케일 유지 (IconButton의 24/32/40보다 작은 인라인 전용).
   - **chat-composer 송신 버튼** — 24×24 원형 + label-normal 배경의 채팅 UI 관례 유지.
 
   ### 마이그레이션
 
   PDS는 0.1.0 미릴리즈 상태이므로 외부 영향 없음. 내부 docs demo 일괄 정리:
+
   - `<Button variant="primary">` → `<Button variant="outlined">`
   - `<Button variant="secondary">` → `<Button variant="frosted">`
   - `<Button iconOnly variant="ghost">` → `<IconButton variant="normal">`
 
 - 453bb0f: `ChatAssistantMessage` 에 hover-reveal 복사 버튼 내장.
+
   - 응답 하단 좌측에 복사 버튼이 기본 노출. 메시지 행 호버 / 포커스 시 fade-in (`opacity-0 → 100`), `ChatUserMessage` 와 동일 패턴.
   - 클릭하면 클립보드에 텍스트 저장 + 1.5s 동안 아이콘이 `Copy → Check` 로 스왑, 툴팁도 "복사 → 복사됨" 으로 변경 후 복귀.
   - 텍스트 블록만 join (`thinking`, `tool_use` 블록은 스킵). 텍스트가 비어있으면 복사 버튼 자체를 안 그림.
@@ -168,6 +188,7 @@
 - 760788a: **ChatAssistantMessage — `loading` prop 추가.**
 
   스트리밍 라이프사이클(dots → typing → done)을 한 컴포넌트로 통일. `loading` 이 true 면:
+
   - 본문 끝(빈 본문이면 단독)에 `<ChatLoadingDots />` 가 inline 으로 붙는다 — text slot 의 `text-body2` 컨텍스트 안에 들어가므로 13px 로 정렬된다.
   - `renderMarkdown` 은 자동으로 무시되고 `whitespace-pre-wrap` plain text 로 떨어진다 (미완성 마크다운 깨짐 방지).
   - 기본 복사 버튼과 `actions` 가 모두 숨겨진다 (미완성 텍스트 복사·액션 차단).
@@ -178,6 +199,7 @@
 - 0a69b54: **ChatAttachmentChip — 채팅 첨부 컨텍스트(이미지/파일) 표시 pill 추가.**
 
   `ChatComposer.topAccessory` 안에서 첨부된 컨텍스트를 가벼운 pill 로 나열하기 위한 컴포넌트. 일반 `Chip`(filter/tag, rect)과 의미·시각이 다르기 때문에 별도 컴포넌트로 분리.
+
   - pill(rounded-full) + 1px border, transparent shell
   - `type="image"` → 22×22 썸네일(`imageSrc`), `type="file"` → 타입 무관 단일 file 아이콘
   - `name` 은 `max-width:200px` 안에서 truncate
@@ -194,6 +216,7 @@
 - aebd24b: **ChatProcessTrace — thinking·tool 호출·중간 멘트를 한 접힘 컨테이너로 묶는 process-trace 컴포넌트 추가.**
 
   Anthropic Messages API 의 `thinking` · `tool_use` · `tool_result` · 중간 `text` 블록을 시간순으로 받아 단일 collapsible 로 표시한다. 최종 답변(`text`) 블록은 trace 외부에서 `ChatAssistantMessage` 등으로 분리.
+
   - **항상 접힘** 기본. 진행 중에도 자동 펼침 없음. 사용자 클릭으로만 펼침.
   - **Trigger 라벨**: `Thinking` (shimmer) → `Thought for {duration}` 단일 슬롯. 도구 사용 여부와 무관하게 동일 문구.
   - **Tool row 단위**: 1 `tool_use` = 1 row. 같은 도구 연속 호출이어도 묶지 않음.
@@ -207,6 +230,7 @@
 - baa98be: `ChatBubble` 을 `ChatUserMessage` 로 리네임하고, 어시스턴트 응답을 `ChatAssistantMessage` 로 분리.
 
   PDS 채팅 모델은 user 는 풍선, assistant 는 풍선 없이 본문만 — 이 비대칭이 컴포넌트 구조에는 반영돼 있지 않아서 user 만 컴포넌트로 빠지고 assistant 는 `ChatThread` 내부 인라인 JSX 였다. role 축으로 짝을 맞춰 둘 다 단독 컴포넌트로 정리.
+
   - `ChatUserMessage` (구 `ChatBubble`) — 사용자 메시지 풍선. text/image 블록, onError fallback.
     - 풍선 radius `8px → 10px`, 첨부 이미지 radius `6px → 8px` (한 단계 상향).
   - `ChatAssistantMessage` (신규) — 풍선 없는 어시스턴트 응답. text/thinking/tool_use 블록 처리, `renderMarkdown` / `renderToolCall` / `renderThinking` / `actions` slot, `toolResults: Map<string, ToolResultBlock>` prop.
@@ -215,6 +239,7 @@
   Breaking: `ChatBubble`, `chatBubble`, `ChatBubbleProps` export 제거. import 경로 `@fluxloop-ai/pds-ui/components/chat-bubble` → `chat-user-message`.
 
 - 31fff77: `ChatUserMessage` 첨부물(이미지·문서) 표시 방식 개편 + `DocumentBlock` 타입 신규.
+
   - `types/chat.ts` 에 Anthropic Messages API 호환 `DocumentBlock` 추가 (`type: "document"`, `source` discriminated union, `title?`, `context?`). `ContentBlock` union 에 포함.
   - 이미지/문서 블록은 풍선 위쪽 별도 row 에 우측 정렬로 모아 표시 (텍스트 사이에 끼워도 attachment 그룹으로 lifting). 정렬 규칙: **문서(chip) 좌측, 이미지(thumbnail) 우측**, 같은 타입끼리는 입력 순서 보존.
   - 이미지 썸네일 사양 변경: `max-w-[320px] max-h-[240px]` → `64×64` 정사각, `object-cover`, `rounded-[10px]`. 다중 첨부 시 `flex-wrap-reverse` 로 좁은 폭에서 줄바꿈.
@@ -223,6 +248,7 @@
   - 텍스트 블록이 하나도 없으면 풍선 자체를 그리지 않음. "(no message)" 같은 placeholder 카피는 PDS 가 가지지 않고 앱이 text 블록으로 직접 넣도록 위임.
 
 - 1e66cb5: `ChatUserMessage` 에 hover-reveal 복사 버튼 내장.
+
   - 풍선 아래 우측에 복사 버튼이 기본 노출. 메시지 행 호버 / 포커스 시 fade-in (`opacity-0 → 100`), 평상시 자리 reserve 로 호버 시 레이아웃 흔들림 없음.
   - 클릭하면 클립보드에 텍스트 저장 + 1.5s 동안 아이콘이 `Copy → Check` 로 스왑, 툴팁도 "복사 → 복사됨" 으로 변경 후 복귀.
   - 이미지+텍스트 메시지면 텍스트 블록만 join (이미지 스킵). 텍스트가 비어있으면 복사 버튼 자체를 안 그림.
@@ -234,6 +260,7 @@
   `trailingContent` 에 닫기 버튼(`<button>`)을 둘 때 button-in-button 으로 hydration 에러가 나던 문제를 잡기 위해 Chip 의 기본 렌더 요소를 `<button>` → `<span>` 으로 변경.
 
   ### 변경
+
   - `interactive` prop 추가 (`boolean`, 기본 `false`)
     - `false` (기본): `<span>` 으로 렌더. `disabled` 는 `aria-disabled` 로 노출, `aria-pressed` 미연결
     - `true`: `<button>` 으로 렌더 + `type` / `disabled` / `aria-pressed` 연결 (이전 동작)
@@ -258,6 +285,7 @@
   기존 `Tag` 는 의미가 모호해 Montage 분류와 동일한 `Chip` 으로 정리. API 와 사이즈 스케일을 Montage 스펙에 맞춰 재구성.
 
   ### Breaking changes
+
   - `Tag` / `tag` export 제거 → `Chip` / `chip` 사용
   - import 경로: `@fluxloop-ai/pds-ui/components/tag` → `@fluxloop-ai/pds-ui/components/chip`
   - `pressed` prop 제거 → `active` 사용 (`aria-pressed` 는 동일하게 출력)
@@ -277,11 +305,13 @@
   높이는 `padding + line-height` 로 결정 (Montage 와 동일하게 `height: fit-content`).
 
   ### Variant 색
+
   - `solid`: bg `--pds-fill-alternative` → active 시 `--pds-inverse-background` / `--pds-inverse-label`
   - `outlined`: 1px `--pds-line-normal-neutral` → active 시 `--pds-primary-normal` 5% 채움 + 43% 보더, 텍스트 `--pds-primary-normal`
   - disabled: `--pds-label-disable` + (solid) `--pds-interaction-disable` / (outlined) 보더 유지
 
   ### 메타
+
   - 카테고리 이동: Feedback → Actions (Montage 분류 일치)
 
 - 571b681: **IconButton — `subtle` variant 추가.**
@@ -295,6 +325,7 @@
   18×18 / radius 4 / icon 14. 기존 `sm`(24)보다 더 좁은 자리(인라인 metadata, chip 옆 close, 작은 row의 trailing action 등)를 위한 사이즈.
 
 - c4d436a: **PageContainer — variant max-width 전반적으로 좁힘.**
+
   - `narrow`: 720 → **640**
   - `default`: 960 → **720**
   - `wide`: 1200 → **960**
@@ -307,6 +338,7 @@
 - 72d0d5f: **`Panel` 컴포넌트 추가 — bordered cell grid layout primitive.**
 
   외곽선·radius·hairline 디바이더만 책임지는 cell grid 박스. spirit-distiller 의 metadata strip / chart panel grid / sectioned stack 같은 "외곽선 + 셀 분할" 패턴을 단일 primitive 로 흡수.
+
   - `Panel` (`columns: number`) — CSS Grid 균등 분할 컨테이너. 자식 셀이 좌→우 채워지고 columns 단위로 자동 wrap.
   - `PanelCell` — 셀 단위. `span?: number` (CSS Grid `grid-column: span N`), `title?: string`, `icon?: PhosphorIcon` 헤더 슬롯. 헤더는 옵셔널이라 icon-only / label-only / 둘 다 / 헤더 없음 모두 지원.
   - 시각: `1px var(--pds-line-normal-alternative)` 외곽선·디바이더, `rounded-[16px]`, 셀 padding `20px` 사방 고정.
@@ -316,6 +348,7 @@
 - 5feb4ff: 신규 패키지 `@fluxloop-ai/pds-markdown` 추가, `ChatUserMessage` 에 `renderMarkdown` slot 추가.
 
   채팅 메시지(user/assistant) 양쪽 모두 markdown 이 필요하지만 PDS 자체는 렌더러 의존을 가지지 않는다는 슬롯 패턴을 유지한다. 권장 구현체로 `react-markdown + remark-gfm` 기반 패키지를 별도로 제공.
+
   - `@fluxloop-ai/pds-markdown` 신규 — `Markdown` 컴포넌트 + `renderMarkdown(text)` 헬퍼 export. ChatUser/Assistant 의 `renderMarkdown` slot 에 그대로 꽂아 쓰는 형태.
   - `ChatUserMessage` 에 `renderMarkdown?: (text) => ReactNode` slot 추가. `ChatThread` 가 동일 함수를 user/assistant 양쪽에 패스스루.
   - `ChatAssistantMessage` 의 `renderMarkdown` 미주입 폴백을 `<pre>` 에서 `whitespace-pre-wrap` plain text 로 변경 (user 와 톤 통일).
@@ -328,6 +361,7 @@
   Wanted Montage 구조를 뼈대로, Radix headless + Tailwind v4 + `tailwind-variants` 로 번역·개량.
 
   ### pds-ui (신규)
+
   - `Separator` — Radix Separator, `--pds-line-*` 토큰, orientation/color/thickness
   - `Avatar` — Radix Avatar, 8단계 size (xs~4xl), person/company/academy
   - `Icon` — phosphor 래퍼 + pds-icons 슬롯, size(xs~xl) + semantic color
@@ -340,17 +374,21 @@
   - `ScrollArea` — Radix ScrollArea + macOS 얇은 스크롤바 hover-expand
 
   ### pds-icons
+
   - `tsup` config: `splitting: false` — Next.js 번들러의 `export *` 재노출 안정화
 
   ### 레지스트리
+
   - `packages/pds-ui/registry.json` — shadcn registry items 11개 (`utils` + 10 컴포넌트)
   - 소비: `npx shadcn add https://pds.pluto.com/r/{component}`
 
   ### 도구
+
   - `packages/pds-ui/src/utils/cn.ts` — clsx + tailwind-merge v3
   - 공통 deps: `@radix-ui/react-*`, `tailwind-variants`, `clsx`, `tailwind-merge@^3`, `@phosphor-icons/react`
 
   ### 문서
+
   - `apps/docs` — Components 섹션 신설, 10개 MDX + live demo
   - `apps/docs/app/global.css` — `@source` directive 로 pds-ui Tailwind 스캐닝
 
@@ -359,6 +397,7 @@
   pluto-note `apps/desktop/src/components/chat-panel/` 의 9개 소스를 Anthropic Messages API 계약의 controlled 컴포넌트로 이식. `@assistant-ui/react` · Zustand · `@pluto/wds-icon` 의존성 전면 제거.
 
   ### pds-ui (신규)
+
   - `ChatLoadingDots` — 3-dot wave primitive, size(sm/md)
   - `ChatStepDot` — phase(pending/running/complete/error/requires-action) 상태 도트, ripple
   - `AgentStatusIndicator` — agent status 텍스트 라벨 + 스피너/도트 애니메이션
@@ -372,14 +411,17 @@
   - `ChatTabBar` — controlled 대화 탭 바
 
   ### pds-ui 계약
+
   - `@fluxloop-ai/pds-ui/types` 서브패스 신설 — `ChatMessage`, `ContentBlock`, `ChatStatusPhase`, `ChatAgentStatus` 공개
   - Markdown / syntax highlighter 는 **slot 주입**으로 PDS 본체와 분리
 
   ### pds-core (토큰 추가)
+
   - `--pds-chat-tone-error-bg`, `--pds-chat-tone-error-card-bg`, `--pds-chat-tone-caution-bg` — color-mix alpha 배경 (pluto-note 하드코딩 rgba 제거)
   - `.pds-animate-dot-ripple` / `.pds-chat-collapsible` — keyframes.css 유틸 클래스
 
   ### 문서
+
   - `apps/docs` — "AI / Agent Chat" 섹션 신설, 10개 MDX + live demo
   - 각 페이지에 phase/size/streaming 토글 데모
 
@@ -390,6 +432,7 @@
 - c40c012: **PDS Phase 5a — Foundation Primitives 5개 추가.**
 
   ### pds-ui (신규)
+
   - `Popover` — `@radix-ui/react-popover` 기반. `size: sm|md|lg` × `variant: normal|custom`. `PopoverHeader` / `PopoverTitle` / `PopoverDescription` / `PopoverBody` / `PopoverActionArea` / `PopoverClose` / `PopoverArrow` 슬롯.
   - `Spinner` — 순수 SVG. `size: sm|md|lg` (16/20/28px), `currentColor` 상속, `prefers-reduced-motion` 지원.
   - `Badge` — `variant: solid|outlined` × `size: xs|sm|md` × `color: neutral|accent|positive|cautionary|negative`. `leadingContent` / `trailingContent` 슬롯. (Montage `ContentBadge` 환원)
@@ -403,6 +446,7 @@
 - 476215e: **PDS Phase 5b — Form Controls + Glue 5개 추가.**
 
   ### pds-ui (신규)
+
   - `Checkbox` — `@radix-ui/react-checkbox` 기반. `size: sm|md`, `indeterminate` boolean prop (내부에서 `checked="indeterminate"` 로 치환), `invalid` / `disabled` / `required`.
   - `Switch` — `@radix-ui/react-switch` 기반. `size: sm|md`, thumb 이동 거리는 `--pds-switch-thumb-on` 로컬 CSS 변수로 인라인 세팅.
   - `RadioGroup` + `RadioGroupItem` — `@radix-ui/react-radio-group` 기반. `size: sm|md`, `orientation: horizontal|vertical`, `loop` 기본 on. Montage 3-class → PDS 2-class 로 단순화.
@@ -416,6 +460,7 @@
 - c0092c4: **PDS Phase 5c — Navigation + Compound 2개 추가 (Phase 5 완결).**
 
   ### pds-ui (신규)
+
   - `Tabs` + `TabsList` + `TabsTrigger` + `TabsContent` — `@radix-ui/react-tabs` 기반. `size: sm|md|lg` × `resize: hug|fill`, `orientation: horizontal|vertical`, 활성 탭 밑줄 indicator. Montage 의 측정 기반 indicator 애니메이션 / auto scroll-into-view / iconButton trailing 은 범위 밖.
   - `Combobox` 세트 — `cmdk` + `@radix-ui/react-popover` 를 PDS 공개 API(`Combobox` / `ComboboxTrigger` / `ComboboxContent` / `ComboboxInput` / `ComboboxList` / `ComboboxEmpty` / `ComboboxGroup` / `ComboboxItem` / `ComboboxSeparator`) 뒤로 완전히 래핑.
     - `value` / `onValueChange` / `inputValue` / `onInputValueChange` PDS 어휘 고정, `filter` passthrough, `disabled` 는 루트 `<fieldset>` 으로 적용.
@@ -464,6 +509,7 @@
   권장 항목 간격: **최소 8px (4×n)**.
 
   ### 스타일 정리
+
   - 체크 전: `--pds-background-elevated-normal` + `inset 0 0 0 1.5px --pds-line-normal-normal`
   - 체크 후: `--pds-primary-normal` + 흰 dot (`--pds-color-common-100`)
   - Halo: ring 외곽 4px 확장. hover `--pds-fill-normal`, active `--pds-fill-strong`.
@@ -475,6 +521,7 @@
 - 3023515: **`ChatTabBar` → `RemovableTabBar` 로 일반화. nav 카테고리로 이동 + `size` variant 도입.**
 
   chat 세션뿐 아니라 노트 등 다른 워크스페이스에서도 동적으로 열고 닫는 탭이 필요해져, AI/Agent Chat 카테고리 전용이던 `ChatTabBar` 를 navigation 컴포넌트로 일반화한다.
+
   - 신규: `RemovableTabBar`, `removableTabBar`, `RemovableTab`, `RemovableTabBarProps`, `RemovableTabBarSize` (`@fluxloop-ai/pds-ui/components/removable-tab-bar`).
   - 제거: `ChatTabBar`, `chatTabBar`, `ChatTab`, `ChatTabBarProps` (`@fluxloop-ai/pds-ui/components/chat-tab-bar`). 사용처는 `RemovableTabBar` 로 교체.
   - `size` prop 추가: `sm` (기존 ChatTabBar — 24h, 12px) / `md` (32h, 14px).
@@ -501,6 +548,7 @@
   스크롤 컨테이너 위·아래에 mask 그라디언트를 입혀 잘리는 가장자리를 부드럽게 처리하는 유틸을 추가. pluto-note Sidebar 에서 검증된 패턴을 PDS 로 끌어올림.
 
   ### 추가
+
   - `useScrollFade<T>(options)` 훅 — 스크롤 위치를 측정해 위·아래 fade 를 자동 토글. `{ ref, onScroll, maskImage, isScrolledFromTop, isScrolledFromBottom }` 반환. 컨테이너 리사이즈는 `ResizeObserver` 로 따라감
   - `getScrollFadeMask({ top, bottom, size })` 저수준 함수 — mask 문자열만 반환
   - `ScrollArea` 에 viewport 직접 제어용 prop 추가:
@@ -529,6 +577,7 @@
 - 42d0b6e: **SectionHeader — 섹션 진입을 표시하는 1라인 row 헤더 추가.**
 
   `<SectionHeader>` + `headingContent` / `trailingContent` 두 슬롯 모델. Montage `section-header` 의 row 패턴(타이틀 + 우측 보조 슬롯 + 우측 끝 액션 슬롯)을 PDS 토큰 위에 이식.
+
   - **사이즈 4단계** (`xs` / `sm` / `md` / `lg`) — 각각 `text-label1` / `text-headline1` / `text-heading1` / `text-title2` bold. `xs` 만 `label-alternative` 컬러(사이드바 그룹 라벨 용도), 나머지는 `label-strong`.
   - **슬롯 정렬** — `align-items: center`. row 전체 높이 = max(slot heights). Montage 는 baseline 을 쓰지만, 한글 타이틀 + Chip/Button 조합에서 어긋나 보이는 케이스가 있어 PDS 는 center 로 통일.
   - **타이틀 ↔ headingContent gap 은 사이즈별 차등** (xs `4` / sm·md `6` / lg `8`). 한 덩어리로 읽히도록 의도적으로 타이트하게.
@@ -542,6 +591,7 @@
   2-3지 단일 선택 인라인 컨트롤. 드롭다운형 `Select`와 인터랙션 모델이 다른 케이스(예: "인라인 / 분리됨", "대기열 추가 / 스티어링")를 위한 트랙 없는(track-less) 스타일.
 
   ### 스펙
+
   - 베이스: `@radix-ui/react-radio-group` (단일 선택 의미와 키보드 내비게이션 그대로 사용).
   - 사이즈: `sm` (`h-32 px-10 rounded-10 text-13`), `md` (`h-36 px-12 rounded-12 text-14`) — Button/Select와 동일 스케일.
   - 톤: neutral 단일. 선택 pill `--pds-fill-normal` + `--pds-label-normal`, 미선택 텍스트 `--pds-label-assistive`, hover 시 `--pds-fill-alternative`.
@@ -563,6 +613,7 @@
 - a99f17d: **Select — `filled` variant 추가.**
 
   `SelectTrigger`에 `variant` prop 추가. 기본값 `outlined`(기존 동작).
+
   - `outlined`: 1px inset border + transparent 배경 (기존)
   - `filled`: 무테 + `--pds-fill-normal` grey 배경, hover/open 시 `--pds-fill-strong`로 한 단계 어두워짐
 
@@ -573,6 +624,7 @@
   `renderItemTrailing?: (item) => ReactNode` 으로 각 항목 우측에 액션을 꽂을 수 있다. 평소엔 숨김, **hover · keyboard focus(focus-within) · selected · 내부에 `[data-state=open]` 인 노드(예: 열린 `DropdownMenu` 트리거)가 있을 때** 노출된다. 전형 조합은 `DropdownMenu` + `IconButton(DotsThree)` 메뉴 트리거.
 
   마크업/접근성 변경:
+
   - 각 항목을 `<button>` → `<div role="button" tabIndex={0}>` + Enter/Space 핸들러로 변경. 진짜 `<button>` 안에 또 다른 인터랙티브 트리거(IconButton + DropdownMenu)를 넣는 nested-button 위반을 피하기 위함. `aria-current` / `data-selected` / focus-visible ring 동작은 그대로 유지.
   - trailing 슬롯 영역의 `click` / `keydown` / `pointerdown` 은 내부에서 `stopPropagation` 되어 항목의 `onSelect` 를 트리거하지 않는다. consumer 쪽에서 별도로 막아줄 필요 없음.
   - trailing 이 있는 항목은 `pr-[10px]` → `pr-[6px]` 로 살짝 조여 IconButton 의 시각적 가장자리 정렬을 맞춘다 (없는 항목은 종전 그대로).
@@ -582,6 +634,7 @@
 - 8f914ad: **`SidebarList` — `stickyHeader` prop 추가.**
 
   `stickyHeader={true}` 시 섹션 헤더(타이틀 + count + actions)를 부모 스크롤 컨테이너 상단에 `position: sticky; top: 0` 로 고정한다. 항목 수가 많아 사이드바가 세로 스크롤될 때 섹션 헤더가 따라 올라가지 않고 그 자리에 머물게 하기 위함. 부모가 `overflow-y-auto` 일 때만 의미가 있다.
+
   - 기본값 `false` — 기존 사용처 시각 변화 없음.
   - 헤더 배경은 sticky 상태에서 사이드바 back-layer 토큰(`--pds-background-normal-alternative`, fallback `--pds-fill-normal`)으로 자동 채워서 스크롤되는 항목이 헤더 뒤로 비치지 않게 한다.
   - 헤더 하단 spacing 을 `mb-4px` → `pb-4px` (with `box-content`) 로 변경. 마진은 sticky 상태에서 배경이 비어 항목이 그 사이로 보이는 문제가 있어 패딩으로 흡수.
@@ -604,6 +657,7 @@
   마이그레이션: `<Switch size="md" />` → `<Switch size="lg" />`, `<Switch size="sm" />` → `<Switch size="md" />`.
 
   ### 스타일
+
   - off track: `--pds-fill-strong`
   - on track: `--pds-primary-normal`
   - thumb: `--pds-color-common-100` (white) 고정
@@ -615,6 +669,7 @@
   기존 underline + text label 스타일을 폐기하고, skilled prototype 의 `SkillTabBar` 패턴을 PDS Tabs 로 흡수. 시맨틱(navigation, Radix Tabs)은 동일, 비주얼만 교체.
 
   ### Breaking changes
+
   - 트리거가 **icon-only** 로 전환. 텍스트 라벨은 더 이상 children 으로 받지 않고, `aria-label` 이 툴팁 + 스크린리더 라벨 역할을 동시에 수행
   - `aria-label` 이 `TabsTrigger` 에 **필수 prop**
   - `Tooltip` 이 `TabsTrigger` 내부에 자동으로 wrap. 부모 트리에 `TooltipProvider` 가 없어도 동작 (`Tabs` 가 자체 provider 를 둠)
@@ -624,6 +679,7 @@
   - `TabsTrigger` 가 자식 SVG 사이즈를 강제하므로 consumer 는 `<Icon>` 에 `size` 를 넘길 필요 없음
 
   ### 신규 prop
+
   - `TabsTrigger.tooltipSide`: `top | bottom | left | right` (기본 `bottom`). vertical Tabs 에서는 `right` 권장.
 
   ### 토큰 매핑
@@ -643,6 +699,7 @@
   ### 시맨틱 분리
 
   비주얼이 `SegmentedControl` 과 비슷해 보일 수 있으나 시맨틱이 다르므로 두 컴포넌트는 분리 유지:
+
   - `Tabs` — 콘텐츠 패널 navigation (Radix Tabs, role=tab/tabpanel, arrow key)
   - `SegmentedControl` — form field value 선택
 
@@ -651,6 +708,7 @@
   기존 `segmented` (icon-only) 옆에 텍스트 라벨 형태의 `label` variant 를 더해 페이지 상단의 섹션 스위처 같은 용도를 흡수. 시맨틱(Radix Tabs)은 동일, 시각만 분기.
 
   ### 신규 prop
+
   - `Tabs.variant`: `segmented | label` (기본 `segmented`).
   - `label` variant 의 `TabsTrigger` 는 children 자리에 텍스트를 직접 넣고, 툴팁은 띄우지 않음 (텍스트 자체가 라벨 역할). `aria-label` 이 옵셔널로 완화.
 
@@ -674,6 +732,7 @@
 - bafdf3b: **Button/IconButton — solid·danger 인터랙션 시각 보정.**
 
   `hover:brightness-110 active:brightness-95` 가 사실상 무효였다. 브랜드 primary 가 cool-neutral-15(거의 검정)라 110% 밝기는 변화가 0.6% 수준으로 인지 불가, danger(red-50) 도 brightness 110% 는 톤이 빠지고 명도 변화가 작다.
+
   - **Button solid / IconButton solid** — 검정 위에선 더 밝아지는 방향이 자연스러우므로 `color-mix(in srgb, var(--pds-primary-normal) 86%, white)` (hover) / `92%` (active) 로 white 를 섞음. (`--pds-primary-strong/heavy` 토큰은 cool-neutral 15 → 10 → 5 방향이라 거꾸로 더 어두워져 사용하지 않음.)
   - **Button danger — 톤 자체를 soft 로 변경.** filled 빨강(white-on-red) 대신 light pink + red text 로 재정의. 파괴적 액션을 시각적으로 약하게 가져가서 일반 outlined 와 위계를 분리하면서도 빨강의 의미는 유지.
     - bg `var(--pds-color-red-95)`, text `var(--pds-accent-foreground-red)` (red-40, AA 대비)
@@ -693,6 +752,7 @@
   pds-core 에서는 `pds-dot-wave` keyframe / `.pds-animate-dot-wave` 유틸을 `pds-dot-pulse` / `.pds-animate-dot-pulse` 로 교체.
 
 - 7bb540f: 마크다운 표 스타일 정리 + chat assistant 표 가로 스크롤 격리.
+
   - `pds-markdown`: fumadocs `.prose` 컨텍스트에서 leak 되던 헤더 셀 배경(`var(--color-fd-muted)`) 명시적으로 transparent 로 reset. `:is(th, td)` 가 Lightning CSS 의 `:-webkit-any()` fallback emission 으로 의도치 않게 (0,2,0) specificity 가 돼 `thead th` border 를 덮어쓰는 문제를 `th, td` 분리 selector 로 해결. 마지막 `tbody` row 의 bottom border 제거 (표 맨 아래 outer line 사라짐). 헤더 아래 / row 사이 line 은 유지. 셀 `min-width: 120px` 추가 — 컬럼 squish 방지 + 채팅 폭보다 자연스럽게 넓어져 가로 스크롤 트리거.
   - `pds-ui` `ChatAssistantMessage`: root / text slot 에 `w-full min-w-0` 추가. flex item 의 기본 `min-width: auto` 때문에 wide 테이블이 메시지 영역 자체를 부풀리던 문제 해결. 이제 메시지는 채팅 폭에 묶이고 표 영역(`.pds-markdown-table-scroll`) 안에서만 가로 스크롤.
 
@@ -715,6 +775,7 @@
   typography 사이즈가 사라지고 부모의 14px 가 그대로 inherit 되던 문제가 발생.
 
   수정:
+
   - `packages/pds-ui/src/utils/tw-merge-config.ts` 신설 — PDS typography 변종
     (`display1`, `title1~3`, `heading1~2`, `headline1`, `body1`, `body1-reading`,
     `body2`, `label1~2`, `caption1~2`, `code`) 을 `font-size` 그룹으로 등록.

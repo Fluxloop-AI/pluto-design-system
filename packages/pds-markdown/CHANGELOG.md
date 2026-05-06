@@ -1,5 +1,7 @@
 # @fluxloop-ai/pds-markdown
 
+## 0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
@@ -18,6 +20,7 @@
 - 5feb4ff: 신규 패키지 `@fluxloop-ai/pds-markdown` 추가, `ChatUserMessage` 에 `renderMarkdown` slot 추가.
 
   채팅 메시지(user/assistant) 양쪽 모두 markdown 이 필요하지만 PDS 자체는 렌더러 의존을 가지지 않는다는 슬롯 패턴을 유지한다. 권장 구현체로 `react-markdown + remark-gfm` 기반 패키지를 별도로 제공.
+
   - `@fluxloop-ai/pds-markdown` 신규 — `Markdown` 컴포넌트 + `renderMarkdown(text)` 헬퍼 export. ChatUser/Assistant 의 `renderMarkdown` slot 에 그대로 꽂아 쓰는 형태.
   - `ChatUserMessage` 에 `renderMarkdown?: (text) => ReactNode` slot 추가. `ChatThread` 가 동일 함수를 user/assistant 양쪽에 패스스루.
   - `ChatAssistantMessage` 의 `renderMarkdown` 미주입 폴백을 `<pre>` 에서 `whitespace-pre-wrap` plain text 로 변경 (user 와 톤 통일).
