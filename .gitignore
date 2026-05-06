@@ -14,6 +14,9 @@ out/
 # fumadocs-mdx generated
 .source/
 
+# shadcn registry build output (regenerated at build time)
+apps/docs/public/r/
+
 # typescript
 *.tsbuildinfo
 

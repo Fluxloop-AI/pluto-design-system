@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "pluto-design-system",
-  "homepage": "https://pds.pluto.com",
+  "homepage": "https://pluto-design-system-docs.vercel.app",
   "items": [
     {
       "name": "utils",
@@ -372,6 +372,293 @@
           "path": "src/components/combobox.tsx",
           "type": "registry:ui",
           "target": "components/ui/combobox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:ui",
+      "title": "IconButton",
+      "description": "Square icon-only Button — variant × size, asChild support.",
+      "dependencies": ["@radix-ui/react-slot", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/icon-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/icon-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-button",
+      "type": "registry:ui",
+      "title": "TextButton",
+      "description": "Inline link-like Button — variant × size, optional leading/trailing icon, loading state.",
+      "dependencies": ["@radix-ui/react-slot", "@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/text-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "panel",
+      "type": "registry:ui",
+      "title": "Panel",
+      "description": "Surface container with optional leading icon and PanelCell layout primitive.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils", "icon"],
+      "files": [
+        {
+          "path": "src/components/panel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/panel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "page-container",
+      "type": "registry:ui",
+      "title": "PageContainer",
+      "description": "Padded page-level wrapper with size variants for content alignment.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/page-container.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/page-container.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-header",
+      "type": "registry:ui",
+      "title": "SectionHeader",
+      "description": "Section heading with title/description and optional trailing slot.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/section-header.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/section-header.tsx"
+        }
+      ]
+    },
+    {
+      "name": "removable-tab-bar",
+      "type": "registry:ui",
+      "title": "RemovableTabBar",
+      "description": "Horizontal tab bar with per-tab close affordance.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/removable-tab-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/removable-tab-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "action-card",
+      "type": "registry:ui",
+      "title": "ActionCard",
+      "description": "Card-shaped action surface — leading icon, title, description, trailing slot.",
+      "dependencies": ["@radix-ui/react-slot", "tailwind-variants"],
+      "registryDependencies": ["utils", "icon"],
+      "files": [
+        {
+          "path": "src/components/action-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/action-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "action-tile",
+      "type": "registry:ui",
+      "title": "ActionTile",
+      "description": "Compact tile with header/leading/title/description/footer slots for action grids.",
+      "dependencies": ["@radix-ui/react-slot", "tailwind-variants"],
+      "registryDependencies": ["utils", "icon"],
+      "files": [
+        {
+          "path": "src/components/action-tile.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/action-tile.tsx"
+        }
+      ]
+    },
+    {
+      "name": "app-shell",
+      "type": "registry:ui",
+      "title": "AppShell",
+      "description": "Root layout — sidebar, optional side panel, main column. Splitter and Electron titlebar slot.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/app-shell.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/app-shell.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-menu",
+      "type": "registry:ui",
+      "title": "SidebarMenu",
+      "description": "Vertical icon-first menu list for app sidebars.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils", "icon"],
+      "files": [
+        {
+          "path": "src/components/sidebar-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sidebar-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-list",
+      "type": "registry:ui",
+      "title": "SidebarList",
+      "description": "Sidebar list of items with leading icon, label, and trailing overflow menu.",
+      "dependencies": ["@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils", "icon"],
+      "files": [
+        {
+          "path": "src/components/sidebar-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sidebar-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-types",
+      "type": "registry:lib",
+      "title": "Chat content block types",
+      "description": "Shared types for chat content blocks (text, image, etc.) used by chat-* components.",
+      "files": [
+        {
+          "path": "src/types/chat.ts",
+          "type": "registry:lib",
+          "target": "lib/chat-types.ts"
+        }
+      ]
+    },
+    {
+      "name": "chat-copy-button",
+      "type": "registry:ui",
+      "title": "ChatCopyButton (internal)",
+      "description": "Internal copy-to-clipboard button used by chat message components.",
+      "dependencies": ["@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils", "icon-button", "tooltip", "chat-types"],
+      "files": [
+        {
+          "path": "src/components/internal/chat-copy-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/internal/chat-copy-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-loading-dots",
+      "type": "registry:ui",
+      "title": "ChatLoadingDots",
+      "description": "Single-orb pulse loading indicator for in-progress assistant responses.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/chat-loading-dots.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-loading-dots.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-attachment-chip",
+      "type": "registry:ui",
+      "title": "ChatAttachmentChip",
+      "description": "Chip preview for chat composer attachments (file label, remove action).",
+      "dependencies": ["@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/chat-attachment-chip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-attachment-chip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-composer",
+      "type": "registry:ui",
+      "title": "ChatComposer",
+      "description": "Chat input — auto-grow textarea with attachments and send action.",
+      "dependencies": [
+        "@radix-ui/react-compose-refs",
+        "@fluxloop-ai/pds-icons",
+        "tailwind-variants"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/chat-composer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-composer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-user-message",
+      "type": "registry:ui",
+      "title": "ChatUserMessage",
+      "description": "User chat bubble — supports text and attachment blocks, copy action.",
+      "dependencies": ["@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils", "tooltip", "chat-attachment-chip", "chat-copy-button"],
+      "files": [
+        {
+          "path": "src/components/chat-user-message.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-user-message.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-assistant-message",
+      "type": "registry:ui",
+      "title": "ChatAssistantMessage",
+      "description": "Assistant response — plain text (no bubble), copy action, loading state.",
+      "dependencies": ["tailwind-variants"],
+      "registryDependencies": ["utils", "tooltip", "chat-loading-dots", "chat-copy-button"],
+      "files": [
+        {
+          "path": "src/components/chat-assistant-message.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-assistant-message.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-process-trace",
+      "type": "registry:ui",
+      "title": "ChatProcessTrace",
+      "description": "Collapsible trace UI for assistant tool/process steps.",
+      "dependencies": ["@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/chat-process-trace.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-process-trace.tsx"
         }
       ]
     }
