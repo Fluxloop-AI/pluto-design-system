@@ -58,7 +58,7 @@ export default function PageContainerPreviewPage() {
           <span className="h-[12px] w-[12px] rounded-full bg-[#28c840] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.15)]" />
         </div>
 
-        <AppShell leftInset={72}>
+        <AppShell leftInset={72} className="h-full">
           <AppShellLeadingControls>
             <IconButton
               size="sm"

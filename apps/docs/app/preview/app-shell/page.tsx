@@ -45,7 +45,7 @@ export default function AppShellPreviewPage() {
           <span className="h-[12px] w-[12px] rounded-full bg-[#28c840] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.15)]" />
         </div>
 
-        <AppShell leftInset={72}>
+        <AppShell leftInset={72} className="h-full">
           {/* 사이드바 토글 — 사이드바 열림/닫힘 무관하게 같은 자리 */}
           <AppShellLeadingControls>
             <IconButton
