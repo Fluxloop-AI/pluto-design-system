@@ -4,7 +4,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
 import { cn } from "../utils/cn";
 import { tv, type VariantProps } from "../utils/tv";
-import { CloseButton } from "./close-button";
+import { CloseButton } from "./internal/close-button";
 
 const dialog = tv({
   slots: {

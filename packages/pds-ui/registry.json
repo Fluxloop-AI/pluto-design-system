@@ -136,7 +136,7 @@
       "title": "Dialog",
       "description": "Radix Dialog — popup/full × sm/md/lg/xl × fixed/free. Navigation/Body/ActionArea slots.",
       "dependencies": ["@radix-ui/react-dialog", "@fluxloop-ai/pds-icons", "tailwind-variants"],
-      "registryDependencies": ["utils"],
+      "registryDependencies": ["utils", "close-button"],
       "files": [
         {
           "path": "src/components/dialog.tsx",
@@ -151,7 +151,7 @@
       "title": "Toast",
       "description": "Radix Toast with info/success/warning/error variants.",
       "dependencies": ["@radix-ui/react-toast", "@fluxloop-ai/pds-icons", "tailwind-variants"],
-      "registryDependencies": ["utils"],
+      "registryDependencies": ["utils", "close-button"],
       "files": [
         {
           "path": "src/components/toast.tsx",
@@ -181,7 +181,7 @@
       "title": "Popover",
       "description": "Radix Popover — sm/md/lg × normal/custom. Header/Body/ActionArea slots.",
       "dependencies": ["@radix-ui/react-popover", "@fluxloop-ai/pds-icons", "tailwind-variants"],
-      "registryDependencies": ["utils"],
+      "registryDependencies": ["utils", "close-button"],
       "files": [
         {
           "path": "src/components/popover.tsx",
@@ -659,6 +659,21 @@
           "path": "src/components/chat-process-trace.tsx",
           "type": "registry:ui",
           "target": "components/ui/chat-process-trace.tsx"
+        }
+      ]
+    },
+    {
+      "name": "close-button",
+      "type": "registry:ui",
+      "title": "CloseButton (internal)",
+      "description": "Internal close affordance shared by dialog/popover/toast.",
+      "dependencies": ["@fluxloop-ai/pds-icons", "tailwind-variants"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/internal/close-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/internal/close-button.tsx"
         }
       ]
     }
