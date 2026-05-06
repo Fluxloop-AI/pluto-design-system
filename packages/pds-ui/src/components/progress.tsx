@@ -1,9 +1,8 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 
 const progress = tv({
   slots: {

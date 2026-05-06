@@ -1,11 +1,10 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import { CaretDown } from "@fluxloop-ai/pds-icons/icons";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { Command as CommandRoot } from "cmdk";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 
 const combobox = tv({
   slots: {

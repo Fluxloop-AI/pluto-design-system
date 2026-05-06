@@ -1,8 +1,7 @@
 "use client";
 
+import { cn, tv } from "@fluxloop-ai/pds-core";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv } from "../utils/tv";
 
 const chatLoadingDots = tv({
   slots: {

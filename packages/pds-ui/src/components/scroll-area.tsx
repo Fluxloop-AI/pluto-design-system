@@ -1,9 +1,8 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 
 const scrollArea = tv({
   slots: {

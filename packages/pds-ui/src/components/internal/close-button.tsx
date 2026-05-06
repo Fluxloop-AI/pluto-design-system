@@ -1,9 +1,8 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import { X } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
-import { cn } from "../../utils/cn";
-import { tv, type VariantProps } from "../../utils/tv";
 
 const closeButton = tv({
   base: [

@@ -1,10 +1,9 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import { CaretRight, Check } from "@fluxloop-ai/pds-icons/icons";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 
 const menu = tv({
   slots: {

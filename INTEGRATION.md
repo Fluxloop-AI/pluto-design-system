@@ -96,7 +96,17 @@ npx shadcn add https://pluto-design-system-docs.vercel.app/r/dialog
 npx shadcn add https://pluto-design-system-docs.vercel.app/r/chat-user-message
 ```
 
+설치 가능한 컴포넌트 전체 목록은 레지스트리 인덱스에서 확인 — 브라우저나 `curl` 로 한번 받아두면 된다:
+
+```
+https://pluto-design-system-docs.vercel.app/r/registry.json
+```
+
+(`/r/index.json` 아님 — shadcn 컨벤션상 인덱스 파일명은 `registry.json` 이다.)
+
 이게 하는 일: PDS 레포의 `packages/pds-ui/src/components/button.tsx` 를 **너의 레포 안의 `components/ui/button.tsx` 로 복사**. 의존성이 아니다. 이후 그 파일은 소비자 레포가 소유 — 마음대로 수정 가능.
+
+복사된 파일은 `@fluxloop-ai/pds-core` 에서 `cn`, `tv`, `VariantProps` 를 import 한다 — (B) 단계에서 `pds-core` 를 이미 깔았다면 그대로 빌드된다. shadcn 의 `lib/utils.ts` 를 따로 만들 필요 없음(레지스트리에 `utils` 항목이 없고, `cn` 의 SSOT 는 `pds-core`).
 
 ```tsx
 // 사용

@@ -1,9 +1,8 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 
 const separator = tv({
   base: "shrink-0 border-0",

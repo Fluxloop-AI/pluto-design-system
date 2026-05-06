@@ -1,10 +1,9 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import { Buildings, GraduationCap, User } from "@fluxloop-ai/pds-icons/icons";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 
 const avatar = tv({
   slots: {

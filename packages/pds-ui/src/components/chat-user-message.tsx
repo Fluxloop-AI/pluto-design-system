@@ -1,10 +1,9 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import { ImageBroken } from "@fluxloop-ai/pds-icons/icons";
 import * as React from "react";
 import type { ContentBlock, DocumentBlock, ImageBlock, TextBlock } from "../types/chat";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 import { ChatAttachmentChip } from "./chat-attachment-chip";
 import { ChatCopyButton, extractCopyText } from "./internal/chat-copy-button";
 import { TooltipProvider } from "./tooltip";
