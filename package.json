@@ -27,5 +27,12 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "@emoji-mart/react>react": "^19"
+      }
+    }
+  }
 }

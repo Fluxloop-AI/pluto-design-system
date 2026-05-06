@@ -174,7 +174,7 @@ function computeEdges(panels: AppShellContextValue["panels"]) {
 const appShell = tv({
   slots: {
     root: [
-      "relative h-full w-full flex overflow-hidden",
+      "relative h-dvh w-full flex overflow-hidden",
       "bg-[var(--pds-background-normal-alternative,var(--pds-background-normal-normal))]",
       "[--pds-app-shell-titlebar-height:44px]",
     ],
