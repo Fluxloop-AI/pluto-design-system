@@ -284,7 +284,6 @@ export default function ChatPatternPreviewPage() {
         </div>
 
         <AppShell leftInset={72} className="h-full">
-
           <AppShellLeadingControls>
             <IconButton
               size="sm"

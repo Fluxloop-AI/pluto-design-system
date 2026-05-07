@@ -8,10 +8,7 @@
       "type": "registry:ui",
       "title": "Separator",
       "description": "Radix-based horizontal/vertical divider using PDS line tokens.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-separator"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-separator"],
       "files": [
         {
           "path": "src/components/separator.tsx",
@@ -25,11 +22,7 @@
       "type": "registry:ui",
       "title": "Avatar",
       "description": "Radix Avatar, 8 sizes, person/company/academy fallback icons from pds-icons.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-avatar",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-avatar", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/avatar.tsx",
@@ -43,10 +36,7 @@
       "type": "registry:ui",
       "title": "Icon",
       "description": "phosphor wrapper with PDS size/color tokens. Accepts custom SVG components.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/icon.tsx",
@@ -60,11 +50,7 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "4 variants × 3 sizes, icon slots, loading state, asChild support.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-slot",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-slot", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/button.tsx",
@@ -96,10 +82,7 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "Radix Tooltip with size, shortcut slot, and mode(hover/always/click).",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-tooltip"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-tooltip"],
       "files": [
         {
           "path": "src/components/tooltip.tsx",
@@ -131,14 +114,8 @@
       "type": "registry:ui",
       "title": "Dialog",
       "description": "Radix Dialog — popup/full × sm/md/lg/xl × fixed/free. Navigation/Body/ActionArea slots.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-dialog",
-        "@fluxloop-ai/pds-icons"
-      ],
-      "registryDependencies": [
-        "close-button"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-dialog", "@fluxloop-ai/pds-icons"],
+      "registryDependencies": ["close-button"],
       "files": [
         {
           "path": "src/components/dialog.tsx",
@@ -152,14 +129,8 @@
       "type": "registry:ui",
       "title": "Toast",
       "description": "Radix Toast with info/success/warning/error variants.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-toast",
-        "@fluxloop-ai/pds-icons"
-      ],
-      "registryDependencies": [
-        "close-button"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-toast", "@fluxloop-ai/pds-icons"],
+      "registryDependencies": ["close-button"],
       "files": [
         {
           "path": "src/components/toast.tsx",
@@ -173,10 +144,7 @@
       "type": "registry:ui",
       "title": "ScrollArea",
       "description": "Radix ScrollArea with macOS-style thin scrollbar + hover expand.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-scroll-area"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-scroll-area"],
       "files": [
         {
           "path": "src/components/scroll-area.tsx",
@@ -195,9 +163,7 @@
         "@radix-ui/react-popover",
         "@fluxloop-ai/pds-icons"
       ],
-      "registryDependencies": [
-        "close-button"
-      ],
+      "registryDependencies": ["close-button"],
       "files": [
         {
           "path": "src/components/popover.tsx",
@@ -211,9 +177,7 @@
       "type": "registry:ui",
       "title": "Spinner",
       "description": "Pure SVG loading indicator. sm/md/lg (16/20/28px). Respects prefers-reduced-motion.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
       "files": [
         {
           "path": "src/components/spinner.tsx",
@@ -227,9 +191,7 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "Status label — solid/outlined × xs/sm/md × 5 colors.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
       "files": [
         {
           "path": "src/components/badge.tsx",
@@ -243,10 +205,7 @@
       "type": "registry:ui",
       "title": "Chip",
       "description": "Compact action chip — solid/outlined × xsmall/small/medium/large with active toggle and leading/trailing slots.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-slot"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-slot"],
       "files": [
         {
           "path": "src/components/chip.tsx",
@@ -260,10 +219,7 @@
       "type": "registry:ui",
       "title": "Progress",
       "description": "Radix Progress — determinate + indeterminate, sm/md track.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-progress"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-progress"],
       "files": [
         {
           "path": "src/components/progress.tsx",
@@ -295,10 +251,7 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "Radix Switch — sm/md track, primary-normal on-state.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-switch"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-switch"],
       "files": [
         {
           "path": "src/components/switch.tsx",
@@ -312,10 +265,7 @@
       "type": "registry:ui",
       "title": "RadioGroup",
       "description": "Radix RadioGroup — sm/md, horizontal/vertical orientation, loop on by default.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-radio-group"],
       "files": [
         {
           "path": "src/components/radio-group.tsx",
@@ -329,10 +279,7 @@
       "type": "registry:ui",
       "title": "SegmentedControl",
       "description": "Trackless single-select control for 2-3 inline options — sm/md, hug or fullWidth, snap selection.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-radio-group"],
       "files": [
         {
           "path": "src/components/segmented-control.tsx",
@@ -346,11 +293,7 @@
       "type": "registry:ui",
       "title": "Select",
       "description": "Radix Select — sm/md/lg trigger with Input-aligned tokens, item-aligned/popper content.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-select",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-select", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/select.tsx",
@@ -364,10 +307,7 @@
       "type": "registry:ui",
       "title": "Form",
       "description": "FormField + FormLabel + FormControl + FormDescription + FormErrorMessage — useId-based id wiring via context.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-slot"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-slot"],
       "files": [
         {
           "path": "src/components/form.tsx",
@@ -381,10 +321,7 @@
       "type": "registry:ui",
       "title": "Tabs",
       "description": "Radix Tabs — sm/md/lg × hug/fill, horizontal/vertical, underline indicator.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-tabs"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-tabs"],
       "files": [
         {
           "path": "src/components/tabs.tsx",
@@ -417,10 +354,7 @@
       "type": "registry:ui",
       "title": "IconButton",
       "description": "Square icon-only Button — variant × size, asChild support.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-slot"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-slot"],
       "files": [
         {
           "path": "src/components/icon-button.tsx",
@@ -434,11 +368,7 @@
       "type": "registry:ui",
       "title": "TextButton",
       "description": "Inline link-like Button — variant × size, optional leading/trailing icon, loading state.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-slot",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-slot", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/text-button.tsx",
@@ -452,12 +382,8 @@
       "type": "registry:ui",
       "title": "Panel",
       "description": "Surface container with optional leading icon and PanelCell layout primitive.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
-      "registryDependencies": [
-        "icon"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
+      "registryDependencies": ["icon"],
       "files": [
         {
           "path": "src/components/panel.tsx",
@@ -471,9 +397,7 @@
       "type": "registry:ui",
       "title": "PageContainer",
       "description": "Padded page-level wrapper with size variants for content alignment.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
       "files": [
         {
           "path": "src/components/page-container.tsx",
@@ -487,9 +411,7 @@
       "type": "registry:ui",
       "title": "SectionHeader",
       "description": "Section heading with title/description and optional trailing slot.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
       "files": [
         {
           "path": "src/components/section-header.tsx",
@@ -503,9 +425,7 @@
       "type": "registry:ui",
       "title": "RemovableTabBar",
       "description": "Horizontal tab bar with per-tab close affordance.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
       "files": [
         {
           "path": "src/components/removable-tab-bar.tsx",
@@ -519,13 +439,8 @@
       "type": "registry:ui",
       "title": "ActionCard",
       "description": "Card-shaped action surface — leading icon, title, description, trailing slot.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-slot"
-      ],
-      "registryDependencies": [
-        "icon"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-slot"],
+      "registryDependencies": ["icon"],
       "files": [
         {
           "path": "src/components/action-card.tsx",
@@ -539,13 +454,8 @@
       "type": "registry:ui",
       "title": "ActionTile",
       "description": "Compact tile with header/leading/title/description/footer slots for action grids.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@radix-ui/react-slot"
-      ],
-      "registryDependencies": [
-        "icon"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@radix-ui/react-slot"],
+      "registryDependencies": ["icon"],
       "files": [
         {
           "path": "src/components/action-tile.tsx",
@@ -559,9 +469,7 @@
       "type": "registry:ui",
       "title": "AppShell",
       "description": "Root layout — sidebar, optional side panel, main column. Splitter and Electron titlebar slot.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
       "files": [
         {
           "path": "src/components/app-shell.tsx",
@@ -575,12 +483,8 @@
       "type": "registry:ui",
       "title": "SidebarMenu",
       "description": "Vertical icon-first menu list for app sidebars.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
-      "registryDependencies": [
-        "icon"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
+      "registryDependencies": ["icon"],
       "files": [
         {
           "path": "src/components/sidebar-menu.tsx",
@@ -594,13 +498,8 @@
       "type": "registry:ui",
       "title": "SidebarList",
       "description": "Sidebar list of items with leading icon, label, and trailing overflow menu.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@fluxloop-ai/pds-icons"
-      ],
-      "registryDependencies": [
-        "icon"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons"],
+      "registryDependencies": ["icon"],
       "files": [
         {
           "path": "src/components/sidebar-list.tsx",
@@ -627,15 +526,8 @@
       "type": "registry:ui",
       "title": "ChatCopyButton (internal)",
       "description": "Internal copy-to-clipboard button used by chat message components.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@fluxloop-ai/pds-icons"
-      ],
-      "registryDependencies": [
-        "icon-button",
-        "tooltip",
-        "chat-types"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons"],
+      "registryDependencies": ["icon-button", "tooltip", "chat-types"],
       "files": [
         {
           "path": "src/components/internal/chat-copy-button.tsx",
@@ -649,9 +541,7 @@
       "type": "registry:ui",
       "title": "ChatLoadingDots",
       "description": "Single-orb pulse loading indicator for in-progress assistant responses.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
       "files": [
         {
           "path": "src/components/chat-loading-dots.tsx",
@@ -665,10 +555,7 @@
       "type": "registry:ui",
       "title": "ChatAttachmentChip",
       "description": "Chip preview for chat composer attachments (file label, remove action).",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/chat-attachment-chip.tsx",
@@ -700,15 +587,8 @@
       "type": "registry:ui",
       "title": "ChatUserMessage",
       "description": "User chat bubble — supports text and attachment blocks, copy action.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@fluxloop-ai/pds-icons"
-      ],
-      "registryDependencies": [
-        "tooltip",
-        "chat-attachment-chip",
-        "chat-copy-button"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons"],
+      "registryDependencies": ["tooltip", "chat-attachment-chip", "chat-copy-button"],
       "files": [
         {
           "path": "src/components/chat-user-message.tsx",
@@ -722,14 +602,8 @@
       "type": "registry:ui",
       "title": "ChatAssistantMessage",
       "description": "Assistant response — plain text (no bubble), copy action, loading state.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core"
-      ],
-      "registryDependencies": [
-        "tooltip",
-        "chat-loading-dots",
-        "chat-copy-button"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core"],
+      "registryDependencies": ["tooltip", "chat-loading-dots", "chat-copy-button"],
       "files": [
         {
           "path": "src/components/chat-assistant-message.tsx",
@@ -743,10 +617,7 @@
       "type": "registry:ui",
       "title": "ChatProcessTrace",
       "description": "Collapsible trace UI for assistant tool/process steps.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/chat-process-trace.tsx",
@@ -760,10 +631,7 @@
       "type": "registry:ui",
       "title": "CloseButton (internal)",
       "description": "Internal close affordance shared by dialog/popover/toast.",
-      "dependencies": [
-        "@fluxloop-ai/pds-core",
-        "@fluxloop-ai/pds-icons"
-      ],
+      "dependencies": ["@fluxloop-ai/pds-core", "@fluxloop-ai/pds-icons"],
       "files": [
         {
           "path": "src/components/internal/close-button.tsx",
