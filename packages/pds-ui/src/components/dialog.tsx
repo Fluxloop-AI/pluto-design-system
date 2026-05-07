@@ -1,9 +1,8 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 import { CloseButton } from "./internal/close-button";
 
 const dialog = tv({

@@ -1,10 +1,9 @@
 "use client";
 
+import { cn, tv, type VariantProps } from "@fluxloop-ai/pds-core";
 import type { PhosphorIcon } from "@fluxloop-ai/pds-icons/icons";
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv, type VariantProps } from "../utils/tv";
 import { Icon } from "./icon";
 
 /* ============================================================================

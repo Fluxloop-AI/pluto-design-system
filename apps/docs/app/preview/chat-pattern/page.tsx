@@ -267,9 +267,9 @@ export default function ChatPatternPreviewPage() {
   const tabs = threads.map((t) => t.tab);
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#2a2d35] via-[#1f2127] to-[#14151a] p-[32px]">
+    <div className="flex h-[100dvh] w-full items-center justify-center bg-gradient-to-br from-[#2a2d35] via-[#1f2127] to-[#14151a] p-[32px]">
       <div
-        className="relative h-full max-h-[840px] w-full max-w-[1280px] overflow-hidden rounded-[12px]"
+        className="relative h-[calc(100dvh-64px)] max-h-[840px] w-full max-w-[1280px] overflow-hidden rounded-[12px]"
         style={{
           boxShadow: "0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 0.5px rgba(0, 0, 0, 0.25)",
         }}
@@ -283,7 +283,7 @@ export default function ChatPatternPreviewPage() {
           <span className="h-[12px] w-[12px] rounded-full bg-[#28c840] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.15)]" />
         </div>
 
-        <AppShell leftInset={72}>
+        <AppShell leftInset={72} className="h-full">
           <AppShellLeadingControls>
             <IconButton
               size="sm"

@@ -252,7 +252,6 @@ export {
   TooltipTrigger,
   tooltip,
 } from "./components/tooltip";
-export { cn } from "./utils/cn";
 export type {
   ScrollFadeMaskOptions,
   UseScrollFadeOptions,

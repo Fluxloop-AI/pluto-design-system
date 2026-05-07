@@ -1,9 +1,8 @@
 "use client";
 
+import { cn, tv } from "@fluxloop-ai/pds-core";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { tv } from "../utils/tv";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 
 type TabsVariant = "segmented" | "label";

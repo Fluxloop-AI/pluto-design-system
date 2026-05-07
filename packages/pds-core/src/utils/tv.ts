@@ -5,10 +5,11 @@
  * 않게 한다.
  *
  * pds-ui 컴포넌트는 `tailwind-variants` 에서 직접 `tv` 를 가져오지 말고 이 모듈
- * 의 `tv` 를 사용해야 한다.
+ * 의 `tv` 를 사용해야 한다. 외부 소비자도 PDS typography group 을 인지하는
+ * `tv` 가 필요하면 `@fluxloop-ai/pds-core` 에서 가져오면 된다.
  */
 import { createTV } from "tailwind-variants";
-import { twMergeConfig } from "./tw-merge-config";
+import { twMergeConfig } from "./tw-merge-config.js";
 
 const tv = createTV({ twMergeConfig });
 
