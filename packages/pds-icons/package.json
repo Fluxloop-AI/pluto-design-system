@@ -1,6 +1,6 @@
 {
   "name": "@fluxloop-ai/pds-icons",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "private": false,
   "description": "Pluto Design System — phosphor wrappers + PDS-native icons",
   "license": "UNLICENSED",
