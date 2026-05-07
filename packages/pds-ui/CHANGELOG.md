@@ -1,6 +1,6 @@
 # @fluxloop-ai/pds-ui
 
-## 1.0.0
+## 0.2.0
 
 ### Minor Changes
 
@@ -13,8 +13,8 @@
 ### Patch Changes
 
 - Updated dependencies [ec67fe3]
-  - @fluxloop-ai/pds-core@1.0.0
-  - @fluxloop-ai/pds-icons@1.0.0
+  - @fluxloop-ai/pds-core@0.2.0
+  - @fluxloop-ai/pds-icons@0.2.0
 
 ## 0.1.2
 
