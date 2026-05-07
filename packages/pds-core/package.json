@@ -44,10 +44,12 @@
     "src/fonts"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node scripts/verify-exports.mjs",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist .turbo"
+    "clean": "rm -rf dist .turbo",
+    "verify-exports": "node scripts/verify-exports.mjs",
+    "prepublishOnly": "node scripts/verify-exports.mjs"
   },
   "peerDependencies": {
     "framer-motion": ">=11",
